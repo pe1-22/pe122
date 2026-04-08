@@ -1,0 +1,132 @@
+---
+title: "01 - Lineare Regression"
+output: 
+  learnr::tutorial:
+    progressive: true
+    theme: lumen
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+# library(ollamar)
+knitr::opts_chunk$set(echo = FALSE)
+
+ai_feedback <- "Feedback"
+ai_error_feedback <- "Feedback Error"
+
+#model <- "llama3.2"
+# model <- "gemma3"
+
+# ai_feedback <- function(response, question, correct) {
+#   text <- paste0("You are a helpful instructor to a data science course. You are giving feedback on a task given to a student. The question was '", question, "' and the student incorrectly responded with '", response, "'. The correct answer was: '", correct, "'. Provide a very short and helpful feedback, but make sure to never ever give the full solution. Only provide the feedback message as output.")
+#   out <- ollamar::generate("llama3.2", text, output = "text")
+#   out
+# }
+
+# ai_feedback <- function(response, question, correct) {
+#   text <- paste0("Du bist ein hilfreicher Lehrer und gibts Feedback für einen Stundenten. Die Frage lautete:'", question, "'. Die Antwort des Studenten war: '", response, "'. Die richtige Antwort lautete: '", correct, "'. Gib ein sehr kurzes aber hilfreiches Feedback. Duze den Studenten. Verrate dabei nicht die Lösung. Gibt nur die Feedbacknachricht als Output, ohne Anführungszeichen.")
+#   out <- ollamar::generate(model, text, output = "text")
+#   out
+# }
+
+# ai_error_feedback <- function(response, error) {
+#     text <- paste0("Du bist ein hilfreicher Lehrer und gibts Feedback für einen Stundenten. Der eingereichte R Code hat einen Fehler:", error, ". Gib ein sehr kurzes aber sehr hilfreiches Feedback. Duze den Studenten. Verrate dabei nicht die Lösung. Gibt nur die Feedbacknachricht als Output, ohne Anführungszeichen. Das hier ist der Code mit dem Fehler: '", response, "'")
+#   out <- ollamar::generate(model, text, output = "text")
+#   out
+# }
+
+
+# ai_error_feedback <- function(response, error) {
+#     text <- paste0("You are a helpful instructor to a data science course. You are giving feedback on a task given to a student. The R code submitted has this error:", error, ". Please provide a very short and helpful feedback using R best practices to fix the error. Only provide the feedback message as output. This is the full code:", response)
+#   out <- ollamar::generate(model, text, output = "text")
+#   out
+# }
+
+tutorial_options(
+  exercise.reveal_solution = FALSE
+)
+
+```
+
+## Grundlagen von R
+
+### Aufgabe 1
+
+Berechne mit R den Mittelwert der Zahlen 1, 3 und 10.
+
+```{r twotwo, exercise=TRUE}
+
+```
+
+```{r twotwo-solution}
+mean(c(1,3,10))
+```
+
+```{r twotwo-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r twotwo-check}
+task <- "Berechne mit R den Mittelwert der Zahlen 1, 3 und 10."
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+
+## Lineare Regression
+
+### Aufgabe 1
+
+Wofür steht der Parameter $\beta_0$ bei einer Regression? (Schreibe die Lösung zwischen die Anführungszeichen)
+
+```{r three, exercise=TRUE, exercise.cap = "Text", exercise.lines = 1}
+""
+```
+
+```{r three-solution}
+"y-Achsenabschnitt"
+```
+
+```{r three-check}
+q <- "Wofür steht der Parameter $\beta_0$ bei einer Regression?"
+grade_this({
+  if (.result %in% c("y-Achsenabschnitt", "Intercept", "y achsenabschnitt")) {
+      pass(praise = TRUE)
+} else {
+  fail(message = ai_feedback(.user_code, q, .solution_code))
+}
+})
+```
+
+
+### Aufgabe 2
+
+```{r quiz}
+quiz(
+  question("Wofür steht der Parameter $\\beta_0$ in einer linearen Regression?",
+    answer("Prädiktor", message = "Der Prädiktor wird mit x abgekürzt."),
+    answer("Outcome", message = "Das Outcome wird mit y abgekürzt."),
+    answer("y-Achsenabschnitt", correct = TRUE),
+    answer("Steigung", message = "$\\beta_1$ ist die Steigung."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  ),
+  question("Which of the R packages listed below are used to create plots?",
+    answer("lattice", correct = TRUE),
+    answer("tools"),
+    answer("stats"),
+    answer("grid", correct = TRUE)
+  )
+)
+```
+
+
