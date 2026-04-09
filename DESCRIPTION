@@ -13,3 +13,5 @@ BugReports: https://github.com/pe1-22/pe122/issues
 Imports: 
     gradethis,
     learnr
+Remotes: 
+    smnnlt/sportsdata
