@@ -12,6 +12,7 @@ URL: https://github.com/pe1-22/pe122
 BugReports: https://github.com/pe1-22/pe122/issues
 Imports: 
     gradethis,
-    learnr
+    learnr,
+    sportsdata
 Remotes: 
     smnnlt/sportsdata
