@@ -92,7 +92,6 @@ quiz(
 
 ### Aufgabe 3  
 
-
 ```{r Einstieg}
 quiz(
   question("Was beschreibt eine einfache lineare Regression?",
@@ -119,6 +118,7 @@ quiz(
 ```
 
 ### Aufgabe 4
+
 Wie lautet die allgemeine Formel für die einfache lineare Regression? (Schreibe die Lösung ohne Leertaste zwischen die Anführungszeichen)
 
 ```{r Formel, exercise=TRUE, exercise.cap = "Text", exercise.lines = 1}
@@ -210,3 +210,27 @@ grade_this({
 })
 ```
 
+
+
+
+```{r}
+set.seed(12)
+n <- 100
+
+geschlecht <-  sample (c ("m","w",))
+
+groesse <- rnorm (n, mean = 179, sd = 18)
+gewicht <- rnorm ( n, mean = 81, sd = 15)
+trainingsumfang <-  round (pmax(0, rnorm(n, mean = 25, sd =15)))
+vo2max <- 30+trainingsumfang * 0.6 + rnorm (n, 0,5)
+vo2max <- pmin(pmax(vo2max,25),75)
+
+df <-  data.frame(
+  Geschlecht = geschlecht,
+  Groesse_cm = round(groesse,1),
+  Gewicht_kg = round(gewicht,1),
+  VO2max = round(vo2max,1),
+  trainingsumfang_km/Woche = trainingsumfang 
+)
+plot (df$trainingsumfang_km/Woche, df$VO2max)
+```
