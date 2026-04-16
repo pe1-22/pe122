@@ -8,7 +8,6 @@ runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
-#Hallo 
 library(learnr)
 library(gradethis)
 knitr::opts_chunk$set(echo = FALSE)
@@ -91,4 +90,123 @@ quiz(
 )
 ```
 
+### Aufgabe 3  
+
+
+```{r Einstieg}
+quiz(
+  question("Was beschreibt eine einfache lineare Regression?",
+    answer("Ein Verfahren zum Vergleich von Mittelwerten zweier Gruppen ", message = "t, test, Anova"),
+    answer("Ein Vefahren, dass den linearen Zusammenhang zwischen zwei kategorialen Variablen untersucht", message = "Chi-Quadrat"),
+    answer("Ein Verfahren, dass den linearen Zusammenhang zwischen einer Prädiktovariable und einer Outcomevariable modelliert und Vorhersagen ermöglicht.  ", correct = TRUE),
+    answer("Ein Verfahren zur Beschreibung der Verteilung einzelner Variablen"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  ),
+  question("Wann kann die lineare Regression eingesetzt werden?",
+    answer("Variable Y ist metrisch skaliert ", correct = TRUE),
+    answer("Variable Y ist ordinal skaliert"),
+    answer("Variable Y ist kategorial skaliert"),
+    answer("Variable Y ist nominal skaliert"),
+    answer("Variable X ist ordinal skaliert"),
+    answer("Variable X ist kategorial skaliert"),
+    answer("Variable X ist nominal skaliert"),
+    answer("Variable X ist metrisch skaliert", correct = TRUE)
+  )
+)
+```
+
+### Aufgabe 4
+Wie lautet die allgemeine Formel für die einfache lineare Regression? (Schreibe die Lösung ohne Leertaste zwischen die Anführungszeichen)
+
+```{r Formel, exercise=TRUE, exercise.cap = "Text", exercise.lines = 1}
+""
+```
+
+```{r Formel-solution}
+"y=b0+b1*x+e"
+```
+
+```{r Formel-check}
+grade_this({
+  if (.result %in% c("Y=b0+b1*X+e", "y=b0+b1*X+e", "Y=b0+b1*x+e", "y=b1*x+b0+e", "y=beta0+beta1*x+e","Y=beta0+beta1*X+e","Y=beta0+beta1*x+e", "y=beta0+beta1*X+e")) {
+      pass(praise = TRUE)
+} else {
+  fail(message = "Leider falsch.")
+}
+})
+```
+
+##### Aufgabe 5
+
+```{r Parameter}
+quiz(
+  question("Wofür steht der Parameter $\\beta_0$ in einer linearen Regression?",
+    answer("Prädiktor", message = "Der Prädiktor wird mit x abgekürzt."),
+    answer("Outcome", message = "Das Outcome wird mit y abgekürzt."),
+    answer("y-Achsenabschnitt", correct = TRUE),
+    answer("Steigung", message = "$\\beta_1$ ist die Steigung."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  ),
+  question("Wofür steht der Parameter $\\beta_1$ in einer linearen Regression?",
+    answer("Prädiktor", message = "Der Prädiktor wird mit x abgekürzt."),
+    answer("Outcome", message = "Das Outcome wird mit y abgekürzt."),
+    answer("Steigung", correct = TRUE),
+    answer("y-Achsenabschnitt", message = "$\\beta_0$ ist die Steigung."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 6 
+
+```{r Determinationskoeffizient}
+quiz(
+  question("Welchen Wertebereich kann R^2 annehmen?",
+    answer("-1 bis +1"),
+    answer("0 bis 100"),
+    answer("0 bis 1", correct = TRUE),
+    answer("-∞ bis +∞"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 7 
+
+Ergänze den Text: (Schreibe die Lösung zwischen die Anführungszeichen)
+Der Mittelwert des Trainingsumfangs beträgt _____ km/Woche.
+Der Median des Trainingsumfangs beträgt _____ km/Woche.
+Die Standadabweichung des Trainingsumfangs beträgt _____ km/Woche.
+
+```{r sevenone, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+""
+```
+
+```{r sevenone-solution}
+"MW
+Median
+SD"
+```
+
+```{r sevenone-check}
+grade_this({
+  if (.result %in% c("y-Achsenabschnitt", "Intercept", "y achsenabschnitt")) {
+      pass(praise = TRUE)
+} else {
+  fail(message = "Leider falsch.")
+}
+})
+```
 
