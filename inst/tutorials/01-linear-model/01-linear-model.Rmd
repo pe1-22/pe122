@@ -184,25 +184,23 @@ quiz(
 ```
 
 ### Aufgabe 7 
+Lade den Datensatz:"01 lineares Model_Daten" herunter und speichere diesen unter data ab (Tipp: data <- read.... ).
+Berechne den Mittelwert, Median und die Standadabweichung des Trainingsumfangs.
 
-Ergänze den Text: (Schreibe die Lösung zwischen die Anführungszeichen)
-Der Mittelwert des Trainingsumfangs beträgt _____ km/Woche.
-Der Median des Trainingsumfangs beträgt _____ km/Woche.
-Die Standadabweichung des Trainingsumfangs beträgt _____ km/Woche.
 
 ```{r sevenone, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
 ""
 ```
 
 ```{r sevenone-solution}
-"MW
-Median
-SD"
+"mean(data$trainingsumfang)
+median(data$trainingsumfang)
+sd(data$trainingsumfang)"
 ```
 
 ```{r sevenone-check}
 grade_this({
-  if (.result %in% c("y-Achsenabschnitt", "Intercept", "y achsenabschnitt")) {
+  if (.result %in% c("weitere Lösungen")) {
       pass(praise = TRUE)
 } else {
   fail(message = "Leider falsch.")
@@ -210,14 +208,219 @@ grade_this({
 })
 ```
 
+### Aufgabe 7.2
+Berechne Minimum, Maximum, Q1, Mittelwert, Median, Q3 der VO2max. (Tipp: Nutze hierzu die Funktion summary)
 
 
+```{r seventwo, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+""
+```
+
+```{r seventwo-solution}
+"summary(data$VO2max)"
+```
+
+```{r seventwo-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
+### Aufgabe 8 
+Ordne die Variablen korrekt zu. 
+ X,Y - Vo2max, Trainingsumfang 
+
+### Aufgabe 9
+Erstelle ein Streudiagramm des Datensatzes. (Tipp: plot, ggplot)
+```{r diagramm, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+""
+```
+
+```{r diagramm-solution}
+"plot (data$trainingsumfang, data$VO2max)"
+```
+
+```{r diagramm-check}
+grade_this({
+  if (.result %in% c("weitere Lösungen")) {
+      pass(praise = TRUE)
+} else {
+  fail(message = "Leider falsch.")
+}
+})
+```
+
+### Aufgabe 9.2 
+
+```{r quiz_visuell}
+quiz(
+  question("Wie interpretierst du die Darstellung?",
+    answer("es liegt kein Zusammenhang vor"),
+    answer("es liegt ein linearer Zusammenhang vor ", correct = TRUE),
+    answer("es liegt eine kurvilinearer Zusammenhang vor"),
+    answer("die Daten sind zufällig verteilt")
+    answer("es ist keine Aussage möglich, da es zu viele Ausreißer gibt"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 10 
+Der Korrelationskoeffizient für diesen Datensatz beträgt r = 0.866.
+Berechne den Determinationskoeffizienten R^2.
+
+```{r ten, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+""
+```
+
+```{r ten-solution}
+"r <- 0.866
+R <- r**2"
+```
+
+```{r ten-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
+### Aufagbe 10.2
+```{r quiz_determinationskoeffizient}
+quiz(
+  question("Was sagt R^2 über unsere Daten aus?",
+    answer("Der Trainingsumfang steigt pro Woche um 0.64km "),
+    answer("64% der Personen haben einen überdurchschnittlichen VO2max-Wert "),
+    answer("Der Zusammenhang zwischen Trainingsumfang und Vo2max beträgt r=0.75"),
+    answer("Das Modell sagt für jede Person die Vo2max mit 75% Genauigkeit vorher"),
+    answer("75% der Unterschiede in den Vo2max-Werten zwischen den Personen werden durch den Trainingsumfang erklärt ", correct = TRUE),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 11
+Ordne zu!
+
+### Aufgabe 12 
+Fitte ein lineares Modell und speichere es als "mod" ab. 
+
+```{r mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+""
+```
+
+```{r mod-solution}
+"mod<-lm(VO2max~trainingsumfang,data=data)"
+```
+
+```{r mod-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
+### Aufgabe 12.2
+Bestimme die Koeffizienten und weise ihnen je einer Variable zu (beta0, beta1).
+
+```{r tewelvetwo, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+""
+```
+
+```{r twelvetwo-solution}
+"beta0 <- coef(mod)[1]
+beta1 <- coef(mod)[2]"
+```
+
+```{r twelvetwo-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
+### Aufgabe 13
+Sage den Vo2max Wert für eine Person (p1), die einen Trainingsumfang von 40km/Woche aufweist, vorher.
+
+ ```{r vorhersage, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+""
+```
+
+```{r vorhersage-solution}
+"p1 <- data.frame(trainingsumfang = 40)
+predict (mod,p2)"
+```
+
+```{r vorhersage-check}
+grade_this({
+  if (.result %in% c("p1<-coef(mod)[1]+coef(mod)[2]*40","p1<-beta0+beta1*40")) {
+      pass(praise = TRUE)
+} else {
+  fail(message = "Leider falsch.")
+}
+})
+```
+
+### Aufgabe 13.1
+
+```{r prediction}
+quiz(
+  question("Mit welcher Code Zeile kann ich abschätzen wie sicher ich mir mit der Vorhersage für eine Person sein kann?",
+    answer("predict(mod, p1)"),
+    answer("predict(mod, p1, interval= "confidence""),
+    answer("predict(mod, p1, interval= "prediction"", correct = TRUE),
+    answer("summary (mod)"),
+    answer("cor(mod)"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 14 
+
+```{r vorraussetzungen}
+quiz(
+  question("Welche der Vorraussetzungen sollten für eine lineare Regression erfüllt sein?",
+    answer("Homoskedastizität der Residuen", correct = TRUE),
+    answer("Linearität zwischen Prädiktor und Zielvariable ", correct = TRUE),
+    answer("Eine Linearität zwischen Prädiktor und Zielvariable ist nicht zwingend notwendig "),
+    answer("Keine Ausreißer in den Daten", correct = TRUE),
+    answer("Normalverteilung der Resiuden",correct = TRUE),
+    answer("Die Resiuden können beliebig verteilt sein"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
 
 ```{r}
 set.seed(12)
 n <- 100
-
-geschlecht <-  sample (c ("m","w",))
+geschlecht <-  sample (c ("m","w"))
 
 groesse <- rnorm (n, mean = 179, sd = 18)
 gewicht <- rnorm ( n, mean = 81, sd = 15)
@@ -225,12 +428,16 @@ trainingsumfang <-  round (pmax(0, rnorm(n, mean = 25, sd =15)))
 vo2max <- 30+trainingsumfang * 0.6 + rnorm (n, 0,5)
 vo2max <- pmin(pmax(vo2max,25),75)
 
-df <-  data.frame(
+data <-  data.frame(
   Geschlecht = geschlecht,
   Groesse_cm = round(groesse,1),
   Gewicht_kg = round(gewicht,1),
   VO2max = round(vo2max,1),
-  trainingsumfang_km/Woche = trainingsumfang 
+  trainingsumfang =trainingsumfang 
 )
-plot (df$trainingsumfang_km/Woche, df$VO2max)
+
+head (data)
+plot (data$trainingsumfang, data$VO2max)
+
+mean (data$trainingsumfang)
 ```
