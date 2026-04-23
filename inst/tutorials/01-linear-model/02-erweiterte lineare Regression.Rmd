@@ -1,0 +1,261 @@
+---
+title: "02 - Erweiterte Lineare Regression"
+output: 
+  learnr::tutorial:
+    progressive: true
+    theme: lumen
+runtime: shiny_prerendered
+---
+
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+knitr::opts_chunk$set(echo = FALSE)
+tutorial_options(
+  exercise.reveal_solution = FALSE,
+  exercise.checker = gradethis::gradethis_exercise_checker
+)
+```
+
+
+### Aufgabe 1
+
+```{r dummy}
+quiz(
+  question("Wann kann die lineare Regression eingesetzt werden?",
+    answer("Variable Y ist metrisch skaliert ", correct = TRUE),
+    answer("Variable Y ist ordinal skaliert"),
+    answer("Variable Y ist kategorial skaliert"),
+    answer("Variable Y ist nominal skaliert"),
+    answer("Variable X ist ordinal skaliert"),
+    answer("Variable X ist kategorial skaliert", correct = TRUE),
+    answer("Variable X ist nominal skaliert"),
+    answer("Variable X ist metrisch skaliert", correct = TRUE)
+  )
+)
+```
+
+```{r dummy}
+quiz(
+  question("Was sind diskrete Variablen?",
+    answer("Fehlversuche", correct = TRUE),
+    answer("Körpergröße"),
+    answer("Gewicht"),
+    answer("Sprunghöhe"),
+    answer("Schulnoten", correct = TRUE),
+    answer("Sprintzeit"),
+    answer("Geschlecht", correct = TRUE)
+  )
+)
+```
+```{r mr}
+quiz(
+  question("Was ist das Ziel einer multiplen Regression im Vergleich zur einfachen linearen Regression?",
+    answer("Sie minimieren nur einen einzigen Koeffizienten"),
+    answer("Sie liefert dieselben Koeffizientenschätzungen wie mehrere separate einfache Regressionen"),
+    answer("Sie verwendet mehrere Prädiktoren gleichzeitig zur Vorhersage der Zielvariable", correct = TRUE),
+    answer("Sie funktioniert nur mit kategorialen Variablen"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+Wie lautet die Formel für eine multiple lineare Regression, wenn "trainingsumfang" und "geschlecht" die Prädiktoren sind und das "gewicht" untersucht werden soll? (Schreibe die Lösung ohne Leertaste zwischen die Anführungszeichen)
+
+```{r mrformel, exercise=TRUE, exercise.cap = "Text", exercise.lines = 1}
+""
+```
+
+```{r Formel-solution}
+"gewicht=beta0+beta1*trainingsumfang+beta2*geschlecht"
+```
+
+```{r Formel-check}
+grade_this({
+  if (.result %in% c("")) {
+      pass(praise = TRUE)
+} else {
+  fail(message = "Leider falsch.")
+}
+})
+```
+
+```{r b1}
+quiz(
+  question("In einem Regressionsmodell wird geschätzt: Y=\beta_0+\beta_1X+\beta_2Z+\beta_3XZ+\varepsilon. Wie ist \beta_1in diesem Modell zu interpretieren?",
+    answer("Der durchschnittliche Efffekt von X über alle Z Werte"),
+    answer("Der Effekt von X auf Y, unabhängig von Z"),
+    answer("Der Effekt von X auf Y, wenn Z=0", correct = TRUE),
+    answer("Der Effekt der Interaktiom zwischen X und Z"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 5 - Aufagben 
+
+Lade den Datensatz:"02 erweiterte lineare Regression_Daten" herunter und speichere diesen unter data ab.
+Fitte ein Modell mit allen Prädiktorvariablen
+
+```{r mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+""
+```
+
+```{r mod-solution}
+"mod<-lm(zeit~gruppe+training+gewicht,data=data)"
+```
+
+```{r mod-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
+Wie lautet die Regressionsgleichung? 
+```{r mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+""
+```
+
+```{r mod-solution}
+"LÖSUNG!"
+```
+
+```{r mod-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
+### Aufgabe 6 
+
+Erstelle nun 2 weitere Modelle (nur mit Gruppe und nur mit training). Nenne diese:" mod_gruppe" und "mod_training".
+
+### Aufgabe 7 Vorausetzungen
+
+```{r sevenone}
+quiz(
+  question("Welche der folgenden Aussagen beschreibt Homodkedastizität korrekt?",
+    answer("Die Residuen sind alle gleich null"),
+    answer("Die Prädiktoren korrelieren nicht miteinander"),
+    answer("Die Varianz der Residuen ist für alle Werte der prädiktoren konstant", correct = TRUE),
+    answer("Der Erwartungswert der Residuen ist größer als null"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r seventwo}
+quiz(
+  question("Welches grafische Werkzeug eignet sich zur Prüfung der Normalverteilung der Residuen?",
+    answer("Balkendiagramm der Prädiktoren"),
+    answer("Streudiagramm von X gegen Y"),
+    answer("QQ-Plot der Residuen", correct = TRUE),
+    answer("Boxplot der abhängiggen Variable"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r seventhree}
+quiz(
+  question("Was deutet im Residuenplot auf eine Verletzung der Linearitätsannahme hin?",
+    answer("Eine zufällige, glichmäßige Streuung um die Nulllinie"),
+    answer("Ein erkennbares Muster in den Residuen",correct = TRUE),
+    answer("Alle Resiuden liegen exakt auf der Nullinie"),
+    answer("Eine breite, gleichmäßige Streuung ohne Muster"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r sevenfour}
+quiz(
+  question("Ab welchem VIF-Wert spricht man von einer problematischen Multikollinearität?",
+    answer("VIF > 1"),
+    answer("VIF > 10",correct = TRUE),
+    answer("VIF > 3"),
+    answer("VIF < 1"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r sevenfour}
+quiz(
+  question("Mit welchem Befehl kann man die Vorrausetzungen alle gleichzeitig grafisch in R überprüfen?",
+    answer("vif(mod)"),
+    answer("check_model(mod)",correct = TRUE),
+    answer("plot(mod)"),
+    answer("lm(mod)"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 8 
+Überprüfe die Vorrausetzungen grafisch.
+
+```{r mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+""
+```
+
+```{r mod-solution}
+"check_model(mod)"
+```
+
+```{r mod-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
+```{r eight}
+quiz(
+  question("Welche Voraussetzungen sind für den vorliegenden Datensatz erfüllt?",
+    answer("richtige Verteilung"),
+    answer("Linearität",correct = TRUE),
+    answer("keine Ausreißer",correct = TRUE),
+    answer("Normalverteilung der Residuen",correct = TRUE),
+    answer("Multikollinearität",correct = TRUE),
+    answer("Homoskedastizität",correct = TRUE)
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
