@@ -21,7 +21,7 @@ tutorial_options(
 
 ### Aufgabe 1
 
-```{r dummy}
+```{r skalierung}
 quiz(
   question("Wann kann die lineare Regression eingesetzt werden?",
     answer("Variable Y ist metrisch skaliert ", correct = TRUE),
@@ -31,12 +31,16 @@ quiz(
     answer("Variable X ist ordinal skaliert"),
     answer("Variable X ist kategorial skaliert", correct = TRUE),
     answer("Variable X ist nominal skaliert"),
-    answer("Variable X ist metrisch skaliert", correct = TRUE)
+    answer("Variable X ist metrisch skaliert", correct = TRUE),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
   )
 )
 ```
 
-```{r dummy}
+```{r diskret}
 quiz(
   question("Was sind diskrete Variablen?",
     answer("Fehlversuche", correct = TRUE),
@@ -45,10 +49,31 @@ quiz(
     answer("Sprunghöhe"),
     answer("Schulnoten", correct = TRUE),
     answer("Sprintzeit"),
-    answer("Geschlecht", correct = TRUE)
+    answer("Geschlecht", correct = TRUE),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
   )
 )
 ```
+
+```{r dummy}
+quiz(
+  question("Was passiert, wenn 'gruppe' (kategorial) in ein lineares Modell aufgenommen wird?",
+    answer("Sie wird ignoriert"),
+    answer("Sie wird automatisch in Dummy-Variablen umgewandelt", correct = TRUE),
+    answer("Sie wird zu einer numerischen Variable skaliert"),
+    answer("Das Modell kann nicht berechnet werden"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+
+```
+
 ```{r mr}
 quiz(
   question("Was ist das Ziel einer multiplen Regression im Vergleich zur einfachen linearen Regression?",
@@ -64,7 +89,9 @@ quiz(
 )
 ```
 
-Wie lautet die Formel für eine multiple lineare Regression, wenn "trainingsumfang" und "geschlecht" die Prädiktoren sind und das "gewicht" untersucht werden soll? (Schreibe die Lösung ohne Leertaste zwischen die Anführungszeichen)
+### Aufgabe 2
+
+Wie lautet die Formel für eine multiple lineare Regression, wenn "trainingsumfang" und "geschlecht" die Prädiktoren sind und das "gewicht" untersucht werden soll? (Schreibe die Lösung ohne Leerzeichen zwischen die Anführungszeichen)
 
 ```{r mrformel, exercise=TRUE, exercise.cap = "Text", exercise.lines = 1}
 ""
@@ -86,11 +113,11 @@ grade_this({
 
 ```{r b1}
 quiz(
-  question("In einem Regressionsmodell wird geschätzt: Y=\beta_0+\beta_1X+\beta_2Z+\beta_3XZ+\varepsilon. Wie ist \beta_1in diesem Modell zu interpretieren?",
-    answer("Der durchschnittliche Efffekt von X über alle Z Werte"),
+  question("In einem Regressionsmodell wird geschätzt: Y=\beta_0+\beta_1X+\beta_2Z+\beta_3XZ+\varepsilon. Wie ist \beta_1 in diesem Modell zu interpretieren?",
+    answer("Der durchschnittliche Effekt von X über alle Z-Werte"),
     answer("Der Effekt von X auf Y, unabhängig von Z"),
     answer("Der Effekt von X auf Y, wenn Z=0", correct = TRUE),
-    answer("Der Effekt der Interaktiom zwischen X und Z"),
+    answer("Der Effekt der Interaktion zwischen X und Z"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -99,7 +126,7 @@ quiz(
 )
 ```
 
-### Aufgabe 5 - Aufagben 
+### Aufgabe 5 
 
 Lade den Datensatz:"02 erweiterte lineare Regression_Daten" herunter und speichere diesen unter data ab.
 Fitte ein Modell mit allen Prädiktorvariablen
@@ -122,13 +149,13 @@ grade_this({
 })
 ```
 
-Wie lautet die Regressionsgleichung? 
+Wie lautet die Regressionsgleichung? (Nutze coef()!)
 ```{r mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
 ""
 ```
 
 ```{r mod-solution}
-"LÖSUNG!"
+"y=coef(mod)[1]+coef(mod)[2]*X1+coef(mod)[3]*X2+coef(mod)[4]*X3"
 ```
 
 ```{r mod-check}
@@ -143,16 +170,46 @@ grade_this({
 
 ### Aufgabe 6 
 
-Erstelle nun 2 weitere Modelle (nur mit Gruppe und nur mit training). Nenne diese:" mod_gruppe" und "mod_training".
+Erstelle nun 2 weitere Modelle (je eins nur mit Gruppe und nur mit Training). Nenne diese:" mod_gruppe" und "mod_training".
 
-### Aufgabe 7 Vorausetzungen
+```{r sixtwo}
+quiz(
+  question("Woran erkennt man, welches Modell besser ist?",
+    answer("Am kleineren R²"),
+    answer("Am größeren R²", correct = TRUE),
+    answer("An der Anzahl der Prädiktoren"),
+    answer("Am Namen des Modells"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r sixtwo}
+quiz(
+  question("Warum verwendet man das adjustierte R²?",
+    answer("Weil es immer größer ist als R²"),
+    answer("Weil es die Anzahl der Prädiktoren berücksichtigt", correct = TRUE),
+    answer("Weil es einfacher zu berechnen ist"),
+    answer("Weil es nur für einfache Regression gilt"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 7 Voraussetzungen
 
 ```{r sevenone}
 quiz(
-  question("Welche der folgenden Aussagen beschreibt Homodkedastizität korrekt?",
+  question("Welche der folgenden Aussagen beschreibt Homoskedastizität korrekt?",
     answer("Die Residuen sind alle gleich null"),
     answer("Die Prädiktoren korrelieren nicht miteinander"),
-    answer("Die Varianz der Residuen ist für alle Werte der prädiktoren konstant", correct = TRUE),
+    answer("Die Varianz der Residuen ist für alle Werte der Prädiktoren konstant", correct = TRUE),
     answer("Der Erwartungswert der Residuen ist größer als null"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
@@ -180,9 +237,9 @@ quiz(
 ```{r seventhree}
 quiz(
   question("Was deutet im Residuenplot auf eine Verletzung der Linearitätsannahme hin?",
-    answer("Eine zufällige, glichmäßige Streuung um die Nulllinie"),
+    answer("Eine zufällige, gleichmäßige Streuung um die Nulllinie"),
     answer("Ein erkennbares Muster in den Residuen",correct = TRUE),
-    answer("Alle Resiuden liegen exakt auf der Nullinie"),
+    answer("Alle Residuen liegen exakt auf der Nulllinie"),
     answer("Eine breite, gleichmäßige Streuung ohne Muster"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
@@ -207,9 +264,24 @@ quiz(
 )
 ```
 
-```{r sevenfour}
+```{r sevenfive}
 quiz(
-  question("Mit welchem Befehl kann man die Vorrausetzungen alle gleichzeitig grafisch in R überprüfen?",
+  question("Was ist ein Problem bei einer hohen Multikollinearität?",
+    answer("Das Modell kann nicht berechnet werden"),
+    answer("Koeffizienten werden instabil", correct = TRUE),
+    answer("R² wird kleiner"),
+    answer("Residuen werden null"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r sevensix}
+quiz(
+  question("Mit welchem Befehl kann man die Voraussetzungen alle gleichzeitig grafisch in R überprüfen?",
     answer("vif(mod)"),
     answer("check_model(mod)",correct = TRUE),
     answer("plot(mod)"),
@@ -223,7 +295,7 @@ quiz(
 ```
 
 ### Aufgabe 8 
-Überprüfe die Vorrausetzungen grafisch.
+Überprüfe die Voraussetzungen grafisch.
 
 ```{r mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
 ""
@@ -243,6 +315,7 @@ grade_this({
 })
 ```
 
+
 ```{r eight}
 quiz(
   question("Welche Voraussetzungen sind für den vorliegenden Datensatz erfüllt?",
@@ -251,11 +324,35 @@ quiz(
     answer("keine Ausreißer",correct = TRUE),
     answer("Normalverteilung der Residuen",correct = TRUE),
     answer("Multikollinearität",correct = TRUE),
-    answer("Homoskedastizität",correct = TRUE)
+    answer("Homoskedastizität",correct = TRUE),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
     correct = random_praise()
   )
 )
+```
+
+### Aufagbe 9 Vorhersage
+
+Erstelle eine Person "p1" die 73kg wiegt, 12h/Woche trainiert und in der Gruppe Leistungssport trainiert.
+Sage anschließend ihre Sprintzeit vorher. 
+
+```{r pred, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+""
+```
+
+```{r pred-solution}
+"p1<-data.frame(training=12,gewicht=73,gruppe="Leistung")
+predict(mod,p1)"
+```
+
+```{r pred-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
 ```
