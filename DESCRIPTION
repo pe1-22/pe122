@@ -15,5 +15,5 @@ Imports:
     learnr,
     sportsdata
 Remotes: 
-    smnnlt/sportsdata
+    smnnlt/sportsdata,
     rstudio/gradethis
