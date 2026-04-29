@@ -85,7 +85,11 @@ quiz(
     answer("lattice", correct = TRUE),
     answer("tools"),
     answer("stats"),
-    answer("grid", correct = TRUE)
+    answer("grid", correct = TRUE),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
   )
 )
 ```
@@ -95,7 +99,7 @@ quiz(
 ```{r Einstieg}
 quiz(
   question("Was beschreibt eine einfache lineare Regression?",
-    answer("Ein Verfahren zum Vergleich von Mittelwerten zweier Gruppen ", message = "t, test, Anova"),
+    answer("Ein Verfahren, das den linearen Zusammenhang zwischen einer Prädiktorvariable und einer Outcome-Variable modelliert und Vorhersagen ermöglicht.", correct = TRUE),
     answer("Ein Vefahren, dass den linearen Zusammenhang zwischen zwei kategorialen Variablen untersucht", message = "Chi-Quadrat"),
     answer("Ein Verfahren, dass den linearen Zusammenhang zwischen einer Prädiktovariable und einer Outcomevariable modelliert und Vorhersagen ermöglicht.  ", correct = TRUE),
     answer("Ein Verfahren zur Beschreibung der Verteilung einzelner Variablen"),
@@ -103,23 +107,13 @@ quiz(
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
     correct = random_praise()
-  ),
-  question("Wann kann die lineare Regression eingesetzt werden?",
-    answer("Variable Y ist metrisch skaliert ", correct = TRUE),
-    answer("Variable Y ist ordinal skaliert"),
-    answer("Variable Y ist kategorial skaliert"),
-    answer("Variable Y ist nominal skaliert"),
-    answer("Variable X ist ordinal skaliert"),
-    answer("Variable X ist kategorial skaliert"),
-    answer("Variable X ist nominal skaliert"),
-    answer("Variable X ist metrisch skaliert", correct = TRUE)
   )
 )
 ```
 
 ### Aufgabe 4
 
-Wie lautet die allgemeine Formel für die einfache lineare Regression? (Schreibe die Lösung ohne Leertaste zwischen die Anführungszeichen)
+Wie lautet die allgemeine Formel für die einfache lineare Regression? (Schreibe die Lösung ohne Leerzeichen zwischen die Anführungszeichen)
 
 ```{r Formel, exercise=TRUE, exercise.cap = "Text", exercise.lines = 1}
 ""
@@ -183,9 +177,24 @@ quiz(
 )
 ```
 
+```{r pwert}
+quiz(
+  question("Was sagt ein p-Wert von 0.03 bei einem Signifikanzniveau von alpha = 0.05 aus?",
+    answer("Die Wahrscheinlichkeit, dass die Alternativhypothese wahr ist, beträgt 97%. "),
+    answer("Das Risiko einen Fehler 2. Art zu begehen beträgt 3%"),
+    answer("Die Wahrscheinlichkeit diesen oder einen noch extremeren Wert unter der Nullhypothese zu beobachten beträgt 3%", correct = TRUE),
+    answer("Die Wahrscheinlichkeit, dass die Nullhypothese wahr ist, beträgt 3%"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
 ### Aufgabe 7 
-Lade den Datensatz:"01 lineares Model_Daten" herunter und speichere diesen unter data ab (Tipp: data <- read.... ).
-Berechne den Mittelwert, Median und die Standadabweichung des Trainingsumfangs.
+Lade den Datensatz:"01 lineares Modell_Daten" herunter und speichere diesen unter data ab (Tipp: data <- read.... ).
+Berechne den Mittelwert, Median und die Standardabweichung des Trainingsumfangs.
 
 
 ```{r sevenone, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
@@ -231,8 +240,32 @@ grade_this({
 ```
 
 ### Aufgabe 8 
-Ordne die Variablen korrekt zu. 
- X,Y - Vo2max, Trainingsumfang 
+
+```{r yZuordnen}
+quiz(
+  question("Wofür steht bei diesem Datensatz die Y-Variable",
+    answer("VO2max",correct = TRUE),
+    answer("Trainingsumfang"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r xZuordnen}
+quiz(
+  question("Wofür steht bei diesem Datensatz die X-Variable",
+    answer("VO2max"),
+    answer("Trainingsumfang",correct = TRUE),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
 
 ### Aufgabe 9
 Erstelle ein Streudiagramm des Datensatzes. (Tipp: plot, ggplot)
@@ -259,11 +292,11 @@ grade_this({
 ```{r quiz_visuell}
 quiz(
   question("Wie interpretierst du die Darstellung?",
-    answer("es liegt kein Zusammenhang vor"),
-    answer("es liegt ein linearer Zusammenhang vor ", correct = TRUE),
-    answer("es liegt eine kurvilinearer Zusammenhang vor"),
-    answer("die Daten sind zufällig verteilt")
-    answer("es ist keine Aussage möglich, da es zu viele Ausreißer gibt"),
+    answer("Es liegt kein Zusammenhang vor"),
+    answer("Es liegt ein linearer Zusammenhang vor ",correct = TRUE),
+    answer("Es liegt ein kurvilinearer Zusammenhang vor"),
+    answer("Die Daten sind zufällig verteilt"),
+    answer("Es ist keine Aussage möglich, da es zu viele Ausreißer gibt"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -313,7 +346,34 @@ quiz(
 ```
 
 ### Aufgabe 11
-Ordne zu!
+
+```{r b0zuordnen}
+quiz(
+  question("Was sagt $\\beta_0$ bei diesem Datensatz aus?",
+    answer("den erwarteten Trainingsumfang bei einer VO2max von 0 ml/kg KG"),
+    answer("die erwartete VO2max bei einem Trainingsumfang von 0 km/ Woche",correct = TRUE),
+    answer("die VO2max bei einem maximalen Trainingsumfang für eine Person"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r b1zuordnen}
+quiz(
+  question("Was sagt $\\beta_1$ bei diesem Datensatz aus?",
+    answer("den erwarteten Trainingsumfang bei einer VO2max von 0 ml/kg KG"),
+    answer("Wenn sich der Trainingsumfang um eine Einheit verändert, verändert sich die VO2max um den Wert von $\\beta_1$",correct = TRUE),
+    answer("die erwartete VO2max bei einem Trainingsumfang von 0 km/ Woche"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
 
 ### Aufgabe 12 
 Fitte ein lineares Modell und speichere es als "mod" ab. 
@@ -359,15 +419,15 @@ grade_this({
 ```
 
 ### Aufgabe 13
-Sage den Vo2max Wert für eine Person (p1), die einen Trainingsumfang von 40km/Woche aufweist, vorher.
+Sage den VO2max Wert für eine Person (p1), die einen Trainingsumfang von 40km/Woche aufweist, vorher.
 
- ```{r vorhersage, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+```{r vorhersage, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
 ""
 ```
 
 ```{r vorhersage-solution}
 "p1 <- data.frame(trainingsumfang = 40)
-predict (mod,p2)"
+predict (mod,p1)"
 ```
 
 ```{r vorhersage-check}
@@ -384,10 +444,10 @@ grade_this({
 
 ```{r prediction}
 quiz(
-  question("Mit welcher Code Zeile kann ich abschätzen wie sicher ich mir mit der Vorhersage für eine Person sein kann?",
+  question("Mit welcher Codezeile kann ich abschätzen, wie sicher ich mir mit der Vorhersage für eine Person sein kann?",
     answer("predict(mod, p1)"),
-    answer("predict(mod, p1, interval= "confidence""),
-    answer("predict(mod, p1, interval= "prediction"", correct = TRUE),
+    answer("predict(mod, p1, interval= confidence"),
+    answer("predict(mod, p1, interval= prediction", correct = TRUE),
     answer("summary (mod)"),
     answer("cor(mod)"),
     allow_retry = TRUE,
@@ -400,15 +460,47 @@ quiz(
 
 ### Aufgabe 14 
 
-```{r vorraussetzungen}
+```{r voraussetzungen}
 quiz(
-  question("Welche der Vorraussetzungen sollten für eine lineare Regression erfüllt sein?",
+  question("Welche der Voraussetzungen sollten für eine lineare Regression erfüllt sein?",
     answer("Homoskedastizität der Residuen", correct = TRUE),
     answer("Linearität zwischen Prädiktor und Zielvariable ", correct = TRUE),
     answer("Eine Linearität zwischen Prädiktor und Zielvariable ist nicht zwingend notwendig "),
     answer("Keine Ausreißer in den Daten", correct = TRUE),
-    answer("Normalverteilung der Resiuden",correct = TRUE),
-    answer("Die Resiuden können beliebig verteilt sein"),
+    answer("Normalverteilung der Residuen",correct = TRUE),
+    answer("Die Residuen können beliebig verteilt sein"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+Überprüfe die Voraussetzungen für die vorliegenden Daten erfüllt sind.
+```{r checkmodel, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+""
+```
+
+```{r checkmodel-solution}
+"performance::check_model(mod)"
+```
+
+```{r checkmodel-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
+```{r vpruef}
+quiz(
+  question("Sind die Voraussetzungen erfüllt?",
+    answer("Ja",correct = TRUE),
+    answer("Nein"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
