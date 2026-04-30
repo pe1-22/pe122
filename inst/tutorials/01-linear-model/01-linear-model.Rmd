@@ -15,6 +15,48 @@ tutorial_options(
   exercise.reveal_solution = FALSE,
   exercise.checker = gradethis::gradethis_exercise_checker
 )
+
+set.seed(12)
+n <- 100
+geschlecht <-  sample (c ("m","w"))
+
+groesse <- rnorm (n, mean = 179, sd = 18)
+gewicht <- rnorm ( n, mean = 81, sd = 15)
+trainingsumfang <-  round (pmax(0, rnorm(n, mean = 25, sd =15)))
+vo2max <- 30+trainingsumfang * 0.6 + rnorm (n, 0,5)
+vo2max <- pmin(pmax(vo2max,25),75)
+
+daten <-  data.frame(
+  Geschlecht = geschlecht,
+  Groesse_cm = round(groesse,1),
+  Gewicht_kg = round(gewicht,1),
+  VO2max = round(vo2max,1),
+  trainingsumfang =trainingsumfang 
+)
+
+r <- 0.866
+```
+
+```{r setupA}
+set.seed(12)
+n <- 100
+geschlecht <-  sample (c ("m","w"))
+
+groesse <- rnorm (n, mean = 179, sd = 18)
+gewicht <- rnorm ( n, mean = 81, sd = 15)
+trainingsumfang <-  round (pmax(0, rnorm(n, mean = 25, sd =15)))
+vo2max <- 30+trainingsumfang * 0.6 + rnorm (n, 0,5)
+vo2max <- pmin(pmax(vo2max,25),75)
+
+daten <-  data.frame(
+  Geschlecht = geschlecht,
+  Groesse_cm = round(groesse,1),
+  Gewicht_kg = round(gewicht,1),
+  VO2max = round(vo2max,1),
+  trainingsumfang =trainingsumfang 
+)
+
+mod <- lm(VO2max~trainingsumfang,data=daten)
 ```
 
 ## Grundlagen von R
@@ -41,11 +83,7 @@ grade_this({
 })
 ```
 
-
-## Lineare Regression
-
-### Aufgabe 1
-
+### Aufgabe 2
 Wofür steht der Parameter $\beta_0$ bei einer Regression? (Schreibe die Lösung zwischen die Anführungszeichen)
 
 ```{r three, exercise=TRUE, exercise.cap = "Text", exercise.lines = 1}
@@ -66,6 +104,25 @@ grade_this({
 })
 ```
 
+### Aufgabe 3  
+
+```{r Einstieg}
+quiz(
+  question("Was beschreibt eine einfache lineare Regression?",
+    answer("Ein Verfahren, das den linearen Zusammenhang zwischen einer Prädiktorvariable und einer Outcome-Variable modelliert und Vorhersagen ermöglicht.", correct = TRUE),
+    answer("Ein Vefahren, dass den linearen Zusammenhang zwischen zwei kategorialen Variablen untersucht", message = "Chi-Quadrat"),
+    answer("Ein Verfahren, dass den linearen Zusammenhang zwischen einer Prädiktovariable und einer Outcomevariable modelliert und Vorhersagen ermöglicht.  ", correct = TRUE),
+    answer("Ein Verfahren zur Beschreibung der Verteilung einzelner Variablen"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+
+## Lineare Regression
 
 ### Aufgabe 2
 
@@ -94,23 +151,6 @@ quiz(
 )
 ```
 
-### Aufgabe 3  
-
-```{r Einstieg}
-quiz(
-  question("Was beschreibt eine einfache lineare Regression?",
-    answer("Ein Verfahren, das den linearen Zusammenhang zwischen einer Prädiktorvariable und einer Outcome-Variable modelliert und Vorhersagen ermöglicht.", correct = TRUE),
-    answer("Ein Vefahren, dass den linearen Zusammenhang zwischen zwei kategorialen Variablen untersucht", message = "Chi-Quadrat"),
-    answer("Ein Verfahren, dass den linearen Zusammenhang zwischen einer Prädiktovariable und einer Outcomevariable modelliert und Vorhersagen ermöglicht.  ", correct = TRUE),
-    answer("Ein Verfahren zur Beschreibung der Verteilung einzelner Variablen"),
-    allow_retry = TRUE,
-    random_answer_order = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
-```
-
 ### Aufgabe 4
 
 Wie lautet die allgemeine Formel für die einfache lineare Regression? (Schreibe die Lösung ohne Leerzeichen zwischen die Anführungszeichen)
@@ -125,7 +165,7 @@ Wie lautet die allgemeine Formel für die einfache lineare Regression? (Schreibe
 
 ```{r Formel-check}
 grade_this({
-  if (.result %in% c("Y=b0+b1*X+e", "y=b0+b1*X+e", "Y=b0+b1*x+e", "y=b1*x+b0+e", "y=beta0+beta1*x+e","Y=beta0+beta1*X+e","Y=beta0+beta1*x+e", "y=beta0+beta1*X+e")) {
+  if (.result %in% c("y=b0+b1*x+e", "Y=b0+b1*X+e", "y=b0+b1*X+e", "Y=b0+b1*x+e", "y=b1*x+b0+e", "y=beta0+beta1*x+e","Y=beta0+beta1*X+e","Y=beta0+beta1*x+e", "y=beta0+beta1*X+e")) {
       pass(praise = TRUE)
 } else {
   fail(message = "Leider falsch.")
@@ -192,28 +232,68 @@ quiz(
 )
 ```
 
+## lineare Regression in R
 ### Aufgabe 7 
-Lade den Datensatz:"01 lineares Modell_Daten" herunter und speichere diesen unter data ab (Tipp: data <- read.... ).
-Berechne den Mittelwert, Median und die Standardabweichung des Trainingsumfangs.
 
+Im Rahmen einer Studie wurden Daten von 100 Personen zu Geschlecht, Körpergröße, Gewicht, wöchentlichem Trainingsumfang und VO2max erhoben und in dem Datensatz ("daten") gespeichert. Im folgenden wird mit diesem Datensatz gearbeitet. (du kannst dir diesen anzeigen lassen, indem du ihn dir in der ersten Antwortmöglichkeit  mit "run code" ausgeben lässt.)
+
+Berechne den Mittelwert des Trainingsumfangs.
 
 ```{r sevenone, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
-""
+
 ```
 
 ```{r sevenone-solution}
-"mean(data$trainingsumfang)
-median(data$trainingsumfang)
-sd(data$trainingsumfang)"
+mean(daten$trainingsumfang)
 ```
 
 ```{r sevenone-check}
 grade_this({
-  if (.result %in% c("weitere Lösungen")) {
-      pass(praise = TRUE)
-} else {
-  fail(message = "Leider falsch.")
-}
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
+Berechne den Median des Trainingsumfangs.
+
+```{r sevenonetwo, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r sevenonetwo-solution}
+median(daten$trainingsumfang)
+```
+
+```{r sevenonetwo-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
+Berechne die Standardabweichung des Trainingsumfangs.
+
+```{r sevenonethree, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r sevenonethree-solution}
+sd(daten$trainingsumfang)
+```
+
+```{r sevenonethree-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
 })
 ```
 
@@ -222,11 +302,11 @@ Berechne Minimum, Maximum, Q1, Mittelwert, Median, Q3 der VO2max. (Tipp: Nutze h
 
 
 ```{r seventwo, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
-""
+
 ```
 
 ```{r seventwo-solution}
-"summary(data$VO2max)"
+summary(daten$VO2max)
 ```
 
 ```{r seventwo-check}
@@ -270,20 +350,20 @@ quiz(
 ### Aufgabe 9
 Erstelle ein Streudiagramm des Datensatzes. (Tipp: plot, ggplot)
 ```{r diagramm, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
-""
+
 ```
 
 ```{r diagramm-solution}
-"plot (data$trainingsumfang, data$VO2max)"
+plot(daten$trainingsumfang,daten$VO2max)
 ```
 
 ```{r diagramm-check}
 grade_this({
-  if (.result %in% c("weitere Lösungen")) {
-      pass(praise = TRUE)
-} else {
-  fail(message = "Leider falsch.")
-}
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
 })
 ```
 
@@ -305,17 +385,17 @@ quiz(
 )
 ```
 
+## lineare Regression Interpretation
 ### Aufgabe 10 
 Der Korrelationskoeffizient für diesen Datensatz beträgt r = 0.866.
 Berechne den Determinationskoeffizienten R^2.
 
 ```{r ten, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
-""
+
 ```
 
 ```{r ten-solution}
-"r <- 0.866
-R <- r**2"
+R <- r**2
 ```
 
 ```{r ten-check}
@@ -375,15 +455,17 @@ quiz(
 )
 ```
 
+## lineare Regression Modellfit
 ### Aufgabe 12 
-Fitte ein lineares Modell und speichere es als "mod" ab. 
+
+Fitte ein lineares Modell um die Vo2max anhand des Trainingsumfangs abzuschätzen und speichere dieses als "mod" ab. 
 
 ```{r mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
-""
+
 ```
 
 ```{r mod-solution}
-"mod<-lm(VO2max~trainingsumfang,data=data)"
+mod<-lm(VO2max~trainingsumfang,data=daten)
 ```
 
 ```{r mod-check}
@@ -399,13 +481,13 @@ grade_this({
 ### Aufgabe 12.2
 Bestimme die Koeffizienten und weise ihnen je einer Variable zu (beta0, beta1).
 
-```{r tewelvetwo, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
-""
+```{r twelvetwo, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3,exercise.setup = "setupA"}
+
 ```
 
 ```{r twelvetwo-solution}
-"beta0 <- coef(mod)[1]
-beta1 <- coef(mod)[2]"
+beta0 <- coef(mod)[1]
+beta1 <- coef(mod)[2]
 ```
 
 ```{r twelvetwo-check}
@@ -421,22 +503,22 @@ grade_this({
 ### Aufgabe 13
 Sage den VO2max Wert für eine Person (p1), die einen Trainingsumfang von 40km/Woche aufweist, vorher.
 
-```{r vorhersage, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
-""
+```{r vorhersage, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupA"}
+
 ```
 
 ```{r vorhersage-solution}
-"p1 <- data.frame(trainingsumfang = 40)
-predict (mod,p1)"
+p1 <- data.frame(trainingsumfang = 40)
+predict (mod,p1)
 ```
 
 ```{r vorhersage-check}
 grade_this({
-  if (.result %in% c("p1<-coef(mod)[1]+coef(mod)[2]*40","p1<-beta0+beta1*40")) {
-      pass(praise = TRUE)
-} else {
-  fail(message = "Leider falsch.")
-}
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
 })
 ```
 
@@ -478,12 +560,12 @@ quiz(
 ```
 
 Überprüfe die Voraussetzungen für die vorliegenden Daten erfüllt sind.
-```{r checkmodel, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
-""
+```{r checkmodel, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3,exercise.setup = "setupA"}
+
 ```
 
 ```{r checkmodel-solution}
-"performance::check_model(mod)"
+performance::check_model(mod)
 ```
 
 ```{r checkmodel-check}
@@ -504,32 +586,7 @@ quiz(
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
-    correct = random_praise()
+    correct = "Du bist fertig!"
   )
 )
-```
-
-```{r}
-set.seed(12)
-n <- 100
-geschlecht <-  sample (c ("m","w"))
-
-groesse <- rnorm (n, mean = 179, sd = 18)
-gewicht <- rnorm ( n, mean = 81, sd = 15)
-trainingsumfang <-  round (pmax(0, rnorm(n, mean = 25, sd =15)))
-vo2max <- 30+trainingsumfang * 0.6 + rnorm (n, 0,5)
-vo2max <- pmin(pmax(vo2max,25),75)
-
-data <-  data.frame(
-  Geschlecht = geschlecht,
-  Groesse_cm = round(groesse,1),
-  Gewicht_kg = round(gewicht,1),
-  VO2max = round(vo2max,1),
-  trainingsumfang =trainingsumfang 
-)
-
-head (data)
-plot (data$trainingsumfang, data$VO2max)
-
-mean (data$trainingsumfang)
 ```
