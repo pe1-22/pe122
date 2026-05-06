@@ -7,7 +7,6 @@ output:
 runtime: shiny_prerendered
 ---
 
-
 ```{r setup, include=FALSE}
 library(learnr)
 library(gradethis)
@@ -41,20 +40,17 @@ daten <- data.frame(
 )
 ```
 
+## Grundlagen multiple Regression
 
 ### Aufgabe 1
 
 ```{r skalierung}
 quiz(
   question("Wann kann die lineare Regression eingesetzt werden?",
-    answer("Variable Y ist metrisch skaliert ", correct = TRUE),
-    answer("Variable Y ist ordinal skaliert"),
-    answer("Variable Y ist kategorial skaliert"),
-    answer("Variable Y ist nominal skaliert"),
-    answer("Variable X ist ordinal skaliert"),
-    answer("Variable X ist kategorial skaliert", correct = TRUE),
-    answer("Variable X ist nominal skaliert"),
-    answer("Variable X ist metrisch skaliert", correct = TRUE),
+    answer("Variable X ist kontinuierlich", correct = TRUE),
+    answer("Variable Y ist kontinuierlich", correct = TRUE),
+    answer("Variable X ist diskret", correct = TRUE),
+    answer("Variable Y ist diskret"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -66,7 +62,7 @@ quiz(
 ```{r diskret}
 quiz(
   question("Was sind diskrete Variablen?",
-    answer("Fehlversuche", correct = TRUE),
+    answer("Fehlversuch ja/nein", correct = TRUE),
     answer("Körpergröße"),
     answer("Gewicht"),
     answer("Sprunghöhe"),
@@ -83,7 +79,7 @@ quiz(
 
 ```{r dummy}
 quiz(
-  question("Was passiert, wenn beispielsweise die 'gruppe'(mit der Ausprägung: Leistungssport und Breitensport) in ein lineares Modell aufgenommen wird?",
+  question("Was passiert, wenn beispielsweise die 'gruppe'(mit der Ausprägung: Leistungssport und Breitensport) als Prädiktor in ein lineares Modell aufgenommen wird?",
     answer("Sie wird ignoriert"),
     answer("Sie wird automatisch in Dummy-Variablen umgewandelt", correct = TRUE),
     answer("Sie wird zu einer numerischen Variable skaliert"),
@@ -102,7 +98,7 @@ quiz(
   question("Was ist das Ziel einer multiplen Regression im Vergleich zur einfachen linearen Regression?",
     answer("Sie minimieren nur einen einzigen Koeffizienten"),
     answer("Sie liefert dieselben Koeffizientenschätzungen wie mehrere separate einfache Regressionen"),
-    answer("Sie verwendet mehrere Prädiktoren gleichzeitig zur Vorhersage der Zielvariable", correct = TRUE),
+    answer("Sie verwendet mehrere Prädiktoren gleichzeitig zur Vorhersage des Outcome", correct = TRUE),
     answer("Sie funktioniert nur mit kategorialen Variablen"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
@@ -114,17 +110,17 @@ quiz(
 
 ### Aufgabe 2
 
-Wie lautet die Formel für eine multiple lineare Regression, wenn "trainingsumfang" und "geschlecht" die Prädiktoren sind und das "gewicht" untersucht werden soll? (Schreibe die Lösung ohne Leerzeichen und in Kleinbuchstaben zwischen die Anführungszeichen)
+Wie lautet die Formel für eine multiple lineare Regression, wenn "trainingsumfang" und "geschlecht" die Prädiktoren sind und das "gewicht" untersucht werden soll? (Schreibe die Lösung ohne Leerzeichen und in Kleinbuchstaben zwischen die Anführungszeichen, ohne Fehlerterm)
 
 ```{r mrformel, exercise=TRUE, exercise.cap = "Text", exercise.lines = 1}
 ""
 ```
 
-```{r Formel-solution}
+```{r mrformel-solution}
 "gewicht=beta0+beta1*trainingsumfang+beta2*geschlecht"
 ```
 
-```{r Formel-check}
+```{r mrformel-check}
 grade_this({
   if (.result %in% c("gewicht=b0+b1*trainingsumfang+b2*geschlecht","gewicht=b0+b1*geschlecht+b2*trainingsumfang","gewicht=beta0+beta1*geschlecht+beta2*trainingsumfang")) {
       pass(praise = TRUE)
@@ -136,10 +132,10 @@ grade_this({
 
 ```{r b1}
 quiz(
-  question("In einem Regressionsmodell wird geschätzt: Y=\beta_0+\beta_1X+\beta_2Z+\beta_3XZ+\varepsilon. Wie ist \beta_1 in diesem Modell zu interpretieren?",
+  question("In einem Regressionsmodell wird geschätzt: $Y=\\beta_0+\\beta_1X+\\beta_2Z+\\varepsilon$. Wie ist $\\beta_1$ in diesem Modell zu interpretieren?",
     answer("Der durchschnittliche Effekt von X über alle Z-Werte"),
-    answer("Der Effekt von X auf Y, unabhängig von Z"),
-    answer("Der Effekt von X auf Y, wenn Z=0", correct = TRUE),
+    answer("Der Effekt von X auf Y, unabhängig von Z", correct = TRUE),
+    answer("Der Effekt von X auf Y in Abhängigkeit von Z"),
     answer("Der Effekt der Interaktion zwischen X und Z"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
@@ -149,12 +145,14 @@ quiz(
 )
 ```
 
+## Beispiel multiple Regression
+
 ### Aufgabe 3 
 
-Ein Sportverband möchte untersuchen, welche Faktoren die 100m-Sprintzeit von Athleten beeinflussen. Dazu wurden Daten von 68 Athleten folgende Daten erhoben: Trainingsumfang (Stunden/Woche), Körpergewicht (kg) sowie die Zugehörigkeit zur Trainingsgruppe (Leistungskader vs. Breitensport). 
+Ein Sportverband möchte untersuchen, welche Faktoren die 100m-Sprintzeit von Athleten beeinflussen. Dazu wurden Daten von 68 Athleten folgende Daten erhoben: Trainingsumfang (Stunden/Woche), Körpergewicht (kg) sowie die Zugehörigkeit zur Trainingsgruppe (Leistungskader vs. Breitensport). Der Datensatz wurde in der Variable `daten` gespeichert.
 (Du kannst dir den Datensatz anzeigen lassen, indem du ihn in der ersten Antwortmöglichkeit mit „Run Code" ausgibst.)
 
-Aufgabe: Fitte ein Modell mit allen Prädiktorvariablen
+Aufgabe: Fitte ein Modell mit allen Prädiktorvariablen und lasse dir die allgemeine Modelldiagnostik anzeigen.
 
 ```{r mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
 
@@ -162,11 +160,12 @@ Aufgabe: Fitte ein Modell mit allen Prädiktorvariablen
 
 ```{r mod-solution}
 mod<-lm(zeit~gruppe+training+gewicht,data=daten)
+broom::glance(mod)
 ```
 
 ```{r mod-check}
 grade_this({
-  if (identical(.result, .solution)) {
+  if (all.equal(.result, .solution)) {
     pass(praise = TRUE)
   } else {
     fail(message = "Leider falsch.")
@@ -174,13 +173,14 @@ grade_this({
 })
 ```
 
-Wie lautet die Regressionsgleichung? (Tipp: nutze coef()!)
+Gib den Koeffizienten für die Variable Trainingsumfang aus.
 ```{r reg, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
 
 ```
 
 ```{r reg-solution}
-y=coef(mod)[1]+coef(mod)[2]*X1+coef(mod)[3]*X2+coef(mod)[4]*X3
+cfs <- broom::tidy(mod)
+cfs$estimate[cfs$term == "training"]
 ```
 
 ```{r reg-check}
@@ -194,6 +194,8 @@ grade_this({
 ```
 
 ### Aufgabe 4 Koeffizienten interpretieren
+
+<!-- Diese Aufgabe muss noch überarbeitet werden  -->
 Interpretiere die Koeffizienten für den Trainingsumfang und vervollständige den Satz
 
 ```{r coef, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
@@ -219,9 +221,9 @@ grade_this({
 ```{r four}
 quiz(
   question("Welche Aussage beschreibt den Koeffizienten der Dummy-Variable (gruppeLeistung) korrekt?",
-    answer("Leistungssportler haben unabhägig von allen anderen Variablen eine schnellere Sprintzeit als Breitensportler."),
-    answer("Leistungssportler laufen unter der Konstanthaltung von Trainingsumfang und Gewicht im Schnitt um 0.68 Sekunden schneller als Breitensportler.", correct = TRUE),
-    answer("Breitensportler laufen unter der Konstanthaltung von Trainingsumfang und Gewicht im Schnitt um 0.68 Sekunden schneller als Leistungssportler"),
+    answer("Wenn Gewicht und Trainingsumfang gleich 0 sind, laufen Leistungssportler eine Zeit von -0.67 Sekunden."),
+    answer("Leistungssportler laufen unter der Konstanthaltung von Trainingsumfang und Gewicht im Schnitt um 0.67 Sekunden schneller als Breitensportler.", correct = TRUE),
+    answer("Breitensportler laufen unter der Konstanthaltung von Trainingsumfang und Gewicht im Schnitt um 0.67 Sekunden schneller als Leistungssportler"),
     answer("Der Koeffizient gibt die durchschnittliche Sprintzeit aller Leistungssportler an."),
     allow_retry = TRUE,
     random_answer_order = TRUE,
@@ -238,7 +240,7 @@ Lasse dir die Zusammfassung deines gefittete Modells ausgeben.
 ```
 
 ```{r zsmf-solution}
-summary(mod)
+broom::glance(mod)
 ```
 
 ```{r zsmf-check}
@@ -253,7 +255,7 @@ grade_this({
 
 ```{r fivetwo}
 quiz(
-  question("Was sagt der RSE (Residual Standard Error) aus",
+  question("Was sagt der Residual Standard Error (sigma) aus?",
     answer("Wie stark die Prädiktoren miteinander korrelieren"),
     answer("Die durchschnittliche Abweichung der vorhergesagten von der tatsächlichen Sprintzeiten", correct = TRUE),
     answer("Den Anteil der erklärten Varianz"),
@@ -268,11 +270,11 @@ quiz(
 
 ```{r fivethree}
 quiz(
-  question("Welchen Wert aus summary (mod) nutzt du, um zu  beurteilen wie gut das Modell die Sprintzeit erklärt?",
+  question("Welchen Wert aus aus der Zusammenfassung nutzt du am ehesten, um zu beurteilen wie gut das multiple Regressionsmodell die Sprintzeit erklärt?",
     answer("den RSE"),
-    answer("den adjustes R^2", correct = TRUE),
+    answer("den adjustierten R²", correct = TRUE),
     answer("den p-Wert zum F-Test"),
-    answer("den R^2"),
+    answer("den R²"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -281,10 +283,16 @@ quiz(
 )
 ```
 
+### Aufgabe 5.2
+
+```{r predictors, exercise=TRUE, exercise.lines = 3}
+
+```
+
 ```{r fivefour}
 quiz(
-  question("Welcher Prädiktor hat den stärksten Einfluss auf die Sprintzeit und warum?",
-    answer("Training, weil sein Koeffizient den größten Absolutwert hat "),
+  question("Welcher Prädiktor hat bei einer Änderung um eine Einheit den stärksten Einfluss auf die Sprintzeit und warum?",
+    answer("Der Intercept, weil sein Koeffizient den größten Absolutwert hat "),
     answer("Die Gruppe, weil sein Koeffizient den größten Absolutwert hat", correct = TRUE),
     answer("Training, weil er den kleinsten p-Wert hat"),
     answer("Gewicht, weil es einen positiven Koeffizienten hat und die Sprintzeit erhöht"),
@@ -296,29 +304,12 @@ quiz(
 )
 ```
 
-
 ### Aufgabe 6
 
-Erstelle nun 3 weitere Modelle (je eins nur mit Gruppe, nur mit Training und nur mit Gewicht). Nenne diese:" mod_gruppe", "mod_training" und "mod_gewicht".
+Erstelle nun 3 weitere Modelle (je eins nur mit Gruppe, nur mit Training und nur mit Gewicht). Nenne diese:" mod_gruppe", "mod_training" und "mod_gewicht". Vergleiche die Modelle miteinander und beurteile, welches Modell die Sprintzeit am besten erklärt.
 
-```{r wmod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+```{r wmod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 5}
 
-```
-
-```{r wmod-solution}
-mod_gruppe <- 
-mod_training <- 
-mod_gewicht <- 
-```
-
-```{r wmod-check}
-grade_this({
-  if (identical(.result, .solution)) {
-    pass(praise = TRUE)
-  } else {
-    fail(message = "Leider falsch.")
-  }
-})
 ```
 
 ```{r sixone}
@@ -327,7 +318,7 @@ quiz(
     answer("Am kleineren R²"),
     answer("Am größeren R²", correct = TRUE),
     answer("An der Anzahl der Prädiktoren"),
-    answer("Am Namen des Modells"),
+    answer("Am größeren sigma"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -338,7 +329,23 @@ quiz(
 
 ```{r sixtwo}
 quiz(
-  question("Warum verwendet man das adjustierte R²?",
+  question("Welches der einfachen Modelle fitted die Daten am besten?",
+    answer("`mod_training`", correct = TRUE),
+    answer("`mod_gewicht`"),
+    answer("`mod_gruppe`"),
+    answer("Alle gleich gut"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+
+```{r sixthree}
+quiz(
+  question("Warum verwendet man bei einer multiplen Regression das adjustierte R² statt des normalen R²?",
     answer("Weil es immer größer ist als R²"),
     answer("Weil es die Anzahl der Prädiktoren berücksichtigt", correct = TRUE),
     answer("Weil es einfacher zu berechnen ist"),
@@ -350,6 +357,8 @@ quiz(
   )
 )
 ```
+
+## Voraussetzungen und Vorhersagen
 
 ### Aufgabe 7 Voraussetzungen
 
@@ -431,9 +440,9 @@ quiz(
 ```{r sevensix}
 quiz(
   question("Mit welchem Befehl kann man die Voraussetzungen alle gleichzeitig grafisch in R überprüfen?",
-    answer("vif(mod)"),
-    answer("check_model(mod)",correct = TRUE),
-    answer("plot(mod)"),
+    answer("stats::vif(mod)"),
+    answer("performance::check_model(mod)",correct = TRUE),
+    answer("base::plot(mod)"),
     answer("lm(mod)"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
@@ -444,19 +453,19 @@ quiz(
 ```
 
 ### Aufgabe 8 
-Überprüfe die Voraussetzungen grafisch.
+Überprüfe die Voraussetzungen grafisch. (Beachte, dass du in diesem Tutorial ausnahmsweise das Argument `panel = FALSE` sowie hinter der Funtion ` |> plot()` nutzen musst, damit die Grafiken einzeln in der Vorschau angezeigt werden.)
 
-```{r mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+```{r assum, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
 
 ```
 
-```{r mod-solution}
-performance::check_model(mod)
+```{r assum-solution}
+performance::check_model(mod, panel = FALSE) |> plot()
 ```
 
-```{r mod-check}
+```{r assum-check}
 grade_this({
-  if (identical(.result, .solution)) {
+  if (identical(.user_code, .solution_code)) {
     pass(praise = TRUE)
   } else {
     fail(message = "Leider falsch.")
@@ -468,21 +477,20 @@ grade_this({
 ```{r eight}
 quiz(
   question("Welche Voraussetzungen sind für den vorliegenden Datensatz erfüllt?",
-    answer("richtige Verteilung"),
+    answer("PPC check zeigt keine Probleme",correct = TRUE),
     answer("Linearität",correct = TRUE),
     answer("keine Ausreißer",correct = TRUE),
+    answer("geringe Multikollinearität",correct = TRUE),
     answer("Normalverteilung der Residuen",correct = TRUE),
-    answer("Multikollinearität",correct = TRUE),
     answer("Homoskedastizität",correct = TRUE),
     allow_retry = TRUE,
-    random_answer_order = TRUE,
     incorrect = "Leider falsch.",
     correct = random_praise()
   )
 )
 ```
 
-### Aufagbe 9 Vorhersage
+### Aufgabe 9 Vorhersage
 
 Erstelle eine Person "p1" die 73kg wiegt, 12h/Woche trainiert und in der Gruppe Leistungssport trainiert.
 Sage anschließend ihre Sprintzeit vorher. 
@@ -490,6 +498,8 @@ Sage anschließend ihre Sprintzeit vorher.
 ```{r pred, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
 
 ```
+
+### Geschafft!
 
 ```{r pred-solution}
 p1<-data.frame(training=12,gewicht=73,gruppe="Leistung")
@@ -504,4 +514,12 @@ grade_this({
     fail(message = "Leider falsch.")
   }
 })
+```
+
+Herzlichen Glückwunsch, du hast die Lektion zum Thema multiple lineare Regression erfolgreich abgeschlossen! In der nächsten Lektion schauen wir auf die logistische Regression.
+
+Falls du noch Zeit hast, kannst du hier weiter mit dem Datensatz experimentieren, weitere Grafiken erstellen oder neue Modelle fitten. Viel Spaß dabei!
+
+```{r sandbox, exercise=TRUE, exercise.lines = 10}
+
 ```
