@@ -13,7 +13,11 @@ BugReports: https://github.com/pe1-22/pe122/issues
 Imports: 
     gradethis,
     learnr,
-    sportsdata
+    sportsdata,
+    ggcheck,
+    broom,
+    performance
 Remotes: 
     smnnlt/sportsdata,
-    rstudio/gradethis
+    rstudio/gradethis,
+    rstudio/ggcheck
