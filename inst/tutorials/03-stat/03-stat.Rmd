@@ -1,0 +1,100 @@
+---
+title: "03 - Logistische Regression"
+output: 
+  learnr::tutorial:
+    progressive: true
+    theme: lumen
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+library(ggplot2)
+knitr::opts_chunk$set(echo = FALSE)
+tutorial_options(
+  exercise.reveal_solution = FALSE,
+  exercise.checker = gradethis::gradethis_exercise_checker
+)
+```
+
+## Logistische Regression 
+### Aufgabe 1
+
+```{r one}
+quiz(
+  question("Wann wird die logistische Regression eingesetzt?",
+    answer("Wenn die abhängige Variable binär ist, also zwei Ausprägungen hat (z. B. ja/nein, Erfolg/Misserfolg).", correct = TRUE),
+    answer("Wenn die abhängige Variable kontinuierlich und normalverteilt ist.", message = "Das ist der Anwendungsfall der linearen Regression."),
+    answer("Wenn zwei kategoriale Variablen auf Zusammenhang geprüft werden sollen."),
+    answer("Wenn mehrere unabhängige Variablen miteinander korrelieren."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r oneone}
+quiz(
+  question("Welche Kombination von Variablen ist für die logistische Regression typisch?",
+    answer("Y diskret, X kontinuierlich oder diskret.", correct = TRUE),
+    answer("Y kontinuierlich, X kontinuierlich.", message = "Das entspricht der linearen Regression."),
+    answer("Y kontinuierlich, X diskret."),
+    answer("Y diskret, X muss normalverteilt sein."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r wertebereich_wk}
+quiz(
+  question("Welchen Wertebereich haben die vorhergesagten Wahrscheinlichkeiten in der logistischen Regression?",
+    answer("0 bis 1", correct = TRUE),
+    answer("-∞ bis +∞"),
+    answer("0 bis 100"),
+    answer("-1 bis +1"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+
+```{r wertebereich_odds}
+quiz(
+  question("Welchen Wertebereich können Odds annehmen?",
+    answer("0 bis +∞", correct = TRUE),
+    answer("-∞ bis +∞"),
+    answer("0 bis 1"),
+    answer("-1 bis +1"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 2 Odds berechnen
+
+```{r odds_berechnung}
+quiz(
+  question("Wie werden Odds berechnet?",
+    answer("$\\frac{p}{1-p}$ – Wahrscheinlichkeit des Ereignisses geteilt durch die Gegenwahrscheinlichkeit.", correct = TRUE),
+    answer("$\\frac{1-p}{p}$ – Gegenwahrscheinlichkeit geteilt durch die Ereigniswahrscheinlichkeit."),
+    answer("Der natürliche Logarithmus der Wahrscheinlichkeit."),
+    answer("Wahrscheinlichkeit des Ereignisses multipliziert mit 2."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
