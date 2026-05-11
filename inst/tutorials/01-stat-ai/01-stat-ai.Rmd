@@ -39,6 +39,7 @@ r <- 0.866
 
 # AI setup
 library(ollamar)
+ollamar::pull("gpt-oss:120b-cloud")
 model <- "gpt-oss:120b-cloud"
 ai_feedback <- function(response, question, correct) {
   text <- paste0("You are a helpful instructor to a data science course. You are giving feedback on a task given to a student. The question was '", question, "' and the student incorrectly responded with '", response, "'. The correct answer was: '", correct, "'. Provide a very short and helpful feedback, but make sure to never ever give the full solution. Only provide the feedback message as output.")
