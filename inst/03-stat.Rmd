@@ -1,0 +1,228 @@
+---
+title: "03 - Logistische Regression"
+output: 
+  learnr::tutorial:
+    progressive: true
+    theme: lumen
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+library(ggplot2)
+knitr::opts_chunk$set(echo = FALSE)
+tutorial_options(
+  exercise.reveal_solution = FALSE,
+  exercise.checker = gradethis::gradethis_exercise_checker
+)
+```
+
+## Logistische Regression 
+### Aufgabe 1
+
+```{r one}
+quiz(
+  question("Wann wird die logistische Regression eingesetzt?",
+    answer("Wenn die abhängige Variable binär ist, also zwei Ausprägungen hat (z. B. ja/nein, Erfolg/Misserfolg).", correct = TRUE),
+    answer("Wenn die abhängige Variable kontinuierlich und normalverteilt ist.", message = "Das ist der Anwendungsfall der linearen Regression."),
+    answer("Wenn zwei kategoriale Variablen auf Zusammenhang geprüft werden sollen."),
+    answer("Wenn mehrere unabhängige Variablen miteinander korrelieren."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r oneone}
+quiz(
+  question("Welche Kombination von Variablen ist für die logistische Regression typisch?",
+    answer("Y diskret, X kontinuierlich oder diskret.", correct = TRUE),
+    answer("Y kontinuierlich, X kontinuierlich.", message = "Das entspricht der linearen Regression."),
+    answer("Y kontinuierlich, X diskret."),
+    answer("Y diskret, X muss normalverteilt sein."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r wertebereich_wk}
+quiz(
+  question("Welchen Wertebereich haben die vorhergesagten Wahrscheinlichkeiten in der logistischen Regression?",
+    answer("0 bis 1", correct = TRUE),
+    answer("-∞ bis +∞"),
+    answer("0 bis 100"),
+    answer("-1 bis +1"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+
+```{r wertebereich_odds}
+quiz(
+  question("Welchen Wertebereich können Odds annehmen?",
+    answer("0 bis +∞", correct = TRUE),
+    answer("-∞ bis +∞"),
+    answer("0 bis 1"),
+    answer("-1 bis +1"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 2 Odds berechnen
+
+```{r odds_berechnung}
+quiz(
+  question("Wie werden Odds berechnet?",
+    answer("$\\frac{p}{1-p}$ (Wahrscheinlichkeit des Ereignisses geteilt durch die Gegenwahrscheinlichkeit).", correct = TRUE),
+    answer("$\\frac{1-p}{p}$ (Gegenwahrscheinlichkeit geteilt durch die Ereigniswahrscheinlichkeit)"),
+    answer("Der natürliche Logarithmus der Wahrscheinlichkeit."),
+    answer("Wahrscheinlichkeit des Ereignisses multipliziert mit 2."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+
+Ein Odd beträgt 4. Berechne die zugehörige Wahrscheinlichkeit.
+
+```{r wk_aus_odd, exercise=TRUE, exercise.cap = "Wahrscheinlichkeit berechnen", exercise.lines = 3}
+
+```
+
+```{r odd_berechnen}
+4 / (1 + 4)
+```
+
+```{r wk_aus_odd-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch")
+  }
+})
+```
+
+
+```{r odd_null}
+quiz(
+  question("Bei welcher Wahrscheinlichkeit beträgt der Odd genau 0?",
+    answer("p = 0", correct = TRUE),
+    answer("p = 0,5"),
+    answer("p = 1"),
+    answer("p = -1"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 3 Logits 
+```{r logit}
+quiz(
+  question("Warum werden in der logistischen Regression Logits (Log-Odds) berechnet?",
+    answer("Weil Odds nur positive Werte annehmen und nicht linear modelliert werden können.", correct = TRUE),
+    answer("Weil Wahrscheinlichkeiten immer normalverteilt sind."),
+    answer("Weil der Logarithmus die Residuen normalverteilt."),
+    answer("Weil Logits einfacher zu interpretieren sind als Wahrscheinlichkeiten."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+
+```{r wertebereich_logit}
+quiz(
+  question("Welchen Wertebereich können Logits annehmen?",
+    answer("-∞ bis +∞", correct = TRUE),
+    answer("0 bis 1"),
+    answer("0 bis +∞"),
+    answer("-1 bis +1"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+
+```{r logit_null}
+quiz(
+  question("Bei welcher Wahrscheinlichkeit beträgt der Logit genau 0?",
+    answer("p = 0,5", correct = TRUE),
+    answer("p = 0"),
+    answer("p = 1"),
+    answer("p = 0,75"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 4 Daten
+
+Im Rahmen einer Studie wurden Daten von 90 Fußballspielern zu Alter (Jahre), wöchentlicher Trainingsbelastung (km/Woche), Schlafdauer (Stunden/Nacht), Spielposition (position: "Stürmer", "Verteidiger", "Mittelfeld") sowie dem Auftreten einer Verletzung im Saisonverlauf (1 = verletzt, 0 = verletzungsfrei) erhoben und in dem Datensatz `daten` gespeichert. Im Folgenden wird mit diesem Datensatz gearbeitet. (Du kannst dir diesen anzeigen lassen, indem du ihn in der ersten Antwortmöglichkeit mit „Run Code" ausgibst.)
+
+
+```{r quiz_outcome}
+quiz(
+  question("Was ist in diesem Datensatz das Outcome?",
+    answer("`verletzt`", correct = TRUE),
+    answer("`trainingsload`"),
+    answer("`schlaf`"),
+    answer("`position`"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+Fitte ein logistisches Regressionsmodell, das das Verletzungsrisiko anhand vom Alter, Trainingsload, Schlafdauer und Spielerposition  vorhersagt. Speichere das Modell als `mod` ab. Gebe die anschließend die allgemeine Modellzusammenfassung mit der richtigen Funktion aus dem `broom` package aus.
+
+
+```{r modfit, exercise=TRUE, exercise.cap = "Modell fitten", exercise.lines = 3}
+
+```
+
+```{r modfit-solution}
+mod <- glm(verletzt ~ alter + trainingsload + schlaf + position,
+           data = daten, family = binomial)
+broom::tidy(mod)
+```
+
+```{r modfit-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.Tipp: Nutze glm()")
+  }
+})
+```
