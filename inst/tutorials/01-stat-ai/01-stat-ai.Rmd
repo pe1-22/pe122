@@ -1,5 +1,5 @@
 ---
-title: "01 - Lineare Regression"
+title: "01 - Lineare Regression (mit KI-Feedback)"
 output: 
   learnr::tutorial:
     progressive: true
