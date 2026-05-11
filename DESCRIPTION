@@ -16,7 +16,8 @@ Imports:
     sportsdata,
     ggcheck,
     broom,
-    performance
+    performance,
+    ollamar
 Remotes: 
     smnnlt/sportsdata,
     rstudio/gradethis,

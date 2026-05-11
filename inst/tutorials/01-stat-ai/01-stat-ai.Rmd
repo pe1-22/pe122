@@ -1,0 +1,596 @@
+---
+title: "01 - Lineare Regression"
+output: 
+  learnr::tutorial:
+    progressive: true
+    theme: lumen
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+library(ggplot2)
+knitr::opts_chunk$set(echo = FALSE)
+tutorial_options(
+  exercise.reveal_solution = FALSE,
+  exercise.checker = gradethis::gradethis_exercise_checker,
+)
+
+set.seed(12)
+n <- 100
+geschlecht <-  sample (c ("m","w"))
+
+groesse <- rnorm (n, mean = 179, sd = 18)
+gewicht <- rnorm (n, mean = 81, sd = 15)
+trainingsumfang <-  round (pmax(0, rnorm(n, mean = 25, sd =15)))
+vo2max <- 30+trainingsumfang * 0.6 + rnorm (n, 0,5)
+vo2max <- pmin(pmax(vo2max,25),75)
+
+daten <-  data.frame(
+  Geschlecht = geschlecht,
+  Groesse_cm = round(groesse,1),
+  Gewicht_kg = round(gewicht,1),
+  VO2max = round(vo2max,1),
+  trainingsumfang =trainingsumfang 
+)
+
+r <- 0.866
+
+# AI setup
+library(ollamar)
+model <- "gpt-oss:120b-cloud"
+ai_feedback <- function(response, question, correct) {
+  text <- paste0("You are a helpful instructor to a data science course. You are giving feedback on a task given to a student. The question was '", question, "' and the student incorrectly responded with '", response, "'. The correct answer was: '", correct, "'. Provide a very short and helpful feedback, but make sure to never ever give the full solution. Only provide the feedback message as output.")
+  out <- ollamar::generate(model, text, output = "text")
+  out
+}
+
+ai_error_feedback <- function(response, error) {
+    text <- paste0("You are a helpful instructor to a data science course. You are giving feedback on a task given to a student. The R code submitted has this error:", error, ". Please provide a very short and helpful feedback using R best practices to fix the error. Only provide the feedback message as output. This is the full code submitted: ", response)
+  out <- ollamar::generate(model, text, output = "text")
+  out
+}
+```
+
+```{r setupA}
+mod <- lm(VO2max~trainingsumfang,data=daten)
+```
+
+## Lineare Regression
+
+### Aufgabe 1
+
+```{r Einstieg}
+quiz(
+  question("Was beschreibt eine einfache lineare Regression?",
+    answer("Ein Verfahren, das den linearen Zusammenhang zwischen einer Prädiktorvariable und einer Outcome-Variable modelliert und Vorhersagen ermöglicht.", correct = TRUE),
+    answer("Ein Vefahren, das den linearen Zusammenhang zwischen zwei kategorialen Variablen untersucht.", message = "Chi-Quadrat"),
+    answer("Ein Verfahren, das den kausalen Zusammenhang zwischen zwei Variablen untersucht."),
+    answer("Ein Verfahren zur Beschreibung der Verteilung einzelner Variablen."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 2
+
+Wie lautet die allgemeine Formel für die einfache lineare Regression? (Schreibe die Lösung ohne Leerzeichen zwischen die Anführungszeichen)
+
+```{r Formel, exercise=TRUE, exercise.cap = "Text", exercise.lines = 1}
+""
+```
+
+```{r Formel-solution}
+"y=b0+b1*x+e"
+```
+
+```{r Formel-check}
+grade_this({
+  if (.result %in% c("y=b0+b1*x+e", "Y=b0+b1*X+e", "y=b0+b1*X+e", "Y=b0+b1*x+e", "y=b1*x+b0+e", "y=beta0+beta1*x+e","Y=beta0+beta1*X+e","Y=beta0+beta1*x+e", "y=beta0+beta1*X+e")) {
+      pass(praise = TRUE)
+} else {
+  fail(message = "Leider falsch.")
+}
+})
+```
+
+### Aufgabe 3
+
+```{r Parameter}
+quiz(
+  question("Wofür steht der Parameter $\\beta_0$ in einer linearen Regression?",
+    answer("Prädiktor", message = "Der Prädiktor wird mit x abgekürzt."),
+    answer("Outcome", message = "Das Outcome wird mit y abgekürzt."),
+    answer("y-Achsenabschnitt", correct = TRUE),
+    answer("Steigung", message = "$\\beta_1$ ist die Steigung."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  ),
+  question("Wofür steht der Parameter $\\beta_1$ in einer linearen Regression?",
+    answer("Prädiktor", message = "Der Prädiktor wird mit x abgekürzt."),
+    answer("Outcome", message = "Das Outcome wird mit y abgekürzt."),
+    answer("Steigung", correct = TRUE),
+    answer("y-Achsenabschnitt", message = "$\\beta_0$ ist die Steigung."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 4
+
+```{r Determinationskoeffizient}
+quiz(
+  question("Welchen Wertebereich kann der Determinationskoeffizient R² annehmen?",
+    answer("-1 bis +1"),
+    answer("0 bis 100"),
+    answer("0 bis 1", correct = TRUE),
+    answer("-∞ bis +∞"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 5
+
+```{r pwert}
+quiz(
+  question("Was sagt ein p-Wert von 0.03 bei einem Signifikanzniveau von alpha = 0.05 aus?",
+    answer("Die Wahrscheinlichkeit, dass die Alternativhypothese wahr ist, beträgt 97%. "),
+    answer("Das Risiko einen Fehler 2. Art zu begehen beträgt 3%"),
+    answer("Die Wahrscheinlichkeit diesen oder einen noch extremeren Wert unter der Nullhypothese zu beobachten beträgt 3%", correct = TRUE),
+    answer("Die Wahrscheinlichkeit, dass die Nullhypothese wahr ist, beträgt 3%"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+## lineare Regression in R
+### Aufgabe 6 
+
+Im Rahmen einer Studie wurden Daten von 100 Personen zu Geschlecht, Körpergröße, Gewicht, wöchentlichem Trainingsumfang und VO2max erhoben und in dem Datensatz (als Variable `daten`) gespeichert. Im folgenden wird mit diesem Datensatz gearbeitet. (du kannst dir diesen anzeigen lassen, indem du ihn dir in der ersten Antwortmöglichkeit  mit "run code" ausgeben lässt.)
+
+Berechne den Mittelwert des Trainingsumfangs.
+
+```{r sevenone, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r sevenone-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r sevenone-solution}
+mean(daten$trainingsumfang)
+```
+
+```{r sevenone-check}
+task <- "Im Rahmen einer Studie wurden Daten von 100 Personen zu Geschlecht, Körpergröße, Gewicht, wöchentlichem Trainingsumfang und VO2max erhoben und in dem Datensatz (als Variable `daten`) gespeichert. Im folgenden wird mit diesem Datensatz gearbeitet. (du kannst dir diesen anzeigen lassen, indem du ihn dir in der ersten Antwortmöglichkeit  mit 'run code' ausgeben lässt.)
+Berechne den Mittelwert des Trainingsumfangs."
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+Berechne den Median des Trainingsumfangs.
+
+```{r sevenonetwo, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r sevenonetwo-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r sevenonetwo-solution}
+median(daten$trainingsumfang)
+```
+
+```{r sevenonetwo-check}
+task <- "Berechne den Median des Trainingsumfangs."
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+Berechne die Standardabweichung des Trainingsumfangs.
+
+```{r sevenonethree, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r sevenonethree-solution}
+sd(daten$trainingsumfang)
+```
+
+```{r sevenonethree-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r sevenonethree-check}
+task <- "Berechne die Standardabweichung des Trainingsumfangs."
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+### Aufgabe 7
+Berechne Minimum, Maximum, Q1, Mittelwert, Median, Q3 der VO2max. (Tipp: Nutze hierzu die Funktion summary)
+
+
+```{r seventwo, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r seventwo-solution}
+summary(daten$VO2max)
+```
+
+```{r seventwo-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r seventwo-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+### Aufgabe 8 
+
+Wir möchten mit diesem Datensatz untersuchen, ob es einen Zusammenhang zwischen dem Trainingsumfang und der VO2max gibt. Perspektivisch möchten wir anhand des Trainingsumfangs die VO2max vorhersagen können.
+
+```{r yZuordnen}
+quiz(
+  question("Was ist in diesem Datensatz dann das Outcome?",
+    answer("VO2max",correct = TRUE),
+    answer("Trainingsumfang"),
+    answer("Geschlecht"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r xZuordnen}
+quiz(
+  question("Was ist der Prädiktor in diesem Datensatz?",
+    answer("VO2max"),
+    answer("Trainingsumfang",correct = TRUE),
+    answer("Geschlecht"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 9
+Erstelle ein einfaches Streudiagramm des Datensatzes mit ggplot2. (Das ggplot2 Paket ist bereits mit `library(ggplot2)` geladen.)
+
+```{r diagramm, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r diagramm-solution}
+ggplot(daten, aes(x = trainingsumfang, y = VO2max)) + geom_point()
+```
+
+```{r diagramm-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r diagramm-check}
+task <- "Erstelle ein einfaches Streudiagramm des Datensatzes mit ggplot2. (Das ggplot2 Paket ist bereits mit `library(ggplot2)` geladen.)"
+grade_this({
+  if (ggcheck::uses_geoms(.result, "point") && ggcheck::identical_aes(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+### Aufgabe 9.2
+
+```{r quiz_visuell}
+quiz(
+  question("Wie interpretierst du die Darstellung?",
+    answer("Es liegt kein Zusammenhang vor"),
+    answer("Es liegt ein linearer Zusammenhang vor ",correct = TRUE),
+    answer("Es liegt ein kurvilinearer Zusammenhang vor"),
+    answer("Die Daten sind zufällig verteilt"),
+    answer("Es ist keine Aussage möglich, da es zu viele Ausreißer gibt"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+## lineare Regression Interpretation
+
+### Aufgabe 10 
+Der Korrelationskoeffizient für diesen Datensatz beträgt r = 0.866.
+Berechne den Determinationskoeffizienten R².
+
+```{r ten, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r ten-solution}
+R <- r**2
+```
+
+```{r ten-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r ten-check}
+task <- "Der Korrelationskoeffizient für diesen Datensatz beträgt r = 0.866. Berechne den Determinationskoeffizienten R²."
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+### Aufgabe 10.2
+```{r quiz_determinationskoeffizient}
+quiz(
+  question("Was sagt R² über unsere Daten aus?",
+    answer("Der Trainingsumfang steigt pro Woche um 0.64km "),
+    answer("64% der Personen haben einen überdurchschnittlichen VO2max-Wert "),
+    answer("Der Zusammenhang zwischen Trainingsumfang und Vo2max beträgt r=0.75"),
+    answer("Das Modell sagt für jede Person die Vo2max mit 75% Genauigkeit vorher"),
+    answer("75% der Unterschiede in den Vo2max-Werten zwischen den Personen werden durch den Trainingsumfang erklärt ", correct = TRUE),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 11
+
+```{r b0zuordnen}
+quiz(
+  question("Was sagt $\\beta_0$ bei diesem Datensatz aus?",
+    answer("den erwarteten Trainingsumfang bei einer VO2max von 0 ml/kg KG"),
+    answer("die erwartete VO2max bei einem Trainingsumfang von 0 km/ Woche",correct = TRUE),
+    answer("die VO2max bei einem maximalen Trainingsumfang für eine Person"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r b1zuordnen}
+quiz(
+  question("Was sagt $\\beta_1$ bei diesem Datensatz aus?",
+    answer("den erwarteten Trainingsumfang bei einer VO2max von 0 ml/kg KG"),
+    answer("Wenn sich der Trainingsumfang um eine Einheit verändert, verändert sich die VO2max um den Wert von $\\beta_1$",correct = TRUE),
+    answer("die erwartete VO2max bei einem Trainingsumfang von 0 km/ Woche"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+## lineare Regression Modellfit
+### Aufgabe 12 
+
+Fitte ein lineares Modell um die Vo2max anhand des Trainingsumfangs abzuschätzen und speichere dieses als Variable `mod` ab. Gebe die anschließend die allgemeine Modellzusammenfassung mit der richtigen Funktion aus dem `broom` package aus.
+
+```{r mod, exercise=TRUE, exercise.lines = 3}
+
+```
+
+```{r mod-solution}
+mod<-lm(VO2max~trainingsumfang,data=daten)
+broom::glance(mod)
+```
+
+```{r mod-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r mod-check}
+task <- "Fitte ein lineares Modell um die Vo2max anhand des Trainingsumfangs abzuschätzen und speichere dieses als Variable `mod` ab. Gebe die anschließend die allgemeine Modellzusammenfassung mit der richtigen Funktion aus dem `broom` package aus."
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+### Aufgabe 12.2
+Bestimme die Koeffizienten mit der entsprechenden Funktion aus dem `broom` package und weise ihnen je einer Variable zu (beta0, beta1). Gebe anschließend beide Variablen einzeln aus.
+
+```{r twelvetwo, exercise=TRUE, exercise.lines = 5,exercise.setup = "setupA"}
+
+```
+
+```{r twelvetwo-solution}
+cfs <- broom::tidy(mod)
+beta0 <- cfs$estimate[1]
+beta1 <- cfs$estimate[2]
+beta0
+beta1
+```
+
+```{r twelvetwo-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r twelvetwo-check}
+task <- "Bestimme die Koeffizienten von mod mit der entsprechenden Funktion aus dem `broom` package und weise ihnen je einer Variable zu (beta0, beta1). Gebe anschließend beide Variablen einzeln aus."
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+### Aufgabe 13
+Sage den VO2max Wert für eine Person (p1), die einen Trainingsumfang von 40km/Woche aufweist, vorher.
+
+```{r vorhersage, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupA"}
+
+```
+
+```{r vorhersage-solution}
+p1 <- data.frame(trainingsumfang = 40)
+predict(mod,p1)
+```
+
+```{r vorhersage-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r vorhersage-check}
+task <- "Sage den VO2max Wert für eine Person (p1), die einen Trainingsumfang von 40km/Woche aufweist, vorher."
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+### Aufgabe 13.2
+
+```{r prediction}
+quiz(
+  question("Mit welcher Codezeile kann ich abschätzen, wie sicher ich mir mit der Vorhersage für die eine Person sein kann?",
+    answer("`predict(mod, p1)`"),
+    answer('`predict(mod, p1, interval= "confidence")`'),
+    answer('`predict(mod, p1, interval= "prediction")`', correct = TRUE),
+    answer("`summary (mod)`"),
+    answer("`cor(mod)`"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 14 
+
+```{r voraussetzungen}
+quiz(
+  question("Welche der Voraussetzungen sollten für eine lineare Regression erfüllt sein?",
+    answer("Homoskedastizität der Residuen", correct = TRUE),
+    answer("Linearität zwischen Prädiktor und Zielvariable ", correct = TRUE),
+    answer("Eine Linearität zwischen Prädiktor und Zielvariable ist nicht zwingend notwendig "),
+    answer("Keine Ausreißer in den Daten", correct = TRUE),
+    answer("Normalverteilung der Residuen",correct = TRUE),
+    answer("Die Residuen können beliebig verteilt sein"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+Überprüfe visuell mit Hilfe des `performance` packages, ob die Voraussetzungen für die vorliegenden Daten erfüllt sind. (Da es Probleme mit der Darstellung gibt, müsste ihr in der Funktion das Argument `panel = FALSE` ergänzen und zusätzlich hinter die Funktion noch ` |> plot()` schreiben, damit alle Grafiken einzeln angezeigt werden.)
+```{r checkmodel, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3,exercise.setup = "setupA"}
+
+```
+
+```{r checkmodel-solution}
+performance::check_model(mod, panel = FALSE) |> plot()
+```
+
+```{r checkmodel-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r checkmodel-check}
+task <- "Überprüfe visuell mit Hilfe des `performance` packages, ob die Voraussetzungen für die vorliegenden Daten erfüllt sind. (Da es Probleme mit der Darstellung gibt, müsste ihr in der Funktion das Argument `panel = FALSE` ergänzen und zusätzlich hinter die Funktion noch ` |> plot()` schreiben, damit alle Grafiken einzeln angezeigt werden.)"
+grade_this({
+  if (identical(.user_code, .solution_code)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+### Aufgabe 14.2
+
+```{r vpruef}
+quiz(
+  question("Sind die Voraussetzungen erfüllt?",
+    answer("Ja",correct = TRUE),
+    answer("Nein, es gibt Ausreißer"),
+    answer("Nein, die Residuen sind nicht normalverteilt"),
+    answer("Nein, die Residuen sind nicht homoskedastisch"),
+    answer("Nein, die Residuen sind nicht linear"),
+    answer("Nein, der PPC zeigt Probleme"),
+    type = "checkbox",
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = "Du bist fertig!"
+  )
+)
+```
+
+### Geschafft!
+
+Herzlichen Glückwunsch, du hast die erste Lektion zum Thema lineare Regression erfolgreich abgeschlossen! In der nächsten Lektion werden wir uns mit der multiplen linearen Regression beschäftigen.
+
+Falls du noch Zeit hast, kannst du hier weiter mit dem Datensatz experimentieren, weitere Grafiken erstellen oder neue Modelle fitten. Viel Spaß dabei!
+
+```{r sandbox, exercise=TRUE, exercise.lines = 10,exercise.setup = "setupA"}
+
+```
