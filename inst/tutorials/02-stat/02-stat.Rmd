@@ -16,28 +16,26 @@ tutorial_options(
   exercise.checker = gradethis::gradethis_exercise_checker
 )
 
-set.seed(42)
-n <- 68
-
-gruppe <- factor(sample(c("Leistung", "Breitensport"), n, replace = TRUE, prob = c(0.4, 0.6)))
-training <- ifelse(gruppe == "Leistung", round(runif(n, 12, 22)), round(runif(n, 3, 11)))
-gewicht <- round(rnorm(n, mean = 78, sd = 7))
-
-zeit <- 13.5 +
-  (-0.12 * training) +
-  (0.05 * gewicht) +
-  (-0.8 * (gruppe == "Leistung")) +
-  rnorm(n, mean = 0, sd = 0.3)
-
-zeit <- round(zeit, 2)
+set.seed(43)
+n <- 100
 
 daten <- data.frame(
-  id       = 1:n,
-  zeit     = zeit,
-  training = training,
-  gewicht  = gewicht,
-  gruppe   = gruppe
+  id = 1:n,
+  gruppe = factor(sample(c("Leistung", "Breitensport"), n, replace = TRUE, prob = c(0.4, 0.6))),
+  gewicht = round(rnorm(n, mean = 78, sd = 7))
 )
+
+daten$training <- ifelse(daten$gruppe == "Leistung",
+                         round(runif(n, 12, 22)),
+                         round(runif(n, 3, 11)))
+
+daten$zeit <- 13.5 +
+  (-0.12 * daten$training) +
+  (0.05 * daten$gewicht) +
+  (-0.8 * (daten$gruppe == "Leistung")) +
+  rnorm(n, mean = 0, sd = 0.3)
+
+
 ```
 
 ```{r setupA}
@@ -279,6 +277,28 @@ quiz(
 )
 ```
 
+### 6 Koeffizienten interpretieren 
+
+Lasse dir die Prädiktoren deines gefittete Modells ausgeben. Nutze hierzu das `broom` package.
+
+```{r tidy, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r tidy-solution}
+broom::tidy(mod)
+```
+
+```{r tidy-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
 
 ```{r fivefour}
 quiz(
@@ -295,14 +315,89 @@ quiz(
 )
 ```
 
-### Aufgabe 6
+Bestimme die Koeffizienten mit der entsprechenden Funktion aus dem `broom` package und weise ihnen je einer Variable zu (beta0, beta1, beta2, beta3). Gebe anschließend alle Variablen einzeln aus.
 
-Erstelle nun 2 weitere Modelle (je eins nur mit Gruppe, nur mit Training und nur mit Gewicht). Nenne diese: `mod_gruppe`, `mod_training` und `mod_gewicht`und lasse dir diese ausgeben. 
-```{r mod, exercise=TRUE, exercise.lines = 3}
+```{r coef, exercise=TRUE, exercise.lines = 5,exercise.setup = "setupA"}
 
 ```
 
-```{r mod-solution}
+```{r coef-solution}
+cfs <- broom::tidy(mod)
+beta0 <- cfs$estimate[1]
+beta1 <- cfs$estimate[2]
+beta2 <- cfs$estimate[3]
+beta3 <- cfs$estimate[4]
+beta0
+beta1
+beta2
+beta3
+```
+
+```{r coef-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
+Zwei Athleten sind beide im Breitensport, wiegen beide 70kg, trainieren aber unterscheidlich viel: Athlet A trainiert 5h/Woche, Athlet B trainiert 10h/Woche. Um wie viel Sekunden unterscheiden sich ihre vorhergesagten Sprintzeiten laut Modell?
+
+```{r ten}
+quiz(
+  question("Zwei Athleten sind beide im Breitensport, wiegen beide 70kg, trainieren aber unterscheidlich vile: Athlet A trainiert 5h/Woche, Athlet B trainiert 10h/Woche. Um wie viel Sekunden unterscheiden sich ihre vorhergesagten Sprintzeiten laut Modell?",
+    answer("Athlet B läuft 0,135s schneller als Athlet A"),
+    answer("Athlet B läuft 0,049s schneller als Athlet A"),
+    answer("Athlet B läuft 0,675s schneller als Athlet A", correct = TRUE),
+    answer("Athlet B läuft 1,35s schneller als Athlet A"),
+    answer("Athlet A läuft 13,64s schneller als Athlet B"),
+    answer("Homoskedastizität",correct = TRUE),
+    allow_retry = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r tentwo}
+quiz(
+  question("Interpretiere den Koeffizienten `gruppeLeistung`.",
+    answer("Athleten im Leistungskader laufen im Durchschnitt 0,667s schneller als Athleten im Breitensport, die gleich viel wiegen und trainieren.", correct = TRUE),
+    answer("Athleten im Leistungskader laufen im Durchschnitt 0,667s langsamer als Athleten im Breitensport, die gleich viel wiegen und trainieren."),
+    answer("Athleten im Leistungskader laufen im Durchschnitt 0,667s schneller als Athleten im Breitensport."),
+    answer("Wenn ein Athlet in die Leistungsgruppe wechselt, verbessert sich seine Zeit automatisch um 0,667s."),
+    answer("Athleten in der Gruppe Breitensport laufen im Durchschnitt 0,667s schneller als Athleten in der Leistungsgruppe, die gleich viel wiegen und trainieren."),
+    allow_retry = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r tenthree}
+quiz(
+  question("Welche Aussage interpretiert den Koeffizienten `gewicht` korrekt?",
+    answer("Ein Athlet, der 1kg mehr wiegt aber den gleichen Trainingsumfang in derselben Gruppe absolviert, läuft im Durchschnitt um 0,049s langsamer.", correct = TRUE),
+    answer("Ein Athlet, der 1kg mehr wiegt aber den gleichen Trainingsumfang in derselben Gruppe absolviert, läuft im Durchschnitt um 0,049s schneller."),
+    answer("Das Körpergewicht hat keinen relevanten Einfluss auf die Sprintzeit, da der Koeffizient mit 0,049 sehr klein ist"),
+    answer("Wenn ein Athlet 0,049 kg zunimmt, verschlechtert sich seine Sprintzeit um 0,01s."),
+    allow_retry = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 7
+
+Erstelle nun 2 weitere Modelle (je eins nur mit Gruppe, nur mit Training und nur mit Gewicht). Nenne diese: `mod_gruppe`, `mod_training` und `mod_gewicht`und lasse dir diese ausgeben. 
+```{r mo, exercise=TRUE, exercise.lines = 3}
+
+```
+
+```{r mo-solution}
 mod_gruppe <- lm(zeit ~ gruppe, data= daten)
 mod_training <- lm(zeit ~ training, data= daten)
 mod_gewicht <- lm(zeit ~ gewicht, data= daten)
@@ -311,7 +406,7 @@ broom::glance(mod_training)
 broom::glance(mod_gewicht)
 ```
 
-```{r mod-check}
+```{r mo-check}
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
@@ -370,7 +465,7 @@ quiz(
 
 ## Voraussetzungen und Vorhersagen
 
-### Aufgabe 7 Voraussetzungen
+### Aufgabe 8 Voraussetzungen
 
 ```{r sevenone}
 quiz(
@@ -462,7 +557,7 @@ quiz(
 )
 ```
 
-### Aufgabe 8 
+### Aufgabe 9 
 Überprüfe die Voraussetzungen grafisch. (Beachte, dass du in diesem Tutorial ausnahmsweise das Argument `panel = FALSE` sowie hinter der Funtion ` |> plot()` nutzen musst, damit die Grafiken einzeln in der Vorschau angezeigt werden.)
 
 ```{r assum, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
@@ -500,7 +595,7 @@ quiz(
 )
 ```
 
-### Aufgabe 9 Vorhersage
+### Aufgabe 10 Vorhersage
 
 Erstelle eine Person "p1" die 73kg wiegt, 12h/Woche trainiert und in der Gruppe Leistungssport trainiert.
 Sage anschließend ihre Sprintzeit vorher. 
@@ -547,82 +642,6 @@ grade_this({
 })
 ```
 
-### Aufgabe 10 Interpretation der Koeffizienten 
-
-Bestimme die Koeffizienten mit der entsprechenden Funktion aus dem `broom` package und weise ihnen je einer Variable zu (beta0, beta1, beta2, beta3). Gebe anschließend alle Variablen einzeln aus.
-
-```{r coef, exercise=TRUE, exercise.lines = 5,exercise.setup = "setupA"}
-
-```
-
-```{r coef-solution}
-cfs <- broom::tidy(mod)
-beta0 <- cfs$estimate[1]
-beta1 <- cfs$estimate[2]
-beta2 <- cfs$estimate[3]
-beta3 <- cfs$estimate[4]
-beta0
-beta1
-beta2
-beta3
-```
-
-```{r coef-check}
-grade_this({
-  if (identical(.result, .solution)) {
-    pass(praise = TRUE)
-  } else {
-    fail(message = "Leider falsch.")
-  }
-})
-```
-
-Zwei Athleten sind beide im Breitensport, wiegen beide 70kg, trainieren aber unterscheidlich vile: Athlet A trainiert 5h/Woche, Athlet B trainiert 10h/Woche. Um wie viel Sekunden unterscheiden sich ihre vorhergesagten Sprintzeiten laut Modell?
-
-```{r ten}
-quiz(
-  question("Zwei Athleten sind beide im Breitensport, wiegen beide 70kg, trainieren aber unterscheidlich vile: Athlet A trainiert 5h/Woche, Athlet B trainiert 10h/Woche. Um wie viel Sekunden unterscheiden sich ihre vorhergesagten Sprintzeiten laut Modell?",
-    answer("Athlet B läuft 0,135s schneller als Athlet A"),
-    answer("Athlet B läuft 0,049s schneller als Athlet A"),
-    answer("Athlet B läuft 0,675s schneller als Athlet A", correct = TRUE),
-    answer("Athlet B läuft 1,35s schneller als Athlet A"),
-    answer("Athlet A läuft 13,64s schneller als Athlet B"),
-    answer("Homoskedastizität",correct = TRUE),
-    allow_retry = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
-```
-
-```{r tentwo}
-quiz(
-  question("Interpretiere den Koeffizienten `gruppeLeistung`.",
-    answer("Athleten im Leistungskader laufen im Durchschnitt 0,667s schneller als Athleten im Breitensport, die gleich viel wiegen und trainieren.", correct = TRUE),
-    answer("Athleten im Leistungskader laufen im Durchschnitt 0,667s langsamer als Athleten im Breitensport, die gleich viel wiegen und trainieren."),
-    answer("Athleten im Leistungskader laufen im Durchschnitt 0,667s schneller als Athleten im Breitensport."),
-    answer("Wenn ein Athlet in die Leistungsgruppe wechselt, verbessert sich seine Zeit automatisch um 0,667s."),
-    answer("Athleten in der Gruppe Breitensport laufen im Durchschnitt 0,667s schneller als Athleten in der Leistungsgruppe, die gleich viel wiegen und trainieren."),
-    allow_retry = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
-```
-
-```{r tenthree}
-quiz(
-  question("Welche Aussage interpretiert den Koeffizienten `gewicht`korrekt?",
-    answer("Ein Athlet, der 1kg mehr wiegt aber den gleichen Trainingsumfang in derselben Gruppe absolviert, läuft im Durchschnitt um 0,049s langsamer.", correct = TRUE),
-    answer("Ein Athlet, der 1kg mehr wiegt aber den gleichen Trainingsumfang in derselben Gruppe absolviert, läuft im Durchschnitt um 0,049s schneller."),
-    answer("Das Körpergewicht hat keinen relevanten Einfluss auf die Sprintzeit, da der Koeffizient mit 0,049 sehr klein ist"),
-    answer("Wenn ein Athlet 0,049 kg zunimmt, verschlechtert sich seine Sprintzeit um 0,01s."),
-    allow_retry = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
-```
 
 ### Geschafft!
 
