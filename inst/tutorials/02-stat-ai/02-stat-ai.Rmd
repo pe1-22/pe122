@@ -1,0 +1,725 @@
+---
+title: "02 - Erweiterte Lineare Regression"
+output: 
+  learnr::tutorial:
+    progressive: true
+    theme: lumen
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+knitr::opts_chunk$set(echo = FALSE)
+tutorial_options(
+  exercise.reveal_solution = FALSE,
+  exercise.checker = gradethis::gradethis_exercise_checker
+)
+
+set.seed(43)
+n <- 68
+
+daten <- data.frame(
+  id = 1:n,
+  gruppe = factor(sample(c("Leistung", "Breitensport"), n, replace = TRUE, prob = c(0.4, 0.6))),
+  gewicht = round(rnorm(n, mean = 78, sd = 7))
+)
+
+daten$training <- ifelse(daten$gruppe == "Leistung",
+                         round(runif(n, 12, 22)),
+                         round(runif(n, 3, 11)))
+
+daten$zeit <- 13.5 +
+  (-0.12 * daten$training) +
+  (0.05 * daten$gewicht) +
+  (-0.8 * (daten$gruppe == "Leistung")) +
+  rnorm(n, mean = 0, sd = 0.3)
+
+# AI setup
+library(ollamar)
+ollamar::pull("gpt-oss:120b-cloud")
+model <- "gpt-oss:120b-cloud"
+ai_feedback <- function(response, question, correct) {
+  text <- paste0("You are a helpful instructor to a data science course. You are giving feedback on a task given to a student. The question was '", question, "' and the student incorrectly responded with '", response, "'. The correct answer was: '", correct, "'. Provide a very short and helpful feedback, but make sure to never ever give the full solution. Only provide the feedback message as output.")
+  out <- ollamar::generate(model, text, output = "text")
+  out
+}
+
+ai_error_feedback <- function(response, error) {
+    text <- paste0("You are a helpful instructor to a data science course. You are giving feedback on a task given to a student. The R code submitted has this error:", error, ". Please provide a very short and helpful feedback using R best practices to fix the error. Only provide the feedback message as output. This is the full code submitted: ", response)
+  out <- ollamar::generate(model, text, output = "text")
+  out
+}
+```
+
+```{r setupA}
+mod <- lm(zeit ~ gruppe + training + gewicht, data = daten)
+```
+
+
+## Grundlagen multiple Regression
+
+### Aufgabe 1
+
+```{r skalierung}
+quiz(
+  question("Wann kann die lineare Regression eingesetzt werden?",
+    answer("Variable X ist kontinuierlich", correct = TRUE),
+    answer("Variable Y ist kontinuierlich", correct = TRUE),
+    answer("Variable X ist diskret", correct = TRUE),
+    answer("Variable Y ist diskret"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r diskret}
+quiz(
+  question("Was sind diskrete Variablen?",
+    answer("Fehlversuch ja/nein", correct = TRUE),
+    answer("Körpergröße"),
+    answer("Gewicht"),
+    answer("Sprunghöhe"),
+    answer("Schulnoten", correct = TRUE),
+    answer("Sprintzeit"),
+    answer("Geschlecht", correct = TRUE),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r dummy}
+quiz(
+  question("Was passiert, wenn beispielsweise die `gruppe` (mit der Ausprägung: Leistungssport und Breitensport) als Prädiktor in ein lineares Modell aufgenommen wird?",
+    answer("Sie wird ignoriert"),
+    answer("Sie wird automatisch in Dummy-Variablen umgewandelt", correct = TRUE),
+    answer("Sie wird zu einer numerischen Variable skaliert"),
+    answer("Das Modell kann nicht berechnet werden"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+
+```
+
+
+```{r mr}
+quiz(
+  question("Worin besteht der Unterschied der multiplen Regression zur einfachen linearen Regression?",
+    answer("Sie verwendet mehrere Prädiktoren gleichzeitig zur Vorhersage des Outcomes.", correct = TRUE),
+    answer("Sie liefert immer dieselben Koeffizientenschätzungen wie mehrere einzelne einfache Regressionen."),
+    answer("Sie funktioniert nur mit kategorialen Variablen."),
+    answer("Sie kann nur einen einzigen Prädiktor verwenden."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 2
+
+Wie lautet die Formel für eine multiple lineare Regression, wenn "trainingsumfang" und "geschlecht" die Prädiktoren sind und das "gewicht" untersucht werden soll? (Schreibe die Lösung ohne Leerzeichen und in Kleinbuchstaben zwischen die Anführungszeichen, ohne Fehlerterm)
+
+```{r mrformel, exercise=TRUE, exercise.cap = "Text", exercise.lines = 1}
+""
+```
+
+```{r mrformel-solution}
+"gewicht=beta0+beta1*trainingsumfang+beta2*geschlecht+e"
+```
+
+```{r mrformel-check}
+grade_this({
+  if (.result %in% c("gewicht=b0+b1*trainingsumfang+b2*geschlecht+e","gewicht=b0+b1*geschlecht+b2*trainingsumfang+e","gewicht=beta0+beta1*geschlecht+beta2*trainingsumfang+e")) {
+      pass(praise = TRUE)
+} else {
+  fail(message = "Leider falsch.")
+}
+})
+```
+
+```{r b1}
+quiz(
+  question("In einem Regressionsmodell wird geschätzt: $Y=\\beta_0+\\beta_1X+\\beta_2Z+\\varepsilon$. Wie ist $\\beta_1$ in diesem Modell zu interpretieren?",
+    answer("Der durchschnittliche Effekt von X über alle Z-Werte"),
+    answer("Der Effekt von X auf Y, wenn Z=0", correct = TRUE),
+    answer("Der Effekt von X auf Y in Abhängigkeit von Z"),
+    answer("Der Effekt der Interaktion zwischen X und Z"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+## Beispiel multiple Regression
+
+### Aufgabe 3 
+
+Ein Sportverband möchte untersuchen, welche Faktoren die 100m-Sprintzeit von Athleten beeinflussen. Dazu wurden Daten von 68 Athleten folgende Daten erhoben: Trainingsumfang (Stunden/Woche), Körpergewicht (kg) sowie die Zugehörigkeit zur Trainingsgruppe (Leistungskader vs. Breitensport). Der Datensatz wurde in der Variable `daten` gespeichert.
+(Du kannst dir den Datensatz anzeigen lassen, indem du ihn in der ersten Antwortmöglichkeit mit „Run Code" ausgibst.)
+
+Fitte ein Modell mit allen Prädiktorvariablen und speichere dieses als Variable `mod` ab. Gebe dir anschließend die allgemeine Modellzusammenfassung mit der richtigen Funktion aus dem `broom` package aus.
+
+```{r mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r mod-solution}
+mod<-lm(zeit~training+gewicht+gruppe,data=daten)
+broom::glance(mod)
+```
+
+```{r mod-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r mod-check}
+task <- "Ein Sportverband möchte untersuchen, welche Faktoren die 100m-Sprintzeit von Athleten beeinflussen. Dazu wurden Daten von 68 Athleten folgende Daten erhoben: Trainingsumfang `training` (Stunden/Woche), Körpergewicht ´gewicht´ (kg) sowie die Zugehörigkeit zur Trainingsgruppe `gruppe` (Leistungskader vs. Breitensport). Der Datensatz wurde in der Variable `daten` gespeichert. Fitte ein Modell mit allen Prädiktorvariablen und speichere dieses als Variable `mod` ab. Gebe dir anschließend die allgemeine Modellzusammenfassung mit der richtigen Funktion aus dem `broom` package aus."
+
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+Gib den Koeffizienten für die Variable Trainingsumfang aus.
+```{r reg, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r reg-solution}
+cfs <- broom::tidy(mod)
+cfs$estimate[cfs$term == "training"]
+```
+
+```{r reg-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r reg-check}
+task <- "Ein Sportverband möchte untersuchen, welche Faktoren die 100m-Sprintzeit von Athleten beeinflussen. Dazu wurden Daten von 68 Athleten folgende Daten erhoben: Trainingsumfang (Stunden/Woche), Körpergewicht (kg) sowie die Zugehörigkeit zur Trainingsgruppe (Leistungskader vs. Breitensport). Der Datensatz wurde in der Variable `daten` gespeichert.
+Gib den Koeffizienten für die Variable Trainingsumfang aus."
+
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+
+### Aufgabe 4 Koeffizienten interpretieren
+
+```{r cf}
+quiz(
+  question("Interpretiere die Koeffizienten für den Trainingsumfang und vervollständige den Satz: Wenn der Trainingumfang um eine Einheit steigt, verändert sich die Sprintzeit um (1)_____, unter der Bedingung, dass die (2) _________ konstant bleiben.",
+    answer("(1) -0,14s  (2) anderen Variablen", correct= TRUE),
+    answer("(1) +0,14s  (2) anderen Variablen"),
+    answer("(1) -0,14s  (2) Residuen"),
+    answer("(1) -0,14s  (2) Messwerte aller Athleten"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r four}
+quiz(
+  question("Welche Aussage beschreibt den Koeffizienten der Dummy-Variable (gruppeLeistung) korrekt?",
+    answer("Wenn Gewicht und Trainingsumfang gleich 0 sind, laufen Leistungssportler eine Zeit von -0.67 Sekunden."),
+    answer("Leistungssportler laufen unter der Konstanthaltung von Trainingsumfang und Gewicht im Schnitt um 0.67 Sekunden schneller als Breitensportler.", correct = TRUE),
+    answer("Breitensportler laufen unter der Konstanthaltung von Trainingsumfang und Gewicht im Schnitt um 0.67 Sekunden schneller als Leistungssportler"),
+    answer("Der Koeffizient gibt die durchschnittliche Sprintzeit aller Leistungssportler an."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 5 Modell beurteilen
+Lasse dir die Zusammfassung deines gefittete Modells ausgeben.
+```{r zsmf, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r zsmf-solution}
+broom::glance(mod)
+```
+
+```{r zsmf-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r zsmf-check}
+task <- "Ein Sportverband möchte untersuchen, welche Faktoren die 100m-Sprintzeit von Athleten beeinflussen. Dazu wurden Daten von 68 Athleten folgende Daten erhoben: Trainingsumfang (Stunden/Woche), Körpergewicht (kg) sowie die Zugehörigkeit zur Trainingsgruppe (Leistungskader vs. Breitensport). Der Datensatz wurde in der Variable `daten` gespeichert.
+Lasse dir die Zusammfassung deines gefittete Modells ausgeben."
+
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+
+```{r fivetwo}
+quiz(
+  question("Was sagt der Residual Standard Error (sigma) aus?",
+    answer("Wie stark die Prädiktoren miteinander korrelieren"),
+    answer("Die durchschnittliche Abweichung der vorhergesagten von der tatsächlichen Sprintzeiten", correct = TRUE),
+    answer("Den Anteil der erklärten Varianz"),
+    answer("Der RSE Wert beträgt 0.28 und ist damit nicht signifikant."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r fivethree}
+quiz(
+  question("Welchen Wert aus aus der Zusammenfassung nutzt du am Besten, um zu beurteilen wie gut das multiple Regressionsmodell die Sprintzeit erklärt?",
+    answer("den RSE"),
+    answer("den adjustierten R²", correct = TRUE),
+    answer("den p-Wert zum F-Test"),
+    answer("den R²"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### 6 Koeffizienten interpretieren 
+
+Lasse dir die Prädiktoren deines gefittete Modells ausgeben. Nutze hierzu das `broom` package.
+
+```{r tidy, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupA"}
+
+```
+
+```{r tidy-solution}
+broom::tidy(mod)
+```
+
+```{r tidy-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r tidy-check}
+task <- "Lasse dir die Prädiktoren deines gefittete Modells ausgeben. Nutze hierzu das `broom` package."
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+
+```{r fivefour}
+quiz(
+  question("Welcher Prädiktor hat bei einer Änderung um eine Einheit den stärksten Einfluss auf die Sprintzeit und warum?",
+    answer("Der Intercept, weil sein Koeffizient den größten Absolutwert hat "),
+    answer("Die Gruppe, weil sein Koeffizient den größten Absolutwert hat", correct = TRUE),
+    answer("Training, weil er den kleinsten p-Wert hat"),
+    answer("Gewicht, weil es einen positiven Koeffizienten hat und die Sprintzeit erhöht"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+Bestimme die Koeffizienten mit der entsprechenden Funktion aus dem `broom` package und weise ihnen je einer Variable zu (beta0, beta1, beta2, beta3). Gebe anschließend alle Variablen einzeln aus.
+
+```{r coef, exercise=TRUE, exercise.lines = 5, exercise.setup = "setupA"}
+
+```
+
+```{r coef-solution}
+cfs <- broom::tidy(mod)
+beta0 <- cfs$estimate[1]
+beta1 <- cfs$estimate[2]
+beta2 <- cfs$estimate[3]
+beta3 <- cfs$estimate[4]
+beta0
+beta1
+beta2
+beta3
+```
+
+```{r coef-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r coef-check}
+task <- "Bestimme die Koeffizienten mit der entsprechenden Funktion aus dem `broom` package und weise ihnen je einer Variable zu (beta0, beta1, beta2, beta3). Gebe anschließend alle Variablen einzeln aus."
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+
+Zwei Athleten sind beide im Breitensport, wiegen beide 70kg, trainieren aber unterscheidlich viel: Athlet A trainiert 5h/Woche, Athlet B trainiert 10h/Woche. Um wie viel Sekunden unterscheiden sich ihre vorhergesagten Sprintzeiten laut Modell?
+
+```{r ten}
+quiz(
+  question("Zwei Athleten sind beide im Breitensport, wiegen beide 70kg, trainieren aber unterschiedlich viel: Athlet A trainiert 5h/Woche, Athlet B trainiert 10h/Woche. Um wie viele Sekunden unterscheiden sich ihre vorhergesagten Sprintzeiten laut Modell?",
+    answer("Athlet B läuft 0,135s schneller als Athlet A"),
+    answer("Athlet B läuft 0,049s schneller als Athlet A"),
+    answer("Athlet B läuft 0,5s schneller als Athlet A", correct = TRUE),
+    answer("Athlet B läuft 0,1s schneller als Athlet A"),
+    answer("Athlet A läuft 1,36s schneller als Athlet B"),
+    allow_retry = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r tentwo}
+quiz(
+  question("Interpretiere den Koeffizienten `gruppeLeistung`.",
+    answer("Athleten im Leistungskader laufen im Durchschnitt 0,94s schneller als Athleten im Breitensport, die gleich viel wiegen und trainieren.", correct = TRUE),
+    answer("Athleten im Leistungskader laufen im Durchschnitt 0,94s langsamer als Athleten im Breitensport, die gleich viel wiegen und trainieren."),
+    answer("Athleten im Leistungskader laufen im Durchschnitt 0,67s schneller als Athleten im Breitensport."),
+    answer("Wenn ein Athlet in die Leistungsgruppe wechselt, verbessert sich seine Zeit automatisch um 0,94s."),
+    answer("Athleten in der Gruppe Breitensport laufen im Durchschnitt 0,12s schneller als Athleten in der Leistungsgruppe, die gleich viel wiegen und trainieren."),
+    allow_retry = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r tenthree}
+quiz(
+  question("Welche Aussage interpretiert den Koeffizienten `gewicht` korrekt?",
+    answer("Ein Athlet, der 1kg mehr wiegt aber den gleichen Trainingsumfang in derselben Gruppe absolviert, läuft im Durchschnitt um 0,057s langsamer.", correct = TRUE),
+    answer("Ein Athlet, der 1kg mehr wiegt aber den gleichen Trainingsumfang in derselben Gruppe absolviert, läuft im Durchschnitt um 0,057s schneller."),
+    answer("Das Körpergewicht hat keinen relevanten Einfluss auf die Sprintzeit, da der Koeffizient mit 0,057 sehr klein ist"),
+    answer("Wenn ein Athlet 0,057 kg zunimmt, verschlechtert sich seine Sprintzeit um 0,01s."),
+    allow_retry = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 7
+
+Erstelle nun 2 weitere Modelle (je eins nur mit Gruppe, nur mit Training und nur mit Gewicht). Nenne diese: `mod_gruppe`, `mod_training` und `mod_gewicht`und lasse dir diese ausgeben. Nutze zur Ausgabe eine Funktion des `broom` packages.
+
+```{r mo, exercise=TRUE, exercise.lines = 3}
+
+```
+
+```{r mo-solution}
+mod_gruppe <- lm(zeit ~ gruppe, data= daten)
+mod_training <- lm(zeit ~ training, data= daten)
+mod_gewicht <- lm(zeit ~ gewicht, data= daten)
+broom::glance(mod_gruppe)
+broom::glance(mod_training)
+broom::glance(mod_gewicht)
+```
+
+```{r mo-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r mo-check}
+task <- "Erstelle nun 2 weitere Modelle (je eins nur mit Gruppe, nur mit Training und nur mit Gewicht). Nenne diese: `mod_gruppe`, `mod_training` und `mod_gewicht`und lasse dir diese ausgeben. Nutze zur Ausgabe eine Funktion des `broom` packages."
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+
+```{r sixone}
+quiz(
+  question("Woran erkennt man, welches Modell besser ist?",
+    answer("Am kleineren R²"),
+    answer("Am größeren R²", correct = TRUE),
+    answer("An der Anzahl der Prädiktoren"),
+    answer("Am größeren sigma"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r sixtwo}
+quiz(
+  question("Welches der einfachen Modelle fitted die Daten am besten?",
+    answer("`mod_training`", correct = TRUE),
+    answer("`mod_gewicht`"),
+    answer("`mod_gruppe`"),
+    answer("Alle gleich gut"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+
+```{r sixthree}
+quiz(
+  question("Warum verwendet man bei einer multiplen Regression das adjustierte R² statt des normalen R²?",
+    answer("Weil es immer größer ist als R²"),
+    answer("Weil es die Anzahl der Prädiktoren berücksichtigt", correct = TRUE),
+    answer("Weil es einfacher zu berechnen ist"),
+    answer("Weil es nur für einfache Regression gilt"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+## Voraussetzungen und Vorhersagen
+
+### Aufgabe 8 Voraussetzungen
+
+```{r sevenone}
+quiz(
+  question("Welche der folgenden Aussagen beschreibt Homoskedastizität korrekt?",
+    answer("Die Residuen sind alle gleich null"),
+    answer("Die Prädiktoren korrelieren nicht miteinander"),
+    answer("Die Varianz der Residuen ist für alle Werte der Prädiktoren konstant", correct = TRUE),
+    answer("Der Erwartungswert der Residuen ist größer als null"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r seventwo}
+quiz(
+  question("Welches grafische Werkzeug eignet sich zur Prüfung der Normalverteilung der Residuen?",
+    answer("Balkendiagramm der Prädiktoren"),
+    answer("Streudiagramm von X gegen Y"),
+    answer("QQ-Plot der Residuen", correct = TRUE),
+    answer("Boxplot der abhängiggen Variable"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r seventhree}
+quiz(
+  question("Was deutet im Residuenplot auf eine Verletzung der Linearitätsannahme hin?",
+    answer("Eine zufällige, gleichmäßige Streuung um die Nulllinie"),
+    answer("Ein erkennbares Muster in den Residuen",correct = TRUE),
+    answer("Alle Residuen liegen exakt auf der Nulllinie"),
+    answer("Eine breite, gleichmäßige Streuung ohne Muster"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r sevenfour}
+quiz(
+  question("Ab welchem VIF-Wert spricht man von einer problematischen Multikollinearität?",
+    answer("VIF > 1"),
+    answer("VIF > 10",correct = TRUE),
+    answer("VIF > 3"),
+    answer("VIF < 1"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r sevenfive}
+quiz(
+  question("Was ist ein Problem bei einer hohen Multikollinearität?",
+    answer("Das Modell kann nicht berechnet werden"),
+    answer("Koeffizienten werden instabil", correct = TRUE),
+    answer("R² wird kleiner"),
+    answer("Residuen werden null"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r sevensix}
+quiz(
+  question("Mit welchem Befehl kann man die Voraussetzungen alle gleichzeitig grafisch in R überprüfen?",
+    answer("stats::vif(mod)"),
+    answer("performance::check_model(mod)",correct = TRUE),
+    answer("base::plot(mod)"),
+    answer("lm(mod)"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 9 
+Überprüfe die Voraussetzungen grafisch. (Beachte, dass du in diesem Tutorial ausnahmsweise das Argument `panel = FALSE` sowie hinter der Funtion ` |> plot()` nutzen musst, damit die Grafiken einzeln in der Vorschau angezeigt werden.)
+
+```{r assum, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r assum-solution}
+performance::check_model(mod, panel = FALSE) |> plot()
+```
+
+```{r assum-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r assum-check}
+task <- "Überprüfe die Voraussetzungen grafisch. (Beachte, dass du in diesem Tutorial ausnahmsweise das Argument `panel = FALSE` sowie hinter der Funtion ` |> plot()` nutzen musst, damit die Grafiken einzeln in der Vorschau angezeigt werden.)"
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+
+```{r eight}
+quiz(
+  question("Welche Voraussetzungen sind für den vorliegenden Datensatz erfüllt?",
+    answer("PPC check zeigt keine Probleme",correct = TRUE),
+    answer("Linearität",correct = TRUE),
+    answer("keine Ausreißer",correct = TRUE),
+    answer("geringe Multikollinearität",correct = TRUE),
+    answer("Normalverteilung der Residuen",correct = TRUE),
+    answer("Homoskedastizität",correct = TRUE),
+    allow_retry = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 10 Vorhersage
+
+Erstelle eine Person "p1" die 73kg wiegt, 12h/Woche trainiert und in der Gruppe Leistungssport trainiert.
+Sage anschließend ihre Sprintzeit vorher. 
+
+```{r pred, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupA"}
+
+```
+
+```{r pred-solution}
+p1 <- data.frame(training = 12 , gewicht = 73 , gruppe= "Leistung")
+predict(mod,p1)
+```
+
+```{r pred-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r pred-check}
+task <- "Erstelle eine Person p1 die 73kg wiegt, 12h/Woche trainiert und in der Gruppe Leistungssport trainiert.
+Sage anschließend ihre Sprintzeit vorher."
+grade_this({
+  if (identical(.user_code, .solution_code)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+
+Ein Athlet aus dem Breitensport möchte sich für einen Wettkampf anmelden. Er trainiert 5h/Woche und wiegt 64 kg. 
+Zwischen welchen Zeiten wird dieser Athlet vorraussichtlich sprinten? Nennen diesen Athleten "p2".
+
+```{r predtwo, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupA"}
+
+```
+
+```{r predtwo-solution}
+p2 <- data.frame(training = 5 , gewicht = 64 , gruppe= "Breitensport")
+predict(mod,p2,interval="prediction")
+```
+
+```{r predtwo-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r predtwo-check}
+task <- "Ein Athlet aus dem Breitensport möchte sich für einen Wettkampf anmelden. Er trainiert 5h/Woche und wiegt 64 kg. 
+Zwischen welchen Zeiten wird dieser Athlet vorraussichtlich sprinten? Nennen diesen Athleten p2."
+grade_this({
+  if (identical(.user_code, .solution_code)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+### Geschafft!
+
+
+Herzlichen Glückwunsch, du hast die Lektion zum Thema multiple lineare Regression erfolgreich abgeschlossen! In der nächsten Lektion schauen wir auf die logistische Regression.
+
+Falls du noch Zeit hast, kannst du hier weiter mit dem Datensatz experimentieren, weitere Grafiken erstellen oder neue Modelle fitten. Viel Spaß dabei!
+
+```{r sandbox, exercise=TRUE, exercise.lines = 10}
+
+```
