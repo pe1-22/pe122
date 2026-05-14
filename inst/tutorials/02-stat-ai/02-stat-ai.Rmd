@@ -614,7 +614,7 @@ quiz(
 ### Aufgabe 9 
 Überprüfe die Voraussetzungen grafisch. (Beachte, dass du in diesem Tutorial ausnahmsweise das Argument `panel = FALSE` sowie hinter der Funtion ` |> plot()` nutzen musst, damit die Grafiken einzeln in der Vorschau angezeigt werden.)
 
-```{r assum, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+```{r assum, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3,exercise.setup = "setupA"}
 
 ```
 
