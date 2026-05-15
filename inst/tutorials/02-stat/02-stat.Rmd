@@ -17,7 +17,7 @@ tutorial_options(
 )
 
 set.seed(43)
-n <- 100
+n <- 68
 
 daten <- data.frame(
   id = 1:n,
@@ -35,11 +35,10 @@ daten$zeit <- 13.5 +
   (-0.8 * (daten$gruppe == "Leistung")) +
   rnorm(n, mean = 0, sd = 0.3)
 
-
 ```
 
 ```{r setupA}
-mod <- lm(zeit ~ gruppe + training, data = daten)
+mod <- lm(zeit ~ training + gewicht + gruppe, data = daten)
 ```
 
 
@@ -155,19 +154,20 @@ quiz(
 Ein Sportverband möchte untersuchen, welche Faktoren die 100m-Sprintzeit von Athleten beeinflussen. Dazu wurden Daten von 68 Athleten folgende Daten erhoben: Trainingsumfang (Stunden/Woche), Körpergewicht (kg) sowie die Zugehörigkeit zur Trainingsgruppe (Leistungskader vs. Breitensport). Der Datensatz wurde in der Variable `daten` gespeichert.
 (Du kannst dir den Datensatz anzeigen lassen, indem du ihn in der ersten Antwortmöglichkeit mit „Run Code" ausgibst.)
 
-Aufgabe: Fitte ein Modell mit allen Prädiktorvariablen.
+Fitte ein Modell mit allen Prädiktorvariablen und speichere dieses als Variable `mod` ab. Gib die Variable anschließend aus.
 
 ```{r mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
 
 ```
 
 ```{r mod-solution}
-mod<-lm(zeit~gruppe+training+gewicht,data=daten)
+mod<-lm(zeit~training+gewicht+gruppe,data=daten)
+mod
 ```
 
 ```{r mod-check}
 grade_this({
-  if (all.equal(.result, .solution)) {
+  if (all.equal(unlist(.result), unlist(.solution))) {
     pass(praise = TRUE)
   } else {
     fail(message = "Leider falsch.")
@@ -176,7 +176,7 @@ grade_this({
 ```
 
 Gib den Koeffizienten für die Variable Trainingsumfang aus.
-```{r reg, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+```{r reg, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupA"}
 
 ```
 
@@ -200,10 +200,10 @@ grade_this({
 ```{r cf}
 quiz(
   question("Interpretiere die Koeffizienten für den Trainingsumfang und vervollständige den Satz: Wenn der Trainingumfang um eine Einheit steigt, verändert sich die Sprintzeit um (1)_____, unter der Bedingung, dass die (2) _________ konstant bleiben.",
-    answer("(1) -0,14s  (2) anderen Variablen", correct= TRUE),
-    answer("(1) +0,14s  (2) anderen Variablen"),
-    answer("(1) -0,14s  (2) Residuen"),
-    answer("(1) -0,14s  (2) Messwerte aller Athleten"),
+    answer("(1) -0,11s  (2) anderen Variablen", correct= TRUE),
+    answer("(1) +0,11s  (2) anderen Variablen"),
+    answer("(1) -0,11s  (2) Residuen"),
+    answer("(1) -0,11s  (2) Messwerte aller Athleten"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -215,9 +215,9 @@ quiz(
 ```{r four}
 quiz(
   question("Welche Aussage beschreibt den Koeffizienten der Dummy-Variable (gruppeLeistung) korrekt?",
-    answer("Wenn Gewicht und Trainingsumfang gleich 0 sind, laufen Leistungssportler eine Zeit von -0.67 Sekunden."),
-    answer("Leistungssportler laufen unter der Konstanthaltung von Trainingsumfang und Gewicht im Schnitt um 0.67 Sekunden schneller als Breitensportler.", correct = TRUE),
-    answer("Breitensportler laufen unter der Konstanthaltung von Trainingsumfang und Gewicht im Schnitt um 0.67 Sekunden schneller als Leistungssportler"),
+    answer("Wenn Gewicht und Trainingsumfang gleich 0 sind, laufen Leistungssportler eine Zeit von -0.94 Sekunden."),
+    answer("Leistungssportler laufen unter der Konstanthaltung von Trainingsumfang und Gewicht im Schnitt um 0.94 Sekunden schneller als Breitensportler.", correct = TRUE),
+    answer("Breitensportler laufen unter der Konstanthaltung von Trainingsumfang und Gewicht im Schnitt um 0.94 Sekunden schneller als Leistungssportler"),
     answer("Der Koeffizient gibt die durchschnittliche Sprintzeit aller Leistungssportler an."),
     allow_retry = TRUE,
     random_answer_order = TRUE,
@@ -229,7 +229,7 @@ quiz(
 
 ### Aufgabe 5 Modell beurteilen
 Lasse dir die Zusammfassung deines gefittete Modells ausgeben.
-```{r zsmf, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+```{r zsmf, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3,exercise.setup = "setupA"}
 
 ```
 
@@ -253,7 +253,7 @@ quiz(
     answer("Wie stark die Prädiktoren miteinander korrelieren"),
     answer("Die durchschnittliche Abweichung der vorhergesagten von der tatsächlichen Sprintzeiten", correct = TRUE),
     answer("Den Anteil der erklärten Varianz"),
-    answer("Der RSE Wert beträgt 0.28 und ist damit nicht signifikant."),
+    answer("Der RSE Wert beträgt 0.33 und ist damit nicht signifikant."),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -264,7 +264,7 @@ quiz(
 
 ```{r fivethree}
 quiz(
-  question("Welchen Wert aus aus der Zusammenfassung nutzt du am ehesten, um zu beurteilen wie gut das multiple Regressionsmodell die Sprintzeit erklärt?",
+  question("Welchen Wert aus der Zusammenfassung nutzt du am ehesten, um zu beurteilen wie gut das multiple Regressionsmodell die Sprintzeit erklärt?",
     answer("den RSE"),
     answer("den adjustierten R²", correct = TRUE),
     answer("den p-Wert zum F-Test"),
@@ -281,7 +281,7 @@ quiz(
 
 Lasse dir die Prädiktoren deines gefittete Modells ausgeben. Nutze hierzu das `broom` package.
 
-```{r tidy, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+```{r tidy, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3,exercise.setup = "setupA"}
 
 ```
 
@@ -315,60 +315,31 @@ quiz(
 )
 ```
 
-Bestimme die Koeffizienten mit der entsprechenden Funktion aus dem `broom` package und weise ihnen je einer Variable zu (beta0, beta1, beta2, beta3). Gebe anschließend alle Variablen einzeln aus.
-
-```{r coef, exercise=TRUE, exercise.lines = 5,exercise.setup = "setupA"}
-
-```
-
-```{r coef-solution}
-cfs <- broom::tidy(mod)
-beta0 <- cfs$estimate[1]
-beta1 <- cfs$estimate[2]
-beta2 <- cfs$estimate[3]
-beta3 <- cfs$estimate[4]
-beta0
-beta1
-beta2
-beta3
-```
-
-```{r coef-check}
-grade_this({
-  if (identical(.result, .solution)) {
-    pass(praise = TRUE)
-  } else {
-    fail(message = "Leider falsch.")
-  }
-})
-```
-
-Zwei Athleten sind beide im Breitensport, wiegen beide 70kg, trainieren aber unterscheidlich viel: Athlet A trainiert 5h/Woche, Athlet B trainiert 10h/Woche. Um wie viel Sekunden unterscheiden sich ihre vorhergesagten Sprintzeiten laut Modell?
+<!-- Zwei Athleten sind beide im Breitensport, wiegen beide 70kg, trainieren aber unterscheidlich viel: Athlet A trainiert 5h/Woche, Athlet B trainiert 10h/Woche. Um wie viel Sekunden unterscheiden sich ihre vorhergesagten Sprintzeiten laut Modell? -->
 
 ```{r ten}
-quiz(
-  question("Zwei Athleten sind beide im Breitensport, wiegen beide 70kg, trainieren aber unterscheidlich vile: Athlet A trainiert 5h/Woche, Athlet B trainiert 10h/Woche. Um wie viel Sekunden unterscheiden sich ihre vorhergesagten Sprintzeiten laut Modell?",
-    answer("Athlet B läuft 0,135s schneller als Athlet A"),
-    answer("Athlet B läuft 0,049s schneller als Athlet A"),
-    answer("Athlet B läuft 0,675s schneller als Athlet A", correct = TRUE),
-    answer("Athlet B läuft 1,35s schneller als Athlet A"),
-    answer("Athlet A läuft 13,64s schneller als Athlet B"),
-    answer("Homoskedastizität",correct = TRUE),
-    allow_retry = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
+# quiz(
+#   question("Zwei Athleten sind beide im Breitensport, wiegen beide 70kg, trainieren aber unterscheidlich viel: Athlet A trainiert 5h/Woche, Athlet B trainiert 10h/Woche. Um wie viel Sekunden unterscheiden sich ihre vorhergesagten Sprintzeiten laut Modell?",
+#     answer("Athlet B läuft 0,135s schneller als Athlet A"),
+#     answer("Athlet B läuft 0,049s schneller als Athlet A"),
+#     answer("Athlet B läuft 0,69s schneller als Athlet A", correct = TRUE),
+#     answer("Athlet B läuft 1,35s schneller als Athlet A"),
+#     answer("Athlet A läuft 13,64s schneller als Athlet B"),
+#     allow_retry = TRUE,
+#     incorrect = "Leider falsch.",
+#     correct = random_praise()
+#   )
+# )
 ```
 
 ```{r tentwo}
 quiz(
   question("Interpretiere den Koeffizienten `gruppeLeistung`.",
-    answer("Athleten im Leistungskader laufen im Durchschnitt 0,667s schneller als Athleten im Breitensport, die gleich viel wiegen und trainieren.", correct = TRUE),
-    answer("Athleten im Leistungskader laufen im Durchschnitt 0,667s langsamer als Athleten im Breitensport, die gleich viel wiegen und trainieren."),
-    answer("Athleten im Leistungskader laufen im Durchschnitt 0,667s schneller als Athleten im Breitensport."),
-    answer("Wenn ein Athlet in die Leistungsgruppe wechselt, verbessert sich seine Zeit automatisch um 0,667s."),
-    answer("Athleten in der Gruppe Breitensport laufen im Durchschnitt 0,667s schneller als Athleten in der Leistungsgruppe, die gleich viel wiegen und trainieren."),
+    answer("Athleten im Leistungskader laufen im Durchschnitt 0,61s schneller als Athleten im Breitensport, die gleich viel wiegen und trainieren.", correct = TRUE),
+    answer("Athleten im Leistungskader laufen im Durchschnitt 0,61s langsamer als Athleten im Breitensport, die gleich viel wiegen und trainieren."),
+    answer("Athleten im Leistungskader laufen im Durchschnitt 0,61s schneller als Athleten im Breitensport."),
+    answer("Wenn ein Athlet in die Leistungsgruppe wechselt, verbessert sich seine Zeit automatisch um 0,61s."),
+    answer("Athleten in der Gruppe Breitensport laufen im Durchschnitt 0,61s schneller als Athleten in der Leistungsgruppe, die gleich viel wiegen und trainieren."),
     allow_retry = TRUE,
     incorrect = "Leider falsch.",
     correct = random_praise()
@@ -393,7 +364,7 @@ quiz(
 ### Aufgabe 7
 
 Erstelle nun 2 weitere Modelle (je eins nur mit Gruppe, nur mit Training und nur mit Gewicht). Nenne diese: `mod_gruppe`, `mod_training` und `mod_gewicht`und lasse dir diese ausgeben. 
-```{r mo, exercise=TRUE, exercise.lines = 3}
+```{r mo, exercise=TRUE, exercise.lines = 6}
 
 ```
 
@@ -558,24 +529,10 @@ quiz(
 ```
 
 ### Aufgabe 9 
-Überprüfe die Voraussetzungen grafisch. (Beachte, dass du in diesem Tutorial ausnahmsweise das Argument `panel = FALSE` sowie hinter der Funtion ` |> plot()` nutzen musst, damit die Grafiken einzeln in der Vorschau angezeigt werden.)
+Überprüfe die Voraussetzungen grafisch. (Beachte, dass du in diesem Tutorial ausnahmsweise das Argument `panel = FALSE` sowie hinter der Funktion ` |> plot()` nutzen musst, damit die Grafiken einzeln in der Vorschau angezeigt werden.)
 
-```{r assum, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+```{r assum, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3,exercise.setup = "setupA"}
 
-```
-
-```{r assum-solution}
-performance::check_model(mod, panel = FALSE) |> plot()
-```
-
-```{r assum-check}
-grade_this({
-  if (identical(.user_code, .solution_code)) {
-    pass(praise = TRUE)
-  } else {
-    fail(message = "Leider falsch.")
-  }
-})
 ```
 
 
@@ -600,7 +557,7 @@ quiz(
 Erstelle eine Person "p1" die 73kg wiegt, 12h/Woche trainiert und in der Gruppe Leistungssport trainiert.
 Sage anschließend ihre Sprintzeit vorher. 
 
-```{r pred, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+```{r pred, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3,exercise.setup = "setupA"}
 
 ```
 
@@ -611,7 +568,7 @@ predict(mod,p1)
 
 ```{r pred-check}
 grade_this({
-  if (identical(.user_code, .solution_code)) {
+  if (identical(.result, .solution)) {
     pass(praise = TRUE)
   } else {
     fail(message = "Leider falsch.")
@@ -623,7 +580,7 @@ grade_this({
 Ein Athlet aus dem Breitensport möchte sich für einen Wettkampf anmelden. Er trainiert 5h/Woche und wiegt 64 kg. 
 Zwischen welchen Zeiten wird dieser Athlet vorraussichtlich sprinten? Nennen diesen Athleten "p2".
 
-```{r predtwo, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+```{r predtwo, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3,exercise.setup = "setupA"}
 
 ```
 
@@ -634,7 +591,7 @@ predict(mod,p2,interval="prediction")
 
 ```{r predtwo-check}
 grade_this({
-  if (identical(.user_code, .solution_code)) {
+  if (identical(.result, .solution)) {
     pass(praise = TRUE)
   } else {
     fail(message = "Leider falsch.")
