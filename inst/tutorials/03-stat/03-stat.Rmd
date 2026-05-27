@@ -16,6 +16,34 @@ tutorial_options(
   exercise.reveal_solution = FALSE,
   exercise.checker = gradethis::gradethis_exercise_checker
 )
+
+ ###########   03  Logistische Regression  ##########
+
+set.seed(99)
+n <- 90
+
+
+daten <- data.frame(
+  alter         = round(runif(n, 18, 38)),
+  trainingsload = round(rnorm(n, mean = 35, sd = 10)),   # km/Woche
+  schlaf        = round(runif(n, 4, 9), 1),
+  position      = factor(sample(c("Stürmer", "Verteidiger", "Mittelfeld"), n, replace = TRUE))
+)
+
+
+daten$verletzt <- rbinom(n, 1, 
+  plogis(-5 + 0.12 * daten$alter + 
+         0.11 * daten$trainingsload - 
+         0.60 * daten$schlaf + 
+         1.50 * (daten$position == "Stürmer"))
+)
+
+
+```
+
+```{r setupA}
+mod <- glm(verletzt ~ alter + trainingsload + schlaf + position,
+           data = daten, family = binomial)
 ```
 
 ## Logistische Regression 
@@ -43,6 +71,23 @@ quiz(
     answer("Y kontinuierlich, X kontinuierlich.", message = "Das entspricht der linearen Regression."),
     answer("Y kontinuierlich, X diskret."),
     answer("Y diskret, X muss normalverteilt sein."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+
+```{r onetwo}
+quiz(
+  question("Was ist die allgemeine Formel für die multiple logistische Regression mit mehreren Prädiktoren?",
+    answer("Logit(p) = $\\beta_0$ + $\\beta_1$*X1 + $\\beta_2$*X2 + 
+      $\\beta_3$*X3 + ...", correct = TRUE),
+    answer("Logit(p) = $\\beta_0$ · $\\beta_1$*X1 · $\\beta_2$*X2  · $\\beta_3$*X3"),
+    answer("Logit(p) = $\\beta_1$*x₁ + $\\beta_2$*X2  + $\\beta_3$*X3"),
+    answer("Logit(p) = $\\beta_0$ + $\\beta_1$/x₁ + $\\beta_2$/X2 "),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -226,6 +271,26 @@ grade_this({
 ```
 
 
+Lasse dir nun die Skala in Odds ausgeben. Nutez hierzu die richtige Funktion aus dem `broom` package.
+
+```{r modfit, exercise=TRUE, exercise.cap = "Modell fitten", exercise.lines = 3, exercise.setup = "setupA"}
+
+```
+
+```{r modfit-solution}
+broom::tidy(mod, exponentiate = TRUE, conf.int = TRUE)
+```
+
+```{r modfit-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.Tipp: Nutze glm()")
+  }
+})
+```
+
 ```{r signif}
 quiz(
   question("Welche Prädiktoren sind im Modell signifikant (bei α = 0.05)?",
@@ -260,10 +325,74 @@ quiz(
 )
 ```
 
-### Aufgabe 5 prediction 
+
+### Aufagbe 5 Koeffizienten interpretieren 
+
+``` {r koef_int}
+quiz(
+  question("Wie interpretierst du einen positiven Koeffizienten in der logistischen Regression?",
+    answer("Die Wahrscheinlichkeit des Ereignisses steigt", correct = TRUE),
+    answer("Das Ereignis tritt sicher ein"),
+    answer("Die Residuen werden größer"),
+    answer("Der Zusammenhang ist automatisch kausal"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r koef_int_two}
+quiz(
+  question("Was vergleicht der Koeffizient für 'position' im Modell?",
+    answer("Die durchschnittliche Verletzungswahrscheinlichkeit von Stürmern und Verteidigern bei gleichen übrigen Variablen", correct = TRUE),
+    answer("Die absolute Anzahl der Verletzungen in beiden Gruppen"),
+    answer("Die Schlafdauer der beiden Gruppen"),
+    answer("Die gesamte Trainingsbelastung beider Spieler"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+
+```{r ref_kat}
+quiz(
+  question("Welche Aussage zur Referenzkategorie ist korrekt?",
+    answer("Die Referenzkategorie ist die Gruppe, mit der alle anderen Kategorien verglichen werden", correct = TRUE),
+    answer("Die Referenzkategorie ist immer die numerisch größte Kategorie"),
+    answer("Die Referenzkategorie wird aus dem Datensatz gelöscht"),
+    answer("Die Referenzkategorie ist immer 'Stürmer'"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r schlaf_koef}
+quiz(
+  question("Was passiert mit der geschätzten Wahrscheinlichkeit, wenn die Schlafdauer steigt und alle anderen Variablen konstant bleiben?",
+    answer("Die Verletzungswahrscheinlichkeit sinkt",correct = TRUE),
+    answer("Die Verletzungswahrscheinlichkeit sinkt "),
+    answer("Die Verletzungswahrscheinlichkeit bleibt gleich"),
+    answer("Die Schlafdauer hat keinen Einfluss auf die  Verletzungswahrscheinlichkeit"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufgabe 6 prediction 
 Wie hoch ist das Risiko für einen 28 jährigen Athleten, der einen Trainingsumfang von 42km/Woche und eine Schlafdauer von 5.5h pro Nacht hat, sich zu verletzen? Berechne den Log_Odd und nutze hierzu die richtige Funktion aus dem `insight` package.
 
-```{r pred, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3}
+```{r pred, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
 
 ```
 
@@ -284,7 +413,7 @@ grade_this({
 
 Berechne nun für den selben Athleten `p1` die Wahrscheinlichkeit sich zu verletzen. Nutze hierzu wieder die richtige Funktion aus dem `insight` package.
 
-```{r pred, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3}
+```{r pred, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
 
 ```
 
@@ -303,8 +432,191 @@ grade_this({
 })
 ```
 
-### Aufgabe 6 Modellqualität 
 
+### Aufgabe 7 Modellqualität 
+``` {r adjusted_r}
+quiz(
+  question("Warum ist das gewöhnliche R² bei logistischer Regression nicht die Standardlösung?",
+    answer("Weil das Outcome binär ist und kein lineares Modell vorliegt", correct = TRUE),
+    answer("Weil R² nur für kleine Stichproben gilt"),
+    answer("Weil R² immer 1 ist"),
+    answer("Weil `glm()` kein R² berechnen kann"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+Bewerte die Modellqualität deines logistischen Regressionsmodells durch einen Abgleich von Vorhersage und Realität. Erstelle eine Konfusionsmatrix mit einem Cutoff-Wert von 0.5. Nutze hierzu die richtige Funktion aus dem `insight`package.
+
+```{r konfmatr, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
+
+```
+
+```{r konfmatr-solution}
+mod$pred <- insight::get_predicted(mod, predict = "classification")
+xtabs(~ mod$pred + mod$y)
+
+```
+
+```{r konfmatr-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
+``` {r true-neg}
+quiz(
+  question("Wie viele Spieler wurden korrekt als nicht verletzt vorhergesagt (True Negatives)?",
+    answer("9"),
+    answer("7"),
+    answer("59", correct = TRUE),
+    answer("15"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+``` {r false-neg}
+quiz(
+  question("Wie viele verletzte Spieler wurden fälschlicherweise als nicht verletzt klassifiziert (False Negatives)?",
+    answer("9",correct = TRUE),
+    answer("7"),
+    answer("59"),
+    answer("15"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+``` {r false-pos}
+quiz(
+  question("Wie viele nicht verletzte Spieler wurden fälschlicherweise als verletzt klassifiziert (False Positives)?",
+    answer("9"),
+    answer("7",correct = TRUE),
+    answer("59"),
+    answer("15"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+``` {r true-pos}
+quiz(
+  question("Wie viele Spieler wurden insgesamt korrekt klassifiziert (True Positives + True Negatives)?",
+    answer("34"),
+    answer("74",correct = TRUE),
+    answer("64"),
+    answer("59"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Aufagbe 8 Sensitiviy, Accuracy, Specifity
+Erstelle nun eine Konfusionsmatrix mit der dazugehörigen Statistik. Nutze hierfür die Funktion aus dem `caret`package.
+
+```{r konfmatr_stat, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
+
+```
+
+```{r konfmatr_stat-solution}
+caret::confusionMatrix(
+  factor(mod$pred, levels = c(0,1)),
+  factor(mod$y, levels = c(0,1))
+)
+
+```
+
+```{r konfmatr_stat-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
+``` {r interpret_ssa}
+quiz(
+  question("Welche Kennzahl ist besonders wichtig, wenn verletzte Spieler möglichst nicht übersehen werden sollen?",
+    answer("hohe Sensitivity", correct = TRUE),
+    answer("hohe Specificity"),
+    answer("hohe Accuracy"),
+    answer("niedrige Sensitivity"),
+    answer("niedrige Specificity"),
+    answer("niedrige Accuracy"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+``` {r anwendung_ssa}
+quiz(
+  question("Ein Sportarzt möchte vermeiden, dass gesunde Spieler fälschlicherweise als verletzt eingestuft werden. Welche Kennzahl sollte er besonders beachten?",
+    answer("Sensitivity"),
+    answer("Specificity", correct = TRUE),
+    answer("Accuracy"),
+    answer("Keine der Kennzahlen"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+``` {r interpret_ssa_two}
+quiz(
+  question("Was passiert, wenn der Cutoff-Wert von 0.5 auf 0.3 geseknt wird?",
+    answer("Sensitivity steigt, Specificity sinkt", correct = TRUE),
+    answer("Sensitivity sinkt, Specificity steigt"),
+    answer("Sensitivity und Specificity steigen beide"),
+    answer("Sensitivity und Specificity sinken beide"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+``` {r interpret_ssa_three}
+quiz(
+  question("Warum kann eine hohe Accuracy allein irreführend sein?",
+    answer("Weil sie bei unausgeglichenen Klassen hoch sein kann, obwohl eine Klasse fast vollständig falsch klassifiziert wird", correct = TRUE),
+    answer("Weil Accuracy bei Sensitivity = 0.625 und Specificity = 0.894 automatisch falsch ist"),
+    answer("Weil Accuracy den Trade-off zwischen Sensitivity und Specificity ignoriert und von der Klassenverteilung abhängt", correct = TRUE),
+    answer("Weil Accuracy nur für binäre Outcomes gilt und keine Vorhersagekraft hat"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
 
 
 ### Geschafft!
