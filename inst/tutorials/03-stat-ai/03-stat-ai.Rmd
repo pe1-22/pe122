@@ -36,6 +36,21 @@ daten$verletzt <- rbinom(n, 1,
          1.50 * (daten$position == "Stürmer"))
 )
 
+# AI setup
+library(ollamar)
+ollamar::pull("gpt-oss:120b-cloud")
+model <- "gpt-oss:120b-cloud"
+ai_feedback <- function(response, question, correct) {
+  text <- paste0("You are a helpful instructor to a data science course. You are giving feedback on a task given to a student. The question was '", question, "' and the student incorrectly responded with '", response, "'. The correct answer was: '", correct, "'. Provide a very short and helpful feedback, but make sure to never ever give the full solution. Only provide the feedback message as output.")
+  out <- ollamar::generate(model, text, output = "text")
+  out
+}
+
+ai_error_feedback <- function(response, error) {
+    text <- paste0("You are a helpful instructor to a data science course. You are giving feedback on a task given to a student. The R code submitted has this error:", error, ". Please provide a very short and helpful feedback using R best practices to fix the error. Only provide the feedback message as output. This is the full code submitted: ", response)
+  out <- ollamar::generate(model, text, output = "text")
+  out
+}
 
 ```
 
@@ -146,8 +161,11 @@ Ein Odd beträgt 4. Berechne die zugehörige Wahrscheinlichkeit.
 ```{r wk_aus_odd, exercise=TRUE, exercise.cap = "Wahrscheinlichkeit berechnen", exercise.lines = 3}
 
 ```
+```{r wk_aus_odd-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
 
-```{r odd_berechnen}
+```{r wk_aus_odd-solution}
 4 / (1 + 4)
 ```
 
@@ -251,6 +269,10 @@ Fitte ein logistisches Regressionsmodell, welches das Verletzungsrisiko anhand d
 
 ```
 
+```{r modfit-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
 ```{r modfit-solution}
 mod <- glm(verletzt ~ alter + trainingsload + schlaf + position,
            data = daten, family = binomial)
@@ -272,6 +294,10 @@ Lasse dir nun die Skala in Odds ausgeben. Nutze hierzu die richtige Funktion aus
 
 ```{r modzsmf, exercise=TRUE, exercise.cap = "Modell fitten", exercise.lines = 3, exercise.setup = "setupA"}
 
+```
+
+```{r modzsmf-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
 ```
 
 ```{r modzsmf-solution}
@@ -393,6 +419,10 @@ Wie hoch ist das Risiko für einen 28 jährigen Athleten, der einen Trainingsumf
 
 ```
 
+```{r pred-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
 ```{r pred-solution}
 p1 <- data.frame (alter = 28, trainingsload = 42, schlaf=5.5, position="Stürmer")
 insight::get_predicted(mod, data = p1, predict = "link")
@@ -412,6 +442,10 @@ Berechne nun für denselben Athleten `p1` die Wahrscheinlichkeit sich zu verletz
 
 ```{r predtwo, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
 
+```
+
+```{r predtwo-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
 ```
 
 ```{r predtwo-solution}
@@ -436,6 +470,10 @@ Bewerte die Modellqualität deines logistischen Regressionsmodells durch einen A
 
 ```{r konfmatr, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
 
+```
+
+```{r konfmatr-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
 ```
 
 ```{r konfmatr-solution}
@@ -535,6 +573,10 @@ Erstelle noch eine Konfusionsmatrix aber mit der dazugehörigen Statistik. Nutze
 
 ```{r konfmatr_stat, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
 
+```
+
+```{r konfmatr_stat-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
 ```
 
 ```{r konfmatr_stat-solution}
