@@ -657,8 +657,6 @@ grade_this({
 })
 ```
 
-
-
 ### Geschafft!
 
 
