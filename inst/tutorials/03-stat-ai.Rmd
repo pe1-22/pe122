@@ -36,6 +36,21 @@ daten$verletzt <- rbinom(n, 1,
          1.50 * (daten$position == "Stürmer"))
 )
 
+# AI setup
+library(ollamar)
+ollamar::pull("gpt-oss:120b-cloud")
+model <- "gpt-oss:120b-cloud"
+ai_feedback <- function(response, question, correct) {
+  text <- paste0("You are a helpful instructor to a data science course. You are giving feedback on a task given to a student. The question was '", question, "' and the student incorrectly responded with '", response, "'. The correct answer was: '", correct, "'. Provide a very short and helpful feedback, but make sure to never ever give the full solution. Only provide the feedback message as output.")
+  out <- ollamar::generate(model, text, output = "text")
+  out
+}
+
+ai_error_feedback <- function(response, error) {
+    text <- paste0("You are a helpful instructor to a data science course. You are giving feedback on a task given to a student. The R code submitted has this error:", error, ". Please provide a very short and helpful feedback using R best practices to fix the error. Only provide the feedback message as output. This is the full code submitted: ", response)
+  out <- ollamar::generate(model, text, output = "text")
+  out
+}
 
 ```
 
@@ -146,21 +161,24 @@ Ein Odd beträgt 4. Berechne die zugehörige Wahrscheinlichkeit.
 ```{r wk_aus_odd, exercise=TRUE, exercise.cap = "Wahrscheinlichkeit berechnen", exercise.lines = 3}
 
 ```
+```{r wk_aus_odd-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
 
-```{r odd_berechnen}
+```{r wk_aus_odd-solution}
 4 / (1 + 4)
 ```
 
 ```{r wk_aus_odd-check}
+task <- "Ein Odd beträgt 4. Berechne die zugehörige Wahrscheinlichkeit."
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
   } else {
-    fail(message = "Leider falsch")
+    fail(message = ai_feedback(.user_code, task, .solution_code))
   }
 })
 ```
-
 
 ```{r odd_null}
 quiz(
@@ -251,6 +269,10 @@ Fitte ein logistisches Regressionsmodell, welches das Verletzungsrisiko anhand d
 
 ```
 
+```{r modfit-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
 ```{r modfit-solution}
 mod <- glm(verletzt ~ alter + trainingsload + schlaf + position,
            data = daten, family = binomial)
@@ -258,11 +280,12 @@ broom::tidy(mod)
 ```
 
 ```{r modfit-check}
+task <- "Im Rahmen einer Studie wurden Daten von 90 Fußballspielern zu Alter (Jahre), wöchentlicher Trainingsbelastung (km/Woche), Schlafdauer (Stunden/Nacht), Spielposition (position: "Stürmer", "Verteidiger", "Mittelfeld") sowie dem Auftreten einer Verletzung im Saisonverlauf (1 = verletzt, 0 = verletzungsfrei) erhoben und in dem Datensatz `daten` gespeichert.Fitte ein logistisches Regressionsmodell, welches das Verletzungsrisiko anhand des Alters, Trainingsloads, der Schlafdauer und Spielerposition vorhersagt. Speichere das Modell als `mod` ab. Gebe anschließend die allgemeine Modellzusammenfassung mit der richtigen Funktion aus dem `broom` package aus."
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
   } else {
-    fail(message = "Leider falsch.")
+    fail(message = ai_feedback(.user_code, task, .solution_code))
   }
 })
 ```
@@ -274,16 +297,21 @@ Lasse dir nun die Skala in Odds ausgeben. Nutze hierzu die richtige Funktion aus
 
 ```
 
+```{r modzsmf-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
 ```{r modzsmf-solution}
 broom::tidy(mod, exponentiate = TRUE, conf.int = TRUE)
 ```
 
 ```{r modzsmf-check}
+task <- "Lasse dir nun die Skala in Odds ausgeben. Nutze hierzu die richtige Funktion aus dem `broom` package."
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
   } else {
-    fail(message = "Leider falsch.Tipp: Nutze glm()")
+    fail(message = ai_feedback(.user_code, task, .solution_code))
   }
 })
 ```
@@ -393,17 +421,22 @@ Wie hoch ist das Risiko für einen 28 jährigen Athleten, der einen Trainingsumf
 
 ```
 
+```{r pred-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
 ```{r pred-solution}
 p1 <- data.frame (alter = 28, trainingsload = 42, schlaf=5.5, position="Stürmer")
 insight::get_predicted(mod, data = p1, predict = "link")
 ```
 
 ```{r pred-check}
+task <- "Wie hoch ist das Risiko für einen 28 jährigen Athleten, der einen Trainingsumfang von 42km/Woche und eine Schlafdauer von 5.5h pro Nacht hat, sich zu verletzen? Berechne den Log-Odd. Nutze hierzu die richtige Funktion aus dem `insight` package."
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
   } else {
-    fail(message = "Leider falsch.")
+    fail(message = ai_feedback(.user_code, task, .solution_code))
   }
 })
 ```
@@ -414,21 +447,82 @@ Berechne nun für denselben Athleten `p1` die Wahrscheinlichkeit sich zu verletz
 
 ```
 
+```{r predtwo-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
 ```{r predtwo-solution}
 p1 <- data.frame (alter = 28, trainingsload = 42, schlaf=5.5, position="Stürmer")
 insight::get_predicted(mod, data = p1, predict = "expectation")
 ```
 
 ```{r predtwo-check}
+task <- "Berechne nun für denselben Athleten `p1` die Wahrscheinlichkeit sich zu verletzen ( Definiere p1 neu!) Nutze hierzu wieder die richtige Funktion aus dem `insight` package."
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
   } else {
-    fail(message = "Leider falsch.")
+    fail(message = ai_feedback(.user_code, task, .solution_code))
   }
 })
 ```
 
+Erstelle einen Datensatz mit 3 neuen Spielern. 
+Spieler A: Alter=25, Trainingsload=35, Schlaf=6, Position="Verteidiger"
+Spieler B: Alter=30, Trainingsload=50, Schlaf=5, Position="Stürmer"
+Spieler C: Alter=22, Trainingsload=28, Schlaf=7, Position="Mittelfeld"
+Berechne die Wahrscheinlichkeit für alle 3 Spieler sich zu verletzen.
+
+```{r predthree, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
+
+```
+
+```{r predthree-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r predthree-solution}
+new_players <- data.frame(
+  alter = c(25, 30, 22),
+  trainingsload = c(35, 50, 28),
+  schlaf = c(6, 5, 7),
+  position = factor(c("Verteidiger", "Stürmer", "Mittelfeld"), 
+                    levels = c("Stürmer", "Verteidiger", "Mittelfeld"))
+)
+insight::get_predicted(mod, data = new_players, predict = "expectation")
+```
+
+
+```{r predthree-check}
+task <- "Erstelle einen Datensatz mit 3 neuen Spielern. 
+Spieler A: Alter=25, Trainingsload=35, Schlaf=6, Position="Verteidiger"
+Spieler B: Alter=30, Trainingsload=50, Schlaf=5, Position="Stürmer"
+Spieler C: Alter=22, Trainingsload=28, Schlaf=7, Position="Mittelfeld"
+Berechne die Wahrscheinlichkeit für alle 3 Spieler sich zu verletzen."
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+
+```{r predfour}
+quiz(
+  question("Welcher der 3 Spieler hat die höchste Veretzungswahrscheinlichkeit?",
+    answer("Spieler A"),
+    answer("Spieler B",correct = TRUE),
+    answer("Die Verletzungswahrscheinlichkeit ist für alle gleich"),
+    answer("Spieler C"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
 
 ### Aufgabe 7 Modellqualität 
 
@@ -438,6 +532,10 @@ Bewerte die Modellqualität deines logistischen Regressionsmodells durch einen A
 
 ```
 
+```{r konfmatr-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
 ```{r konfmatr-solution}
 mod$pred <- insight::get_predicted(mod, predict = "classification")
 xtabs(~ mod$pred + mod$y)
@@ -445,16 +543,17 @@ xtabs(~ mod$pred + mod$y)
 ```
 
 ```{r konfmatr-check}
+task <- "Bewerte die Modellqualität deines logistischen Regressionsmodells durch einen Abgleich von Vorhersage und Realität. Erstelle eine Konfusionsmatrix mit einem Cutoff-Wert von 0.5. Nutze hierzu die richtige Funktion aus dem `insight`package."
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
   } else {
-    fail(message = "Leider falsch.")
+    fail(message = ai_feedback(.user_code, task, .solution_code))
   }
 })
 ```
 
-Interpretiere nun diese Matrix und beantworte die nächsten Fragen
+Interpretiere diese Matrix und beantworte die nächsten Fragen.
 ``` {r true-neg}
 quiz(
   question("Wie viele Spieler wurden korrekt als nicht verletzt vorhergesagt (True Negatives)?",
@@ -537,6 +636,10 @@ Erstelle noch eine Konfusionsmatrix aber mit der dazugehörigen Statistik. Nutze
 
 ```
 
+```{r konfmatr_stat-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
 ```{r konfmatr_stat-solution}
 caret::confusionMatrix(
   factor(mod$pred, levels = c(0,1)),
@@ -545,11 +648,12 @@ caret::confusionMatrix(
 ```
 
 ```{r konfmatr_stat-check}
+task <- "Erstelle noch eine Konfusionsmatrix aber mit der dazugehörigen Statistik. Nutze hierfür die Funktion aus dem `caret`package."
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
   } else {
-    fail(message = "Leider falsch.")
+    fail(message = ai_feedback(.user_code, task, .solution_code))
   }
 })
 ```
@@ -617,22 +721,27 @@ quiz(
 ```
 
 ### Aufgabe 9 Voraussetzungen prüfen
+
 Überprüfe die Vorrausetzungen. Nutze hierfür die Funktion aus dem `performance`package.
 ```{r voraus, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
 
 ```
 
+```{r voraus-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
 
 ```{r voraus-solution}
 performance::check_model(mod)
 ```
 
 ```{r voraus-check}
+task <- "Überprüfe die Vorrausetzungen. Nutze hierfür die Funktion aus dem `performance`package."
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
   } else {
-    fail(message = "Leider falsch.")
+    fail(message = ai_feedback(.user_code, task, .solution_code))
   }
 })
 ```
@@ -643,20 +752,24 @@ Berechen die Odd Ratios für alle Prädiktoren
 
 ```
 
+```{r oddrat-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
 ```{r oddrat-solution}
 exp(coef(mod))
 ```
 
 ```{r oddrat-check}
+task <- "Berechen die Odd Ratios für alle Prädiktoren"
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
   } else {
-    fail(message = "Leider falsch.")
+    fail(message = ai_feedback(.user_code, task, .solution_code))
   }
 })
 ```
-
 
 
 ### Geschafft!
