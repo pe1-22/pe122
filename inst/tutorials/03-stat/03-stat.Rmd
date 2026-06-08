@@ -50,10 +50,10 @@ mod <- glm(verletzt ~ alter + trainingsload + schlaf + position,
 ```{r one}
 quiz(
   question("Wann wird die logistische Regression eingesetzt?",
-    answer("Wenn die abhängige Variable binär ist, also zwei Ausprägungen hat.", correct = TRUE),
-    answer("Wenn die abhängige Variable kontinuierlich und normalverteilt ist.", message = "Das ist der Anwendungsfall der linearen Regression."),
+    answer("Wenn das Outcome binär ist, also zwei Ausprägungen hat.", correct = TRUE),
+    answer("Wenn das Outcome kontinuierlich und normalverteilt ist.", message = "Das ist der Anwendungsfall der linearen Regression."),
     answer("Wenn zwei kategoriale Variablen auf Zusammenhang geprüft werden sollen."),
-    answer("Wenn mehrere unabhängige Variablen miteinander korrelieren."),
+    answer("Wenn mehrere Prädiktoren miteinander korrelieren."),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -147,7 +147,7 @@ Ein Odd beträgt 4. Berechne die zugehörige Wahrscheinlichkeit.
 
 ```
 
-```{r odd_berechnen}
+```{r wk_aus_odd-solution}
 4 / (1 + 4)
 ```
 
@@ -166,7 +166,7 @@ grade_this({
 quiz(
   question("Bei welcher Wahrscheinlichkeit beträgt der Odd genau 0?",
     answer("p = 0", correct = TRUE),
-    answer("p = 0,5"),
+    answer("p = 0.5"),
     answer("p = 1"),
     answer("p = -1"),
     allow_retry = TRUE,
@@ -213,10 +213,10 @@ quiz(
 ```{r logit_null}
 quiz(
   question("Bei welcher Wahrscheinlichkeit beträgt der Logit genau 0?",
-    answer("p = 0,5", correct = TRUE),
+    answer("p = 0.5", correct = TRUE),
     answer("p = 0"),
     answer("p = 1"),
-    answer("p = 0,75"),
+    answer("p = 0.75"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -227,7 +227,11 @@ quiz(
 
 ### Aufgabe 4 Daten
 
-Im Rahmen einer Studie wurden Daten von 90 Fußballspielern zu Alter (Jahre), wöchentlicher Trainingsbelastung (km/Woche), Schlafdauer (Stunden/Nacht), Spielposition (position: "Stürmer", "Verteidiger", "Mittelfeld") sowie dem Auftreten einer Verletzung im Saisonverlauf (1 = verletzt, 0 = verletzungsfrei) erhoben und in dem Datensatz `daten` gespeichert. Im Folgenden wird mit diesem Datensatz gearbeitet. (Du kannst dir diesen anzeigen lassen, indem du ihn in der ersten Antwortmöglichkeit mit „Run Code" ausgibst.)
+Im Rahmen einer Studie wurden Daten von 90 Fußballspielern zu Alter (Jahre), wöchentlicher Trainingsbelastung (km/Woche), Schlafdauer (Stunden/Nacht), Spielposition (position: "Stürmer", "Verteidiger", "Mittelfeld") sowie dem Auftreten einer Verletzung im Saisonverlauf (1 = verletzt, 0 = verletzungsfrei) erhoben und in dem Datensatz `daten` gespeichert. Im Folgenden wird mit diesem Datensatz gearbeitet. (Du kannst dir diesen anzeigen lassen, indem du ihn im folgenden Feld mit „Run Code" ausgibst.)
+
+```{r tryout, exercise = TRUE}
+
+```
 
 
 ```{r quiz_outcome}
@@ -245,7 +249,9 @@ quiz(
 )
 ```
 
-Fitte ein logistisches Regressionsmodell, welches das Verletzungsrisiko anhand des Alters, Trainingsloads, der Schlafdauer und Spielerposition vorhersagt. Speichere das Modell als `mod` ab. Gebe anschließend die allgemeine Modellzusammenfassung mit der richtigen Funktion aus dem `broom` package aus.
+Fitte ein logistisches Regressionsmodell, welches das Verletzungsrisiko anhand des Alters, Trainingsloads, der Schlafdauer und Spielerposition vorhersagt. Speichere das Modell als `mod` ab. Gebe anschließend die Koeffizienten des Modells mit der richtigen Funktion aus dem `broom` package aus (mit Konfidenzintervallen).
+
+(Bitte gib die Prädiktoren in genau der Reihenfolge aus dem Text in das Modell ein. Die Reihenfolge macht zwar für das Modell keinen Unterschied, da die Reihenfolge vom R-Output dann eine andere ist, ist das aber für die Überprüfung der Aufgabe sonst ein Problem)
 
 ```{r modfit, exercise=TRUE, exercise.cap = "Modell fitten", exercise.lines = 3}
 
@@ -254,7 +260,7 @@ Fitte ein logistisches Regressionsmodell, welches das Verletzungsrisiko anhand d
 ```{r modfit-solution}
 mod <- glm(verletzt ~ alter + trainingsload + schlaf + position,
            data = daten, family = binomial)
-broom::tidy(mod)
+broom::tidy(mod, conf.int = TRUE)
 ```
 
 ```{r modfit-check}
@@ -268,7 +274,7 @@ grade_this({
 ```
 
 
-Lasse dir nun die Skala in Odds ausgeben. Nutze hierzu die richtige Funktion aus dem `broom` package.
+Lasse dir nun die Skala in Odds ausgeben (mit Konfidenzintervallen). Nutze hierzu die richtige Funktion aus dem `broom` package.
 
 ```{r modzsmf, exercise=TRUE, exercise.cap = "Modell fitten", exercise.lines = 3, exercise.setup = "setupA"}
 
@@ -283,7 +289,7 @@ grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
   } else {
-    fail(message = "Leider falsch.Tipp: Nutze glm()")
+    fail(message = "Leider falsch.Tipp: Nutze das richtige Argument in broom::tidy()")
   }
 })
 ```
@@ -307,28 +313,12 @@ quiz(
 ```
 
 
-```{r mod_int}
-quiz(
-  question("Welcher Prädiktor hat den stärksten Effekt auf das Verletzungsrisiko?",
-    answer("Position: Stürmer"),
-    answer("Trainingsload"),
-    answer("Schlafdauer", correct = TRUE),
-    answer("Alter"),
-    allow_retry = TRUE,
-    random_answer_order = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
-```
-
-
 ### Aufagbe 5 Koeffizienten interpretieren 
 
 ``` {r koef_int}
 quiz(
-  question("Wie interpretierst du einen positiven Koeffizienten in der logistischen Regression?",
-    answer("Die Wahrscheinlichkeit des Ereignisses steigt", correct = TRUE),
+  question("Wie interpretierst du einen positiven Koeffizienten (auf der Logit Skala) in der logistischen Regression?",
+    answer("Bei zunehmendem Wert des Prädiktors steigt die Wahrscheinlichkeit des Ereignisses", correct = TRUE),
     answer("Das Ereignis tritt sicher ein"),
     answer("Die Residuen werden größer"),
     answer("Der Zusammenhang ist kausal"),
@@ -346,7 +336,7 @@ quiz(
     answer("Stürmer haben im Vergleich zur Referenzkategorie um 0.364 niedrigere Log-Odds für eine Verletzung bei konstanten Alter, Trainingsload und Schlaf", correct = TRUE),
     answer("Stürmer haben eine um 0.364 niedigere Verletzungswahrscheinlichkeit als die Referenzkategorie"),
     answer("Stürmer haben ein Odds-Ratio von -0.364 im Vergleich zur Referenzkategorie"),
-    answer("Die Verletzungswahrscheinlichkeit von Stürmern ist 0.364-mal niedriger als bei der Referenzkategorie"),
+    answer("Die Verletzungswahrscheinlichkeit von Stürmern ist 36.4% niedriger als bei der Referenzkategorie"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -371,6 +361,10 @@ quiz(
 )
 ```
 
+```{r tryout2, exercise = TRUE}
+
+```
+
 ```{r schlaf_koef}
 quiz(
   question("Was passiert mit der geschätzten Wahrscheinlichkeit, wenn die Schlafdauer steigt und alle anderen Variablen konstant bleiben?",
@@ -386,8 +380,10 @@ quiz(
 )
 ```
 
+
+
 ### Aufgabe 6 prediction 
-Wie hoch ist das Risiko für einen 28 jährigen Athleten, der einen Trainingsumfang von 42km/Woche und eine Schlafdauer von 5.5h pro Nacht hat, sich zu verletzen? Berechne den Log-Odd. Nutze hierzu die richtige Funktion aus dem `insight` package.
+Wie hoch ist das Risiko für einen 28 jährigen Stürmer, der einen Trainingsumfang von 42km/Woche und eine Schlafdauer von 5.5h pro Nacht hat, sich zu verletzen? Berechne die Log-Odds. Nutze hierzu die richtige Funktion aus dem `insight` package (ohne Konfidenzintervalle).
 
 ```{r pred, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
 
@@ -408,7 +404,22 @@ grade_this({
 })
 ```
 
-Berechne nun für denselben Athleten `p1` die Wahrscheinlichkeit sich zu verletzen ( Definiere p1 neu!) Nutze hierzu wieder die richtige Funktion aus dem `insight` package.
+```{r pred-interpret}
+quiz(
+  question("Das Modell sagt für den neuen Athleten Log-Odds von 0.31 voraus. Welche Aussage ist richtig?",
+    answer("Die geschätzte Verletzungswahrscheinlichkeit liegt über 50%",correct = TRUE),
+    answer("Die geschätzte Verletzungswahrscheinlichkeit liegt unter 50%"),
+    answer("Die geschätzte Verletzungswahrscheinlichkeit liegt bei 31%"),
+    answer("Die geschätzten Odds einer Verletzung liegen bei ca 1:2"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+Berechne nun für denselben Athleten die exakte Wahrscheinlichkeit in % sich zu verletzen (du musst nochmal den Code zum erstellen des Athleten hierhin kopieren). Nutze hierzu wieder die richtige Funktion aus dem `insight` package (ohne Konfidenzintervalle).
 
 ```{r predtwo, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
 
@@ -432,16 +443,39 @@ grade_this({
 
 ### Aufgabe 7 Modellqualität 
 
-Bewerte die Modellqualität deines logistischen Regressionsmodells durch einen Abgleich von Vorhersage und Realität. Erstelle eine Konfusionsmatrix mit einem Cutoff-Wert von 0.5. Nutze hierzu die richtige Funktion aus dem `insight`package.
+Bewerte die Modellqualität deines logistischen Regressionsmodells durch einen Abgleich von Vorhersage und Realität. Erstelle dafür eine Konfusionsmatrix. Sage dafür im ersten Schritt  für jeden Spieler voraus, ob er sich verletzt (ja/nein). Nutze hierzu die richtige Funktion aus dem `insight` package, mit einem Cutoff von p = 0.5. Gebe den Vektor mit den Vorhersagen aus.
+
+```{r predclass, exercise=TRUE, exercise.cap = "Klasse vorhersagen", exercise.lines = 3,exercise.setup = "setupA"}
+
+```
+
+```{r predclass-solution}
+insight::get_predicted(mod, predict = "classification")
+
+```
+
+```{r predclass-check}
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = "Leider falsch.")
+  }
+})
+```
+
+Kopiere den Code mit den Vorhersagen und speichere die Vorhersagen in einer Variable ab. Nutze nun die Funktion aus dem `caret` package, um eine Konfusionsmatrix mit den Vorhersagen vs. die tatsächlichen Werte zu erstellen. Vorsicht: Dazu musst du sowohl die Vorhersagena, als auch dei tatsächlichen Werte vorher zu einem Faktor konvertieren. Lasse dir die Konfusionsmatrix ausgeben.
 
 ```{r konfmatr, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
 
 ```
 
 ```{r konfmatr-solution}
-mod$pred <- insight::get_predicted(mod, predict = "classification")
-xtabs(~ mod$pred + mod$y)
-
+pred <- insight::get_predicted(mod, predict = "classification")
+caret::confusionMatrix(
+  factor(pred, levels = c(0,1)),
+  factor(daten$verletzt, levels = c(0,1))
+)
 ```
 
 ```{r konfmatr-check}
@@ -515,44 +549,7 @@ quiz(
 )
 ```
 
-```{r guetebeurteilen}
-quiz(
-  question("Welche Kombination von 3 Kennzahlen ist am aussagekräftigsten, um die Güte eines logistischen Regressionsmodells bei unausgeglichenen Klassen zu beurteilen?",
-    answer("Accuracy, Sensitivity, Specificity", correct = TRUE),
-    answer("Accuracy, R², p-Wert des F-Tests"),
-    answer("Sensitivity, Specificity, p-Wert des Chi-Quadrat-Tests"),
-    answer("Odds Ratio, Koeffizienten, Konfidenzintervalle"),
-    allow_retry = TRUE,
-    random_answer_order = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
-```
-
 ### Aufgabe 8 Sensitiviy, Accuracy, Specifity
-Erstelle noch eine Konfusionsmatrix aber mit der dazugehörigen Statistik. Nutze hierfür die Funktion aus dem `caret`package.
-
-```{r konfmatr_stat, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
-
-```
-
-```{r konfmatr_stat-solution}
-caret::confusionMatrix(
-  factor(mod$pred, levels = c(0,1)),
-  factor(mod$y, levels = c(0,1))
-)
-```
-
-```{r konfmatr_stat-check}
-grade_this({
-  if (identical(.result, .solution)) {
-    pass(praise = TRUE)
-  } else {
-    fail(message = "Leider falsch.")
-  }
-})
-```
 
 ``` {r interpret_ssa}
 quiz(
@@ -588,7 +585,7 @@ quiz(
 
 ``` {r interpret_ssa_two}
 quiz(
-  question("Was passiert, wenn der Cutoff-Wert von 0.5 auf 0.3 gesenkt wird?",
+  question("Was passiert, wenn der Cutoff-Wert für die Klassifizierung von 0.5 auf 0.3 gesenkt wird?",
     answer("Sensitivity steigt, Specificity sinkt", correct = TRUE),
     answer("Sensitivity sinkt, Specificity steigt"),
     answer("Sensitivity und Specificity steigen beide"),
@@ -617,53 +614,36 @@ quiz(
 ```
 
 ### Aufgabe 9 Voraussetzungen prüfen
-Überprüfe die Vorrausetzungen. Nutze hierfür die Funktion aus dem `performance`package.
-```{r voraus, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
+Überprüfe die Vorrausetzungen ses Modells. Nutze hierfür die Funktion aus dem `performance` package.
+
+(Beachte, dass du in diesem Tutorial ausnahmsweise das Argument `panel = FALSE` sowie hinter der Funktion ` |> plot()` nutzen musst, damit die Grafiken einzeln in der Vorschau angezeigt werden.)
+
+```{r voraus, exercise=TRUE, exercise.cap = "Voraussetzungen prüfen", exercise.lines = 3,exercise.setup = "setupA"}
 
 ```
 
-
-```{r voraus-solution}
-performance::check_model(mod)
-```
-
-```{r voraus-check}
-grade_this({
-  if (identical(.result, .solution)) {
-    pass(praise = TRUE)
-  } else {
-    fail(message = "Leider falsch.")
-  }
-})
-```
-
-### Aufgabe 10
-Berechen die Odd Ratios für alle Prädiktoren
-```{r oddrat, exercise=TRUE, exercise.cap = "Modell predicten", exercise.lines = 3,exercise.setup = "setupA"}
-
-```
-
-```{r oddrat-solution}
-exp(coef(mod))
-```
-
-```{r oddrat-check}
-grade_this({
-  if (identical(.result, .solution)) {
-    pass(praise = TRUE)
-  } else {
-    fail(message = "Leider falsch.")
-  }
-})
+``` {r vorausinterpret}
+quiz(
+  question("Welche Voraussetzungen sind für das vorliegende Modell erfüllt?",
+    answer("PPC check zeigt keine Probleme", correct = TRUE),
+    answer("Keine Probleme bei den binned residuals"),
+    answer("keine relevanten Ausreißer", correct = TRUE),
+    answer("Kein Problem mit Multikollinearität", correct = TRUE),
+    answer("Residuen sind normalverteilt", correct = TRUE),
+    allow_retry = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
 ```
 
 ### Geschafft!
 
 
-Herzlichen Glückwunsch, du hast die Lektion zum Thema logistischen Regression erfolgreich abgeschlossen! In der nächsten Lektion schauen wir uns machine learning an.
+Herzlichen Glückwunsch, du hast die Lektion zum Thema logistischen Regression erfolgreich abgeschlossen! In der nächsten Lektion schauen wir uns Machine Learning an.
 
 Falls du noch Zeit hast, kannst du hier weiter mit dem Datensatz experimentieren, weitere Grafiken erstellen oder neue Modelle fitten. Viel Spaß dabei!
 
-```{r sandbox, exercise=TRUE, exercise.lines = 10}
+```{r sandbox, exercise=TRUE, exercise.lines = 10, exercise.setup = "setupA"}
 
 ```
