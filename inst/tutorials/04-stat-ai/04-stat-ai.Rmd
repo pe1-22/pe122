@@ -91,11 +91,45 @@ vorhersagen <- predict(best_mod, newdata = test)
 
 ## Machine Learning 
 
-### Aufgabe 1
+### Allgemeines
+```{r machine}
+quiz(
+  question("Was ist Machine Learning?",
+    answer("Modelle, die anhand von Daten Vorhersagen treffen", correct = TRUE),
+    answer("lineare oder logistische Regression", correct = TRUE),
+    answer("komplexere Modelle bis hin zu Neural Networks", correct = TRUE),
+    answer("Ein Verfahren bei dem Modelle nur manuell programmiert werden"),
+    answer("Ein Algorithmus der keine Daten benötigt"),
+    type = "checkbox",
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+
+```{r hyper}
+quiz(
+  question("Was sind Hyperparameter?",
+    answer("Einstellungen eines Modells, die vor dem Training festgelegt werden.", correct = TRUE),
+    answer("Ergebnisse, die das Modell nach dem Training selbst berechnet."),
+    answer("Die Zielvariable im Datensatz."),
+    answer("Die Vorhersagen des Modells auf Testdaten."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+### Overfit
 ```{r overfit}
 quiz(
   question("Was ist ein typisches Anzeichen für Overfitting?",
-    answer("Der Trainingsfehler ist sehr klein, aber der Testfehler deutlich größer.", correct = TRUE),
+    answer("Der Trainingsfehler ist sehr klein, der Testfehler ist deutlich größer.", correct = TRUE),
     answer("Trainings- und Testfehler sind beide sehr hoch."),
     answer("Der Trainingsfehler ist größer als der Testfehler."),
     answer("Das Modell hat nur wenige Prädiktoren."),
@@ -267,7 +301,7 @@ quiz(
 )
 ```
 
-### Aufgaben
+### Arbeiten mit dem Datensatz
 
 Im Rahmen einer Rehabilitationsstudie wurden Daten von 80 Patienten nach einer Knie-OP erhoben. Ziel ist es, die Kniebeugetiefe nach 12 Wochen Reha vorherzusagen. Der Datensatz `daten` enthält folgende Variablen:
 `alter` (Alter des Patienten (Jahre))
