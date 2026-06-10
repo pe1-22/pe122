@@ -1,5 +1,5 @@
 ---
-title: "01 - Machine Learning"
+title: "04 - Machine Learning"
 output: 
   learnr::tutorial:
     progressive: true
@@ -74,18 +74,29 @@ vorhersagen <- predict(best_mod, newdata = test)
 
 ```
 
-
-
-
 ## Machine Learning 
 
 ### Aufgabe 1
+```{r overfit}
+quiz(
+  question("Was ist ein typisches Anzeichen für Overfitting?",
+    answer("Der Trainingsfehler ist sehr klein, aber der Testfehler deutlich größer.", correct = TRUE),
+    answer("Trainings- und Testfehler sind beide sehr hoch."),
+    answer("Der Trainingsfehler ist größer als der Testfehler."),
+    answer("Das Modell hat nur wenige Prädiktoren."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
 
 #### Bias-Variance tradeoff
 
 ```{r bias}
 quiz(
-  question("Was beschreibt der Begriff 'Bias' in einem Modell?",
+  question("Was beschreibt der Bias in einem Modell?",
     answer("Den systematischen Fehler eines Modells.", correct = TRUE),
     answer("wie nah mein Modell an den Daten liegt.", correct = TRUE),
     answer("Die Streuung der Modellvorhersagen bei verschiedenen Trainingsdatensätzen."),
@@ -102,7 +113,7 @@ quiz(
 
 ```{r variance}
 quiz(
-  question("Was beschreibt 'Varianz' im Kontext des Bias-Variance Tradeoffs?",
+  question("Was beschreibt die Varianz im Kontext des Bias-Variance Tradeoffs?",
     answer("Wie stark sich das Modell verändert, wenn es auf verschiedenen Stichproben erstellt wird.", correct = TRUE),
     answer("Den durchschnittlichen Fehler des Modells über alle möglichen Datensätze."),
     answer("Die Streuung der Zielvariable im Datensatz."),
@@ -133,8 +144,8 @@ quiz(
 ```{r bvt_two}
 quiz(
   question("Was macht ein gutes Modell aus?",
-    answer("hoher Bias ,niedrige Varianz", correct = TRUE),
-    answer("niedriger Bias ,hohe Varianz"),
+    answer("hoher Bias, niedrige Varianz", correct = TRUE),
+    answer("niedriger Bias, hohe Varianz"),
     answer("gutes Gleichgewicht zwischen Bias und Varianz"),
     answer("niedriger Bias, niedrige Varianz"),
     allow_retry = TRUE,
@@ -149,7 +160,7 @@ quiz(
 
 ```{r eval_methoden}
 quiz(
-  question("Welche Möglichkeiten gibt es, um zu testen, ob ein Modell gut passt? ",
+  question("Welche Möglichkeiten gibt es, um zu testen, ob ein Modell gut passt?",
     answer("Den Datensatz in Trainings- und Testdaten aufteilen und das Modell nur auf den Trainingsdaten fitten.", correct = TRUE),
     answer("Neue Daten sammeln und das Modell darauf evaluieren.", correct = TRUE),
     answer("k-fold Cross-Validation durchführen.", correct = TRUE),
@@ -196,6 +207,52 @@ quiz(
 )
 ```
 
+### Training/Testfehler
+```{r fehlervgl}
+quiz(
+  question("Welches Modell würdest du in der Regel bevorzugen, wenn zwei Modelle einen ähnlichen Trainingsfehler haben aber eines einen deutlich kleineren Testfehler?",
+    answer("Das Modell mit dem kleineren Testfehler.", correct = TRUE),
+    answer("Das Modell mit dem kleineren Trainingsfehler."),
+    answer("Immer das komplexere Modell."),
+    answer("Immer das Modell mit den wenigsten Variablen."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r var}
+quiz(
+  question("Was bedeutet eine hohe Varianz bei einem Modell?",
+    answer("Das Modell reagiert stark auf kleine Änderungen in den Trainingsdaten.", correct = TRUE),
+    answer("Das Modell ist besonders einfach."),
+    answer("Das Modell hat einen hohen Trainingsfehler."),
+    answer("Das Modell ignoriert die alten Daten fast vollständig."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+```{r perform}
+quiz(
+  question("Warum kann ein sehr komplexes Modell schlechter auf neuen Daten performen?",
+    answer("Weil es sich zu stark an die Trainingsdaten anpasst.", correct = TRUE),
+    answer("Weil es automatisch immer mehr Bias bekommt."),
+    answer("Weil die Daten sich nicht an das Modell anpassen."),
+    answer("Weil komplexe Modelle keine Vorhersagen machen können."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
 ### Aufgaben im Workflow 
 
 Im Rahmen einer Rehabilitationsstudie wurden Daten von 80 Patienten nach einer Knie-OP erhoben. Ziel ist es, die Kniebeugetiefe nach 12 Wochen Reha vorherzusagen. Der Datensatz `daten` enthält folgende Variablen:
@@ -211,7 +268,7 @@ Im Rahmen einer Rehabilitationsstudie wurden Daten von 80 Patienten nach einer K
 ```{r outcome}
 quiz(
   question("Was ist das Outcome?",
-    answer("kniebeugentiefe", correct = TRUE),
+    answer("kniebeugetiefe", correct = TRUE),
     answer("schmerz"),
     answer("op_dauer"),
     answer("motivation"),
@@ -272,6 +329,22 @@ grade_this({
 })
 ```
 
+```{r s1why}
+quiz(
+  question("Warum teilen wir den Datensatz in Train- und Testdaten auf?",
+    answer("Um die Leistung des Modells auf unbekannten Daten zu prüfen.", correct = TRUE),
+    answer("Um das Modell auf möglichst vielen Daten zu trainieren und gleichzeitig zu testen."),
+    answer("Damit die Variable `test` besser aussieht."),
+    answer("Damit der RMSE kleiner wird."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+
+
 ### Schritt 2: Bestes Modell auf dem Trainset auswählen
 **2.1** Erstelle 3 lineare Modelle: `mod_1` (Physio Einheiten), `mod_2` (Physio Einheiten, Schmerz und Motivation), `mod_3` (Physio Einheiten, Schmerz,Motivation, Alter und BMI).
 
@@ -325,13 +398,26 @@ grade_this({
 })
 ```
 
-
 ```{r best_modell}
 quiz(
   question("Welches Modell ist das Beste",
     answer("mod_1"),
     answer("mod_2", correct = TRUE),
     answer("mod_3"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
+```
+```{r cvwhy}
+quiz(
+  question("Warum ist Cross-Validation sinnvoll?",
+    answer("Sie liefert eine stabilere Schätzung der Modellgüte als nur ein einzelner Train/Test-Split.", correct = TRUE),
+    answer("Sie ersetzt die Zielvariable."),
+    answer("Sie macht das Modell automatisch besser."),
+    answer("Sie verhindert immer Overfitting vollständig."),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -395,7 +481,7 @@ grade_this({
 ```
 
 ```{r rmse_test-solution}
-rmse_test   <- sqrt(mean((test$kniebeugetiefe - vorhersagen)^2))
+rmse_test <- sqrt(mean((test$kniebeugetiefe - vorhersagen)^2))
 rmse_test
 ```
 
