@@ -96,7 +96,7 @@ vorhersagen <- predict(best_mod, newdata = test)
 quiz(
   question("Was ist Machine Learning?",
     answer("Modelle, die anhand von Daten Vorhersagen treffen", correct = TRUE),
-    answer("lineare oder logistische Regression", correct = TRUE),
+    answer("lineare und logistische Regressionen", correct = TRUE),
     answer("komplexere Modelle bis hin zu Neural Networks", correct = TRUE),
     answer("Ein Verfahren bei dem Modelle nur manuell programmiert werden"),
     answer("Ein Algorithmus der keine Daten benötigt"),
@@ -114,9 +114,9 @@ quiz(
 quiz(
   question("Was sind Hyperparameter?",
     answer("Einstellungen eines Modells, die vor dem Training festgelegt werden.", correct = TRUE),
-    answer("Ergebnisse, die das Modell nach dem Training selbst berechnet."),
+    answer("Wahrscheinlichkeiten, die das Modell nach dem Training selbst berechnet."),
     answer("Die Zielvariable im Datensatz."),
-    answer("Die Vorhersagen des Modells auf Testdaten."),
+    answer("Die Vorhersagen des Modells auf den Testdaten."),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -165,7 +165,7 @@ quiz(
   question("Was beschreibt die Varianz im Kontext des Bias-Variance Tradeoffs?",
     answer("Wie stark sich das Modell verändert, wenn es auf verschiedenen Stichproben erstellt wird.", correct = TRUE),
     answer("Den durchschnittlichen Fehler des Modells über alle möglichen Datensätze."),
-    answer("Die Streuung der Zielvariable im Datensatz."),
+    answer("Die Streuung des Outcomes im Datensatz."),
     answer("Den Wertebereich der Vorhersagen."),
     allow_retry = TRUE,
     random_answer_order = TRUE,
@@ -178,10 +178,10 @@ quiz(
 ```{r bias_variance_tradeoff}
 quiz(
   question("Wie verhält sich der Bias-Variance Tradeoff bei steigender Modellkomplexität?",
-    answer("Bias sinkt, Varianz steigt", correct = TRUE),
-    answer("Bias steigt, Varianz sinkt"),
-    answer("Bias und Varianz steigen beide"),
-    answer("Bias und Varianz sinken beide"),
+    answer("der Bias sinkt, die Varianz steigt", correct = TRUE),
+    answer("der Bias steigt, die Varianz sinkt"),
+    answer("der Bias und die Varianz steigen beide"),
+    answer("der Bias und die Varianz sinken beide"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -193,10 +193,10 @@ quiz(
 ```{r bvt_two}
 quiz(
   question("Was macht ein gutes Modell aus?",
-    answer("hoher Bias, niedrige Varianz", correct = TRUE),
-    answer("niedriger Bias, hohe Varianz"),
-    answer("gutes Gleichgewicht zwischen Bias und Varianz"),
-    answer("niedriger Bias, niedrige Varianz"),
+    answer("ein hoher Bias und eine niedrige Varianz"),
+    answer("ein niedriger Bias und eine hohe Varianz"),
+    answer("ein gutes Gleichgewicht zwischen Bias und Varianz", correct = TRUE),
+    answer("ein niedriger Bias und eine niedrige Varianz"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -209,10 +209,10 @@ quiz(
 
 ```{r eval_methoden}
 quiz(
-  question("Welche Möglichkeiten gibt es, um zu testen, ob ein Modell gut passt?",
-    answer("Den Datensatz in Trainings- und Testdaten aufteilen und das Modell nur auf den Trainingsdaten fitten.", correct = TRUE),
+  question("Wie  kann man testen ob ein Modell gut passt und nicht Over-/Underfitted ist?",
+    answer("Den Datensatz in Trainings- und Testdaten aufteilen. Das Modell nur auf den Trainingsdaten fitten und auf den Testdaten evaluieren.", correct = TRUE),
     answer("Neue Daten sammeln und das Modell darauf evaluieren.", correct = TRUE),
-    answer("k-fold Cross-Validation durchführen.", correct = TRUE),
+    answer("eine k-fold Cross-Validation durchführen.", correct = TRUE),
     answer("Das Modell auf dem gesamten Datensatz trainieren und evaluieren."),
     type = "checkbox",
     allow_retry = TRUE,
@@ -243,10 +243,14 @@ quiz(
 ```{r rmse_modkomp}
 quiz(
   question("Wie verhält sich der RMSE auf Trainings- und Testdaten bei steigender Modellkomplexität?",
-    answer("Der Trainings-RMSE sinkt kontinuierlich; der Test-RMSE sinkt zunächst, steigt aber ab einem gewissen Punkt wieder an.", correct = TRUE),
-    answer("Beide RMSEs sinken kontinuierlich mit steigender Komplexität."),
-    answer("Der Trainings-RMSE steigt, der Test-RMSE sinkt."),
-    answer("Der Test-RMSE sinkt kontinuierlich; der Trainings-RMSE sinkt zunächst, steigt aber ab einem gewissen Punkt wieder an"),
+  answer("der Trainings-RMSE sinkt kontinuierlich", correct = TRUE),
+  answer("der Trainings-RMSE steigt kontinuierlich"),
+  answer("der Trainings-RMSE steigt zunächst und fällt ab einem gewissen Punkt wieder"),
+  answer("der Trainings-RMSE sinkt zunächst und steigt ab einem gewissen Punkt wieder"),
+  answer("der Test-RMSE sinkt kontinuierlich"),
+  answer("der Test-RMSE steigt kontinuierlich"),
+  answer("der Test-RMSE steigt zunächst und fällt ab einem gewissen Punkt wieder"),
+  answer("der Test-RMSE sinkt zunächst und steigt ab einem gewissen Punkt wieder",correct = TRUE),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -258,11 +262,11 @@ quiz(
 ### Training/Testfehler
 ```{r fehlervgl}
 quiz(
-  question("Welches Modell würdest du in der Regel bevorzugen, wenn zwei Modelle einen ähnlichen Trainingsfehler haben aber eines einen deutlich kleineren Testfehler?",
+  question("Welches Modell würdest du bevorzugen, wenn zwei Modelle einen ähnlichen Trainingsfehler haben aber eines einen deutlich kleineren Testfehler?",
     answer("Das Modell mit dem kleineren Testfehler.", correct = TRUE),
     answer("Das Modell mit dem kleineren Trainingsfehler."),
-    answer("Immer das komplexere Modell."),
-    answer("Immer das Modell mit den wenigsten Variablen."),
+    answer("Das komplexere Modell."),
+    answer("Das Modell mit den wenigsten Variablen."),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -273,7 +277,7 @@ quiz(
 
 ```{r var}
 quiz(
-  question("Was bedeutet eine hohe Varianz bei einem Modell?",
+  question("Was bedeutet eine hohe Varianz in einem Modell?",
     answer("Das Modell reagiert stark auf kleine Änderungen in den Trainingsdaten.", correct = TRUE),
     answer("Das Modell ist besonders einfach."),
     answer("Das Modell hat einen hohen Trainingsfehler."),
@@ -288,10 +292,10 @@ quiz(
 
 ```{r perform}
 quiz(
-  question("Warum kann ein sehr komplexes Modell schlechter auf neuen Daten performen?",
+  question("Warum performt ein sehr komplexes Modell schlechter auf neue Daten?",
     answer("Weil es sich zu stark an die Trainingsdaten anpasst.", correct = TRUE),
-    answer("Weil es automatisch immer mehr Bias bekommt."),
-    answer("Weil die Daten sich nicht an das Modell anpassen."),
+    answer("Weil es automatisch immer einen größeren Bias hat."),
+    answer("Weil die neuen Daten nicht an das Modell angepasst sind."),
     answer("Weil komplexe Modelle keine Vorhersagen machen können."),
     allow_retry = TRUE,
     random_answer_order = TRUE,
@@ -304,13 +308,13 @@ quiz(
 ### Arbeiten mit dem Datensatz
 
 Im Rahmen einer Rehabilitationsstudie wurden Daten von 80 Patienten nach einer Knie-OP erhoben. Ziel ist es, die Kniebeugetiefe nach 12 Wochen Reha vorherzusagen. Der Datensatz `daten` enthält folgende Variablen:
-`alter` (Alter des Patienten (Jahre))
+`alter` (Alter des Patienten (in Jahre))
 `bmi` (Body-Mass-Index)
-`op_dauer` (Dauer der Operation (Minuten))
+`op_dauer` (Dauer der Operation (in Minuten))
 `pe` (Anzahl absolvierter Physiotherapie-Einheiten)
 `schmerz` (Schmerzwert zu Beginn der Reha (NRS 0–10))
 `motivation` (Motivationsscore (1–10))
-`kniebeugetiefe` (Kniebeugetiefe in Grad nach 12 Wochen)
+`kniebeugetiefe` (Kniebeugetiefe nach 12 Wochen (in Grad))
 
 
 ```{r outcome}
