@@ -432,7 +432,7 @@ mod_3
 ```
 
 ```{r mod-check}
-task <- "***2.1**  Erstelle 3 lineare Modelle aus dem Datensatz `train`: `mod_1` (pe), `mod_2` (pe, schmerz und motivation), `mod_3` (pe, schmerz, motivation, alter und bmi). Lasse dir die Modelle am Ende ausgeben."
+task <- "***2.1**  Erstelle 3 lineare Modelle aus dem Datensatz `train`: `mod_1` (pe), `mod_2` (pe, schmerz und motivation), `mod_3` (pe, schmerz, motivation, alter und bmi). Lasse dir die Modelle am Ende anzeigen."
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
@@ -442,7 +442,7 @@ grade_this({
 })
 ```
 
-**2.2** Schreibe in die erse Zeile : set.seed(21). Führe für jedes Modell eine 5-fache Cross-Validation durch. Nutze hierzu die richtige Funktion aus dem package `cv` und speichere jede Durchführung unter der Variable `cv1` (für mod_1), `cv2`(für mod_2), `cv3` (für mod_3) ab. <br>
+**2.2** Schreibe in die erste Zeile : set.seed(21). Führe für jedes Modell eine 5-fache Cross-Validation durch. Nutze hierzu die richtige Funktion aus dem package `cv` und speichere jede Durchführung unter der Variable `cv1` (für mod_1), `cv2`(für mod_2), `cv3` (für mod_3) ab. <br>
 **2.3** Lasse dir die Variablen als Dataframe ausgeben und interpretiere welches Modell das Beste ist. (Tipp: MSE)
 
 
