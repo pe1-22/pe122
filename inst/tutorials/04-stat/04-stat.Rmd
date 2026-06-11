@@ -523,7 +523,7 @@ grade_this({
 ### Interpretieren 
 ```{r interpret}
 question(
-    "rmse_train = 7.94, rmse_test = 7.10. Was bedeutet das?",
+    "rmse_train = 11.1, rmse_test = 10.5. Was bedeutet das?",
   answer("Das Modell generalisiert gut. Es ist kein Overfitting erkennbar.", correct = TRUE),
   answer("Das Modell ist overfittet, weil der Test-RMSE niedriger ist."),
   answer("Das Modell ist unbrauchbar, weil der RMSE über 5 liegt."),
