@@ -20,12 +20,12 @@ tutorial_options(
 set.seed(42)
 
 daten <- data.frame(
-  pe = round(pmax(0, rnorm(250, mean = 18, sd = 6))),
-  schmerz   = round(pmin(pmax(rnorm(250, mean = 6,  sd = 2),  0), 10), 1),
-  motivation       = round(pmin(pmax(rnorm(250, mean = 7,  sd = 1.5), 1), 10), 1),
-  alter            = round(rnorm(250, mean = 45, sd = 12)),        # kein echter Effekt
-  bmi              = round(pmin(pmax(rnorm(250, mean = 26, sd = 4), 18), 42), 1), # kein echter Effekt
-  op_dauer    = round(rnorm(250, mean = 85, sd = 20))         # kein echter Effekt
+  pe = round(pmax(0, rnorm(80, mean = 18, sd = 6))),
+  schmerz   = round(pmin(pmax(rnorm(80, mean = 6,  sd = 2),  0), 10), 1),
+  motivation       = round(pmin(pmax(rnorm(80, mean = 7,  sd = 1.5), 1), 10), 1),
+  alter            = round(rnorm(80, mean = 45, sd = 12)),        # kein echter Effekt
+  bmi              = round(pmin(pmax(rnorm(80, mean = 26, sd = 4), 18), 42), 1), # kein echter Effekt
+  op_dauer    = round(rnorm(80, mean = 85, sd = 20))         # kein echter Effekt
 )
 
 daten$kniebeugetiefe <- round(pmin(pmax(
@@ -33,7 +33,7 @@ daten$kniebeugetiefe <- round(pmin(pmax(
     daten$pe * 2.5 +
     daten$motivation       * 3.0 +
     daten$schmerz  * (-4.0) +
-    rnorm(250, 0, 8),
+    rnorm(80, 0, 8),
   30), 140), 1)
 
 ```
@@ -81,7 +81,7 @@ vorhersagen <- predict(best_mod, newdata = test)
 quiz(
   question("Was ist Machine Learning?",
     answer("Modelle, die anhand von Daten Vorhersagen treffen", correct = TRUE),
-    answer("lineare oder logistische Regression", correct = TRUE),
+    answer("lineare und logistische Regressionen", correct = TRUE),
     answer("komplexere Modelle bis hin zu Neural Networks", correct = TRUE),
     answer("Ein Verfahren bei dem Modelle nur manuell programmiert werden"),
     answer("Ein Algorithmus der keine Daten benötigt"),
@@ -99,9 +99,9 @@ quiz(
 quiz(
   question("Was sind Hyperparameter?",
     answer("Einstellungen eines Modells, die vor dem Training festgelegt werden.", correct = TRUE),
-    answer("Ergebnisse, die das Modell nach dem Training selbst berechnet."),
+    answer("Wahrscheinlichkeiten, die das Modell nach dem Training selbst berechnet."),
     answer("Die Zielvariable im Datensatz."),
-    answer("Die Vorhersagen des Modells auf Testdaten."),
+    answer("Die Vorhersagen des Modells auf den Testdaten."),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -150,7 +150,7 @@ quiz(
   question("Was beschreibt die Varianz im Kontext des Bias-Variance Tradeoffs?",
     answer("Wie stark sich das Modell verändert, wenn es auf verschiedenen Stichproben erstellt wird.", correct = TRUE),
     answer("Den durchschnittlichen Fehler des Modells über alle möglichen Datensätze."),
-    answer("Die Streuung der Zielvariable im Datensatz."),
+    answer("Die Streuung des Outcomes im Datensatz."),
     answer("Den Wertebereich der Vorhersagen."),
     allow_retry = TRUE,
     random_answer_order = TRUE,
@@ -163,10 +163,10 @@ quiz(
 ```{r bias_variance_tradeoff}
 quiz(
   question("Wie verhält sich der Bias-Variance Tradeoff bei steigender Modellkomplexität?",
-    answer("Bias sinkt, Varianz steigt", correct = TRUE),
-    answer("Bias steigt, Varianz sinkt"),
-    answer("Bias und Varianz steigen beide"),
-    answer("Bias und Varianz sinken beide"),
+    answer("der Bias sinkt, die Varianz steigt", correct = TRUE),
+    answer("der Bias steigt, die Varianz sinkt"),
+    answer("der Bias und die Varianz steigen beide"),
+    answer("der Bias und die Varianz sinken beide"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -178,10 +178,10 @@ quiz(
 ```{r bvt_two}
 quiz(
   question("Was macht ein gutes Modell aus?",
-    answer("hoher Bias, niedrige Varianz", correct = TRUE),
-    answer("niedriger Bias, hohe Varianz"),
-    answer("gutes Gleichgewicht zwischen Bias und Varianz"),
-    answer("niedriger Bias, niedrige Varianz"),
+    answer("ein hoher Bias und eine niedrige Varianz"),
+    answer("ein niedriger Bias und eine hohe Varianz"),
+    answer("ein gutes Gleichgewicht zwischen Bias und Varianz", correct = TRUE),
+    answer("ein niedriger Bias und eine niedrige Varianz"),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -194,10 +194,10 @@ quiz(
 
 ```{r eval_methoden}
 quiz(
-  question("Welche Möglichkeiten gibt es, um zu testen, ob ein Modell gut passt?",
-    answer("Den Datensatz in Trainings- und Testdaten aufteilen und das Modell nur auf den Trainingsdaten fitten.", correct = TRUE),
+  question("Wie  kann man testen ob ein Modell gut passt und nicht Over-/Underfitted ist?",
+    answer("Den Datensatz in Trainings- und Testdaten aufteilen. Das Modell nur auf den Trainingsdaten fitten und auf den Testdaten evaluieren.", correct = TRUE),
     answer("Neue Daten sammeln und das Modell darauf evaluieren.", correct = TRUE),
-    answer("k-fold Cross-Validation durchführen.", correct = TRUE),
+    answer("eine k-fold Cross-Validation durchführen.", correct = TRUE),
     answer("Das Modell auf dem gesamten Datensatz trainieren und evaluieren."),
     type = "checkbox",
     allow_retry = TRUE,
@@ -207,7 +207,6 @@ quiz(
   )
 )
 ```
-
 
 ### RMSE
 
@@ -229,12 +228,16 @@ quiz(
 ```{r rmse_modkomp}
 quiz(
   question("Wie verhält sich der RMSE auf Trainings- und Testdaten bei steigender Modellkomplexität?",
-    answer("Der Trainings-RMSE sinkt kontinuierlich; der Test-RMSE sinkt zunächst, steigt aber ab einem gewissen Punkt wieder an.", correct = TRUE),
-    answer("Beide RMSEs sinken kontinuierlich mit steigender Komplexität."),
-    answer("Der Trainings-RMSE steigt, der Test-RMSE sinkt."),
-    answer("Der Test-RMSE sinkt kontinuierlich; der Trainings-RMSE sinkt zunächst, steigt aber ab einem gewissen Punkt wieder an"),
+  answer("der Trainings-RMSE sinkt kontinuierlich", correct = TRUE),
+  answer("der Trainings-RMSE steigt kontinuierlich"),
+  answer("der Trainings-RMSE steigt zunächst und fällt ab einem gewissen Punkt wieder"),
+  answer("der Trainings-RMSE sinkt zunächst und steigt ab einem gewissen Punkt wieder"),
+  answer("der Test-RMSE sinkt kontinuierlich"),
+  answer("der Test-RMSE steigt kontinuierlich"),
+  answer("der Test-RMSE steigt zunächst und fällt ab einem gewissen Punkt wieder"),
+  answer("der Test-RMSE sinkt zunächst und steigt ab einem gewissen Punkt wieder",correct = TRUE),
     allow_retry = TRUE,
-    random_answer_order = TRUE,
+    random_answer_order = FALSE,
     incorrect = "Leider falsch.",
     correct = random_praise()
   )
@@ -244,11 +247,11 @@ quiz(
 ### Training/Testfehler
 ```{r fehlervgl}
 quiz(
-  question("Welches Modell würdest du in der Regel bevorzugen, wenn zwei Modelle einen ähnlichen Trainingsfehler haben aber eines einen deutlich kleineren Testfehler?",
+  question("Welches Modell würdest du bevorzugen, wenn zwei Modelle einen ähnlichen Trainingsfehler haben aber eines einen deutlich kleineren Testfehler?",
     answer("Das Modell mit dem kleineren Testfehler.", correct = TRUE),
     answer("Das Modell mit dem kleineren Trainingsfehler."),
-    answer("Immer das komplexere Modell."),
-    answer("Immer das Modell mit den wenigsten Variablen."),
+    answer("Das komplexere Modell."),
+    answer("Das Modell mit den wenigsten Variablen."),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -259,7 +262,7 @@ quiz(
 
 ```{r var}
 quiz(
-  question("Was bedeutet eine hohe Varianz bei einem Modell?",
+  question("Was bedeutet eine hohe Varianz in einem Modell?",
     answer("Das Modell reagiert stark auf kleine Änderungen in den Trainingsdaten.", correct = TRUE),
     answer("Das Modell ist besonders einfach."),
     answer("Das Modell hat einen hohen Trainingsfehler."),
@@ -274,10 +277,10 @@ quiz(
 
 ```{r perform}
 quiz(
-  question("Warum kann ein sehr komplexes Modell schlechter auf neuen Daten performen?",
+  question("Warum performt ein sehr komplexes Modell schlechter auf neue Daten?",
     answer("Weil es sich zu stark an die Trainingsdaten anpasst.", correct = TRUE),
-    answer("Weil es automatisch immer mehr Bias bekommt."),
-    answer("Weil die Daten sich nicht an das Modell anpassen."),
+    answer("Weil es automatisch immer einen größeren Bias hat."),
+    answer("Weil die neuen Daten nicht an das Modell angepasst sind."),
     answer("Weil komplexe Modelle keine Vorhersagen machen können."),
     allow_retry = TRUE,
     random_answer_order = TRUE,
@@ -315,31 +318,15 @@ quiz(
 ```
 
 ### Schritt 1: Datensatz in Train / Test aufteilen 
-In diesem Schritt teilst du den Datensatz `daten` in einen Trainings- (80%) und einen Testdatensatz (20%) auf. Das Testset legst du anschließend beiseite – es wird erst ganz am Ende zur Evaluation verwendet.<br>
-**1.1** Erstelle einen zufällig sortierten Index aller Zeilen (Tipp: Probandenanzahl = Zeilenanzahl). Schreibe in die erste Zeile:`set.seed(123)`. Speichere das Ergebnis als `index`.
+In diesem Schritt teilst du den Datensatz `daten` in einen Trainingsdatensatz (80%) und einen Testdatensatz (20%) auf. Das Testset legst du  beiseite (dieses wird erst ganz am Ende zur Evaluation verwendet.) 
 
-```{r index, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+Deine Daten sind schon randomisiert, das heißt die Reihenfolge der Zeilen ist zufällig. Das bedeutet, du musst nicht zwingend zufällig 80% der Zeilen aussuchen, sondern kannst einfach die ersten 80% der Zeilen als Trainingsdaten und die restlichen 20% als Testdaten verwenden.
 
-```
+(Wichtig: Normalerweise sind die Daten nicht randomisiert und man muss sicherstellen, dass die Aufteilung in Trainings- und Testdaten zufällig erfolgt. In diesem Fall ist es aber schon geschehen, damit du dich auf die Schritte konzentrieren kannst, die nach der Aufteilung kommen.)
 
-```{r index-solution}
-set.seed(123)
-index <- sample(1:80, size = 80)
-```
-
-```{r index-check}
-grade_this({
-  if (identical(.result, .solution)) {
-    pass(praise = TRUE)
-  } else {
-    fail(message = "Leider falsch.")
-  }
-})
-```
-
-**1.2** Wähle die ersten 80% der Einträge aus `index` aus und nutze sie, um die entsprechenden Zeilen aus Daten zu extrahieren. Speichere das Ergebnis als `train`.<br>
-**1.3** Wähle die restlichen 20% der Einträge aus `index` aus und extrahiere die entsprechenden Zeilen. Speichere das Ergebnis als `test`.<br>
-**1.4** Kontrolliere ob train und test jeweils die richtige Anzahl an Zeilen hat.
+**1.1** Wähle die ersten 80% der Zeilen aus dem Datensatz aus. Speichere das Ergebnis als data.frame `train`.<br>
+**1.2** Wähle die restlichen 20% der Zeilen aus. Speichere das Ergebnis als `test`.<br>
+**1.3** Kontrolliere ob train und test jeweils die richtige Anzahl an Zeilen hat.
 
 ```{r tt, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupA"}
 
@@ -380,18 +367,20 @@ quiz(
 
 
 ### Schritt 2: Bestes Modell auf dem Trainset auswählen
-**2.1** Erstelle 3 lineare Modelle: `mod_1` (Physio Einheiten), `mod_2` (Physio Einheiten, Schmerz und Motivation), `mod_3` (Physio Einheiten, Schmerz,Motivation, Alter und BMI).
+**2.1** Erstelle 3 lineare Modelle aus dem Datensatz `train`: `mod_1` (pe), `mod_2` (pe, schmer und motivation), `mod_3` (pe, schmerz, motivation, alter und bmi). Lasse dir am Ende für jedes der Modelle die Modellzusammenfassung mit der passenden Funktion aus dem `brooom` package ausgeben.
 
 ```{r mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupB"}
 
 ```
 
 ```{r mod-solution}
-
 mod_1 <- lm(kniebeugetiefe ~ pe, data = train)
 mod_2 <- lm(kniebeugetiefe ~ pe + schmerz + motivation, data = train)
-mod_3 <- lm(kniebeugetiefe ~ pe + schmerz + motivation + alter + bmi,
-                 data = train)
+mod_3 <- lm(kniebeugetiefe ~ pe + schmerz + motivation + alter + bmi, data = train)
+broom::glance(mod_1)
+broom::glance(mod_2)
+broom::glance(mod_3)
+
 ```
 
 ```{r mod-check}
@@ -404,7 +393,7 @@ grade_this({
 })
 ```
 
-**2.2** Führe für jedes Modell eine 5-fache Cross-Validation durch. Nutze hierzu die richtige Funktion aus dem package `cv` und speichere jede Durchführung unter der Variable `cv1` (für mod_1), `cv2`(für mod_2), `cv3` (für mod_3) ab. <br>
+**2.2** Schreibe in die erste Zeile : set.seed(21). Führe für jedes Modell eine 5-fache Cross-Validation durch. Nutze hierzu die richtige Funktion aus dem package `cv` und speichere jede Durchführung unter der Variable `cv1` (für mod_1), `cv2`(für mod_2), `cv3` (für mod_3) ab. <br>
 **2.3** Lasse dir die Variablen als Dataframe ausgeben und interpretiere welches Modell das Beste ist. (Tipp: MSE)
 
 ```{r cv, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupB"}
@@ -412,11 +401,10 @@ grade_this({
 ```
 
 ```{r cv-solution}
-
+set.seed(21)
 cv1 <- cv::cv(mod_1, data = train, k = 5)
 cv2 <- cv::cv(mod_2, data = train, k = 5)
 cv3 <- cv::cv(mod_3, data = train, k = 5)
-
 as.data.frame(cv1)
 as.data.frame(cv2)
 as.data.frame(cv3)
@@ -445,6 +433,7 @@ quiz(
   )
 )
 ```
+
 ```{r cvwhy}
 quiz(
   question("Warum ist Cross-Validation sinnvoll?",
@@ -462,14 +451,14 @@ quiz(
 
 ### Schritt 3: Bestes Modell auf Trainset fitten 
 
-Fitte nun das Modell auf dem Trainset, welches am Besten passt und weise es der Variable `best_mod`zu.
-
+Fitte nun das Modell auf dem Trainset, welches am Besten passt und weise es der Variable `best_mod` zu. Lasse dir am Ende für das Modell die Modellzusammenfassung mit der passenden Funktion aus dem `brooom` package ausgeben.
 ```{r best_mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupB"}
 
 ```
 
 ```{r best_mod-solution}
 best_mod <- lm(kniebeugetiefe ~ pe + schmerz + motivation, data = train)
+broom::glance(best_mod)
 ```
 
 ```{r best_mod-check}
@@ -483,10 +472,11 @@ grade_this({
 ```
 
 
-### Schritt 4: Bestes Modell auf Testset evaluieren 
+### Schritt 4: Bestes Modell auf Testset evaluieren
+
 In diesem letzten Schritt wendest du das beste Modell (`best_mod`) auf das 
 Testset an, das du in Schritt 1 beiseitegelegt hast.
-Der Vorteil dieses Testsets ist, dass das Modell die Daten noch nie gesehen hat. Es ist quasi eine neue Stichprobe und zeigt wie gut die Vorhersage des Modells funktioniert.  
+Der Vorteil dieses Testsets ist, dass das Modell die Daten noch nie gesehen hat. Es ist quasi eine neue Stichprobe und zeigt wie gut die Vorhersage des Modells funktioniert.   
 
 **4.1** Lasse dir die Vorhersagen von `best_mod` auf Grundlage des Testsets ausgeben und speichere das Ergebnis als `vorhersagen`.
 
@@ -541,4 +531,14 @@ question(
 )
 ```
 
+
+### Geschafft!
+
+Herzlichen Glückwunsch, du hast die Lektion zum Thema Machine Learning erfolgreich abgeschlossen!
+
+Falls du noch Zeit hast, kannst du hier weiter mit dem Datensatz experimentieren, weitere Grafiken erstellen oder neue Modelle fitten. Viel Spaß dabei!
+
+```{r sandbox, exercise=TRUE, exercise.lines = 10, exercise.setup = "setupA"}
+
+```
 
