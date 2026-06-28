@@ -1,0 +1,277 @@
+---
+title: "05 - KI Integration"
+output: 
+  learnr::tutorial:
+    progressive: true
+    theme: lumen
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+library(ggplot2)
+knitr::opts_chunk$set(echo = FALSE)
+tutorial_options(
+  exercise.reveal_solution = FALSE,
+  exercise.checker = gradethis::gradethis_exercise_checker
+)
+
+
+library(dplyr)
+library(mall)
+library(rentrez)   
+
+llm_use("ollama", "llama3.2", seed = 42)
+
+# PubMed-Suche
+suche <- entrez_search(
+  db = "pubmed",
+  term = "athlete recovery AND (sleep OR nutrition OR HRV OR compression OR mindfulness)",
+  retmax = 50
+)
+
+cat("Gefundene Artikel:", suche$count, "\n")
+cat("Geladene IDs:", length(suche$ids), "\n")
+
+#Abstracts herunterladen 
+raw <- entrez_fetch(
+  db      = "pubmed",
+  id      = suche$ids,
+  rettype = "abstract",
+  retmode = "text"
+)
+
+# Abstracts in Dataframe
+
+bloecke <- strsplit(raw, "\n\n\n")[[1]]
+bloecke <- bloecke[nchar(trimws(bloecke)) > 100]  # Kurze Fragmente entfernen
+
+literatur <- tibble(
+  id         = seq_along(bloecke),
+  pmid       = suche$ids[seq_along(bloecke)],
+  abstract   = trimws(bloecke)
+)
+
+cat("Datensatz bereit:", nrow(literatur), "Einträge\n")
+glimpse(literatur)
+
+# Autoren + Jahr 
+details <- entrez_summary(db = "pubmed", id = suche$ids[1:nrow(literatur)])
+
+literatur <- literatur |>
+  mutate(
+    autor_jahr = sapply(suche$ids[1:nrow(literatur)], function(id) {
+      tryCatch({
+        s <- details[[id]]
+        paste0(s$sortfirstauthor, " (", substr(s$pubdate, 1, 4), ")")
+      }, error = function(e) paste0("PMID:", id))
+    })
+  ) |>
+  select(id, pmid, autor_jahr, abstract)
+
+#  CSV speichern
+write.csv(literatur, "literatur.csv", row.names = FALSE)
+cat("literatur.csv gespeichert mit", nrow(literatur), "echten PubMed-Abstracts\n")
+
+
+# AI setup
+library(ollamar)
+ollamar::pull("gpt-oss:120b-cloud")
+model <- "gpt-oss:120b-cloud"
+ai_feedback <- function(response, question, correct) {
+  text <- paste0("You are a helpful instructor to a data science course. You are giving feedback on a task given to a student. The question was '", question, "' and the student incorrectly responded with '", response, "'. The correct answer was: '", correct, "'. Provide a very short and helpful feedback, but make sure to never ever give the full solution. Only provide the feedback message as output.")
+  out <- ollamar::generate(model, text, output = "text")
+  out
+}
+
+ai_error_feedback <- function(response, error) {
+    text <- paste0("You are a helpful instructor to a data science course. You are giving feedback on a task given to a student. The R code submitted has this error:", error, ". Please provide a very short and helpful feedback using R best practices to fix the error. Only provide the feedback message as output. This is the full code submitted: ", response)
+  out <- ollamar::generate(model, text, output = "text")
+  out
+}
+```
+
+
+
+### Aufgabe 1
+**1.1** Installiert euch die Pakete: `dplyr`und `mall` und aktiviert das KI-Modell `gpt-oss:120b-cloud`. <br>
+Tipp: llm_use("ollama", "gpt-oss:120b-cloud.2", seed = 42)
+
+**1.2** Ladet den bereitgestellten Datensatz "Literaturrecherche" herunter.
+
+```{r one, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r one-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r one-solution}
+library(dplyr)
+library(mall)
+
+llm_use("ollama", "gpt-oss:120b-cloud", seed = 42)
+
+literatur <- read.csv("literatur.csv")
+```
+
+```{r one-check}
+task <- "**1.1** Installiert euch die Pakete: `dplyr`und `mall` und aktiviert das KI-Modell `gpt-oss:120b-cloud`. <br>
+Tipp: llm_use(ollama, gpt-oss:120b-cloud.2, seed = 42)
+
+**1.2** Ladet den bereitgestellten Datensatz Literaturrecherche herunter."
+
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+
+### Aufgabe 2
+Ordnet jeder Literatur in einer neuen Spalte ein Thema zu. Die Themen lauten: "sleep and recovery","nutrition and supplementation", "psychological strategies", "physical interventions", "monitoring and diagnostics". 
+Verwendet hierzu die Funktion llm_classify().
+
+```{r two, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r two-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r two-solution}
+literatur <- literatur |>
+  llm_classify(
+    col = abstract,
+    labels = c(
+      "sleep and recovery",
+      "nutrition and supplementation",
+      "psychological strategies",
+      "physical interventions",
+      "monitoring and diagnostics"
+    ),
+    pred_name = "Thema"
+  )
+```
+
+```{r two-check}
+task <- "Ordnet jeder Literatur in einer neuen Spalte ein Thema zu. Die Themen lauten: sleep and recovery,nutrition and supplementation, psychological strategies, physical interventions, monitoring and diagnostics. 
+Verwendet hierzu die Funktion llm_classify()."
+
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+**Überlege!** Schaut euch 2 Abstracts an: Stimmt eure eigene Einschätzung mit der KI überein? Bei welchen Einträgen weicht sie ab – und warum könnte das so sein?
+
+
+### Aufgabe 3
+
+In einer weiteren Spalte soll nun das Evidenzlevel der Literatur abgeschätzt werden. Teilt hierzu die Literatu in "hoch", "moderat", "niedrig" ein. 
+Nutzt hierzu wieder die Funktion llm_classify().
+
+```{r three, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r three-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r three-solution}
+literatur <- literatur |>
+  llm_classify(
+    col = abstract,
+    labels = c("hoch", "moderat", "niedrig"),
+    pred_name = "Evidenz"
+  )
+```
+
+```{r three-check}
+task <- "In einer weiteren Spalte soll nun das Evidenzlevel der Literatur abgeschätzt werden. Teilt hierzu die Literatu in: hoch, moderat, niedrig ein. 
+Nutzt hierzu wieder die Funktion llm_classify()."
+
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+**Überlege!** Kann eine KI das Evidenzlevel eines Abstracts zuverlässig einschätzen – oder braucht es dafür immer menschliches Fachwissen? Was spricht dafür, was dagegen?
+
+
+### Aufgabe 4:  Reproduzierbarkeit sichern 
+**4.1** Speichert euch abschließend euer Ergebnis in einer csv-Datei ab.
+
+```{r four, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r four-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r four-solution}
+write.csv(literatur, "literatur_ki_klassifiziert.csv", row.names = FALSE)
+```
+
+```{r four-check}
+task <- "**4.1** Speichert euch abschließend euer Ergebnis in einer csv-Datei ab."
+
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+**4.2** Damit euer Workflow reproduzierbar ist, solltet ihr auch die technischen Daten abrufen und notieren. <br>
+Nützliche Codes hierfür sind: <br>
+llm_use()  -> KI-Modell<br>
+sessionInfo() -> R-Version und Pakete 
+
+```{r five, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+
+```
+
+```{r five-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r five-solution}
+llm_use() 
+sessionInfo()
+```
+
+```{r five-check}
+task <- "**4.2** Damit euer Workflow reproduzierbar ist, solltet ihr auch die technischen Daten abrufen und notieren. <br>
+Nützliche Codes hierfür sind: <br>
+llm_use()  -> KI-Modell<br>
+sessionInfo() -> R-Version und Pakete"
+
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
+```
+
+**Überlege!** Stellt euch vor, ihr öffnet eure CSV-Datei in 6 Monaten wieder. Welche Informationen fehlen in der Datei, um den Workflow vollständig nachvollziehen/reporduzieren zu können?

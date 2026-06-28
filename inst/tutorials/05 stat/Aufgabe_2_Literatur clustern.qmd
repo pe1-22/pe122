@@ -1,0 +1,39 @@
+# Literaturlisten nach Themen clustern
+
+### Hintergrund
+Vor einer systematischen Literaturrecherche müssen viele Abstracts gesichtet werden. KI kann hier als thematischer Vorsortier-Assistent fungieren, um den Einstieg zu strukturieren und das Evidenzlevel grob einzuschätzen.
+
+In dieser Übung wendet ihr KI-Funktionen direkt in R auf einen Literaturdatensatz an.
+Die Literatursuche erfolgte in Pubmed mit folgender Suchzeile: 
+"sleep OR nutrition OR HRV OR compression OR mindfulness"
+
+### Aufgabe 1
+**1.1** Installiert euch die Pakete: `dplyr`und `mall` und aktiviert das KI-Modell `gpt-oss:120b-cloud`. <br>
+Tipp: llm_use("ollama", "gpt-oss:120b-cloud.2", seed = 42)
+
+**1.2** Ladet den bereitgestellten Datensatz "Literaturrecherche" herunter.
+
+### Aufgabe 2: Thema klassifizieren 
+Ordnet jeder Literatur in einer neuen Spalte ein Thema zu. Die Themen lauten: "sleep and recovery","nutrition and supplementation", "psychological strategies", "physical interventions", "monitoring and diagnostics". 
+Verwendet hierzu die Funktion llm_classify().
+
+**Überlege!** Schaut euch 2 Abstracts an: Stimmt eure eigene Einschätzung mit der KI überein? Bei welchen Einträgen weicht sie ab – und warum könnte das so sein?
+
+### Aufgabe 3: Evidenzlevel einschätzen 
+In einer weiteren Spalte soll nun das Evidenzlevel der Literatur abgeschätzt werden. Teilt hierzu die Literatu in "hoch", "moderat", "niedrig" ein. 
+Nutzt hierzu wieder die Funktion llm_classify().
+
+**Überlege!** Kann eine KI das Evidenzlevel eines Abstracts zuverlässig einschätzen – oder braucht es dafür immer menschliches Fachwissen? Was spricht dafür, was dagegen?
+
+### Aufgabe 4:  Reproduzierbarkeit sichern 
+**4.1** Speichert euch abschließend euer Ergebnis in einer csv-Datei ab.
+
+**4.2** Damit euer Workflow reproduzierbar ist, solltet ihr auch die technischen Daten abrufen und notieren. <br>
+Nützliche Codes hierfür sind: <br>
+llm_use()  -> KI-Modell<br>
+sessionInfo() -> R-Version und Pakete 
+
+**Überlege!** Stellt euch vor, ihr öffnet eure CSV-Datei in 6 Monaten wieder. Welche Informationen fehlen in der Datei, um den Workflow vollständig nachvollziehen/reporduzieren zu können?
+
+
+
