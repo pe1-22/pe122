@@ -1,0 +1,2885 @@
+"id","pmid","autor_jahr","abstract"
+1,"42362109","Nordstrøm A (2026)","1. Int J Sport Nutr Exerc Metab. 2026 Jun 26:1-13. doi: 10.1123/ijsnem.2025-0260.
+ Online ahead of print.
+
+Nutrition for Elite Male Ice Hockey: Evidence-Based Recommendations.
+
+Nordstrøm A(1)(2).
+
+Author information:
+(1)Department of Sports Medicine, Oslo Sports Trauma Research Center, Norwegian 
+School of Sports Sciences, Oslo, Norway.
+(2)Sykehuset Innlandet HF, Innlandet Hospital Trust, Elverum, Norway.
+
+Ice hockey is a high-intensity intermittent team sport where games of 3 × 20-min 
+periods involve on-ice shifts (typically lasting ∼30-80 s) interspersed with 
+passive recovery periods (2-5 min). Playing requires endurance, speed, strength, 
+and balance in conjunction with technical, tactical, and cognitive abilities. 
+Nutrition can play a valuable role in optimizing physical and mental performance 
+and in maintaining overall health of ice hockey players. The aim of this review 
+is to provide evidence-based nutrition guidelines for elite male ice hockey 
+players. The energy demands during training sessions and games in ice hockey are 
+not well investigated, but elite players typically cover 2.3-6.7 km in their 
+15-25 min of on-ice time during games. Carbohydrate (primarily muscle glycogen) 
+is the major fuel during training and match play, and match performance has been 
+shown to be associated with the pregame muscle glycogen content. Sweat losses 
+are typically high (2.02 ± 0.74 L/hr) due to the high intensity and the use of 
+protective equipment. Sufficient carbohydrate and fluid intake are therefore the 
+most important nutritional considerations during training sessions, games, and 
+recovery to maintain performance. Protein intake is important after training 
+sessions and games to support muscle repair, growth, and overall recovery. 
+Nutrition plans should be personalized and periodized to meet the demands of 
+training sessions and games, and individual objectives. Players should 
+prioritize food before supplements to meet nutrient requirements. While studies 
+on supplementation are scarce, supplements that might be beneficial to some ice 
+hockey players include Vitamin D, iron, caffeine, and creatine.
+
+DOI: 10.1123/ijsnem.2025-0260
+PMID: 42362109"
+2,"42356654","Castellanos A (2026)","2. Sensors (Basel). 2026 Jun 9;26(12):3683. doi: 10.3390/s26123683.
+
+Impact of Gyroscope Integration, Sensor Placement, and Activity Granularity on 
+Human Activity Recognition Performance.
+
+Castellanos A(1), López AM(1), Salinas MÁ(1), Álvarez JC(1), Álvarez D(1), 
+García G(1), Buendía-Romero Á(2)(3)(4), Mañas A(2)(3)(5), Bailón R(6), Martín 
+V(7), Carbonell-Baeza A(8), Cabanas-Sánchez V(9)(10), Martinez-Gomez 
+D(9)(10)(11).
+
+Author information:
+(1)Multisensor Systems and Robotics Research Group (SiMuR), Electrical 
+Engineering Department, University of Oviedo, 33204 Gijón, Spain.
+(2)GENUD Toledo Research Group, Faculty of Sports Sciences, Universidad de 
+Castilla-La Mancha, 45071 Toledo, Spain.
+(3)CIBER on Frailty and Healthy Aging (CIBERFES), Instituto de Salud Carlos III, 
+28029 Madrid, Spain.
+(4)Grupo Mixto de Fragilidad y Envejecimiento Exitoso UCLM-SESCAM, Universidad 
+de Castilla-La Mancha-Servicio de Salud de Castilla-La Mancha, IDISCAM, 45004 
+Toledo, Spain.
+(5)Faculty of Education, Psychology and Sport Sciences, University of Huelva, 
+21007 Huelva, Spain.
+(6)Biomedical Signal Interpretation and Computational Simulation Research Group 
+(BSICoS), University of Zaragoza, Campus Río Ebro, I+D+i Building-C/Mariano 
+Esquillor, S/N, 50018 Zaragoza, Spain.
+(7)Gene-Environment-Health Interactions Research Group (GIIGAS), Department of 
+Biomedical Sciences, Faculty of Veterinary Science, University of León, 24071 
+León, Spain.
+(8)CTS-1038 eMpOwering health by physical actiVity, Exercise and nutrITion 
+Research Group (MOVE-IT), Department of Physical Education, Instituto de 
+Investigación e Innovación Biomédica de Cádiz (INiBICA), Universidad de Cádiz, 
+11002 Cadiz, Spain.
+(9)Department of Preventive Medicine and Public Health, School of Medicine, 
+Universidad Autonoma de Madrid, 28029 Madrid, Spain.
+(10)CIBER of Epidemiology and Public Health, 28029 Madrid, Spain.
+(11)IMDEA Nutrition, CEI UAM+CSIC, 28049 Madrid, Spain.
+
+This study systematically evaluates the impact of sensor configuration, body 
+location, classification granularity, and model choice on inertial-based human 
+activity recognition in a laboratory dataset aligned with the Spanish IMPaCT 
+cohort design. Data were collected from 85 participants instrumented with 
+thigh-, wrist-, and hip-mounted inertial measurement units over a structured 
+protocol of 13 semi-structured daily activities, a resting phase and a 
+structured activity. After manual correction of timestamp drift, signals were 
+segmented into overlapping 10-s windows and analyzed using convolutional neural 
+networks, Random Forest, and XGBoost classifiers.Two classification targets were 
+defined: fine-grained recognition of 15 laboratory-controlled activities and 
+coarse-grained classification into four MET-based intensity levels. Results 
+showed that classification granularity is the primary determinant of performance 
+(F=224.85, p-value = 2.304×10-13 through the analysis of variance of the 
+F1-score), with intensity-level classification substantially outperforming 
+fine-grained activity recognition. Sensor configuration, model type, and body 
+location also significantly influenced classification outcomes. Wrist-mounted 
+sensors achieved the highest overall F1-scores. Incorporating gyroscope-derived 
+features consistently improved performance across configurations, and feature 
+importance analysis confirmed their substantial contribution. These findings, 
+derived from models developed under controlled laboratory conditions, provide 
+practical guidance for the design of wearable sensing protocols and modeling 
+strategies in large-scale population-based studies, and support their extension 
+to everyday physical activity, laying the foundation for future real-world 
+applications.
+
+DOI: 10.3390/s26123683
+PMCID: PMC13306829
+PMID: 42356654 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflicts of interest. 
+The funders had no role in the design of the study; in the collection, analyses, 
+or interpretation of data; in the writing of the manuscript; or in the decision 
+to publish the results."
+3,"42356379","Lloret-Gil J (2026)","3. Nutrients. 2026 Jun 19;18(12):1992. doi: 10.3390/nu18121992.
+
+Effects of Curcumin Supplementation on Exercise Recovery, Oxidative Stress, 
+Inflammation, Muscle Damage, and Performance in Exercise and Sport Contexts: A 
+Systematic Review.
+
+Lloret-Gil J(1), Victoria-Montesinos D(2), Martínez-Noguera FJ(1).
+
+Author information:
+(1)Research Center for High Performance Sport, Catholic University of Murcia 
+(UCAM), Guadalupe, 30107 Murcia, Spain.
+(2)Faculty of Pharmacy and Nutrition, UCAM Universidad Católica de Murcia, 30107 
+Murcia, Spain.
+
+BACKGROUND/OBJECTIVES: Curcumin has been proposed as a nutritional strategy to 
+support exercise recovery through antioxidant and anti-inflammatory actions. 
+However, trials differ in sport context, training status, supplementation 
+timing, dose, formulation, and methodological control. This systematic review 
+evaluated its effects on recovery outcomes in active individuals and athletes, 
+with particular attention to the applicability of the evidence to real-world 
+sport settings.
+METHODS: PubMed, Scopus, Web of Science, SPORTDiscus, and Cochrane 
+Library/CENTRAL were searched from 2012 to June 2026. Randomized double-blind 
+placebo-controlled trials were eligible when they evaluated oral curcumin, 
+curcuminoids, Curcuma-derived preparations with a specified curcumin dose, or 
+curcumin combined only with bioavailability enhancers. Studies using artificial 
+muscle-damage protocols, clinical populations, non-randomized designs, or 
+combined bioactive interventions were excluded. Methodological quality was 
+assessed using the Physiotherapy Evidence Database (PEDro) scale, supplemented 
+by a Cochrane Risk of Bias 2 (RoB 2) assessment and a Grading of Recommendations 
+Assessment, Development and Evaluation (GRADE) certainty-of-evidence evaluation. 
+Owing to heterogeneity, findings were synthesized narratively by outcome domain, 
+supplementation timing, formulation type, exercise context, and training status.
+RESULTS: Fifteen trials were included. Favorable effects were reported in 6/7 
+studies assessing oxidative stress, 4/6 assessing muscle damage, 3/8 assessing 
+inflammation, 3/7 assessing subjective recovery, soreness, or fatigue, and 4/8 
+assessing physical or athletic performance. However, effects varied 
+substantially according to population, exercise context, biomarker selection, 
+timing of assessment, and formulation type. The certainty of evidence was low 
+for oxidative stress and very low for muscle damage, inflammation, subjective 
+recovery/soreness/fatigue, and performance.
+CONCLUSIONS: Curcumin supplementation may support selected aspects of exercise 
+recovery, particularly oxidative stress responses. However, these findings 
+should be interpreted cautiously because the evidence derives mostly from small 
+trials with heterogeneous populations, exercise protocols, supplementation 
+regimens, formulations, biomarkers, and assessment time points. Evidence for 
+muscle damage, inflammation, subjective recovery, fatigue, and performance 
+remains inconsistent, and further well-controlled trials in trained and 
+high-performance athletes are needed before practical recommendations can be 
+established.
+
+DOI: 10.3390/nu18121992
+PMCID: PMC13304679
+PMID: 42356379 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflicts of interest."
+4,"42355875","Xu N (2026)","4. J Clin Med. 2026 Jun 17;15(12):4706. doi: 10.3390/jcm15124706.
+
+The Effectiveness of Blood Flow Restriction Training on Rehabilitation After 
+Anterior Cruciate Ligament Reconstruction: A Systematic Review and 
+Meta-Analysis.
+
+Xu N(1), Wang T(2)(3), Guo R(2)(4), Hong Y(5), Dudonienė V(1).
+
+Author information:
+(1)Department of Health Promotion and Rehabilitation, Lithuanian Sports 
+University, Sporto g. 6, 44421 Kaunas, Lithuania.
+(2)School of Strength and Conditioning Training, Beijing Sport University, Xinxi 
+Road No. 48, Beijing 100084, China.
+(3)Beijing Sports Nutrition Engineering Research Center, Beijing Sport 
+University, Xinxi Road No. 48, Beijing 100084, China.
+(4)Key Laboratory for Performance Training and Recovery of General 
+Administration of Sport, Beijing Sport University, Xinxi Road No. 48, Beijing 
+100084, China.
+(5)Department of Health, Sport, and Hunman Physiology, University of Iowa, 101 
+Jessup Hall, Iowa City, IA 52240, USA.
+
+Background/Objective: Blood flow restriction (BFR) training has emerged as a 
+promising adjunct to rehabilitation following anterior cruciate ligament 
+reconstruction (ACLR), but its effectiveness across postoperative outcomes 
+remains uncertain. To systematically evaluate and quantify the effects of BFR 
+training on rehabilitation outcomes after ACLR. Methods: A systematic review and 
+meta-analysis were conducted according to PRISMA guidelines. Ten electronic 
+databases were searched from inception to December 2025. Eligible studies 
+included randomized and non-randomized clinical trials investigating BFR after 
+ACLR. Risk of bias was assessed using RoB 2 and ROBINS-I. Pooled standardized 
+mean differences (SMDs) with 95% confidence intervals (CIs) were calculated 
+using random-effects models, and certainty of evidence was evaluated using 
+GRADE. Results: Seventeen studies involving 643 participants were included, of 
+which 12 contributed to the meta-analysis. Most studies combined low-load 
+resistance training with BFR at 40-80% limb occlusion pressure (LOP), initiated 
+within 0-12 weeks after surgery and continued for 2-16 weeks. Compared with 
+conventional rehabilitation, BFR significantly improved quadriceps strength (n = 
+9; SMD = 0.77, 95% CI 0.42-1.13; p < 0.0001; moderate-certainty evidence) and 
+functional recovery (n = 6; SMD = 1.47, 95% CI 0.08-2.87; p = 0.04; I2 = 91%; 
+low-certainty evidence). Larger effects were observed at occlusion pressures 
+>80% LOP. No serious BFR-related adverse events were reported. No significant 
+effects were found for balance (n = 5; SMD = 0.22, 95% CI -0.96 to 1.40; p = 
+0.72) or pain (n = 5; SMD = 0.82, 95% CI -0.28 to 1.92; p = 0.14), both 
+supported by very low-certainty evidence. Conclusions: Moderate-certainty 
+evidence supports BFR training for improving quadriceps strength after ACLR. 
+Evidence for functional recovery is limited by substantial heterogeneity, while 
+effects on pain, postural balance, and muscle morphology remain inconclusive. 
+Findings regarding optimal occlusion pressure should be considered exploratory 
+pending confirmation in future trials.
+
+DOI: 10.3390/jcm15124706
+PMCID: PMC13302091
+PMID: 42355875
+
+Conflict of interest statement: The authors declare no conflicts of interest."
+5,"42354423","Xiang Y (2026)","5. Gels. 2026 Jun 11;12(6):525. doi: 10.3390/gels12060525.
+
+Design-Driven Gel-Based Delivery Systems for Bioactives in Sports Nutrition.
+
+Xiang Y(1), Yao F(2), Jin X(2), Li Q(1), Zang J(3), Wu J(1).
+
+Author information:
+(1)Jilin University Engineering Laboratory for Translational Medicine of 
+Hepatobiliary and Pancreatic Diseases, The Second Norman Bethune Clinical 
+Medical College of Jilin University, Changchun 130021, China.
+(2)Changchun University of Chinese Medicine, Changchun 130117, China.
+(3)Sanya Institute of Nanjing Agricultural University, College of Food Science 
+and Technology, Nanjing Agricultural University, Nanjing 210095, China.
+
+Sports nutrition products are increasingly expected to deliver bioactive 
+compounds that aid in recovery, reduce fatigue, and support physiological 
+regulation, going beyond merely providing energy and nutrients. However, many 
+bioactive compounds face challenges such as poor aqueous dispersibility, limited 
+stability, low bioaccessibility, or inefficient absorption, which hinder their 
+practical use in real food products. This review critically examines food-grade, 
+gel-based delivery systems for bioactive compounds in sports nutrition from a 
+design-driven perspective. It focuses on hydrogels, microgels, emulsion gels, 
+protein gel matrices, and multicomponent gel architectures that prioritize 
+structural stability, digestion-triggered responsiveness, and compatibility with 
+food. Key design principles are discussed, including the need to maintain 
+stability during processing and storage, balance protection with release, and 
+tailor delivery structures to sports-specific constraints such as 
+gastrointestinal tolerance, osmotic load, nutrient timing, and changes in 
+digestion related to exercise. The review also analyzes the effectiveness of 
+gel-based and hybrid systems in liquid, solid, and semi-solid sports nutrition 
+products, emphasizing how the product format and consumption scenario can 
+influence delivery performance. A design decision framework is proposed to align 
+bioactive properties, food format, target release profile, and exercise-stage 
+requirements with appropriate delivery architectures. Current challenges are 
+also addressed, including difficulties in predicting structure-function 
+relationships, limited robustness during scale-up processes, and inadequate 
+functional evaluation. Overall, gel-based food delivery systems provide a 
+promising solution for improving the stability, release behavior, and practical 
+functionality of bioactives in sports nutrition.
+
+DOI: 10.3390/gels12060525
+PMCID: PMC13298160
+PMID: 42354423
+
+Conflict of interest statement: The authors declare no conflicts of interest."
+6,"42353777","Leońska-Duniec A (2026)","6. Genes (Basel). 2026 May 29;17(6):618. doi: 10.3390/genes17060618.
+
+Epigenetic Modulation of Exercise Adaptation: The Role of Dietary 
+Supplementation in Athletic Performance.
+
+Leońska-Duniec A(1), Małkowska P(2), Sawczuk M(3).
+
+Author information:
+(1)Faculty of Physical Education, Gdansk University of Physical Education and 
+Sport, 80-336 Gdansk, Poland.
+(2)Department of Physiology in Health Sciences, Faculty of Health Sciences, 
+Pomeranian Medical University, 71-210 Szczecin, Poland.
+(3)Institute of Physical Culture Sciences, University of Szczecin, 71-065 
+Szczecin, Poland.
+
+In high-performance sport, even small improvements in adaptation and recovery 
+may influence competitive outcomes, increasing interest in molecular mechanisms 
+that regulate training responses. Epigenetic processes represent a dynamic 
+interface between exercise, nutrition, and long-term athletic adaptation. This 
+narrative review summarizes current data on how dietary supplementation may 
+modulate exercise-induced epigenetic remodeling and influence performance and 
+recovery, focusing on mechanisms such as DNA methylation, histone modifications, 
+and non-coding RNAs, as well as key nutrient groups with potential epigenetic 
+activity, including polyphenols, omega-3 fatty acids, methyl donors, and 
+selected vitamins. Evidence identified through targeted literature searches 
+across major scientific databases indicates that several bioactive compounds can 
+affect epigenetic pathways relevant to exercise adaptation. These mechanisms 
+appear to modulate processes central to performance and recovery, including 
+inflammation control, mitochondrial function, metabolic regulation, and tissue 
+repair. Available evidence from multi-nutrient and combined exercise-nutrition 
+interventions suggests potentially complementary effects on epigenetic 
+regulation; however, human evidence remains limited and mechanistic 
+interpretations should be considered preliminary. Overall, epigenetically 
+informed supplementation offers a promising yet still developing approach and 
+should be considered an adjunct to evidence-based training programs, balanced 
+nutrition, and adequate recovery rather than a standalone performance-enhancing 
+strategy.
+
+DOI: 10.3390/genes17060618
+PMCID: PMC13299533
+PMID: 42353777 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflicts of interest."
+7,"42352745","Zekioğlu A (2026)","7. Behav Sci (Basel). 2026 Jun 3;16(6):912. doi: 10.3390/bs16060912.
+
+Stress Responses and Recovery in Student Athletes: Heart Rate Variability and 
+Skin Conductance Patterns Across Cognitive Challenges-A Pilot Study.
+
+Zekioğlu A(1), Tok S(1), İşbilir M(2), Yılmaz SE(1), Binboğa E(3), Dal N(1).
+
+Author information:
+(1)Faculty of Sports Sciences, Manisa Celal Bayar University, Halil Erdoğan Cd., 
+Ahmet Bedevi Mah., 45040 Manisa, Turkey.
+(2)Department of Physical Education and Sport Sciences, Democritus University of 
+Thrace, University Campus, 69100 Komotini, Greece.
+(3)Department of Biophysics, Faculty of Medicine, Ege University, 35100 Izmir, 
+Turkey.
+
+This pilot study aimed to examine autonomic nervous system responses in 
+student-athletes using heart rate variability (HRV) and skin conductance level 
+(SCL) during sequential cognitive stressors, including a modified Stroop test 
+and a mental math task. Fifty-two university athletes (mean age = 21.7 ± 2.8 
+years) participated in this repeated-measures experimental study. HRV and SCL 
+were recorded at baseline, during each stressor, and throughout the recovery 
+periods following each task. Repeated-measures ANOVA revealed significantly 
+elevated SCL across experimental conditions [F(2.09, 100.53) = 45.69, p < 0.001, 
+η2 = 0.488], which remained above baseline during recovery, indicating sustained 
+sympathetic activation. HR also increased significantly during stress exposure, 
+indicating increased autonomic activation during cognitive stress [F(2, 103.11) 
+= 14.30, p < 0.001, η2 = 0.230]. Contrary to the initial hypothesis, vagally 
+mediated HRV indices, including RMSSD [F(2.73, 131.11) = 6.88, p < 0.001, η2 = 
+0.125] and HF power [F(2.85, 136.99) = 16.86, p < 0.001, η2 = 0.260], increased 
+during cognitive stress, suggesting adaptive parasympathetic modulation rather 
+than vagal withdrawal. These findings indicate that autonomic responses to 
+cognitive stress in athletes may involve simultaneous sympathetic and 
+parasympathetic activation rather than a simple vagal withdrawal response. 
+Overall, the findings only partially supported the initial hypotheses. Despite 
+limitations related to sample size and short recording periods, the present 
+findings highlight the importance of evaluating HRV and SCL together when 
+examining psychophysiological stress responses in athletic populations.
+
+DOI: 10.3390/bs16060912
+PMCID: PMC13295499
+PMID: 42352745
+
+Conflict of interest statement: The authors declare no conflicts of interest."
+8,"42348850","Kim N (2026)","8. J Strength Cond Res. 2026 Jun 25. doi: 10.1519/JSC.0000000000005571. Online 
+ahead of print.
+
+Validation of a Combined Heart Rate and Accelerometry Method for Measuring Total 
+Energy Expenditure in Soccer Players During Precompetition Training.
+
+Kim N(1), Lee S(2), Taguchi M(2)(3), Oh T(4), Han S(4), Ishikawa-Takata K(5), 
+Park J(1).
+
+Author information:
+(1)Department of Physical Education, Korea University, Seoul, Republic of Korea.
+(2)Research Institute for Sports Nutrition, Waseda University, Tokorozawa, 
+Japan.
+(3)Faculty of Sport Sciences, Waseda University, Tokorozawa, Japan.
+(4)Department of Sports and Leisure Studies, Yongin University, Yongin, Republic 
+of Korea; and.
+(5)Faculty of Health and Sports Sciences, Toyo University, Tokyo, Japan.
+
+Kim, N, Lee, S, Taguchi, M, Oh, T, Han, S, Ishikawa-Takata, K, and Park, J. 
+Validation of a combined heart rate and accelerometry method for measuring total 
+energy expenditure in soccer players during precompetition training. J Strength 
+Cond Res XX(X): 000-000, 2026-Understanding energy expenditure in athletes 
+during intensive training periods is essential for optimizing performance and 
+recovery. Accurate assessment of total energy expenditure (TEE) and activity 
+energy expenditure (AEE) during precompetition training is important. 
+Accordingly, TEE and AEE were assessed using the doubly labeled water (DLW) 
+method. We also validated a combined method using exercise energy expenditure 
+(EEE) through heart rate (HR) and nonexercise activity thermogenesis (NEAT) 
+through accelerometry (ACC) in collegiate soccer players, examining EEE and NEAT 
+variability in relation to TEE. Korean male collegiate soccer players 
+participated in the study. TEEDLW and AEEDLW were measured over 8 days using DLW 
+(n = 14). Resting metabolic rate (RMR) was assessed with the Douglas bag method. 
+TEECOM was calculated as the sum of RMR, HR-derived EEE, and ACC-derived NEAT (n 
+= 10). TEEDLW and AEEDLW were 4,119 and 2,066 kcal·d-1, respectively. TEECOM and 
+AEECOM (4,090 and 2,028 kcal·d-1, respectively) closely matched TEEDLW and 
+AEEDLW (4,062 and 2,002 kcal·d-1, respectively), showing high validity (r2 = 
+0.81 and 0.73, respectively). Bland-Altman analysis revealed small mean 
+differences: 21.17 kcal·d-1 for TEE and 25.75 kcal·d-1 for AEE. Heart 
+rate-derived EEE correlated strongly with AEEDLW (r = 0.77, p = 0.009), while 
+ACC-derived NEAT and HR-derived EEE were negatively correlated (r = -0.74, p = 
+0.014). Higher TEE and AEE values corresponded with increased training volume. 
+The combined HR and ACC method proved highly valid for group-level TEE 
+assessment. Owing to individual variability in EEE and NEAT, precise measurement 
+of these components remains crucial for accurate TEE predictions in athletes.
+
+Copyright © 2026 National Strength and Conditioning Association.
+
+DOI: 10.1519/JSC.0000000000005571
+PMID: 42348850"
+9,"42348402","Mooney T (2026)","9. Eur J Sport Sci. 2026 Jul;26(7):e70204. doi: 10.1002/ejsc.70204.
+
+Previous Hamstring Injury Does Not Impact Biceps Femoris Long Head Fascicle 
+Length and Eccentric Knee Flexion Strength Changes Following a Low-Volume 
+Resistance Training Intervention in Elite Under-20-Year-Old Male Gaelic 
+Footballers.
+
+Mooney T(1)(2), Cronin K(3), Malone S(1), Welch N(2), Collins K(1), Hickey 
+J(4)(5).
+
+Author information:
+(1)Gaelic Sports Research Centre, Technological University Dublin, Dublin, 
+Ireland.
+(2)Sports Medicine Research Department, UPMC Sports Surgery Clinic, Dublin, 
+Ireland.
+(3)Diagnostic Imaging Department, School of Medicine, University College Dublin, 
+Dublin, Ireland.
+(4)Department of Sport Science and Nutrition, Maynooth University, Maynooth, 
+County Kildare, Ireland.
+(5)Sports Performance, Recovery, Injury and New Technologies (SPRINT) Research 
+Centre, Australian Catholic University, Melbourne, Australia.
+
+This study reports biceps femoris long head (BFlh) fascicle length and eccentric 
+knee flexion strength changes following a 9-week in-season low-volume resistance 
+training intervention in elite under-20-year-old (U20) male Gaelic footballers 
+with and without previous hamstring injury. We included 26 male Gaelic 
+footballers (age = 18.5 ± 0.5 years; height = 183.1 ± 5.1 cm; body 
+mass = 79.2 ± 7.9 kg) in this study, with 10 of these participants reporting 
+previous hamstring injuries within the last 12 months. Participants performed 
+two sets of four Nordic hamstring exercise (NHE) repetitions and three sets of 
+six staggered-stance Romanian deadlift (RDL) repetitions once per week for 
+nine weeks. Before and after the intervention, BFlh fascicle length was assessed 
+via ultrasound and eccentric knee flexion strength was measured during the NHE. 
+We ran separate linear mixed-effects models for BFlh fascicle length and 
+eccentric knee flexion strength, with fixed-effects of time (baseline and 
+follow-up), limb-type (previously injured and contralateral uninjured limbs of 
+previously injured participants and between-limb average of uninjured 
+participants) and the time*limb-type interaction. The linear mixed-effects model 
+for BFlh fascicle length revealed a significant main effect of time 
+(β = 0.31 cm; SE = 0.15 cm; p = 0.04), while the time*limb-type interaction was 
+not statistically significant. The linear mixed-effects model for eccentric knee 
+flexion strength revealed no significant increase in eccentric knee flexion 
+strength (β = 9.53 N, SE = 12.97 N, p = 0.47), while the time*limb-type 
+interaction was not statistically significant. These findings suggest changes to 
+BFlh fascicle length and eccentric knee flexion strength from baseline to 
+follow-up were comparable across all limb-types.
+
+© 2026 The Author(s). European Journal of Sport Science published by Wiley‐VCH 
+GmbH on behalf of European College of Sport Science.
+
+DOI: 10.1002/ejsc.70204
+PMCID: PMC13297019
+PMID: 42348402 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflicts of interest."
+10,"42348390","Keeble AR (2026)","10. Function (Oxf). 2026 Jun 25. doi: 10.1152/function.017.2026. Online ahead of 
+print.
+
+Cellular Senescence Links Muscle Atrophy and Posttraumatic Osteoarthritis after 
+ACL Injury.
+
+Keeble AR(1)(2)(3), Owen A(1)(4), Gonzalez-Velez S(1)(3), Thomas NT(1)(2), 
+Brightwell C(1)(2), Balawender P(1), O'Daniel M(1), Weiss H(1), Noehren H(1), 
+Thompson H(1)(5), Zuluaga-Osorio K(6), Bates Z(1), Gottlieb L(1), Long D(1), 
+Harrison D(7), Kern P(8), Conley C(9), Samaan M(10), Duncan S(9), Stone A(9), 
+Johnson D(9), Wen Y(1)(3)(11), Noehren B(1)(4)(8), Dungan C(12), Fry CS(1)(2).
+
+Author information:
+(1)Center for Muscle Biology, University of Kentucky; Lexington, Kentucky, USA, 
+40536.
+(2)Department of Athletic Training and Clinical Nutrition, College of Health 
+Sciences, University of Kentucky; Lexington, Kentucky, USA, 40536.
+(3)Department of Physiology, College of Medicine, University of Kentucky; 
+Lexington, Kentucky, USA, 40536.
+(4)Department of Physical Therapy, College of Health Sciences, University of 
+Kentucky; Lexington, Kentucky, USA, 40536.
+(5)Department of Biomedical Engineering, College of Engineering, University of 
+Kentucky; Lexington, Kentucky, USA, 40536.
+(6)Department of Neuroscience, College of Medicine, University of Kentucky, 
+Lexington, Kentucky, USA, 40536.
+(7)Department of Biology, College of Arts and Sciences, University of Kentucky; 
+Lexington, Kentucky, USA, 40536.
+(8)Department of Internal Medicine, Division of Endocrinology, College of 
+Medicine, University of Kentucky; Lexington, Kentucky, USA, 40536.
+(9)Department of Orthopaedic Surgery and Sports Medicine, College of Medicine, 
+University of Kentucky; Lexington, Kentucky, USA, 40536.
+(10)Department of Kinesiology and Health Promotion, College of Education, 
+University of Kentucky; Lexington, Kentucky, USA, 40536.
+(11)Division of Biomedical Informatics, Department of Internal Medicine, College 
+of Medicine, University of Kentucky; Lexington, Kentucky, USA, 40536.
+(12)Department of Health, Human Performance, and Recreation, College of Health 
+and Human Sciences, Baylor University, Waco, TX, USA, 76798.
+
+Traumatic knee injury leads to posttraumatic osteoarthritis (PTOA) and 
+significant skeletal muscle weakness, resulting in chronic disability. The 
+current standard of care frequently fails to prevent musculoskeletal 
+dysfunction, underscoring the need to identify therapeutic mechanisms of PTOA. 
+Using an established preclinical anterior cruciate ligament (ACL) transection 
+model of PTOA and leveraging an innovative SPiDER-senescence associated 
+β-galactosidase stain to discern senescent cells, we investigated cellular 
+senescence at single-cell resolution and identified anti-inflammatory 
+macrophages as a predominant contributor to the senescent cell burden in both 
+muscle and knee joint after injury. Clearance of senescent cells using the 
+senolytic dasatinib and quercetin (D+Q) mitigated injury-induced muscle atrophy 
+and cartilage degradation, with greater senescent cell clearance within muscle 
+compared to cartilage. We also provide clinical evidence of elevated senescent 
+cell burden in muscle of patients following ACL injury and with PTOA, which is 
+obstinate to standard of care, highlighting cellular senescence as a strong 
+therapeutic target to improve functional recovery after traumatic joint injury.
+
+DOI: 10.1152/function.017.2026
+PMID: 42348390"
+11,"42347460","Mendez-Dominguez N (2026)","11. Sports (Basel). 2026 Jun 8;14(6):236. doi: 10.3390/sports14060236.
+
+Interventions Related to Menstrual Health and Menstrual-Cycle-Associated 
+Symptoms in Female Athletes: Implications for Recovery and Athletic Performance.
+
+Mendez-Dominguez N(1), Estrella-Castillo D(2), Villarreal-Jimenez E(1)(2), 
+Arcila-Novelo R(2).
+
+Author information:
+(1)Hospital Regional de Alta Especialidad de la Peninsula de Yucatan, Servicios 
+de Salud del Instituto Mexicano del Seguro Social para el Bienestar 
+IMSS-BIENESTAR, Merida 97130, Mexico.
+(2)Facultad de Medicina, Universidad Autonoma de Yucatan, Merida 97000, Mexico.
+
+BACKGROUND: Menstrual-cycle-associated symptoms and menstrual health conditions 
+are common among female athletes and may influence recovery, perceived 
+readiness, training availability, and athletic performance. However, evidence 
+regarding interventions aimed at managing these symptoms and their functional 
+implications in athletes remains limited and heterogeneous.
+OBJECTIVE: The objective of this study is to synthesize the available evidence 
+on pharmacological and non-pharmacological interventions related to menstrual 
+health and menstrual-cycle-associated symptoms in female athletes and to 
+evaluate their impact on performance, recovery, functional capacity, and symptom 
+burden.
+MATERIALS AND METHODS: A systematic review with narrative synthesis was 
+conducted following PRISMA 2020 guidelines. Studies evaluating interventions 
+associated with menstrual health or menstrual-cycle-related symptoms in female 
+athletes were included when they reported outcomes related to athletic 
+performance, recovery, functional capacity, or symptom burden.
+RESULTS: Five studies published between 2023 and 2025 were included. The 
+interventions evaluated included hormonally related strategies involving oral 
+contraceptive timing, recovery interventions such as cryotherapy, 
+mindfulness-based yoga, nutritional supplementation, and pharmacological 
+pain-modulation approaches. However, findings regarding objective athletic 
+performance outcomes were inconsistent, and the included studies showed 
+substantial methodological heterogeneity.
+CONCLUSIONS: The available evidence suggests that certain interventions related 
+to menstrual health may contribute to improvements in symptom burden, perceived 
+recovery, or selected functional outcomes in female athletes. Nevertheless, the 
+current evidence base remains limited, heterogeneous, and insufficient to 
+support strong performance-related recommendations. Further high-quality studies 
+specifically designed in female athlete populations are needed to inform 
+evidence-based sports medicine practice.
+
+DOI: 10.3390/sports14060236
+PMCID: PMC13306975
+PMID: 42347460
+
+Conflict of interest statement: The authors declare no conflicts of interest."
+12,"42346377","Martini SE (2026)","12. Metabolites. 2026 Jun 8;16(6):397. doi: 10.3390/metabo16060397.
+
+Plasma Metabolite Profiles of Exercising American Foxhound Dogs Fed Different 
+Diets.
+
+Martini SE(1), de Godoy MRC(1), Beloshapka AN(1), Buff PR(2), Swanson 
+KS(1)(3)(4).
+
+Author information:
+(1)Department of Animal Sciences, University of Illinois Urbana-Champaign, 
+Urbana, IL 61801, USA.
+(2)The Nutro Company, Franklin, TN 37067, USA.
+(3)Division of Nutritional Sciences, University of Illinois Urbana-Champaign, 
+Urbana, IL 61801, USA.
+(4)Department of Veterinary Clinical Medicine, University of Illinois 
+Urbana-Champaign, Urbana, IL 61801, USA.
+
+Background/Objectives: Canine athletes have a higher energy requirement and are 
+more susceptible to nutrient depletion, electrolyte imbalance, and metabolic 
+stress than sedentary pets. The objective of this study was to characterize the 
+plasma metabolome of American Foxhound dogs following a bout of unstructured 
+exercise. Methods: Thirty-nine adult American Foxhound dogs (32 intact males, 7 
+spayed females; age: 6.2 ± 3.1 yr; BW: 36.3 ± 5.3 kg) were allotted to a 
+standard performance diet (CTRL) or NUTRO® Natural Choice® Adult High Endurance 
+Formula (TEST). After 80 d in the study, blood samples were collected prior to 
+(0 h), and 3 h and 25 h post-exercise (average: 17.7 km run over 2-3 h). Plasma 
+samples of the 10 top performers of each treatment group were analyzed for 
+untargeted metabolite profiling. Results: Of the 566 named metabolites 
+identified, >200 and >185 metabolites were impacted (p < 0.05) by exercise and 
+diet, respectively. Principal component analysis indicated distinct clustering 
+by diet. Random forest analysis highlighted several metabolites having a high 
+degree of predictive accuracy based on diet and exercise, with most related to 
+amino acid, lipid, xenobiotic, and cofactor and vitamin metabolism. Relating to 
+exercise, glycolytic end-products and citric acid cycle intermediates were 
+increased at 3 h post-exercise. Similarly, tocopherols and omega-3 
+polyunsaturated fatty acids were higher in dogs fed TEST than those fed CTRL 
+during recovery, indicating a lower oxidative stress and anti-inflammatory 
+response. Conclusions: Overall, the data suggest a protective effect (lower 
+susceptibility to oxidative stress and muscle fatigue) of feeding a 
+nutrient-fortified diet for dogs undergoing unstructured exercise.
+
+DOI: 10.3390/metabo16060397
+PMCID: PMC13303894
+PMID: 42346377
+
+Conflict of interest statement: Preston R. Buff is employees The Nutro Company. 
+The paper reflects the views of the scientists, and not the company."
+13,"42340141","Vargas-Molina S (2026)","13. Scand J Med Sci Sports. 2026 Jul;36(7):e70327. doi: 10.1111/sms.70327.
+
+Comparison of Repetition-Based Progressive-Overload Strategies in Resistance 
+Training: Rest-Pause Versus Drop Sets.
+
+Vargas-Molina S(1)(2), García-Palumbo A(3), Petro JL(2)(4), Bonilla DA(2)(4), 
+García-Sillero M(1), Carbone L(5), Schoenfeld BJ(6), Benítez-Porres J(1)(7).
+
+Author information:
+(1)Physical Education and Sport Area, Faculty of Medicine, University of Málaga, 
+Málaga, Spain.
+(2)Research Group in Elite Sports Performance (DBSS-HiPer), Dynamical Business & 
+Science Society-DBSS International SAS, Bogotá, Colombia.
+(3)Universidad Maimonides, Buenos Aires, Argentina.
+(4)Research Group in Physical Activity, Sports and Health Sciences (GICAFS), 
+Universidad de Córdoba, Montería, Colombia.
+(5)Universidad El Salvador, Buenos Aires, Argentina.
+(6)Department of Exercise Science and Recreation, CUNY Lehman College, Bronx, 
+New York, USA.
+(7)Instituto de Investigación Biomédica de Málaga y Plataforma en 
+Nanomedicina-IBIMA, Plataforma BIONAND, Málaga, Spain.
+
+Rest-pause (RP) and drop sets (DS) are widely used as intensification strategies 
+during resistance training. However, their incorporation within a 
+repetition-based progressive-overload (PO) model and their effects under 
+supervised conditions are not well established. We compared progressive-overload 
+rest-pause (PO-RP) with progressive-overload drop-set (PO-DS) training, 
+assessing changes in body composition and maximal strength in resistance-trained 
+adults. Twenty-three participants (20 men and 3 women; 29.1 [5.9] years; 25.0 
+[3.1] kg/m2) were randomized to either PO-RP (n = 12) or PO-DS (n = 11). After a 
+1-week familiarization phase, both groups trained twice weekly for 8 weeks under 
+supervision while following a prescribed nutritional protocol. Pre/post measures 
+of body composition were assessed by DXA, and maximal strength was evaluated by 
+the one-repetition maximum (1-RM) bench press. Adiposity-related outcomes (total 
+and upper-body fat mass, and total and upper-body fat-free adipose tissue) 
+remained essentially unchanged in both protocols (all group × time p > 0.05). 
+Lean soft tissue mass increased in PO-DS (Δ = 1.4 kg; 95% CI, 0.8-2.2; 
+p < 0.001; g = 0.1) and PO-RP (Δ = 1.2 kg; 95% CI, 0.8-2.0; p < 0.001; g = 0.1), 
+with no between-protocol difference in change (group × time p = 0.688). Bench 
+press 1-RM increased in both protocols (PO-DS: Δ = 12.3 kg; 95% CI, 9.6-14.0; 
+p < 0.001; g = 0.7; PO-RP: Δ = 9.5 kg; 95% CI, 7.3-11.2; p < 0.001; g = 0.4), 
+without a statistically significant group × time effect (p = 0.086). Under 
+supervised training and a standardized nutritional protocol, PO-RP and PO-DS 
+produced comparable adaptations. Adiposity-related outcomes remained stable, 
+fat-free compartment measures increased, and maximal strength improved, with no 
+statistically significant between-protocol differences in change. Future 
+research should determine whether these adaptations are maintained over longer 
+interventions and whether responses differ across populations with different 
+characteristics, including women, older adults, clinical populations, or 
+individuals with different training experience. Further studies incorporating 
+larger samples, direct assessments of muscle hypertrophy, additional strength 
+outcomes, and mechanistic measures of fatigue and recovery may help refine the 
+application of advanced resistance-training strategies in evidence-based 
+exercise programs.
+
+© 2026 The Author(s). Scandinavian Journal of Medicine & Science In Sports 
+published by John Wiley & Sons Ltd.
+
+DOI: 10.1111/sms.70327
+PMCID: PMC13292392
+PMID: 42340141 [Indexed for MEDLINE]
+
+Conflict of interest statement: D.A.B. has conducted academic‐sponsored research 
+in sport and exercise sciences, serves as an NSCA Latam board member, and has 
+received honoraria for speaking on exercise sciences at international 
+conferences and private courses. B.J.S. formerly served on the scientific 
+advisory board for Tonal Corporation, a manufacturer of fitness equipment. The 
+remaining authors declare no conflicts of interest."
+14,"42339703","Lu F (2026)","14. Physiother Res Int. 2026 Jul;31(3):e70264. doi: 10.1002/pri.70264.
+
+Effects of Insomnia, Anxiety and Depression on Clinical Outcomes of Frozen 
+Shoulder After Manipulation Under Anesthesia.
+
+Lu F(1), Hu Z(1), Shen L(2), Hu Y(1)(3)(4)(5)(6)(7), Wang X(1)(3)(4)(5)(6)(7), 
+Wang X(1), Ruan D(1)(3)(4)(5)(6)(7), Liu H(1)(3)(4)(5)(6)(7), Cai 
+H(1)(3)(4)(5)(6)(7), Shen W(1)(3)(4)(5)(6)(7)(8).
+
+Author information:
+(1)Department of Sports Medicine & Orthopedic Surgery, The Second Affiliated 
+Hospital, Zhejiang University School of Medicine, Hangzhou, Zhejiang, China.
+(2)Air Force Health Care Center for Special Services, Hangzhou, Zhejiang, China.
+(3)Institute of Sports Medicine, Zhejiang University, Hangzhou, Zhejiang, China.
+(4)Orthopedics Research Institute of Zhejiang University, Hangzhou, Zhejiang, 
+China.
+(5)Key Laboratory of Motor System Disease Research and Precision Therapy of 
+Zhejiang Province, Hangzhou, Zhejiang, China.
+(6)Clinical Research Center of Motor System Disease of Zhejiang Province, 
+Hangzhou, Zhejiang, China.
+(7)Dr. Li Dak Sum & Yip Yio Chin Center for Stem Cell and Regenerative Medicine, 
+Zhejiang University School of Medicine, Hangzhou, Zhejiang, China.
+(8)China Orthopedic Regenerative Medicine Group, CORMed, Hangzhou, Zhejiang, 
+China.
+
+BACKGROUND AND PURPOSE: Frozen shoulder is a common disorder causing pain, 
+stiffness, disability, and sleep disturbance. While often linked to 
+psychological comorbidities, the impact of preoperative mental health and 
+insomnia on recovery outcomes remains unclear. The purpose of this study was to 
+investigate the effects of preoperative anxiety, depression, and insomnia on 
+postoperative recovery in patients undergoing manipulation under anesthesia 
+(MUA) for frozen shoulder.
+METHODS: This study was a secondary analysis of a prospective observational 
+cohort study. A total of 197 patients with primary frozen shoulder were enrolled 
+and treated with MUA. Preoperatively, the Insomnia Severity Index (ISI) and 
+Hospital Anxiety and Depression Scale (HADS) classified patients: 33 with 
+clinical insomnia (ISI ≥ 15) and 45 with psychological distress (PD, including 
+anxiety or depression, HADS anxiety ≥ 8 and depression ≥ 8). Shoulder passive 
+range of motion (ROM), pain (visual analog scale, VAS), and functional scores 
+(Constant-Murley Score [CMS], Oxford Shoulder Score [OSS]) were assessed at 3 
+and 6 months postoperatively. Outcomes were compared between patients 
+with/without insomnia or PD. To control for multiple comparisons, all p-values 
+were adjusted using the False Discovery Rate (FDR) method.
+RESULTS: In the insomnia analysis, the insomnia group had a significantly lower 
+proportion of male patients (12.1% vs. 28.7%, p = 0.048) and a lower mean BMI 
+(22.0 ± 2.4 vs. 23.0 ± 2.7, p = 0.033) compared to the group without insomnia. 
+Furthermore, baseline abduction was significantly more restricted in the 
+insomnia group (67.2° ± 21.9 vs. 81.8° ± 24.8, p = 0.001) and OSS was 
+significantly worse (38.5 ± 8.1 vs. 32.6 ± 5.5, p < 0.001). Preoperative PD was 
+more common in right-side cases (60.0% vs. 42.8%, p = 0.042) and was associated 
+with worse baseline external rotation. Following MUA, all patient groups 
+achieved substantial clinical improvement. At 3 and 6 months postoperatively, 
+after FDR adjustment, there were no statistically significant or clinically 
+meaningful differences in ROM, VAS, CMS, or OSS between patients with and 
+without insomnia, nor between patients with and without PD. All observed mean 
+differences between groups were small and fell well below established minimal 
+clinically important difference (MCID) thresholds (e.g., at 6 months, CMS mean 
+difference between PD and no PD was 1.84 [95% CI -0.92 to 4.60]; adjusted 
+p = 0.796).
+DISCUSSION: Although preoperative clinical insomnia and PD are associated with 
+worse baseline pain and functional presentation, they were not associated with 
+poorer postoperative recovery following MUA in this cohort. At the 3 and 
+6 months postoperative follow-ups, there were no statistical differences in pain 
+or ROM between patients with and without these preoperative conditions.
+
+© 2026 John Wiley & Sons Ltd.
+
+DOI: 10.1002/pri.70264
+PMID: 42339703 [Indexed for MEDLINE]"
+15,"42335114","Lockie RG (2026)","15. J Strength Cond Res. 2026 Jul 1;40(7):815-821. doi: 
+10.1519/JSC.0000000000005412.
+
+Relationships Between Isometric Midthigh Pull, Body Mass, Countermovement Jump, 
+Upper-Body Muscular Endurance, and Intermittent Running With Job Task 
+Performance in Firefighter Trainees.
+
+Lockie RG(1), Dawes JJ(2)(3), Campana T(1), Kramer J(1), Orr RM(4), Romero M(5).
+
+Author information:
+(1)Department of Kinesiology, California State University, Fullerton, Fullerton, 
+California.
+(2)Department of Health and Human Performance, Oklahoma State University, 
+Stillwater, Oklahoma.
+(3)Tactical Fitness and Nutrition Lab, Oklahoma State University, Stillwater, 
+Oklahoma.
+(4)Tactical Research Unit, Bond University, Robina, Queensland, Australia; and.
+(5)Seattle Fire Department, Seattle, Washington.
+
+Lockie, RG, Dawes, JJ, Campana, T, Kramer, J, Orr, RM, and Romero, M. 
+Relationships between isometric midthigh pull, body mass, countermovement jump, 
+upper-body muscular endurance, and intermittent running with job task 
+performance in firefighter trainees. J Strength Cond Res 40(7): 815-821, 
+2026-Maximal strength is essential for firefighters but may be challenging to 
+measure in this population because of time constraints, injury risk, and ability 
+variations. The isometric midthigh pull (IMTP) could provide a safe and 
+expedient strength measure. Retrospective analysis of data from 47 firefighter 
+trainees (41 men, 6 women) was used to examine relationships between body mass, 
+IMTP, and other general fitness tests (countermovement jump, hand release 
+push-ups, and Yo-Yo Intermittent Recovery Test Level 1 [YYIRT1]) with 
+job-specific tasks. In addition to the general fitness tests, trainees completed 
+the job-specific tests of the 40-m, 100.5-kg manikin drag, 10.67-m ladder 
+extension, and 5-lap stair climb wearing a 12.9-kg self-contained breathing 
+apparatus while carrying a 24.9-kg, 30.5-m long hose pack. Pearson's 
+correlations derived relationships between body mass, and general fitness and 
+job-specific tests (p < 0.05). Stepwise regression derived predictive 
+relationships between body mass and the general and job-specific fitness tests 
+(p < 0.05). Body mass (r = -0.517), IMTP (r = -0.622), and YYIRT (r = -0.384) 
+significantly correlated with the manikin drag. Body mass (r = -0.392) and IMTP 
+(r = -0.560) significantly correlated with the ladder extension. The manikin 
+drag was significantly predicted by IMTP, body mass, and YYIRT1, with ∼52% 
+explained variance. The ladder extension was significantly predicted by the IMTP 
+(∼30% explained variance). The stair climb had no significant relationships. 
+Maximal strength is needed for the manikin drag and ladder extension and could 
+be especially important for lighter firefighters to move absolute loads. The 
+IMTP could help predict performance in firefighter job tasks, although other 
+factors such as technique would be important.
+
+Copyright © 2026 National Strength and Conditioning Association.
+
+DOI: 10.1519/JSC.0000000000005412
+PMID: 42335114 [Indexed for MEDLINE]"
+16,"42329354","Muszyński T (2026)","16. J Egypt Natl Canc Inst. 2026 Jun 22;38(1):36. doi:
+10.1186/s43046-026-00367-6.
+
+Metabolic and nutritional impact of gastrectomy and perioperative treatment in 
+gastric cancer: a prospective cohort study.
+
+Muszyński T(1), Jędrychowski T(2), Witalewska A(3), Gawlewicz-Czepiel A(3), 
+Polak K(4), Spieszny M(5), Richter P(2), Szczepanik A(6), Piotr K(2).
+
+Author information:
+(1)Medical College, Doctoral School of Medical and Health Sciences, Jagiellonian 
+University, St. Anne Street 11, Krakow, 31-008, Poland. 
+thomasmuszynski@gmail.com.
+(2)Medical College, Ist Chair of General Surgery, Department of General, 
+Oncological, Gastrointestinal Surgery and Transplantology, University Hospital 
+in Krakow, Jagiellonian University, Jakubowskiego 2, Krakow, 30-688, Poland.
+(3)Medical College, Jagiellonian University, Krakow, Poland.
+(4)Chair and Department of Dermatology, Medical University of Silesia, Francuska 
+Street 20-24, Katowice, 40-027, Poland.
+(5)Institute of Sports Sciences, University of Physical Culture in Krakow, 
+Krakow, Poland.
+(6)Medical College, 3rd Chair of General Surgery, Jagiellonian University, 
+Pradnicka Street 35, Krakow, 31- 202, Poland.
+
+BACKGROUND: Gastrectomy due to gastric cancer leads to metabolic alterations in 
+body composition, significantly affecting nutritional status. This prospective 
+study aimed to investigate the metabolic effects of gastrectomy and 
+perioperative treatment on the nutritional status of gastric cancer patients.
+METHODS: A total of 37 patients diagnosed with gastric cancer, treated with 
+perioperative chemotherapy, without evidence of dissemination or metastasis, 
+were included in the study. Demographic data, Body Mass Index, full blood count 
+parameters, lipid profiles, vitamin B12, vitamin D, iron levels, albumin, 
+prealbumin, total serum protein concentration, bioimpedance parameters, physical 
+activity levels, quality of life, Prognostic Nutritional Index, 
+neutrophil-to-lymphocyte ratio, and systemic immune-inflammation index were 
+assessed preoperatively and at two follow-ups (6 and 12 months post-surgery) for 
+each patient.
+RESULTS: Significant changes were observed across the analyzed parameters, 
+demonstrating the metabolic impact of gastrectomy and perioperative systemic 
+treatment on the nutritional status of gastric cancer patients.
+CONCLUSIONS: The study provides a comprehensive evaluation of the long-term 
+nutritional status of gastric cancer patients post-gastrectomy, offering 
+valuable insights into postoperative metabolic and dietary adaptations. Obtained 
+results underscore the dynamic physiological adaptations following gastric 
+resection, emphasizing the importance of nutritional and metabolic monitoring 
+for long-term recovery. Targeted rehabilitation strategies and micronutrient 
+supplementation are crucial in reducing postoperative complications and 
+improving patient outcomes.
+
+© 2026. The Author(s).
+
+DOI: 10.1186/s43046-026-00367-6
+PMID: 42329354 [Indexed for MEDLINE]
+
+Conflict of interest statement: Declarations. Ethics approval and consent to 
+participate: Ethical approval was obtained (Jagiellonian University Ethics 
+Committee, No. 1072.6120.60.2021), and all participants gave informed consent. 
+Consent for publication: Not applicable. Competing interests: The authors 
+declare no competing interests."
+17,"42329189","Hudy A (2026)","17. J Strength Cond Res. 2026 Jun 22. doi: 10.1519/JSC.0000000000005573. Online 
+ahead of print.
+
+The Adaptive Spiral of Collegiate Basketball Performance: A Multiseason 
+Framework Integrating Load, Recovery, and Return-to-Performance.
+
+Hudy A(1), Kraemer WJ(2)(3), Shah J(1)(4)(5), Burland JP(4)(5), Glaviano 
+NR(4)(5), Huggins RA(4)(5), Fields JB(6), Baldwin AJ(7), Casa DJ(4)(5).
+
+Author information:
+(1)Departments of Athletics.
+(2)Kinesiology, University of Connecticut, Storrs, Connecticut.
+(3)Department of Human Sciences, Department of Athletics, The Ohio State 
+University, Columbus, Ohio.
+(4)Department of Kinesiology, Korey Stringer Institute, University of 
+Connecticut, Storrs, Connecticut.
+(5)Department of Kinesiology, Institute for Sports Medicine, University of 
+Connecticut, Storrs, Connecticut.
+(6)Department of Nutritional Sciences, University of Connecticut, Storrs, 
+Connecticut; and.
+(7)Get Your Head In The Game, Newark, Delaware.
+
+Hudy, A, Kraemer, WJ, Shah, J, Burland, JP, Glaviano, NR, Huggins, RA, Fields, 
+JB, Baldwin, AJ, and Casa, DJ. The adaptive spiral of collegiate basketball 
+performance: a multiseason framework integrating load, recovery, and 
+return-to-performance. J Strength Cond Res XX(X): 000-000, 2026-Basketball 
+performance emerges from dynamic interactions among mechanical load, tissue 
+remodeling, neuromechanical regulation, and psychological readiness. Traditional 
+load-management and return-to-play models provide structural guidance but often 
+lack integration across biological and contextual systems within season-dense 
+environments. The purpose of this manuscript is to present and operationalize 
+the Adaptive Spiral (AS) and Return-to-Performance (RTPerf) framework as a 
+monitoring-informed model of readiness regulation in NCAA Division I women's 
+basketball. Across three competitive seasons, longitudinal external-load metrics 
+(e.g., PlayerLoad·min-1, monotony), neuromechanical indices (e.g., 
+countermovement jump variability, sway velocity), and perceptual measures were 
+integrated within NCAA seasonal constraints to examine phase-based adaptation. 
+The AS conceptualizes readiness as a recursive process unfolding through 
+Restore, Build, Prime, Compete, and Recalibrate phases, whereas RTPerf 
+operationalizes daily regulation of capacity, resilience, and performance 
+expression. Longitudinal patterns demonstrated sustained high-intensity exposure 
+with stabilized monotony and reduced neuromechanical variability across 
+competitive phases, reflecting improved alignment between load progression, 
+recovery distribution, and competitive readiness. These findings support a 
+history-dependent model in which protection and performance are coregulated 
+rather than sequential. By integrating objective monitoring, perceptual 
+readiness, and contextual demands, the AS/RTPerf framework provides a structured 
+approach for synchronizing adaptation within season-dense collegiate basketball 
+environments, shifting performance management from reactive adjustment to 
+proactive regulation.
+
+Copyright © 2026 National Strength and Conditioning Association.
+
+DOI: 10.1519/JSC.0000000000005573
+PMID: 42329189"
+18,"42326903","Feng Y (2026)","18. Front Public Health. 2026 Jun 4;14:1835119. doi: 10.3389/fpubh.2026.1835119. 
+eCollection 2026.
+
+Post-shift recovery sleep duration and its association with daytime sleepiness 
+among night-shift nurses: a repeated-measures observational study.
+
+Feng Y(1), Feng L(2), Shi W(1).
+
+Author information:
+(1)Department of Anesthesiology, Tangdu Hospital, The Fourth Military Medical 
+University, Xi'an, China.
+(2)School of Physical Education & Sports Science, South China Normal University, 
+Guangzhou, China.
+
+OBJECTIVE: To examine the association between post-shift recovery sleep duration 
+and daytime sleepiness among night-shift nurses.
+METHODS: A repeated-measures observational study among night-shift nurses in a 
+tertiary hospital. Data were collected between September and November 2025. 
+Post-shift recovery sleep duration, defined as sleep obtained within 24 h after 
+completing a night shift, was categorized as 0 h, <2 h, 2-4 h, or ≥4 h. Daytime 
+sleepiness was assessed using the Epworth Sleepiness Scale (ESS). Linear 
+mixed-effects models with random intercepts were applied to evaluate 
+associations while controlling for sex, working unit, night-shift workload, 
+caffeine intake during night shifts, and insomnia severity.
+RESULTS: Recovery sleep duration was associated with daytime sleepiness across 
+sleep-duration categories. Nurses reporting 2-4 h of recovery sleep had the 
+highest ESS scores compared with those reporting no recovery sleep (ES, ±95% CI: 
+0.5, ±0.29; p < 0.001), <2 h (2.76, ±0.23; p < 0.001) or ≥4 h (1.62, ±0.25; p < 
+0.001). This pattern was generally consistent across clinical units, although 
+differences were attenuated in high-acuity settings such as emergency, intensive 
+care, and operating room units.
+CONCLUSIONS: Post-shift recovery sleep duration was associated with daytime 
+sleepiness among night-shift nurses, with intermediate recovery sleep duration 
+(2-4 h) showing the highest ESS scores. Because recovery sleep duration was 
+self-reported and the study design limits causal inference, these findings 
+should be interpreted as associations rather than evidence of causality. Fatigue 
+risk management strategies should consider not only sleep duration but also the 
+quality and context of post-shift recovery.
+
+Copyright © 2026 Feng, Feng and Shi.
+
+DOI: 10.3389/fpubh.2026.1835119
+PMCID: PMC13281720
+PMID: 42326903 [Indexed for MEDLINE]
+
+Conflict of interest statement: The author(s) declared that this work was 
+conducted in the absence of any commercial or financial relationships that could 
+be construed as a potential conflict of interest."
+19,"42326567","Maksym V (2026)","19. Arch Rehabil Res Clin Transl. 2026 Mar 21;8(2):100615. doi: 
+10.1016/j.arrct.2026.100615. eCollection 2026 Jun.
+
+Resistance Exercise as a Dual-Target Strategy in Physical Therapy: Reducing 
+Depressive Symptoms to Improve Rehabilitation Participation and Outcomes.
+
+Maksym V(1).
+
+Author information:
+(1)Department of Physical Rehabilitation and Sports Medicine, Lviv State 
+University of Physical Culture named after Ivan Boberskyi, Lviv, Ukraine.
+
+Depressive symptoms are prevalent in physical therapy and rehabilitation 
+populations and can act as a limiting factor for rehabilitation participation 
+and outcomes across diagnoses. Even when not meeting criteria for major 
+depressive disorder, elevated depressive symptoms can undermine rehabilitation 
+participation through reduced motivation, impaired self-regulation, sleep 
+disturbance, fatigue, low perceived control, and avoidance of effort or 
+movement. Although referral pathways for mental health care remain essential, 
+access barriers and stigma commonly delay help-seeking. This Special 
+Communication argues that resistance exercise can be positioned in physical 
+therapy as a dual-target intervention: supporting functional recovery while 
+concurrently engaging mood-relevant mediators that influence rehabilitation 
+participation and outcomes. Beyond physiological adaptations, resistance 
+training provides rapid and measurable experiences of mastery and agency (eg, 
+progressive increases in repetitions, time under tension, or load), which may 
+strengthen self-efficacy and perceived control, reduce helplessness, and improve 
+tolerance to discomfort through graded exposure to effort. These mediators are 
+clinically relevant because they map directly onto modifiable drivers of 
+adherence, persistence, and dropout risk in rehabilitation. Pragmatic, 
+safety-oriented principles are outlined for prescribing resistance exercise 
+across settings (clinic- or home-based; minimal equipment), including techniques 
+to maximize early achievable success, simplify programs to reduce cognitive 
+load, apply symptom- and fatigue-guided progression, and monitor engagement 
+outcomes. Scope of practice boundaries and red flags requiring timely referral 
+are also discussed. Future work should test implementation strategies and 
+quantify whether targeting mood-related mediators through resistance exercise 
+improves both depressive symptoms and rehabilitation endpoints, including 
+adherence, functional outcomes, and return to valued activities.
+
+© 2026 The Authors.
+
+DOI: 10.1016/j.arrct.2026.100615
+PMCID: PMC13282817
+PMID: 42326567"
+20,"42326144","Sundresh N (2026)","20. Cureus. 2026 May 20;18(5):e109312. doi: 10.7759/cureus.109312. eCollection
+2026  May.
+
+Low Energy Availability in Male Indian Athletes: A Cross-Sectional Study.
+
+Sundresh N(1), Premkumar SVD(1), Raman SA(1), K R R(1), Keddin Alwar T(1), 
+Sivaraman A(1), Baig S(1), Ethirajan P(1).
+
+Author information:
+(1)Arthroscopy and Sports Medicine, Sri Ramachandra Institute of Higher 
+Education and Research, Chennai, IND.
+
+BACKGROUND: Low energy availability (LEA) is a mismatch between dietary energy 
+intake and training-related expenditure that can impair performance, recovery, 
+endocrine function, bone health, and overall athlete well-being; it is most 
+often expected in endurance, weight-category, and physique-sensitive sports but 
+can occur across disciplines. In male athletes, LEA is under-recognized because 
+symptoms are subtle and non-specific and are frequently attributed to training 
+fatigue. Because abrupt workload fluctuations may further strain recovery, the 
+acute to chronic workload ratio (ACWR) provides a practical field marker of 
+recent load spikes and a rationale for examining workload alongside LEA 
+screening.
+OBJECTIVE: To determine the occurrence of LEA in young Indian athletes with the 
+LEAM-Q questionnaire and determine the association with Acute on Chronic 
+Workload Ratio (ACWR).
+METHODS: This cross-sectional analysis included 30 male athletes (18-35 years) 
+from boxing, judo, and weightlifting. LEAM-Q responses were screened using the 
+validated sex drive criterion. ACWR was calculated as (7-day workload x weekly 
+RPE)/([monthly workload/4] x monthly RPE). Descriptive statistics were reported 
+as mean ± standard deviation or median (IQR), and between-group comparisons were 
+performed using the chi-square test, Fisher's exact test, Mann-Whitney U test, 
+and Spearman rank correlation as appropriate (p<0.05).
+RESULTS: Twelve athletes (40.0%) screened positive for LEA. Screen positivity 
+differed significantly by sport: boxing 3/14 (21.4%), judo 3/8 (37.5%), and 
+weightlifting 6/8 (75.0%) (chi-square=6.12, p=0.047; Cramer's V=0.45). 
+Weightlifting athletes had higher odds of screening positive than 
+non-weightlifters (Fisher's exact OR 8.0, p=0.034). The median sex-drive score 
+was 3 (IQR 2-4). Median ACWR was 0.89 (IQR 0.75-1.00); 9 athletes (30.0%) were 
+below the normal range, 19 (63.3%) were within the normal range (0.8-1.3), and 2 
+(6.7%) were above the high-risk threshold (>1.3). ACWR did not differ between 
+LEA screen-positive and screen-negative athletes (median 0.89 vs. 0.89; p=0.966) 
+and showed no correlation with LEAM-Q score (Spearman rho=0.05, p=0.805).
+CONCLUSION: LEAM-Q identified a substantial burden of low energy availability 
+risk in this cohort of young Indian male athletes, with the strongest signal in 
+weightlifting and the most consistent abnormalities in sex drive items. ACWR was 
+largely within the normal range and did not differentiate screen-positive 
+athletes in this sample. These findings support routine LEAM-Q-based screening 
+in male athletes, especially in weight-sensitive sports, and reinforce the need 
+for early nutritional and clinical evaluation when the screen is positive.
+
+Copyright © 2026, Sundresh et al.
+
+DOI: 10.7759/cureus.109312
+PMCID: PMC13282167
+PMID: 42326144
+
+Conflict of interest statement: Human subjects: Informed consent for treatment 
+and open access publication was obtained or waived by all participants in this 
+study. Sri Ramachandra Institutional Ethical Committee issued approval 
+CSP-MED/25/MAY/115/74. Animal subjects: All authors have confirmed that this 
+study did not involve animal subjects or tissue. Conflicts of interest: In 
+compliance with the ICMJE uniform disclosure form, all authors declare the 
+following: Payment/services info: All authors have declared that no financial 
+support was received from any organization for the submitted work. Financial 
+relationships: All authors have declared that they have no financial 
+relationships at present or within the previous three years with any 
+organizations that might have an interest in the submitted work. Other 
+relationships: All authors have declared that there are no other relationships 
+or activities that could appear to have influenced the submitted work."
+21,"42321930","Siles-Guerrero V (2026)","21. J Eat Disord. 2026 Jun 20. doi: 10.1186/s40337-026-01687-7. Online ahead of 
+print.
+
+Baseline phase angle is associated with morphofunctional status, length of stay, 
+and hospitalization costs in severe anorexia nervosa: the EDIGRA study.
+
+Siles-Guerrero V(#)(1), García-Pérez RN(#)(1), Novo-Rodríguez M(1)(2), 
+Herrera-Montes I(1), Novo-Rodríguez C(1)(3), Guardia-Baena JM(1), Elhadri-Egea 
+A(1), López-de-la-Torre-Casares M(#)(1)(3), Muñoz-Garach A(#)(4)(5)(6), 
+Romero-Márquez JM(7)(8)(9).
+
+Author information:
+(1)Department of Endocrinology and Nutrition, Virgen de las Nieves University 
+Hospital, 18012, Granada, Spain.
+(2)Foundation for Biosanitary Research of Eastern Andalusia - Alejandro Otero 
+(FIBAO), 18014, Granada, Spain.
+(3)Granada Biosanitary Research Institute (Ibs. Granada), 18014, Granada, Spain.
+(4)Department of Endocrinology and Nutrition, Virgen de las Nieves University 
+Hospital, 18012, Granada, Spain. araceli.munoz.garach.sspa@juntadeandalucia.es.
+(5)Granada Biosanitary Research Institute (Ibs. Granada), 18014, Granada, Spain. 
+araceli.munoz.garach.sspa@juntadeandalucia.es.
+(6)Network Biomedical Research Center Physiopathology of Obesity and Nutrition 
+(CiberOBN), Carlos III Health Institute, 28029, Madrid, Spain. 
+araceli.munoz.garach.sspa@juntadeandalucia.es.
+(7)Department of Endocrinology and Nutrition, Virgen de las Nieves University 
+Hospital, 18012, Granada, Spain. romeromarquez@ugr.es.
+(8)Foundation for Biosanitary Research of Eastern Andalusia - Alejandro Otero 
+(FIBAO), 18014, Granada, Spain. romeromarquez@ugr.es.
+(9)Faculty of Health Sciences, Department of Nutrition and Sports Sciences, 
+International University of La Rioja, 26006, Logroño, Spain. 
+romeromarquez@ugr.es.
+(#)Contributed equally
+
+BACKGROUND: Phase angle (PhA), derived from bioelectrical impedance analysis, 
+reflects bioelectrical properties related to cellular mass and fluid 
+distribution and has been proposed as a marker of malnutrition severity. 
+However, its exploratory association with morphofunctional status and 
+hospitalization-related outcomes in severe anorexia nervosa (AN) remains 
+insufficiently characterized. This study aimed to explore whether baseline PhA 
+is associated with morphofunctional status, length of stay, and inpatient costs 
+in a specialized eating disorders unit.
+METHODS: In this prospective cohort study, 42 female inpatients with severe AN 
+or other specified feeding and eating disorder were assessed at admission. 
+Patients were stratified into tertiles according to PhA. Anthropometry, body 
+composition by bioelectrical impedance vector analysis (BIVA), intracellular and 
+extracellular water distribution, handgrip strength, muscle and abdominal 
+ultrasound parameters, biochemical markers, and length of stay were recorded. 
+Hospitalization costs were estimated using standardized diagnosis-related group 
+daily expenditure.
+RESULTS: Mean PhA values were 4.0°, 4.7°, and 5.5° in the low, mid, and high 
+tertiles, respectively. Importantly, total body weight did not differ 
+significantly across tertiles. In contrast, body cell mass index increased 
+progressively (5.2, 6.1, and 6.9 kg/m²). Higher PhA was associated with greater 
+rectus femoris cross-sectional area (2.3 vs. 3.7 cm²) and higher handgrip 
+strength (20.3 vs. 24.9 kg), consistent with more favorable muscle structure and 
+function in unadjusted comparisons. Hydration profiles also differed: 
+extracellular water proportion decreased (52.7% to 40.3%), while intracellular 
+water increased (44.1% to 53.3%) across tertiles. Median length of stay declined 
+from 58.4 to 41.3 days, with corresponding reductions in estimated 
+hospitalization costs (€36,523 to €25,829), which should be interpreted 
+descriptively because cost estimates were largely driven by hospitalization 
+duration. ROC analysis showed modest discriminatory performance for prolonged 
+hospitalization (AUC = 0.65; exploratory threshold: 4.5-4.6°).
+CONCLUSIONS: Baseline PhA was associated with differences in morphofunctional 
+profiles and hospitalization trajectories despite similar body weight, 
+suggesting that it may capture morphofunctional variability not reflected by 
+anthropometry alone. Its associations with cellular mass, hydration 
+distribution, muscle function, and length of stay suggest that PhA may provide 
+complementary descriptive information within a broader clinical assessment. 
+However, given the modest discriminative performance, sample size, and lack of 
+multivariable adjustment, PhA should not be considered a standalone prognostic 
+tool. Larger multicenter studies are needed to validate thresholds and formally 
+test whether PhA provides incremental information beyond conventional 
+anthropometric, clinical, psychological, and organizational factors.
+ETHICS APPROVAL: Approved by the Provincial Research Ethics Committee of Granada 
+(SICEIA-2024-003069).
+
+Plain Language Summary: People with severe anorexia nervosa often need hospital 
+treatment to restore their physical health safely. Healthcare professionals 
+usually monitor recovery using body weight and body mass index (BMI), but these 
+measures do not always reflect how well the body’s tissues, muscles, and cells 
+are functioning. This study examined whether a measurement called phase angle 
+could provide additional and more detailed information about the physical 
+condition of the body. Phase angle is obtained from a painless body composition 
+test that uses a very small electrical current. It gives information about cell 
+mass, muscle condition, and body fluid balance. In particular, it reflects 
+differences between water inside the cells and water outside the cells, which 
+may be altered in severe malnutrition. Higher phase angle values are generally 
+associated with more favorable cellular and muscle health. We studied 42 women 
+admitted to hospital with severe anorexia nervosa or other specified feeding and 
+eating disorder. Although patients had similar body weight, those with higher 
+phase angle values showed stronger muscles, more favorable tissue-related 
+measurements, and better body fluid balance at admission. They also had shorter 
+hospital stays and lower treatment costs, although these lower costs were 
+largely explained by shorter hospital stays. In contrast, patients with lower 
+phase angle values tended to require longer inpatient care. These findings 
+suggest that phase angle may help healthcare teams better understand the 
+physical condition of patients beyond weight alone. Including phase angle in 
+routine assessment may provide complementary information for clinical 
+monitoring, but it should be used alongside broader medical, psychological, and 
+organizational assessment during hospital treatment for anorexia nervosa, rather 
+than as a standalone tool for predicting recovery, hospital stay, or discharge 
+timing.
+
+© 2026. The Author(s).
+
+DOI: 10.1186/s40337-026-01687-7
+PMID: 42321930
+
+Conflict of interest statement: Declarations. Ethics approval and consent to 
+participate: The study was conducted in accordance with the principles of the 
+Declaration of Helsinki. Given its observational design and minimal risk, and as 
+all procedures were part of routine clinical practice, oral informed consent was 
+considered appropriate and was obtained from all participants prior to 
+inclusion. This approach was reviewed and approved by the Provincial Research 
+Ethics Committee of Granada (approval number SICEIA-2024-003069). Competing 
+interests: The authors declare no competing interests."
+22,"42319693","Baccouche MA (2026)","22. Sports Med Open. 2026 Jun 19;12(1):76. doi: 10.1186/s40798-026-01052-7.
+
+Cross-Cultural Adaptation and Validation of the Arabic Rating-of-Fatigue Scale.
+
+Baccouche MA(1)(2), Trabelsi K(1)(2)(3), Masmoudi L(1)(2), Jahrami H(4)(5), 
+Ammar A(6)(7)(8), Chtourou H(1)(9).
+
+Author information:
+(1)High Institute of Sport and Physical Education, University of Sfax, Sfax, 
+Tunisia.
+(2)Research Laboratory, Education, Motricity, Sport and Health (EM2S), LR15JS01, 
+High Institute of Sport and Physical Education, University of Sfax, Sfax, 
+Tunisia.
+(3)Department of Movement Sciences and Sports Training, School of Sport Science, 
+The University of Jordan, Amman, Jordan.
+(4)Department of Psychiatry, Ministry of Health, Manama, Bahrain.
+(5)Department of Psychiatry, College of Medicine and Medical Sciences, Arabian 
+Gulf University, Manama, Bahrain.
+(6)Research Laboratory, Molecular Bases of Human Pathology, LR19ES13, Faculty of 
+Medicine of Sfax, University of Sfax, 3000, Sfax, Tunisia. acammar@uni-mainz.de.
+(7)Department of Training and Movement Science, Institute of Sport Science, 
+Johannes Gutenberg-University Mainz, Mainz, Germany. acammar@uni-mainz.de.
+(8)Department of Nutrition and Food Technology, School of Agriculture, The 
+University of Jordan, Amman, Jordan. acammar@uni-mainz.de.
+(9)Research Unit, Physical Activity, Sport, and Health, UR18JS01, National 
+Observatory of Sport, 1003, Tunis, Tunisia.
+
+BACKGROUND: The Rating-of-Fatigue (ROF) scale is increasingly used to quantify 
+subjective sensations of fatigue in exercise science. However, despite its 
+growing international use, its psychometric properties have not yet been 
+examined in Arabic-speaking populations. This study aimed to translate the ROF 
+into Arabic and evaluate its content validity, face validity, and construct 
+validity relative to perceived exertion and heart rate (HR) responses during 
+graded exercise and subsequent passive recovery.
+METHODS: The study was conducted in Tunisia and followed established 
+international best-practice guidelines for cross-cultural adaptation. The ROF 
+and its instructions were forward-translated, synthesized, and back-translated 
+using blinded translators, with linguistic and conceptual equivalence evaluated 
+using Sperber's framework and expert committee review. Face validity was 
+assessed in 68 Arabic-speaking adults. Construct validity was examined in 43 
+adult participants during a modified Bruce treadmill test followed by 10 min of 
+seated recovery, with the Arabic Rating-of-Fatigue scale (ROF-Ar), Borg CR10, 
+and HR recorded at each exercise stage and during recovery. Within-participant 
+correlations were pooled using Fisher's r-to-z transformation.
+RESULTS: Sperber-based ratings indicated high linguistic and conceptual 
+equivalence between the ROF-Ar and the original scale, with no item exceeding 
+the predefined revision threshold. Face validity findings showed that 
+participants predominantly interpreted the ROF-Ar as a measure of fatigue rather 
+than exertion and that standardized instructions improved descriptor-related 
+comprehensibility and reduced perceived difficulty. During graded exercise, 
+ROF-Ar demonstrated very strong pooled correlations with Borg CR10 (r = 0.94; 
+95% CI 0.92-0.95; p < 0.001) and HR (r = 0.95; 95% CI 0.93-0.96; p < 0.001). 
+During recovery, the association between ROF-Ar and Borg CR10 attenuated 
+substantially (r = 0.35; 95% CI 0.15-0.52; p < 0.001), whereas the association 
+with HR remained moderate (r = 0.63; 95% CI 0.49-0.74; p < 0.001).
+CONCLUSIONS: The Arabic version of the ROF demonstrated high linguistic and 
+conceptual equivalence, adequate face validity, and strong construct validity. 
+The recovery-phase dissociation between perceived fatigue and perceived exertion 
+supports the intended conceptual distinction of the ROF and justifies the use of 
+ROF-Ar for assessing subjective fatigue during exercise and recovery in 
+Arabic-speaking research and applied settings.
+
+© 2026. The Author(s).
+
+DOI: 10.1186/s40798-026-01052-7
+PMCID: PMC13282412
+PMID: 42319693
+
+Conflict of interest statement: Declarations. Ethics Approval and Consent to 
+Participate: Ethical approval was obtained from the Institutional Review Board 
+at the High Institute of Sport and Physical Education of Sfax (ISSEP/019), 
+University of Sfax, Tunisia. The study was conducted in accordance with the 
+ethical principles of the Declaration of Helsinki and its later amendments. All 
+participants received written and verbal information about the study procedures 
+and provided written informed consent prior to participation. Consent for 
+Publication: Not applicable. Competing interests: All authors declare no 
+conflict of interest."
+23,"42318261","Trybulski R (2026)","23. J Sports Sci Med. 2026 Jun 1;25(2):350-370. doi: 10.52082/jssm.2026.350. 
+eCollection 2026 Jun.
+
+Acute Impact of Cold Compression Therapy Across Diverse Age Groups and Physical 
+Conditioning Status: A Randomized Crossover Study.
+
+Trybulski R(1)(2), Kużdżał A(3), Olaniszyn G(1)(4), Silva AF(5), Clemente 
+FM(6)(7)(8), Hsing-Kuo W(9)(10).
+
+Author information:
+(1)Faculty of Medicine, Katowice Business University, Katowice, Poland.
+(2)Provita Medical Centre, Żory, Poland.
+(3)Institute of Physiotherapy, Faculty of Health Sciences and Psychology, 
+Collegium Medicum, University of Rzeszów, Poland.
+(4)Olaniszyn Physiotherapy Centre, Poland.
+(5)Faculty of Sport Sciences and Physical Education, University of Coimbra, 
+Coimbra, Portugal.
+(6)Sport Physical Activity and Health Research & Innovation Center, Portugal.
+(7)Applied Research Institute (i2A), Polytechnic University of Coimbra, 
+Portugal.
+(8)Department of Biomechanics and Sport Engineering, Gdansk University of 
+Physical Education and Sport, Poland.
+(9)School and Graduate Institute of Physical Therapy, National Taiwan 
+University, Taipei.
+(10)Center of Physical Therapy, National Taiwan University Hospital, Taipei.
+
+To test whether a pneumatic cold-compression system (CC) improves recovery of 
+maximal voluntary contraction (MVC) at 48 h (T4) versus Sham after a 
+standardized hamstring fatigue protocol. Secondary aims were to compare muscle 
+stiffness, microvascular perfusion, pressure pain threshold (PPT), blood 
+lactate, perceived recovery (TQR), and harms across subgroups. This multicenter, 
+randomized, participant- and assessor-blinded, sham-controlled, two-period 
+crossover trial enrolled 80 participants. After fatigue testing, participants 
+received CC (3 °C, 75 mmHg, 10 min twice daily for 3 days) or Sham (15 °C, 15 
+mmHg). Outcomes were assessed at baseline (T0), post-fatigue (T1), immediately 
+post-first intervention (T2), 24 h (T3), and 48 h (T4). Continuous outcomes were 
+analyzed using mixed-way ANOVA with Population as the between-subject factor and 
+Condition and Time as within-subject factors, followed by Bonferroni-adjusted 
+pairwise comparisons. Paired Cohen's dz was reported for key within-participant 
+contrasts. TQR was analyzed using rank-based factorial ANOVA, and Borg CR10 
+scores using ordinal logistic regression. Across populations, MVC was higher 
+under CC than Sham from T2 to T4, with the largest between-condition difference 
+at T4 (all p < .001). Muscle stiffness was lower under CC from T2 to T4 (all p < 
+.001). Microvascular perfusion and pressure pain threshold were higher under CC 
+at T2 - T4 overall (all p < .001), with earlier between-condition differences in 
+MMA athletes and young adults and delayed differences in older adults. Blood 
+lactate was lower under CC only immediately after the first intervention session 
+(T2; p < .001). TQR was higher under CC at T2 - T4 in MMA athletes, at T2 - T3 
+in older adults, and at T3 only in young adults. No adverse events were 
+reported. CC accelerated recovery after hamstring fatigue, improving strength, 
+stiffness, perfusion, pain thresholds, lactate, and perceived recovery across 
+populations, with earlier benefits in athletes and young adults and delayed but 
+comparable improvements in older adults. Registration: ISRCTN49499065.
+
+© Journal of Sports Science and Medicine.
+
+DOI: 10.52082/jssm.2026.350
+PMCID: PMC13274438
+PMID: 42318261 [Indexed for MEDLINE]"
+24,"42317690","Eroğlu Ş (2026)","24. Front Psychol. 2026 Jun 3;17:1847782. doi: 10.3389/fpsyg.2026.1847782. 
+eCollection 2026.
+
+Sleep quality in Olympic and non-Olympic combat sports: associations with sex, 
+rapid weight loss, and sport age (a PSQI-based analysis).
+
+Eroğlu Ş(1), Ceylan T(2), Türkmen M(3), Yılmaz T(4), Imamoğlu O(5), Kara I(6), 
+Sekban G(7), Sahin FN(8).
+
+Author information:
+(1)Ministry of Youth and Sports, Ankara, Türkiye.
+(2)Department of Coaching Education, Faculty of Sport Sciences, Istanbul 
+Esenyurt University, Istanbul, Türkiye.
+(3)Department of Physical Education and Sport, Faculty of Yaşar Doğu Sport 
+Sciences, Ondokuz Mayıs University, Samsun, Türkiye.
+(4)Department of Physical Education and Sport, Faculty of Sport Sciences, Uşak 
+University, Uşak, Türkiye.
+(5)Department of Sport Management, Faculty of Yaşar Doğu Sport Sciences, Ondokuz 
+Mayıs University, Samsun, Türkiye.
+(6)Department of Exercise and Sport Sciences for the Disabled, Faculty of Sport 
+Sciences, Istanbul Gelişim University, Istanbul, Türkiye.
+(7)Department of Physical Education and Sports, Faculty of Sport Sciences, Sinop 
+University, Sinop, Türkiye.
+(8)Department of Coaching Education, Faculty of Sport Sciences, Ankara 
+University, Ankara, Türkiye.
+
+BACKGROUND: Sleep quality is an important component of recovery and performance 
+in athletes. Combat sport athletes may be at increased risk of sleep 
+disturbances due to high training demands and weight-management practices.
+METHODS: This cross-sectional study included 498 athletes competing in Olympic 
+and non-Olympic combat sports (mean age ≈21 years). Poor sleep quality (PSQI > 
+5) was examined using multivariable logistic regression to assess associations 
+with sex, sport type, rapid weight loss (>4%), and sport age. A secondary model 
+was conducted in the Olympic subsample. Continuous sleep outcomes were analyzed 
+using two-way ANOVA.
+RESULTS: Poor sleep quality was common among athletes, with 65% of participants 
+classified as poor sleepers (PSQI > 5). In the full sample, male sex (OR = 1.65, 
+95% CI: 1.20-2.30), Olympic sport participation (OR = 1.75, 95% CI: 1.25-2.45), 
+and rapid weight loss >4% (OR = 2.70, 95% CI: 1.80-4.00) were associated with 
+higher odds of poor sleep quality, and sport age was also positively associated 
+(OR = 1.03, 95% CI: 1.01-1.05). Similar associations were observed in the 
+Olympic subsample. In addition, athletes competing in Olympic combat sports 
+showed higher scores across several PSQI components compared to those in 
+non-Olympic disciplines.
+CONCLUSION: Poor sleep quality is common among combat sport athletes and is 
+associated with sport type and weight-management practices. These findings 
+suggest that sleep disturbances may be related to sport-specific demands. 
+Further research using longitudinal designs and objective sleep measures is 
+needed to clarify these associations.
+
+Copyright © 2026 Eroğlu, Ceylan, Türkmen, Yılmaz, Imamoğlu, Kara, Sekban and 
+Sahin.
+
+DOI: 10.3389/fpsyg.2026.1847782
+PMCID: PMC13272085
+PMID: 42317690
+
+Conflict of interest statement: The author(s) declared that this work was 
+conducted in the absence of any commercial or financial relationships that could 
+be construed as a potential conflict of interest."
+25,"42317136","Álvarez-Gallardo E (2026)","25. Brain Behav. 2026 Jun;16(6):e71473. doi: 10.1002/brb3.71473.
+
+Autonomic Modulation and Body Composition in Educators: Physiological 
+Associations in the Workplace Context.
+
+Álvarez-Gallardo E(1), García AC(2), González-Sanz P(1), Belinchón-deMiguel 
+P(1), Clemente-Suárez VJ(3).
+
+Author information:
+(1)Department of Nursing, Faculty of Medicine, Health and Sports, Universidad 
+Europea de Madrid, Villaviciosa de Odón, Spain.
+(2)Department of Pharmacy and Nutrition, Faculty of Biomedical Sciences, 
+Universidad Europea de Madrid, Villaviciosa de Odón, Spain.
+(3)Research Group in Culture, Education and Society, University of the Coast, 
+Barranquilla, Colombia.
+
+PURPOSE: This study examined the relationship between body composition and 
+cardiac autonomic nervous system activity in educators. The objective was to 
+explore the associations between body fat mass (BFM) and fat-free mass (FFM) 
+with different heart rate variability (HRV) indices in a sample of educators and 
+to assess whether FFM moderates the relationship between BFM and autonomic 
+function.
+METHOD: A descriptive cross-sectional study was conducted with 253 educators 
+from compulsory and higher education institutions during the 2022-2023 academic 
+year. Autonomic regulation was assessed via HRV, and body composition was 
+measured using bioelectrical impedance analysis.
+FINDINGS: Individuals with higher fat mass exhibited less favorable autonomic 
+modulation, evidenced by lower values of the root mean square of successive 
+differences (RMSSD), a time-domain index that reflects parasympathetic activity 
+and the recovery capacity of the autonomic nervous system. Those with greater 
+fat mass also showed a higher mean heart rate, whereas participants with higher 
+FFM displayed more efficient cardiac activity, with lower mean, minimum, and 
+maximum heart rates. In addition, FFM partially moderated the relationship 
+between BFM and mean heart rate. By contrast, a higher total body water content 
+was associated with a shift toward sympathetic dominance, reflected in higher 
+low-frequency (LF) components-which represent a mixture of sympathetic and 
+parasympathetic activity-and lower high-frequency (HF) components, which 
+predominantly reflect parasympathetic activity. Conversely, individuals with 
+higher FFM presented lower mean, minimum, and maximum heart rates, suggesting 
+more efficient autonomic cardiac regulation.
+CONCLUSION: Overall, the findings demonstrate that body composition-particularly 
+FFM and BFM-significantly influences HRV and autonomic nervous system modulation 
+in educators, underscoring the importance of considering body composition in the 
+assessment of autonomic function and in the design of personalized health 
+strategies.
+
+© 2026 The Author(s). Brain and Behavior published by Wiley Periodicals LLC.
+
+DOI: 10.1002/brb3.71473
+PMCID: PMC13280567
+PMID: 42317136 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflicts of interest."
+26,"42315280","Newbould S (2026)","26. BMJ Open. 2026 Jun 18;16(6):e120499. doi: 10.1136/bmjopen-2026-120499.
+
+Associations between preoperative weight and body composition changes and 
+surgical outcomes in patients with obesity and gastrointestinal cancer: a 
+protocol for a prospective observational study in the active together cancer 
+prehabilitation service.
+
+Newbould S(1)(2), Myers A(3)(2), Rosenthal K(3)(2), Harris K(4), Thelwell M(3), 
+Copeland R(3)(2), Allott S(3)(5).
+
+Author information:
+(1)Advanced Wellbeing Research Centre, Sheffield Hallam University, Sheffield, 
+England, UK s.newbould@shu.ac.uk.
+(2)Physical Activity, Wellbeing and Public Health Research Group, School of 
+Sport and Physical Activity, Sheffield Hallam University, Sheffield, UK.
+(3)Advanced Wellbeing Research Centre, Sheffield Hallam University, Sheffield, 
+England, UK.
+(4)School of Computing and Digital Technologies, Sheffield Hallam University, 
+Sheffield, UK.
+(5)Sheffield Teaching Hospitals NHS Foundation Trust, Sheffield, UK.
+
+INTRODUCTION: The impact of preoperative weight loss and body composition 
+changes on surgical and patient-reported outcomes remains unclear in 
+gastrointestinal cancer patients. Prehabilitation programmes integrating 
+exercise, nutrition and psychological support can improve surgical readiness and 
+recovery but the role of body mass and composition changes within such services 
+is not well understood. This study aims to investigate the associations between 
+preoperative changes in body mass and composition and surgical, physical 
+fitness, nutritional and quality of life outcomes among people with obesity 
+undergoing surgery for upper gastrointestinal or colorectal cancer within the 
+context of a cancer prehabilitation service (Active Together).
+METHODS AND ANALYSIS: This prospective observational study will recruit 100 
+adults (≥18 years; body mass index ≥30 kg/m²) scheduled for curative upper 
+gastrointestinal or colorectal cancer surgery and enrolled in the Active 
+Together prehabilitation service. Participants will attend two study visits: one 
+as soon as possible after diagnosis and one within 2 weeks before surgery. 
+Participants will undergo body mass, composition and size measurements and 
+complete questionnaires on their nutritional status and quality of life. 
+Routinely collected surgical outcomes (complications, operative approach and 
+duration, length of hospital stay, readmissions, 1-year survival) and Active 
+Together assessment data (physical fitness, psychological well-being, 
+nutritional status) will also be collected. Correlation analyses and regression 
+models will be used to explore the associations between preoperative changes in 
+body mass and composition and surgical, physical fitness, nutritional status and 
+quality of life outcomes.
+ETHICS AND DISSEMINATION: Ethical approval has been obtained from the Health 
+Research Authority (Integrated Research Application System project ID 361634; 
+Research Ethics Comittee reference 26/YH/0019). Written informed consent will be 
+obtained from all participants. Data will be processed in accordance with 
+General Data Protection Regulations and the Data Protection Act 2018. Findings 
+will be disseminated via peer-reviewed publications, conference presentations 
+and patient and public involvement activities.
+
+© Author(s) (or their employer(s)) 2026. Re-use permitted under CC BY. Published 
+by BMJ Group.
+
+DOI: 10.1136/bmjopen-2026-120499
+PMCID: PMC13289135
+PMID: 42315280 [Indexed for MEDLINE]
+
+Conflict of interest statement: Competing interests: None declared."
+27,"42314964","Mateus FG (2026)","27. Toxicol Appl Pharmacol. 2026 Jun 18;514:117920. doi:
+10.1016/j.taap.2026.117920.  Online ahead of print.
+
+Dose-dependent modulation of mitochondrial physiology and nutrient secretion in 
+Sertoli cells by l-carnitine.
+
+Mateus FG(1), Martins AD(2), Moreira S(3), Moreira RJ(4), de Lourdes Pereira 
+M(5), Oliveira PF(2), Alves MG(6).
+
+Author information:
+(1)Institute of Biomedicine - iBiMED, Department of Medical Sciences, University 
+of Aveiro, Aveiro, Portugal.
+(2)LAQV-REQUIMTE, Department of Chemistry, University of Aveiro, Aveiro, 
+Portugal.
+(3)Institute of Biomedicine - iBiMED, Department of Medical Sciences, University 
+of Aveiro, Aveiro, Portugal; CICECO-Aveiro Institute of Materials, University of 
+Aveiro, 3810-193 Aveiro, Portugal.
+(4)Institute of Biomedicine - iBiMED, Department of Medical Sciences, University 
+of Aveiro, Aveiro, Portugal; LAQV-REQUIMTE, Department of Chemistry, University 
+of Aveiro, Aveiro, Portugal; Department of Medical Sciences, University of 
+Aveiro, Aveiro, Portugal.
+(5)CICECO-Aveiro Institute of Materials, University of Aveiro, 3810-193 Aveiro, 
+Portugal; Department of Medical Sciences, University of Aveiro, Aveiro, 
+Portugal.
+(6)Institute of Biomedicine - iBiMED, Department of Medical Sciences, University 
+of Aveiro, Aveiro, Portugal; Department of Medical Sciences, University of 
+Aveiro, Aveiro, Portugal. Electronic address: marcoalves@ua.pt.
+
+l-Carnitine is a ubiquitous quaternary amine, essential for the mitochondrial 
+β-oxidation of long-chain fatty acids, and a dietary supplement widely consumed 
+by athletes due to its purported ergogenic and recovery-enhancing properties. 
+Beyond its metabolic role in muscle tissue, l-Carnitine is highly concentrated 
+in the male reproductive tract, suggesting a critical function in 
+spermatogenesis. In the testis, Sertoli cells (SCs) act as essential ""nurse 
+cells,"" providing structural, nutritional, and immunomodulatory support to 
+developing germ cells. This study elucidates the effects of l-Carnitine on SC 
+viability, proliferation, redox state, and mitochondrial physiology, using an in 
+vitro model (TM4 cell line) exposed to a range of l-Carnitine concentrations 
+(0.005, 0.05, 0.5, and 5 mM) for 24 h. We demonstrate that a concentration 
+mirroring plasma levels in athletes (0.05 mM) significantly enhances SC 
+proliferation and metabolic viability, while selectively upregulating the 
+expression of ATP synthase (Complex V). Conversely, supra-physiological doses 
+(0.5 mM) induce a significant metabolic shift in the SC exometabolome, 
+characterized by a marked reduction in the production of lactate, alanine, and 
+acetate. This suggests a possible disruption of the metabolic support provided 
+to germ cells. At the highest concentration (5 mM), l-Carnitine exhibits overt 
+cytotoxicity, as evidenced by significant lactate dehydrogenase (LDH) leakage. 
+Furthermore, l-Carnitine acts as a potent antioxidant, reducing endogenous 
+reactive oxygen species (ROS) and mitigating oxidative damage to proteins and 
+lipids. These findings provide mechanistic insights into how l-Carnitine use 
+modulates the bioenergetic landscape of the seminiferous epithelium, suggesting 
+that while physiological supplementation may bolster male fertility by improving 
+SC health, excessive concentrations could paradoxically impair germ cell 
+nutrition.
+
+Copyright © 2026 The Author(s). Published by Elsevier Inc. All rights reserved.
+
+DOI: 10.1016/j.taap.2026.117920
+PMID: 42314964
+
+Conflict of interest statement: Declaration of competing interest The authors 
+have no conflicts of interest. The authors declare the following financial 
+interests/personal relationships which may be considered as potential competing 
+interests: Marco G. Alves reports financial support was provided by Foundation 
+for Science and Technology. Ana D. Martins reports financial support was 
+provided by Foundation for Science and Technology. Ruben J. Moreira reports 
+financial support was provided by Foundation for Science and Technology. Pedro 
+F. Oliveira reports financial support was provided by Foundation for Science and 
+Technology. If there are other authors, they declare that they have no known 
+competing financial interests or personal relationships that could have appeared 
+to influence the work reported in this paper."
+28,"42312051","An X (2026)","28. Front Psychol. 2026 Jun 2;17:1782953. doi: 10.3389/fpsyg.2026.1782953. 
+eCollection 2026.
+
+From neurobiological regulation to socio-ecological remodeling: a mini review of 
+yoga interventions for adolescent smartphone addiction.
+
+An X(1), Ye W(2), Fan Y(3).
+
+Author information:
+(1)School of Physical Education and Health, Yili Normal University, Yining, 
+China.
+(2)College of Physical Education and Health Sciences, Zhejiang Normal 
+University, Jinhua, Zhejiang, China.
+(3)Institute of Sports Health and Nutrition, Beijing Competitor Sports Science & 
+Tech. Co., Ltd, Beijing, China.
+
+Adolescent smartphone addiction has emerged as a pervasive public health crisis, 
+which often stems from a developmental imbalance between hypersensitive reward 
+circuitry and immature executive control. While conventional interventions such 
+as cognitive-behavioral therapy remain the standard of care, they are often 
+constrained by a lack of holistic focus, failing to address the multifaceted 
+physiological dysregulation and environmental triggers associated with addictive 
+behaviors. This review synthesizes the neurobiological mechanisms of yoga, 
+positioning it not merely as physical exercise but as a form of ""embodied 
+cognitive training"" that bridges the gap between physiological regulation and 
+psychological recovery. We examine how yoga may facilitate psychophysiological 
+homeostasis through a dual pathway: a potential ""bottom-up"" regulation that 
+attenuates HPA axis hyperactivation and enhances vagal tone, and a proposed 
+""top-down"" reinforcement of prefrontal connectivity to inhibit impulsive 
+reward-seeking. At the molecular level, we discuss evidence suggesting that 
+yoga-induced upregulation of BDNF and GABA may provide a potential neuroplastic 
+substrate helpful for repairing compromised neural networks and restoring reward 
+prediction error processing. However, recognizing that neuroplasticity depends 
+on environmental context, we argue that sustainable recovery necessitates 
+extending beyond individual neuroadaptation to a ""Home-School-Community"" 
+synergistic model. By combining targeted neurobiological regulation with broad 
+environmental support, this framework offers clinicians a practical strategy to 
+help adolescents build cognitive resilience and regain control over their 
+digital habits.
+
+Copyright © 2026 An, Ye and Fan.
+
+DOI: 10.3389/fpsyg.2026.1782953
+PMCID: PMC13269414
+PMID: 42312051
+
+Conflict of interest statement: YF was employed by Beijing Competitor Sports 
+Science & Tech. Co., Ltd. The remaining author(s) declared that this work was 
+conducted in the absence of any commercial or financial relationships that could 
+be construed as a potential conflict of interest."
+29,"42302737","Tourula E (2026)","29. Am J Physiol Regul Integr Comp Physiol. 2026 Jun 16. doi: 
+10.1152/ajpregu.00047.2026. Online ahead of print.
+
+Hydrating with a higher-fructose sport drink does not worsen acute kidney injury 
+risk during simulated work-related heat stress.
+
+Tourula E(1), Heikkinen ME(1), Regester A(1)(2), Owen MG(1), Hess HW(1)(3), 
+Spence L(2)(4), Mickleborough TD(1)(2)(5), Johnson BD(1)(2), Gletsu-Miller 
+N(2)(4), Schlader ZJ(1)(2).
+
+Author information:
+(1)Department of Kinesiology, Indiana University School of Public Health - 
+Bloomington, Bloomington, IN, USA.
+(2)Nutrition and Exercise Research Center, Indiana University School of Public 
+Health - Bloomington, Bloomington, IN, USA.
+(3)Center for Research and Education in Special Environments, Department of 
+Exercise and Nutrition Sciences, University at Buffalo, Buffalo, NY, USA.
+(4)Department of Applied Health Sciences, Indiana University School of Public 
+Health - Bloomington, Bloomington, IN, USA.
+(5)Area of Exercise Physiology, Faculty of Sports Science, Chulalongkorn 
+University, Bangkok, Thailand.
+
+Fructose containing soft drinks worsen acute kidney injury (AKI) risk during 
+simulated work related heat stress (WrHS), but the fructose content is 
+comparatively lower in sport drinks. This study tested the hypothesis that 
+consuming a higher-fructose sport drink exacerbates AKI risk compared to 
+consuming a sucrose-sweetened sport drink during a four-hour WrHS simulation. In 
+this block randomized, double-blind crossover study, 12 healthy adults (26±7 y; 
+6 women) completed two trials involving ingesting six 500 mL doses of a 
+higher-fructose sport drink (55% fructose & 45% glucose; Fructose55) or a 
+sucrose-sweetened sport drink (50% fructose & 50% glucose; Sucrose) before, 
+during, and following a 4 hour WrHS simulation that comprised three circuits of 
+treadmill walking (10 minutes) and rowing (5 minutes) at five metabolic 
+equivalents and 15 minutes of rest every hour. Drinks were matched for total 
+carbohydrates, calories, and electrolytes and modestly matched for osmolality. 
+Urine and blood samples were collected pre- and post-exposure, at recovery, and 
+24 hours post-visit. AKI risk was quantified as the product of urine 
+insulin-like growth factor-binding protein 7 and urine tissue inhibitor of 
+metalloproteinase-2 ([IGFBP7•TIMP-2]) normalized to specific gravity. Peak 
+rectal temperature (Fructose55: 38.3±0.7°C, Sucrose: 38.3±0.7°C, p=0.991) and 
+percent change in body weight (Fructose55: -0.7±1.0%, Sucrose: -0.9±1.0%, 
+p=0.466) were not different between trials. Urinary [IGFBP7•TIMP-2] increased 
+over time (p<0.001) but did not differ between trials (peak change - Fructose55: 
+1.7±1.6 (ng/mL)2/1000, Sucrose: 1.6±1.8 (ng/mL)2/1000, p=0.677). Consuming a 
+higher-fructose containing sport drink does not exacerbate AKI risk during WrHS 
+when compared to a sucrose-sweetened equivalent.
+
+DOI: 10.1152/ajpregu.00047.2026
+PMID: 42302737"
+30,"42300020","Lindsey HM (2026)","30. J Neurotrauma. 2026 Jun;43(11-12):850-871. doi: 10.1177/08977151251403554.
+Epub  2026 Jan 20.
+
+Transcranial Photobiomodulation Promotes Neurological Resilience in Current 
+Collegiate American Football Players Exposed to Repetitive Head Acceleration 
+Events.
+
+Lindsey HM(1)(2), Esopenko C(1)(3), Jain D(3), Larson MJ(2)(4), Johnson 
+PK(1)(4)(5), Keleher F(1), Newsome MR(1), Goodrich-Hunsaker NJ(1), Mortensen 
+B(6)(7), Allen WD(2), Talbert LD(2), Hancock M(8), Davidson LE(7), Carr 
+LS(1)(4), Tate DF(1), Wilde EA(1).
+
+Author information:
+(1)Department of Neurology, Traumatic Brain Injury and Concussion Center, 
+University of Utah School of Medicine, Salt Lake City, Utah, USA.
+(2)Department of Psychology, Brigham Young University, Provo, Utah, USA.
+(3)Department of Rehabilitation and Human Performance, Icahn School of Medicine 
+at Mount Sinai, New York, New York, USA.
+(4)Neuroscience Center, Brigham Young University, Provo, Utah, USA.
+(5)Office of Research, Rocky Mountain University of Health Professions, Provo, 
+Utah, USA.
+(6)Athletics Department, Brigham Young University, Provo, Utah, USA.
+(7)Department of Exercise Sciences, Brigham Young University, Provo, Utah, USA.
+(8)Department of Nutrition, Dietetics, and Food Sciences, Brigham Young 
+University, Provo, Utah, USA.
+
+Repetitive head acceleration events (RHAE) are common in contact sports and 
+associated with neuroinflammation, axonal injury, and long-term neurological 
+impairments, including increased risk for chronic traumatic encephalopathy. 
+Current strategies for addressing RHAE focus on post-injury care rather than 
+proactive neuroprotection, leaving athletes vulnerable to cumulative 
+neurotrauma. Transcranial photobiomodulation (PBM) has shown promise in reducing 
+neuroinflammation and promoting neuroprotection in traumatic brain injury; 
+however, its potential to mitigate the structural brain changes associated with 
+RHAE in actively competing athletes has not been investigated. The aim of this 
+study was to investigate whether PBM mitigates RHAE-related neuroinflammatory 
+and microstructural changes in collegiate American football players over a 
+single National Collegiate Athletic Association Division I season. We 
+hypothesized that restricted diffusion imaging (RDI) and quantitative anisotropy 
+(QA), diffusion magnetic resonance imaging markers of neuroinflammation and 
+axonal remodeling, respectively, would increase in the Sham PBM group due to 
+RHAE exposure but remain stable in the Active PBM group, indicating neurological 
+resilience. Twenty-six collegiate football players were randomly assigned to 
+Active (n = 13) or Sham (n = 13) PBM groups. PBM (810 nm) was self-administered 
+3 days a week under supervision in the athletic training room with a 
+transcranial plus intranasal device throughout the preseason practice period and 
+regular season (16 weeks). Diffusion MRI data were collected pre- and 
+postseason, and correlational tractography was used to assess the effects of PBM 
+on longitudinal changes in RDI and QA. Moderation analyses examined time × group 
+interactions, with post hoc analyses exploring within- and between-group 
+differences in RDI and QA cross-sectionally and longitudinally. Correlational 
+tractography revealed significant main effects and interactions of time and 
+group, with widespread increases in RDI and QA observed in the Sham PBM group 
+over the season, consistent with neuroinflammation and axonal remodeling. In 
+contrast, the Active PBM group showed relative stability in RDI and QA over 
+time, with significant reductions observed in some areas. These findings suggest 
+that PBM may mitigate ongoing neuroinflammation and facilitate the recovery 
+processes. This study provides the first evidence suggesting that transcranial 
+PBM reduces neuroinflammatory and axonal injury markers in American collegiate 
+football players over a single season. PBM may serve as a noninvasive and 
+accessible intervention for mitigating the cumulative neurological effects of 
+RHAE exposure, offering a neuroprotective strategy for athletes participating in 
+collision and contact sports. Future research should examine the long-term 
+benefits of PBM across multiple seasons and its impact on functional outcomes to 
+further establish the role of PBM in athlete brain health and wellness.
+
+DOI: 10.1177/08977151251403554
+PMID: 42300020 [Indexed for MEDLINE]
+
+Conflict of interest statement: Author Disclosure StatementDr. Lawrence Carr 
+serves as a consultant for Vielight, Inc. All other authors declare no competing 
+interests relevant to this study."
+31,"42299081","Mhara S (2026)","31. Chronobiol Int. 2026 Jun 16:1-17. doi: 10.1080/07420528.2026.2685036. Online 
+ahead of print.
+
+Effects of Ramadan intermittent fasting on sleep, cognitive and physical 
+performance in elite karate athletes: A within-subject repeated-measures study.
+
+Mhara S(1)(2), Amri A(1)(2), Raddaoui SE(2)(3), Ben Hassen S(1)(2), Souissi 
+MA(2)(3), Souissi N(1)(2).
+
+Author information:
+(1)Higher Institute of Sports and Physical Education, University Mannouba, Kasr 
+Said, Tunisia.
+(2)Physical Activity, Sport and Health Research Unit, Tunis, Tunisia.
+(3)High Institute of Sport and Physical Education Sfax, Sfax University, Sfax, 
+Tunisia.
+
+Ramadan intermittent fasting alters sleep-wake patterns, dietary intake, and 
+daily routines, which may interact with circadian timing and fatigue to 
+influence athletic performance. This study examined the effects of Ramadan 
+fasting on sleep, dietary intake, cognitive performance, and anaerobic running 
+performance across different times of day and fatigue states in elite karate 
+athletes. Twelve elite male karate athletes completed a within-subject 
+repeated-measures protocol before Ramadan, during the second week, and during 
+the fourth week of Ramadan. Testing was conducted at 08:00, 17:00, and 22:00. 
+Simple reaction time, multiple-choice reaction time, Stroop performance, and 5-m 
+multiple shuttle run performance were assessed before and after a 
+karate-specific aerobic fatigue protocol. Sleep and dietary intake were 
+monitored throughout each period. Ramadan fasting significantly reduced total 
+sleep time, sleep efficiency, total energy intake, carbohydrate intake, and fat 
+intake, while increasing subjective sleepiness and fatigue. Cognitive and 
+physical performance were significantly affected by Ramadan period, time of day, 
+and fatigue state. The greatest deterioration occurred during the fourth week of 
+Ramadan, particularly at 17:00, when both reaction-time performance and 
+shuttle-run outcomes showed the largest impairments compared with pre-Ramadan 
+values. Performance decrements were also observed at 22:00, whereas morning 
+performance at 08:00 was relatively preserved. Exercise-induced fatigue further 
+worsened cognitive and physical outcomes and attenuated normal time-of-day 
+variation. These findings indicate that Ramadan intermittent fasting induces 
+sleep disruption, dietary alterations, and time-of-day dependent impairments in 
+elite karate athletes. The late afternoon, particularly 17:00 during the fourth 
+week of Ramadan, appears to be the most vulnerable period for cognitive and 
+physical performance deterioration, especially under fatigue. Training load, 
+recovery strategies, sleep management, and nutritional timing should therefore 
+be carefully adapted during Ramadan.
+
+DOI: 10.1080/07420528.2026.2685036
+PMID: 42299081"
+32,"42291405","Hooshmand-Moghadam B (2026)","32. Iran J Basic Med Sci. 2026;29(5):641-659. doi:
+10.22038/ijbms.2026.89043.19219.
+
+Rosa damascena in exercise-induced neuroinflammation and recovery: A narrative 
+review bridging traditional medicine and translational sports science.
+
+Hooshmand-Moghadam B(1), Gaeini AA(2).
+
+Author information:
+(1)Department of Exercise Physiology, Faculty of Sport Sciences, Ferdowsi 
+University of Mashhad, Mashhad, Iran.
+(2)Department of Exercise Physiology, Faculty of Sports and Health Sciences, 
+University of Tehran, Tehran, Iran.
+
+Rosa damascena (Damask rose) has long been esteemed in traditional medicine for 
+its neurocalming, anti-inflammatory, and antioxidant properties. Recent 
+scientific interest highlights its potential to address exercise-induced 
+physiological and psychological stress by modulating the neuroimmune axis. This 
+narrative review synthesizes preclinical, clinical, and ethnobotanical evidence 
+regarding R. damascena's effects on neuroinflammation, oxidative stress, and 
+post-exercise recovery. It aims to elucidate mechanistic pathways, assess 
+translational applications, and propose evidence-based strategies for 
+incorporation into sports medicine and athlete recovery protocols. A 
+comprehensive literature search was conducted across biomedical databases up to 
+May 2025. Eligible studies included in vitro, in vivo, and human research 
+examining the physiological effects of R. damascena or its constituents in the 
+context of neuropsychology, inflammation, oxidative damage, and exercise 
+recovery. R. damascena exhibits multi-modal effects, including down-regulation 
+of pro-inflammatory cytokines, attenuation of oxidative biomarkers, enhancement 
+of parasympathetic activity, and modulation of serotonergic and GABAergic 
+systems. Evidence supports its role in improving sleep quality, mood regulation, 
+and cognitive function factors critical to athlete performance and resilience. 
+Both preclinical and early-phase human studies indicate potential benefits in 
+reducing delayed-onset muscle soreness (DOMS), accelerating recovery, and 
+supporting autonomic balance. A translational framework is proposed to guide 
+future applications and clinical trials. With its unique blend of 
+neuroprotective, immunomodulatory, and adaptogenic properties, R. damascena 
+presents a promising phytotherapeutic agent for exercise recovery. Bridging 
+ancient medical traditions and modern sports science, it warrants further 
+interdisciplinary investigation to validate its efficacy, determine optimal 
+formulations, and ensure safety in diverse athletic populations.
+
+DOI: 10.22038/ijbms.2026.89043.19219
+PMCID: PMC13254794
+PMID: 42291405
+
+Conflict of interest statement: The authors declare that they have no conflicts 
+of interest related to the content of this article."
+33,"42285757","Howatson G (2026)","33. Exp Physiol. 2026 Jun 12. doi: 10.1113/EP093724. Online ahead of print.
+
+(Poly)phenols: Mechanisms of action and efficacy of contemporary supplements for 
+exercise recovery and performance.
+
+Howatson G(1)(2), Clifford T(3).
+
+Author information:
+(1)Department of Sport Exercise and Rehabilitation, Northumbria University, 
+Newcastle‑upon‑Tyne, UK.
+(2)Water Research Group, North West University, Potchefstroom, South Africa.
+(3)School of Sport, Exercise and Health Sciences, Loughborough University, 
+Loughborough, UK.
+
+(Poly)phenols are a diverse group of bioactive chemical compounds present in a 
+wide range of plant- and animal-based foods. Several thousands of (poly)phenols 
+exist; many have potent biological effects, most notably antioxidant, 
+anti-inflammatory and vasodilatory. As such, they are of growing interest as 
+nutritional interventions for health maintenance and disease prevention, but 
+also for athletes aiming to enhance recovery and performance. Although most of 
+their recovery and performance benefits are ascribed to their antioxidant 
+actions, they are unlikely to function as antioxidants in vivo. Rather, they 
+might upregulate the transcription factor nuclear factor-erythroid-2-related 
+factor (Nrf2), which, by upregulating various endogenous antioxidants, could 
+modulate cellular redox balance. Likewise, their anti-inflammatory functions are 
+likely to be driven by their effects on the transcription factor nuclear factor 
+kappa B, which regulates numerous pro-inflammatory genes. Although receiving far 
+less attention, (poly)phenols might also increase mitochondrial biogenesis and 
+fat oxidation, both of which could enhance endurance exercise performance. These 
+biological effects have consistently been demonstrated in vitro, but there is 
+less mechanistic support for them in human studies, despite several clinical 
+trials reporting, albeit inconsistently, improved recovery and exercise 
+performance. Translating the findings from in vitro and animal models to humans 
+is challenging, in large part owing to the poor bioavailability of most 
+(poly)phenols and thus the limited amount of the intact metabolites available 
+for biological effects. This brief review outlines the primary mechanisms 
+through which (poly)phenols might influence exercise recovery and performance 
+and highlights some of the evidence from research that investigates popular 
+(poly)phenol supplements on key performance and recovery outcomes.
+
+© 2026 The Author(s). Experimental Physiology published by John Wiley & Sons Ltd 
+on behalf of The Physiological Society.
+
+DOI: 10.1113/EP093724
+PMID: 42285757"
+34,"42280383","Finnegan E (2026)","34. Nutrients. 2026 May 29;18(11):1740. doi: 10.3390/nu18111740.
+
+Gastrointestinal Symptoms After Sport-Related Concussion: Prevalence and 
+Patterns in a Multi-Cohort Analysis.
+
+Finnegan E(1), Daly E(1), Hunzinger KJ(2)(3), Ryan L(1).
+
+Author information:
+(1)Department of Sport, Exercise and Nutrition, Atlantic Technological 
+University (ATU), Dublin Rd., H91 T8NW Galway, Ireland.
+(2)Department of Exercise Science, Thomas Jefferson University, Philadelphia, PA 
+19144, USA.
+(3)Jefferson Center for Injury Research & Prevention, Thomas Jefferson 
+University, Philadelphia, PA 19144, USA.
+
+Background/Objectives: Concussions occur across all sports globally; however, 
+inconsistent symptom recognition continues to challenge diagnosis, management, 
+and recovery. Although concussion effects extend beyond neurological 
+dysfunction, gastrointestinal (GI) symptoms remain insufficiently captured 
+within current assessment frameworks and may influence athletes' fuelling 
+choices and food tolerance during recovery. This study aimed to describe the 
+prevalence and patterns of GI symptoms reported among athletes with a history of 
+concussion and to explore whether symptom prevalence and burden differed by sex 
+and country. Methods: A total of 401 adult athletes (225 males; mean age 32.4 ± 
+11.3 years) with a history of concussion were recruited from a multinational 
+cohort (n = 123) and a US community rugby cohort (n = 278). Participants 
+completed online surveys assessing concussion history, post-concussion symptoms 
+(RPQ or SCAT-6), and GI-specific symptoms. Data were stratified by sex and 
+country and analysed descriptively and comparatively. Results: Overall, 62.1% of 
+athletes reported ≥1 GI symptom, with most reporting 1-5 symptoms (79.9%). The 
+most frequent symptoms were nausea/vomiting (74.3%) and loss of/poor appetite 
+(56.6%), followed by diarrhoea, abdominal pain/discomfort, and flatulence. 
+Although GI symptom prevalence was higher in females (65.9% vs. 59.1%), no 
+significant sex differences were observed (all p > 0.05). GI symptom burden 
+varied by country (p < 0.001), with higher prevalence among Irish than US 
+athletes (85.9% vs. 51.2%); however, these analyses were exploratory and 
+unadjusted. RPQ and SCAT captured symptoms across somatic, cognitive, emotional, 
+and sleep domains, however GI symptoms were underrepresented, with 
+nausea/vomiting more frequently reported on RPQ/SCAT items (51.4%) than on 
+GI-specific items (46.1%). Conclusions: GI symptoms were common following 
+concussion, with variation by country and no statistically significant 
+differences by sex. Findings indicate that concussion assessment tools 
+(RPQ/SCAT) underrepresent the breadth of GI symptoms. Greater attention to GI 
+assessment in concussion care is warranted. Incorporating simple GI screening 
+alongside timely nutrition support may represent feasible additions to 
+multidisciplinary, athlete-centred care pathways. Prospective studies are needed 
+to clarify the clinical relevance of these findings and evaluate 
+nutrition-related strategies.
+
+DOI: 10.3390/nu18111740
+PMCID: PMC13258330
+PMID: 42280383 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare that the research was 
+conducted in the absence of any commercial or financial relationships that could 
+be construed as a potential conflict of interest."
+35,"42280359","Piotrowska K (2026)","35. Nutrients. 2026 May 27;18(11):1718. doi: 10.3390/nu18111718.
+
+Differences and Correlations in Nutrient Intake and Hematological Markers 
+Between Iron-Deficient and Non-Iron-Deficient Female Basketball Players: A 
+Preliminary Study.
+
+Piotrowska K(1), Adamczewski J(1), Podgórski T(2), Szymocha M(1), 
+Durkalec-Michalski K(1)(3).
+
+Author information:
+(1)Department of Sports Dietetics, Poznan University of Physical Education, 
+61-871 Poznan, Poland.
+(2)Department of Biochemistry, Poznan University of Physical Education, 61-871 
+Poznan, Poland.
+(3)Polish Society of Nutritional Sciences, 02-776 Warsaw, Poland.
+
+BACKGROUND/OBJECTIVES: Iron deficiency (ID) can occur before anemia and may 
+impair performance, recovery, and hematological function, particularly in 
+athletes. Female basketball players may be especially vulnerable due to high 
+training demands and sex-specific iron losses. Therefore, this study aimed to 
+compare nutrient intake and hematological and iron status biomarkers between ID 
+and non-ID female basketball players, and to examine diet-biomarker 
+correlations.
+METHODS: Twenty-four female basketball players completed the study. Athletes 
+were stratified by ferritin, with ID defined as <30 μg/L, resulting in 12 
+athletes per group. Dietary intake was assessed using a 48 h food record. 
+Energy, macronutrients, fiber, iron, calcium, folate, vitamin B12, and vitamin C 
+intakes were analyzed. Blood biomarkers included red blood cells (RBCs), 
+hemoglobin (HGB), hematocrit (HTC), mean corpuscular volume (MCV), mean 
+corpuscular hemoglobin (MCH), mean corpuscular hemoglobin concentration (MCHC), 
+ferritin, serum iron, transferrin, total iron-binding capacity (TIBC), and 
+unsaturated iron-binding capacity (UIBC).
+RESULTS: ID athletes had significantly lower fiber, iron, folate, and vitamin C 
+intakes than non-ID. They also showed significantly lower HGB, HTC, MCV, MCH, 
+and ferritin, and higher transferrin, UIBC and TIBC. Iron intake correlated 
+positively with HGB, HTC, MCV, MCH, serum iron, and ferritin, and negatively 
+with UIBC.
+CONCLUSIONS: Iron deficient female basketball players may present less favorable 
+dietary profiles and altered hematological and iron status biomarkers. In this 
+context, quarterly assessment of iron status biomarkers should be supported by 
+nutrition education aimed at improving iron intake, alongside monitoring of 
+energy and macronutrient intake in relation to training load. These approaches 
+may help identify athletes requiring nutrition-focused support, although larger 
+studies with longer-term dietary assessment are warranted.
+
+DOI: 10.3390/nu18111718
+PMCID: PMC13259344
+PMID: 42280359 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflicts of interest."
+36,"42280339","Dai X (2026)","36. Nutrients. 2026 May 26;18(11):1695. doi: 10.3390/nu18111695.
+
+Nutritional Strategies to Support Performance Maintenance and Recovery in 
+Football Under Hot Environmental Conditions: A Narrative Review.
+
+Dai X(1), Liu S(2), Zou D(3), Zou S(4), Shao X(1), Jiang Y(5), Yan Y(6), Jiang 
+W(7), Zhao K(7), Liu C(2).
+
+Author information:
+(1)School of Art, Beijing Sport University, Beijing 100084, China.
+(2)School of Sports Science, Beijing Sport University, Beijing 100084, China.
+(3)State Key Laboratory for Quality Ensurance and Sustainable Use of Dao-di 
+Herbs, Institute of Chinese Materia Medica, China Academy of Chinese Medical 
+Sciences, Beijing 100700, China.
+(4)School of Art, Wuhan Sports University, Wuhan 430079, China.
+(5)Graduate School of Trainers, Belarusian State University of Physical Culture, 
+220020 Minsk, Belarus.
+(6)China Basketball College, Beijing Sport University, Beijing 100084, China.
+(7)China Volleyball Academy, Beijing Sport University, Beijing 100084, China.
+
+Rising ambient temperatures and the increasing frequency of training and 
+competition in hot climates have made heat stress a major challenge in football. 
+Under such conditions, players experience greater cardiovascular and 
+thermoregulatory strain, faster glycogen use, higher perceived exertion, and 
+progressive impairment in repeated high-intensity actions and decision-making. 
+These responses have intensified interest in nutritional strategies that might 
+complement heat acclimation, hydration/electrolyte planning, cooling practices, 
+and recovery management. This narrative review critically synthesizes current 
+evidence on nutritional interventions that may be relevant to football performed 
+in the heat, with emphasis on hydration and electrolyte replacement, 
+carbohydrate-protein strategies, taurine, branched-chain amino acids (BCAAs), 
+creatine, menthol, antioxidant- and nitrate-related approaches, and selected 
+multi-ingredient products. Across the available literature, 
+hydration/electrolyte planning and carbohydrate-protein feeding remain the 
+practical foundation, menthol appears most consistently useful for perceptual 
+cooling, creatine seems safe and potentially helpful for repeated-sprint 
+support, and taurine is promising but still supported by relatively few trials. 
+By contrast, evidence for BCAAs, antioxidants, nitrates, and caffeine as 
+stand-alone heat strategies, as well as for many compound supplements, remains 
+inconsistent, context-specific, or too indirect for strong football-specific 
+endorsement. Overall, the evidence base remains heterogeneous in study quality, 
+protocol design, exercise mode, and sport specificity. A substantial proportion 
+of the available data is derived from cycling, endurance, or laboratory 
+heat-exercise models rather than football-specific trials. Accordingly, any 
+practical recommendation should be interpreted cautiously and embedded within 
+broader heat-management strategies. Future work should prioritize ecologically 
+valid randomized controlled trials in football or football-like intermittent 
+protocols, with transparent reporting of dose, timing, perceptual outcomes, and 
+match-relevant performance measures.
+
+DOI: 10.3390/nu18111695
+PMCID: PMC13259307
+PMID: 42280339 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare that they have no conflicts 
+of interest directly relevant to the content of this review."
+37,"42280321","Wesołowski I (2026)","37. Nutrients. 2026 May 24;18(11):1677. doi: 10.3390/nu18111677.
+
+Creatine Supplementation in Endurance and Mixed-Sport Contexts: A Scoping Review 
+of Performance, Recovery, and Body Composition.
+
+Wesołowski I(1), Dzienisiewicz J(1), Langa D(1), Ziółkowski W(2), Karbowska 
+J(3), Kochan Z(1).
+
+Author information:
+(1)Laboratory of Nutritional Biochemistry, Department of Clinical Nutrition, 
+Medical University of Gdansk, 80-211 Gdansk, Poland.
+(2)Department of Rehabilitation Medicine, Medical University of Gdansk, 80-219 
+Gdansk, Poland.
+(3)Department of Biochemistry, Medical University of Gdansk, 80-211 Gdansk, 
+Poland.
+
+Background/Objectives: Although creatine monohydrate is widely recognized as an 
+effective ergogenic aid in strength and power sports, its role in endurance and 
+mixed-sport disciplines remains less clearly established. This scoping review 
+aimed to map the current evidence regarding the effects of creatine 
+supplementation on performance, recovery-related outcomes, and body composition 
+in endurance and mixed-sport contexts. Methods: A scoping review of randomized 
+controlled trials published between 1996 and 2025 was conducted. Eligible 
+studies evaluated creatine supplementation in endurance and mixed-sport 
+contexts, including both sport-specific and broader exercise populations when 
+the exercise protocol, testing model, or outcomes were relevant to endurance or 
+mixed-sport performance, recovery, or body composition. A total of 38 studies 
+met the inclusion criteria. Outcomes were categorized into exercise performance, 
+biochemical markers related to recovery and exercise stress, and body 
+composition parameters. Results: Creatine supplementation was most often 
+associated with reported favorable changes in repeated-sprint performance and 
+high-intensity power output, particularly during intermittent, sprint-based, or 
+power-endurance tasks. Several studies reported favorable changes in sprint 
+performance, peak power, or total work output relative to placebo or baseline 
+values in cycling, swimming, rowing, and canoeing/kayaking protocols, although 
+findings were not uniform across studies and not all favorable within-group 
+changes were placebo-superior. Some studies also reported favorable changes in 
+end-phase sprint capacity during prolonged exercise. Findings related to 
+recovery were less consistent. Selected studies reported reductions in 
+inflammatory markers, including C-reactive protein (CRP) and tumor necrosis 
+factor α (TNF-α), whereas markers of muscle damage showed mixed responses. Most 
+supplementation protocols involved a 5-7-day loading phase of 20 g/day, 
+occasionally followed by a maintenance dose of 2-5 g/day. Small increases in 
+total body mass were commonly observed, while evidence regarding fat-free mass 
+and aerobic outcomes remained limited or inconsistent. Conclusions: Current 
+evidence suggests that creatine supplementation may be most relevant in selected 
+endurance and mixed-sport contexts involving repeated high-intensity efforts, 
+sprint finishes, or power-endurance demands, rather than for endurance 
+performance broadly. In contrast, evidence for recovery-related biochemical 
+responses, body composition changes, and aerobic adaptations remains equivocal. 
+Further well-controlled, sport- or context-specific, and field-based studies are 
+needed to better clarify the role of creatine in endurance and mixed-sport 
+exercise.
+
+DOI: 10.3390/nu18111677
+PMCID: PMC13258674
+PMID: 42280321 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflicts of interest."
+38,"42280300","Tunçil E (2026)","38. Nutrients. 2026 May 22;18(11):1656. doi: 10.3390/nu18111656.
+
+Beyond Recovery: Effects of Post-Exercise Milk and Milk-Based Beverages on 
+Appetite Regulation and Energy Intake-A Systematic Review and Meta-Analysis.
+
+Tunçil E(1)(2), Karanfil Y(3), Dünder E(4).
+
+Author information:
+(1)Department of Nutrition and Dietetics, Faculty of Health Sciences, Hacettepe 
+University, 06100 Ankara, Türkiye.
+(2)Department of Nutrition and Dietetics, Faculty of Health Sciences, Balıkesir 
+University, 10145 Balıkesir, Türkiye.
+(3)Department of Sports Medicine, Faculty of Medicine, Hacettepe University, 
+06100 Ankara, Türkiye.
+(4)Department of Statistics, Faculty of Sciences, Ondokuz Mayıs University, 
+55200 Samsun, Türkiye.
+
+BACKGROUND/OBJECTIVES: Milk and milk-based beverages have shown potential 
+benefits for maintaining exercise-induced negative energy balance. However, this 
+has not been systematically investigated. Therefore, this review aimed to 
+evaluate the effects of post-exercise milk or milk-based beverages consumption 
+on appetite regulation and energy intake.
+METHODS: A comprehensive search was conducted in PubMed, Scopus, Web of Science, 
+the Cochrane Library, Ovid MEDLINE ALL, Open Access Theses and Dissertations, 
+and EBSCO Open Dissertations up to 6 April 2025. Eligible studies were 
+randomized controlled trials assessing the effects of milk or milk-based 
+beverages on post-exercise appetite regulation in healthy adults. Study 
+selection, data extraction, and risk of bias assessment (RoB-2) were performed 
+independently by two reviewers. Meta-analysis was conducted where appropriate 
+using mean differences with 95% confidence intervals (CI). Subgroup analyses 
+were conducted by sex and intervention.
+RESULTS: Twelve studies (n = 140) were included, of which 10 (n = 118) 
+contributed to the meta-analysis of energy intake. Milk and milk-based beverages 
+were associated with lower energy intake than carbohydrate (CHO) beverages 
+(-72.73 kcal, 95% CI [-141.69; -3.77]; I2 = 0%, p = 0.039). Subgroup analyses 
+indicated no effect modification by sex or intervention type. For subjective 
+appetite ratings (11 studies, n = 125), meta-analysis was not performed due to 
+measurement and reporting heterogeneity, and no clear differences or only mild 
+appetite-suppressive effects were observed. Appetite-related hormones were 
+assessed in two studies (n = 23), with no overlapping outcomes.
+CONCLUSIONS: Post-exercise consumption of milk and milk-based beverages may 
+reduce energy intake compared with CHO beverages, although effects on subjective 
+appetite are inconsistent and evidence for hormonal responses remains limited.
+
+DOI: 10.3390/nu18111656
+PMCID: PMC13257937
+PMID: 42280300 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflicts of interest."
+39,"42277375","Aderman MJ (2026)","39. J Clin Sleep Med. 2026 Jun 11;22(1):91. doi: 10.1007/s44470-026-00092-w.
+
+The association between sleep duration and computerized neurocognitive testing 
+outcomes at baseline and post injury in US service academy cadets and 
+midshipmen: findings from the CARE Consortium.
+
+Aderman MJ(1), Roach MH(2)(3), Malvasi SR(4), Ross J(5), Svoboda SJ(6), Robb 
+JB(7), McGinty GT(8), Jackson JC(9), Brodeur R(10), Estevez CA(11), Susmarski 
+A(12), Broglio S(13), McCrea M(14), McAllister TW(15), Pasquina PF(16), Cameron 
+KL(17).
+
+Author information:
+(1)Keller Army Hospital, United States Military Academy, West Point, NY, USA. 
+mike.aderman1303@yahoo.com.
+(2)Musculoskeletal Health Specialist, Womack Army Medical Center-Fort Bragg, 
+Fayetteville, NC, USA.
+(3)Research & Surveillance Division, Extremity Trauma & Amputation Center of 
+Excellence, Research and Engineering Directorate, Defense Health Agency, 
+Bethesda, MD, USA.
+(4)Keller Army Community Hospital, West Point, NY, USA.
+(5)Department of Physical Education, United States Military Academy, West Point, 
+NY, USA.
+(6)MedStar, Washington, DC, USA.
+(7)Camp Pendleton, San Diego County, CA, USA.
+(8)USAF Academy, Colorado Springs, CO, USA.
+(9)Primary Care Sports Medicine, Utah Valley Orthopedics and Sports Medicine, 
+Intermountain Health, Saratoga Springs, Saratoga Springs, UT, USA.
+(10)Yale School of Medicine, New Haven, CT, USA.
+(11)US Coast Guard Training Center, 1, Yorktown, VA, USA.
+(12)Sports, Spine, and Rehabilitation Physician, Medical Associates Clinic, 
+Dubuque, IA, USA.
+(13)Michigan Concussion Center, Ann Arbor, MI, USA.
+(14)Medical College of Wisconsin, Milwaukee, WI, 53226, USA.
+(15)Indiana University School of Medicine, Indianapolis, IN, USA.
+(16)Uniformed Services University of the Health Sciences, Bethesda, MD, USA.
+(17)Keller Army Hospital, United States Military Academy, West Point, NY, USA.
+
+PURPOSE: The purpose of this study was to examine the relationship between sleep 
+duration and computerized neurocognitive testing used to manage concussions 
+among service academy cadets and midshipmen.
+METHODS: A retrospective cohort study was conducted among participants enrolled 
+at four US military service academies from 2014 to 2022. Participants underwent 
+baseline concussion testing and reported demographic information during their 
+first year at their respective academy. Participants who sustained a concussion 
+underwent standardized post-injury evaluations throughout their recovery which 
+included computerized neurocognitive tests (CNT). Self-reported sleep duration 
+from the prior night was collected before each evaluation. Univariate and 
+multivariable linear regression models were used to examine the relationship 
+between sleep duration and CNT scores while controlling for significant 
+covariates. Two-way ANOVA models were used to examine mean differences in CNT 
+scores by hours slept and evaluation timepoint.
+RESULTS: During the study period, 21,938 participants (26% female; 18.87 ± 1.34 
+y) enrolled and 1429 (36% female; 19.80 ± 1.50 y) completed a post-concussion 
+CNT. Univariate linear regression models displayed significant associations 
+between sleep and baseline scores of verbal memory (β = 0.024; 95% CI = 0.01, 
+0.04; p = 0.003), visual memory (β = 0.045; 95% CI = 0.03, 0.06; p < 0.001), 
+visual motor speed (β = 0.052; 95% CI = 0.04, 0.07; p < 0.001), reaction time 
+(β = -0.022; 95% CI = - 0.02, - 0.02; p < 0.001), simple reaction time 
+(β = 0.094; 95% CI = 0.04, 0.15; p = 0.001), match to sample (β = 0.071; 95% 
+CI = 0.01, 0.13; p = 0.013), and simple reaction time 2 (β = 0.110; 95% 
+CI = 0.05, 0.17; p < 0.001). An association between sleep and specific CNT 
+scores was observed at specific post-injury evaluations as well in univariate 
+models. Multivariable linear regression models yielded similar results.
+CONCLUSION: Sleep increases were associated with improved CNT scores. Sleep 
+duration the night before a baseline or post-concussion assessment should be 
+considered when examining CNT results.
+
+© 2026. This is a U.S. Government work and not under copyright protection in the 
+US; foreign copyright protection may apply.
+
+DOI: 10.1007/s44470-026-00092-w
+PMCID: PMC13260559
+PMID: 42277375 [Indexed for MEDLINE]
+
+Conflict of interest statement: Declarations. Ethics approval: All procedures 
+for this study were reviewed and approved by the Institutional Review Board at 
+each site and by the US Army Human Research Protection Office. Consent to 
+participate: Each participant provided informed consent prior to data collection 
+during concussion baseline testing at their respective site. Consent for 
+publication: All procedures for this study were reviewed and approved by the 
+Institutional Review Board at each site and by the US Army Human Research 
+Protection Office. Each participant provided informed consent prior to data 
+collection during concussion baseline testing at their respective site to allow 
+the publication of their deidentified data. Competing interests: The authors 
+declare no competing interests."
+40,"42274572","Xiao J (2026)","40. Cells. 2026 May 26;15(11):979. doi: 10.3390/cells15110979.
+
+Integrative Multi-Omics Analysis Identifies Tissue, Cellular and Splicing 
+Programs Associated with Exercise-Mediated Improvement in Type 2 Diabetes.
+
+Xiao J(1)(2), Ding Y(3), Li S(4), Yan Y(4), Yu Z(5), Fu P(6), Xu C(4)(7), Gong 
+L(2)(8).
+
+Author information:
+(1)China Ice Sport College, Beijing Sport University, Beijing 100084, China.
+(2)Key Laboratory of Physical Fitness and Exercise, Ministry of Education, 
+Beijing Sport University, Beijing 100084, China.
+(3)State Key Laboratory of Bioactive Substance and Function of Natural 
+Medicines, Institute of Materia Medica, Chinese Academy of Medical Sciences and 
+Peking Union Medical College, Beijing 100050, China.
+(4)School of Sport Science, Beijing Sport University, Beijing 100084, China.
+(5)School of Sports Medicine and Rehabilitation, Beijing Sport University, 
+Beijing 100084, China.
+(6)Department of Physical Education, Northwestern Polytechnical University, 
+Xi'an 710072, China.
+(7)Beijing Sports Nutrition Engineering Research Center, Beijing 100084, China.
+(8)Key Laboratory for Performance Training & Recovery of General Administration 
+of Sport, Beijing 100084, China.
+
+Physical inactivity contributes to type 2 diabetes (T2D), but the molecular 
+links between exercise and metabolic improvement remain incompletely understood. 
+We meta-analyzed genome-wide association studies of vigorous physical activity 
+and T2D (combined n ≈ 1.95 million) and integrated eQTL/sQTL maps with 
+single-cell and spatial transcriptomic datasets to connect genetic risk with 
+tissues, cell types, and regulatory programs. Tissue and cell-type enrichment, 
+colocalization, and network analyses were performed. Computational findings were 
+further examined in male 10-week-old C57BL/6J mice with high-fat diet-induced 
+diabetes. After 1 week of acclimatization, mice were randomly assigned to normal 
+chow, high-fat diet, or high-fat diet plus exercise groups (n = 6 per group; 
+high-fat diet with 60% of total energy from fat). The exercise intervention 
+consisted of treadmill running (10 m/min for 50 min per day, 5 days per week, 
+total 16 weeks), followed by metabolic phenotyping, skeletal muscle histology, 
+bulk RNA sequencing, alternative splicing analysis, and RT-qPCR of Mau2 
+isoforms. Exercise- and T2D-associated variants showed joint enrichment in 
+skeletal muscle and adipose eQTL/sQTL signals. Integrated single-cell analyses 
+prioritized fibro-adipogenic progenitors and endothelial cells, and identified 
+an extracellular matrix- and collagen-related module in fibro-adipogenic 
+progenitors associated with both exercise and T2D. Mau2 emerged as a shared 
+candidate gene with tissue-specific splicing signals. In diabetic mice, exercise 
+improved glucose homeostasis and muscle fiber structure, and reduced Mau2 intron 
+retention in skeletal muscle without changing total Mau2 expression. These 
+findings support a multiscale framework linking exercise-responsive regulation 
+to T2D-related tissue remodeling and splicing plasticity.
+
+DOI: 10.3390/cells15110979
+PMCID: PMC13256979
+PMID: 42274572 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflicts of interest."
+41,"42274406","Hobrough P (2026)","41. J Sports Med Phys Fitness. 2026 Jun 11. doi: 10.23736/S0022-4707.26.17910-9. 
+Online ahead of print.
+
+The feasibility of radial shockwave therapy in enhancing recovery during an 
+international basketball tournament.
+
+Hobrough P(1), Hobrough H(2), Paci E(3), Chui KY(4), Thomas K(1), Howatson 
+G(5)(2).
+
+Author information:
+(1)School of Sport, Exercise and Rehabilitation, Northumbria University, 
+Newcastle upon Tyne, UK.
+(2)Leeds Conservatoire, Leeds, UK.
+(3)Physiotherapy Department, Vita-Salute, San Raffaele University, Milan, Italy.
+(4)Physiotherapy Department, University of Bradford, Bradford, UK.
+(5)School of Sport, Exercise and Rehabilitation, Northumbria University, 
+Newcastle upon Tyne, UK - glyn.howatson@northumbria.ac.uk.
+
+BACKGROUND: Radial shockwave therapy (rSWT) is widely used for musculoskeletal 
+conditions, but its use and efficacy in athletic recovery are relatively 
+unexplored. Multi-day basketball tournaments result in repeated physical stress 
+on players, leading to muscle soreness that can impair recovery. The aim of this 
+study was to investigate the feasibility and possible efficacy of rSWT in 
+applied sports. Specifically, to examine the feasible effectiveness of 
+post-match rSWT in reducing muscle soreness and improving perceived recovery, 
+fatigue, and sleep quality in master's basketball players during a tournament.
+METHODS: Using a parallel group design, 61 male and female basketball players 
+allocated to intervention or control, either a rSWT treatment group (N.=30) or a 
+control condition (N.=31) during an international tournament. The participants 
+in the rSWT group received treatment within four hours after each game to 
+quadriceps, hamstrings, and calves of both legs. Participants in the control 
+group received no treatment. Daily self-report questionnaires before the 
+tournament (baseline) and on each day of competition for muscle soreness (Likert 
+Scale), perceived recovery (PRS), fatigue (VAS-F), and quality of sleep 
+(Consensus Sleep Diary) were completed.
+RESULTS: Fifty-six participants completed the study. The rSWT group showed lower 
+muscle soreness than controls (P<0.001), with a 35% reduction compared to 
+control by Day 4. Perceived recovery was improved in the rSWT group compared to 
+the control (P<0.004). No differences were found between groups for fatigue or 
+sleep quality.
+CONCLUSIONS: Post-game rSWT is a feasible and effective approach to reduce 
+muscle soreness and improve perceived recovery during fixture congestion 
+experienced during international competition. Although fatigue and sleep were 
+not affected and the underlying mechanisms remain to be elucidated, these 
+observations support the potential for rSWT in a new application as a tool to 
+facilitate exercise recovery.
+
+DOI: 10.23736/S0022-4707.26.17910-9
+PMID: 42274406"
+42,"42273503","Hoffman ID (2026)","42. J Orthop Case Rep. 2026 Jun;16(6):293-299. doi:
+10.13107/jocr.2026.v16.i06.7450.
+
+Creatine Supplementation in Pediatric Orthopedic Rehabilitation: A Translational 
+Review and Proposed Clinical Trial Framework.
+
+Hoffman ID(1), Combs K(2).
+
+Author information:
+(1)College of Medicine, Charles R. Drew University of Medicine and Science, Los 
+Angeles, California.
+(2)Department of Orthopedic Surgery, Shriners Hospitals for Children, Pasadena, 
+California.
+
+INTRODUCTION: Knee arthroscopy is a commonly performed minimally invasive 
+orthopedic procedure in pediatric and adolescent populations, particularly for 
+sports-related injuries such as ligament tears and meniscal pathology. 
+Optimization of post-operative recovery is essential in this age group to 
+preserve muscle mass, restore neuromuscular control, and facilitate safe return 
+to activity during a critical period of musculoskeletal development. 
+Perioperative nutritional strategies represent a modifiable adjunct to 
+rehabilitation; however, their role in pediatric orthopedic recovery remains 
+insufficiently defined.
+MATERIALS AND METHODS: This comprehensive narrative review synthesizes 
+mechanistic, translational, and clinical literature on creatine supplementation 
+to evaluate its potential role in enhancing post-operative recovery following 
+pediatric and adolescent knee arthroscopy. Relevant literature was identified 
+through structured searches of PubMed, Scopus, and Google Scholar, emphasizing 
+adult orthopedic rehabilitation trials, experimental studies of skeletal muscle 
+metabolism, perioperative nutrition research, and limited pediatric 
+supplementation data. Although not conducted as a formal systematic review, a 
+structured and targeted search strategy was used to enhance methodological rigor 
+and reproducibility.
+RESULTS: Across adult surgical and immobilization models, creatine 
+supplementation has demonstrated preservation of muscle mass, enhanced strength 
+recovery, improved GLUT4-mediated glucose uptake, augmented glycogen storage, 
+reduced inflammatory signaling, and attenuation of disuse-related muscle 
+atrophy. Although direct pediatric surgical data are lacking, consistent 
+mechanistic and clinical findings, combined with creatine's endogenous 
+production and favorable safety profile in youth athletic populations, provide a 
+biologically plausible rationale for investigation in pediatric orthopedic 
+settings.
+CONCLUSION: The convergence of adult evidence and the absence of 
+pediatric-specific clinical trials highlights a critical gap in the literature. 
+Creatine supplementation represents a promising adjunct to post-operative 
+rehabilitation following pediatric knee arthroscopy, warranting prospective 
+clinical trials to determine its efficacy, safety, and optimal perioperative 
+use.
+
+Copyright: © Indian Orthopaedic Research Group.
+
+DOI: 10.13107/jocr.2026.v16.i06.7450
+PMCID: PMC13248198
+PMID: 42273503
+
+Conflict of interest statement: Conflict of Interest: Nil"
+43,"42262183","Mauvieux B (2026)","43. Wilderness Environ Med. 2026 Jun 9:10806032261456268. doi: 
+10.1177/10806032261456268. Online ahead of print.
+
+Thermoregulatory Strain and Sleep Responses Across 14 Stages of the Dakar Rally.
+
+Mauvieux B(1), Riding N(2)(3), Pommerie F(4), Moussay S(5), Racinais S(6).
+
+Author information:
+(1)VERTEX Research Unit (UR 7480), UFR STAPS, University of Caen Normandy, Caen, 
+France.
+(2)Institute of Sport, Exercise and Health (ISEH), University College London, 
+United Kingdom.
+(3)Bristol Medical School, University of Bristol, United Kingdom.
+(4)Mutuaide Assistance, Noisy Le Grand, France.
+(5)Normandie Univ, UNICAEN, INSERM, COMETE, GIP CYCERON, Caen, France.
+(6)Centre de Ressources, d'Expertise et de Performance Sportive (CREPS), 
+National Center for Sports Expertise and Performance, Montpellier, France.
+
+BackgroundMultistage desert rally competitions combine prolonged environmental 
+heat exposure, mechanical workload, altitude exposure, and restricted recovery, 
+potentially increasing thermal and sleep-related strain. However, integrated 
+field data collected during authentic competition remain 
+limited.MethodsForty-six competitors (44 males, 2 females) participating in the 
+2018 Dakar Rally were monitored across 14 stages performed in South America 
+under hot desert conditions. Gastrointestinal core temperature, in-vehicle 
+microclimate temperature, actigraphy-derived sleep parameters, and perceptual 
+measures were collected during competition. A total of 204 in-vehicle 
+temperature recordings, 122 core temperature profiles, 131 questionnaires, and 
+36 nights of actigraphy were analyzed.ResultsStages were prolonged (623±206 km; 
+9 h 56 min ± 4 h 05 min) and environmentally variable, with 43±31% sand sections 
+and 47% of stages exceeding 2500 m altitude. In-vehicle temperatures exceeded 
+50°C across all vehicle categories. Mean peak gastrointestinal core temperature 
+reached 38.3±0.4°C; approximately one third of recorded values exceeded 38.5°C, 
+and values ≥39°C were observed. Terrain difficulty was positively associated 
+with peak core temperature, whereas stage duration showed weaker associations. 
+In contrast, total sleep time and low-activity sleep were negatively associated 
+with stage duration and altitude, largely due to earlier wake-up times. Reduced 
+sleep duration was associated with daytime 
+sleepiness.ConclusionsThermoregulatory strain and sleep restriction during 
+prolonged desert rally competition appear driven by distinct operational 
+determinants: terrain difficulty for heat strain and logistical scheduling 
+constraints for sleep loss. Ecological physiologic monitoring may help inform 
+medical oversight strategies in extreme motorsport.
+
+DOI: 10.1177/10806032261456268
+PMID: 42262183"
+44,"42261806","Hulm S (2026)","44. Scand J Med Sci Sports. 2026 Jun;36(6):e70317. doi: 10.1111/sms.70317.
+
+Impact of Prior Hamstring Strain Injury on Muscle Morphology and Sprinting 
+Biomechanics in Collegiate American Football Athletes.
+
+Hulm S(1)(2), Lin YC(1)(2), Maniar N(1)(2), Timmins RG(1)(2)(3), Hickey 
+JT(2)(4), Heiderscheit BC(5), Blemker SS(6), Opar DA(1)(2).
+
+Author information:
+(1)School of Behavioural and Health Sciences, Australian Catholic University, 
+Melbourne, Victoria, Australia.
+(2)Sports Performance, Recovery, Injury and New Technologies (SPRINT) Research 
+Centre, Australian Catholic University, Melbourne, Victoria, Australia.
+(3)Research and Scientific Support Department, Aspetar Orthopaedic and Sports 
+Medicine Hospital, Doha, Qatar.
+(4)Department of Sport Science and Nutrition, Maynooth University, Maynooth, 
+County Kildare, Ireland.
+(5)Badger Athletic Performance Program, Department of Orthopedics and 
+Rehabilitation, University of Wisconsin-Madison, Madison, Wisconsin, USA.
+(6)Department of Biomedical Engineering, University of Virginia, 
+Charlottesville, Virginia, USA.
+
+To determine whether elite collegiate athletes with a prior hamstring strain 
+injury (HSI) display persistent deficits in hamstring muscle morphology and 
+muscle-tendon unit (MTU) mechanics during sprinting, and whether MRI-informed, 
+subject-specific musculoskeletal models detect limb differences that 
+scaled-generic models overlook. This study analyzed data from the Hamstring 
+Injury (HAMIR) study. Seventy-nine NCAA Division I male football players (106 
+previously injured vs. 52 uninjured control limbs) completed maximal-velocity 
+over-ground sprints instrumented with inertial measurement units (100 Hz) and 
+underwent 3-T MRI for whole-hamstring volumetry. Sprint kinematics drove both 
+scaled-generic and MRI-informed subject-specific OpenSim models. Peak MTU 
+strain, lengthening velocity, force, and negative work were extracted for biceps 
+femoris long head (BFlh), biceps femoris short head (BFsh), semimembranosus 
+(SM), and semitendinosus (ST). Limb effects were analyzed with linear mixed 
+models (α = 0.05). Previously injured limbs demonstrated ~5% smaller normalized 
+muscle volumes for both BFlh (1.67 ± 0.36 vs. 1.76 ± 0.35 mL/kg/m, p = 0.009) 
+and BFsh (0.92 ± 0.18 vs. 0.97 ± 0.19 mL/kg/m, p = 0.007). Peak MTU lengthening 
+velocity was faster in injured limbs for BFlh (+3%), SM (+5%), and ST (+5%) (all 
+p ≤ 0.02), with no limb differences in joint kinematics, peak strain, or 
+generic-model forces. Subject-specific models revealed lower BFsh peak force 
+(1.10 ± 0.21 vs. 1.14 ± 0.22 × body weight, p = 0.03) and reduced negative work 
+(-13.4 ± 6.8 vs. -15.3 ± 7.5 J, p = 0.01), differences that the generic model 
+did not detect. Although sprint kinematics were similar between limbs, those 
+with prior HSI exhibited persistent BFlh and BFsh atrophy and subtle 
+muscle-specific mechanical deficits. Reduced BFsh force and negative work were 
+evident only with MRI-informed modeling. Integrating imaging with 
+wearable-driven, subject-specific simulations could enhance rehabilitation 
+monitoring and guide loading strategies to mitigate reinjury risk. Trial 
+Registration: ClinicalTrials.gov: NCT05343052.
+
+© 2026 The Author(s). Scandinavian Journal of Medicine & Science In Sports 
+published by John Wiley & Sons Ltd.
+
+DOI: 10.1111/sms.70317
+PMCID: PMC13248003
+PMID: 42261806 [Indexed for MEDLINE]
+
+Conflict of interest statement: Bryan Heiderscheit is an advisory board member 
+for Springbok Analytics and receives research support from the National Football 
+League and GE Healthcare that goes directly to the University Wisconsin—Madison 
+institution. Silvia Blemker is a co‐founder and Chief Scientific Officer at 
+Springbok Analytics, which is commercializing technology for image‐based 
+analysis of skeletal muscle with application in sports medicine/injury 
+management. Furthermore, Silvia Blemker is a co‐PI on a grant from the National 
+Football League to study hamstring injuries. Scott Hulm, Ryan Timmins, Jack 
+Hickey, Nirav Maniar, Yi‐Chung Lin, and David Opar declare that they have no 
+conflicts of interest relevant to the content of this article. The results of 
+the study are presented clearly, honestly, and without fabrication, 
+falsification, or inappropriate data manipulation."
+45,"42249594","Neylan R (2026)","45. Hip Int. 2026 Jun 5:11207000261449189. doi: 10.1177/11207000261449189. Online
+ ahead of print.
+
+The Uncoached Athlete: Reframing Performance and Longevity in the Surgical 
+Profession.
+
+Neylan R(1), Wyatt MC(2)(3).
+
+Author information:
+(1)Performance Consultant & Physiotherapist (rachelneylan.com), NSW, Australia.
+(2)Mayo, Forster and Lingard Hospitals, Taree, Forster and Newcastle, NSW, 
+Australia.
+(3)Mayo Specialist Centre, Taree, NSW, Australia.
+
+The demands of competing in the Olympic games is remarkably similar to that of 
+surgeon in theatre. Both require sustained precision, high cognitive load, 
+emotional regulation, physical endurance, and the weight of outcomes that matter 
+profoundly.Other high-performance domains, such as elite sport, aviation, and 
+the military, have long recognised that peak execution comes from deliberate 
+investment in human performance science: training body and mind, integrating 
+recovery, applying technology, and employing coaching and human performance 
+strategy to optimise outcomes. Athletes systematically invest in programmed and 
+periodised conditioning, physiological monitoring, recovery, nutrition, and 
+psychological resilience. Their success depends on the integration of 
+physiology, psychology, and environment.
+
+DOI: 10.1177/11207000261449189
+PMID: 42249594"
+46,"42248213","Liu M (2026)","46. Clin Orthop Relat Res. 2026 Jun 5. doi: 10.1097/CORR.0000000000004010. Online
+ ahead of print.
+
+Preoperative Shoulder Stiffness Was Accompanied by Distinct Supraspinatus Tendon 
+Inflammatory Signatures but Not Inferior Long-term Outcomes After Rotator Cuff 
+Repair.
+
+Liu M(1)(2)(3), Cai H(1), Tang C(1)(2)(3), Luo J(1)(2), Wang X(1), Liu H(1), 
+Ruan D(1), Wang C(1), Chen X(1)(2)(3)(4), Shen W(1)(2)(3)(4).
+
+Author information:
+(1)Department of Sports Medicine & Orthopedic Surgery, the Second Affiliated 
+Hospital, Zhejiang University School of Medicine, Hangzhou City, Zhejiang 
+Province, PR China.
+(2)Dr. Li Dak Sum-Yip Yio Chin Center for Stem Cells and Regenerative Medicine, 
+Zhejiang University School of Medicine, Hangzhou, PR China.
+(3)Liangzhu Laboratory, Zhejiang University Medical Center, Hangzhou City, PR 
+China.
+(4)State Key Laboratory of Transvascular Implantation Devices, Hangzhou City, 
+Zhejiang Province, PR China.
+
+BACKGROUND: Rotator cuff tears with concomitant preoperative shoulder stiffness 
+present a clinical challenge because the rehabilitation needed to restore motion 
+may conflict with the protection typically used to support tendon healing after 
+rotator cuff repair. Although recent studies suggest that preoperative stiffness 
+may not be associated with inferior long-term outcomes, whether it is associated 
+with a different pattern of postoperative improvement and distinct inflammatory 
+features in the torn tendon remains unclear.
+QUESTIONS/PURPOSES: (1) Do a greater proportion of patients with preoperative 
+shoulder stiffness achieve improvements in functional outcomes that exceed the 
+minimum clinically important difference (MCID) at 3, 6, 12, and 24 months? (2) 
+Do supraspinatus tendons from patients with shoulder stiffness show molecular 
+and histologic features consistent with greater inflammation than tendons from 
+patients without stiffness?
+METHODS: This prospective, observational cohort study included patients 
+scheduled to undergo arthroscopic rotator cuff repair for unilateral rotator 
+cuff tears with medium-sized, full-thickness supraspinatus tears, with or 
+without concomitant preoperative shoulder stiffness. A medium-sized tear was 
+defined as a supraspinatus tendon tear measuring 3 cm or less on preoperative 
+coronal MRI. Preoperative shoulder stiffness was defined as passive shoulder ROM 
+of less than 120° in forward flexion, less than 30° in external rotation at the 
+side, or internal rotation lower than the L3 spinal level. Patients who met any 
+one of these three criteria were assigned to the stiffness group. Between March 
+2020 and December 2023, 474 patients from both urban and rural areas who were 
+scheduled to undergo repair for rotator cuff tears were evaluated at our 
+shoulder pain specialty clinic. The inclusion criteria were: (1) full-thickness 
+unilateral supraspinatus tendon tears measuring 3 cm or less in the AP 
+dimension, confirmed on T2-weighted MRI, and (2) radiographs and MRI 
+demonstrating no other shoulder pathology, including fracture, arthritis, 
+dislocation, or glenoid labral tear. After strict eligibility assessment, 39% 
+(186 of 474) of patients met all inclusion criteria and were enrolled into 
+either the stiffness group (92 patients) or the without stiffness group (94 
+patients) based on predefined criteria. Specifically, 28% (135 of 474) of 
+patients were excluded because symptom duration exceeded 12 months, 1% (2 of 
+474) were excluded because of missing MRI data, and 4% (20 of 474) were excluded 
+because they had received more than three glucocorticoid injections. In 
+addition, 18% (84 of 474) of patients were excluded because of systemic 
+comorbidities or a history of surgery on the affected shoulder: rheumatoid 
+arthritis in 1% (2 of 474), thyroid disorders in 3% (12 of 474), diabetes in 9% 
+(43 of 474), gout in 1% (1 of 474), osteoporosis in 1% (5 of 474), 
+hyperlipidemia in 4% (17 of 474), previous shoulder surgery in 1% (3 of 474), 
+and concomitant upper limb fracture in 1% (1 of 474). A preoperative MRI 
+evaluation resulted in the exclusion of patients with labral lesions (1% [5 of 
+474]), calcific tendinitis (1% [3 of 474]), massive tears (4% [21 of 474]), and 
+partial-thickness tears (4% [18 of 474]). The enrolled cohort comprised 186 
+patients, with a mean age of 62 ± 7 years and a mean BMI of 24.1 ± 2.8 kg/m2. 
+Women accounted for 68% (127 of 186) of the cohort. Of the 186 enrolled 
+patients, 4% (8 of 186) were lost to follow-up by 12 months and an additional 
+15% (27 of 186) by 24 months, leaving 81% (151 of 186) for the final analysis; 
+there were 75 patients with stiffness and 76 without stiffness. Clinical 
+outcomes, including ROM, the VAS, Oxford shoulder score (OSS), and 
+Constant-Murley Score (CMS), were assessed preoperatively and at 3, 6, 12, and 
+24 months postoperatively. MRI was performed preoperatively and at 24 months. 
+Retears were assessed using the Sugaya classification at 24-month follow-up, 
+with Types IV and V defined as postoperative retears. Intraoperative 
+supraspinatus tendon samples were collected and analyzed using histology and 
+bulk RNA sequencing. To address our first study question, we evaluated 
+postoperative recovery at two levels. First, we applied anchor-based MCID 
+thresholds reported in previous studies: 10 points for the CMS, 6 points for the 
+OSS, and 1.4 points for the VAS. We then compared the proportions of patients in 
+the two groups who achieved clinically meaningful improvement at each 
+postoperative follow-up time point (3, 6, 12, and 24 months) to determine 
+whether patients with preoperative stiffness were more likely to achieve 
+meaningful improvement at scheduled follow-up visits. Second, we used 
+repeated-measures ANOVA and mixed-effects models to analyze the longitudinal 
+trajectories of the CMS and OSS across follow-up and to evaluate whether the 
+postoperative pattern of improvement differed between groups. To address our 
+second study question, supraspinatus tendon tissue was collected 
+intraoperatively for histologic and bulk RNA sequencing. Histologic differences 
+were assessed using the revised Bonar scoring system, and transcriptomic 
+differences were evaluated using differential gene expression and functional 
+enrichment analyses.
+RESULTS: At 3 months, a greater proportion of patients in the stiffness group 
+achieved the MCID in the CMS (43% [32 of 75] versus 13% [10 of 76], OR 4.9 [95% 
+CI 2.2 to 11.0]; p < 0.001), OSS (59% [44 of 75] versus 21% [16 of 76], OR 5.3 
+[95% CI 2.6 to 10.9]; p < 0.001), and VAS-movement (33% [25 of 75] versus 17% 
+[13 of 76], OR 2.4 [95% CI 1.1 to 5.2]; p = 0.02). Similar patterns were 
+observed at 6 and 12 months, with higher proportions of patients in the 
+stiffness group achieving clinically meaningful improvement across the CMS, OSS, 
+and VAS-movement. By 24 months, the patients with stiffness still had higher 
+MCID achievement proportions for the CMS (100% [75 of 75] versus 83% [63 of 76], 
+OR 32.1 [95% CI 1.9 to 550.8]; p < 0.001), OSS (99% [74 of 75] versus 88% [67 of 
+76], OR 9.9 [95% CI 1.2 to 80.6]; p = 0.02), and VAS-movement (83% [62 of 75] 
+versus 68% [52 of 76], OR 2.2 [95% CI 1.0 to 4.7]; p = 0.04), whereas we found 
+no differences between groups for VAS-rest or VAS-sleep at any follow-up 
+timepoint. Longitudinal analyses showed different postoperative improvement 
+patterns for the CMS and OSS between groups (group-by-time interaction: CMS, ges 
+= 0.121; p < 0.001; OSS, ges = 0.075; p < 0.001), although these differences 
+were no longer observed after adjustment for baseline score (CMS: β 0.1 [95% CI 
+-0.1 to 0.2]; p = 0.63). With respect to tendon biology, patients with and 
+without preoperative stiffness showed different molecular and histologic 
+features. The patients with stiffness had 254 upregulated genes and 554 
+downregulated genes, were enriched in the inflammatory tendinopathy subtype (NES 
+2.6; adjusted p < 0.01), and showed more inflammatory cell infiltration and 
+higher revised Bonar inflammation scores. By contrast, the patients without 
+stiffness were enriched in the hypoxia-white subtype (NES -2.8; adjusted p < 
+0.01) and in metabolic, muscle-development, and neurodevelopment pathways. 
+Immune deconvolution also supported a more immune-activated tendon 
+microenvironment in the patients with stiffness.
+CONCLUSION: In patients with medium-sized rotator cuff tears, preoperative 
+shoulder stiffness was not associated with worse long-term outcomes after 
+arthroscopic rotator cuff repair. Although patients with stiffness started with 
+worse shoulder function, they were more likely to achieve clinically meaningful 
+improvement during the early postoperative period, a pattern that likely 
+reflects lower baseline function and greater room for improvement rather than 
+superior final recovery. In addition, inflammatory tendon features from patients 
+with shoulder stiffness reflected a distinct biologic context. For surgeons, 
+these findings may help when counseling patients with rotator cuff tears that 
+satisfactory recovery is achievable even with concomitant preoperative shoulder 
+stiffness. Future work should focus on whether this inflammatory tendon feature 
+can be validated in broader patient populations and can be used to refine 
+biologic classification and postoperative management.
+LEVEL OF EVIDENCE: Level II, therapeutic study.
+
+Copyright © 2026 The Author(s). Published by Wolters Kluwer Health, Inc. on 
+behalf of the Association of Bone and Joint Surgeons.
+
+DOI: 10.1097/CORR.0000000000004010
+PMID: 42248213
+
+Conflict of interest statement: All ICMJE Conflict of Interest Forms for authors 
+and Clinical Orthopaedics and Related Research® editors and board members are on 
+file with the publication and can be viewed on request."
+47,"42246762","Ng MK (2026)","47. J Am Acad Orthop Surg. 2026 Jun 5. doi: 10.5435/JAAOS-D-25-00757. Online
+ahead  of print.
+
+Nutritional Optimization in Spine Surgery: A Review of Its Implications for 
+Postoperative Recovery and Outcomes.
+
+Ng MK(1), Mastrokostas LE, Mastrokostas PG, Razi A, Monas A, Bou Monsef J, Razi 
+AE, Jazayeri R.
+
+Author information:
+(1)From the Rothman Orthopaedic Institute, Thomas Jefferson University Hospital, 
+Philadelphia, PA (Ng), the Department of Orthopaedic Surgery, Maimonides Medical 
+Center, Brooklyn, NY (Ng, L. E. Mastrokostas, P. G. Mastrokostas, A. Razi, 
+Monas, Bou Monsef, and A. E. Razi), the Department of Orthopaedic Surgery, SUNY 
+Downstate Health Sciences University, Brooklyn, NY (L. E. Mastrokostas, P. G. 
+Mastrokostas, and Bou Monsef), the Department of Orthopaedic Surgery, Donald and 
+Barbara Zucker School of Medicine, Hempstead, NY (A. Razi), and the Department 
+of Sports Medicine, Permanente Medical Group Los Angeles, Los Angeles, CA 
+(Jazayeri).
+
+Poor nutritional status is a modifiable risk factor that has been shown to have 
+adverse outcomes in spine surgery, including higher rates of complications, 
+poorer functional outcomes, longer hospital stays, and increased healthcare 
+costs. As such, interest has emerged in clinical practice regarding the use of 
+tools and important nutrient profiles that can be used to assess nutritional 
+status both pre- and postoperatively. The purpose of this review is to 
+synthesize the current evidence surrounding the clinical utility of various 
+nutritional screening tools, as well as to evaluate the importance of targeted 
+interventions. These strategies include protein and amino acid supplementation, 
+vitamin D optimization, and preoperative carbohydrate loading; prior studies 
+have associated these interventions with improved fusion rates, lower infection 
+risk, and accelerated recovery. Furthermore, economic analyses in the setting of 
+nutritional optimization are explored. Despite these benefits, substantial 
+barriers like inconsistent protocols and patient nonadherence remain. In 
+addition, reliance on single markers like albumin may be misleading due to 
+inflammatory confounding, highlighting the need for multifactorial assessment 
+that incorporates surrogates of bone quality and baseline health status. As the 
+spine surgical population ages and procedures grow more complex, preoperative 
+nutritional optimization represents a low-risk strategy with potential for 
+substantial advancements in patient recovery. This review advocates for the 
+standardization of multidisciplinary nutritional protocols as a key component of 
+comprehensive perioperative spine care.
+
+Copyright © 2026 by the American Academy of Orthopaedic Surgeons.
+
+DOI: 10.5435/JAAOS-D-25-00757
+PMID: 42246762"
+48,"42246645","Zhang X (2026)","48. Psychol Health Med. 2026 Jun 5:1-13. doi: 10.1080/13548506.2026.2680330.
+Online  ahead of print.
+
+Effects of different types of physical exercise on postoperative mental health 
+in cancer patients.
+
+Zhang X(1), Wang H(2), Wang Z(3), Li X(4), Liu X(5).
+
+Author information:
+(1), Department of Physical Education, Institute of Disaster Prevention, 
+Langfang, China.
+(2)College of Physical Education, Dezhou University, Dezhou, Shandong, China.
+(3)Hebei Institute of Mechanical and Electrical Technology, Xingtai, China.
+(4)Sports Department of Hebei Vocational College of Rail Transportation, 
+Shijiazhuang, Hebei, China.
+(5)Department of Physical Education, Hebei University of Chinese Medicine, 
+Shijiazhuang, Hebei, China.
+
+To explore how diverse physical exercises influence the mental well-being of 
+cancer patients following surgery. A total of 144 cancer patients who underwent 
+surgery were selected from a tertiary hospital and randomly assigned to either a 
+control group (conventional care, n = 36) or an intervention group (conventional 
+care plus physical exercise, n = 108). The intervention group was further 
+stratified into three subgroups: yoga (n = 36), walking (n = 36), and aerobic 
+exercise (n = 36). Participants were assessed at baseline, one month, and three 
+months post-intervention using the Hospital Anxiety and Depression Scale (HADS), 
+WHO Quality of Life BREF (WHOQOL-BREF), Pittsburgh Sleep Quality Index (PSQI), 
+and Social Support Rating Scale (SSRS). Initially, no significant differences 
+were observed among the groups in mental state, quality of life, sleep quality, 
+or social support (p > 0.05). After one and three months of intervention, all 
+exercise groups (yoga, walking, aerobic) showed statistically significant 
+improvements compared to the control group in psychological well-being 
+(F = 15.581, p < 0.001), quality of life (F = 7.813, p < 0.001), sleep quality 
+(F = 13.374, p < 0.001), and social support (F = 8.524, p < 0.001). These 
+improvements were more pronounced at the three-month mark (p < 0.05).Among the 
+intervention groups, yoga demonstrated the most significant improvement in 
+psychological state (3-month HADS score: 6.81 ± 1.87), sleep quality (3-month 
+PSQI score: 4.27 ± 0.84), and social support (3-month SSRS score: 28.85 ± 4.10), 
+with differences being statistically significant compared to walking and aerobic 
+exercise groups (p < 0.05). Aerobic exercise showed the greatest advantage in 
+improving quality of life (3-month WHOQOL-BREF score: 76.41 ± 8.01), surpassing 
+yoga and walking groups (p < 0.05). Various forms of physical exercise 
+significantly benefit postoperative psychological adjustment in cancer patients. 
+Yoga helps reduce anxiety and depression, improve sleep, and strengthen social 
+support, while walking and aerobic activities enhance quality of life and 
+overall health. Therefore, tailored exercise should be integrated into 
+postoperative rehabilitation to promote holistic recovery.
+
+DOI: 10.1080/13548506.2026.2680330
+PMID: 42246645"
+49,"42245594","Zekioglu A (2026)","49. Front Psychol. 2026 May 20;17:1829885. doi: 10.3389/fpsyg.2026.1829885. 
+eCollection 2026.
+
+Short-term HRV changes across gaming and simulation modalities with varying 
+levels of immersion and physical demand.
+
+Zekioglu A(1), Dal N(1), Tok S(1), Kalkan N(1), Yilmaz SE(1), Binboga E(2), 
+Balikçi I(1).
+
+Author information:
+(1)Faculty of Sports Sciences, Manisa Celal Bayar University, Manisa, Türkiye.
+(2)Department of Biophysics, Faculty of Medicine, Ege University, Izmir, 
+Türkiye.
+
+Virtual reality (VR), gaming, and simulation technologies are increasingly used 
+for training, skill development, and rehabilitation. However, there is limited 
+understanding of how such platforms may trigger autonomic nervous system (ANS) 
+responses beyond baseline levels. It is also unclear whether varying levels of 
+immersion, together with physical demand, influence these responses. This study 
+aimed to investigate how different levels of immersion and physical demand 
+across gaming and simulation modalities affect ANS responses, as measured by 
+heart rate (HR) and heart rate variability (HRV), relative to baseline values. 
+Eighty-seven undergraduate students (mean age = 20.5 years) were allocated to 
+three experimental groups based on immersion level and task demand: immersive 
+and high physical demand (VR table tennis, n = 17), semi-immersive and 
+intermediate physical demand (iRacing car simulation, n = 40), and non-immersive 
+and low physical demand (FIFA console soccer, n = 30). Participants completed a 
+4-min activity phase, preceded by a 4-min baseline and followed by a 4-min 
+recovery period. HR and HRV were continuously recorded via ECG. 
+Repeated-measures ANOVAs were used to examine differences across experimental 
+periods, and one-way ANOVAs were conducted to compare percentage changes 
+relative to baseline between groups. All three modalities led to a significant 
+increase in HR and a reduction in vagally mediated HRV from baseline to 
+activity, as evidenced by decreases in RMSSD and HF power. The subsequent 
+recovery phase generally showed a return toward baseline values. Moreover, the 
+VR Table Tennis group, representing the highest physical demand, demonstrated a 
+significantly greater increase in HR and decrease in NNmean than both iRacing 
+and FIFA during activity. These findings suggest that gaming and simulation 
+modalities, regardless of immersion level, may elicit ANS responses above 
+resting levels. The magnitude of the response appears to be more strongly 
+influenced by physical demand than immersion alone.
+
+Copyright © 2026 Zekioglu, Dal, Tok, Kalkan, Yilmaz, Binboga and Balikçi.
+
+DOI: 10.3389/fpsyg.2026.1829885
+PMCID: PMC13229738
+PMID: 42245594
+
+Conflict of interest statement: The author(s) declared that this work was 
+conducted in the absence of any commercial or financial relationships that could 
+be construed as a potential conflict of interest."
+50,"42234539","Pavis GF (2026)","50. J Int Soc Sports Nutr. 2026 Dec 31;23(1):2682323. doi: 
+10.1080/15502783.2026.2682323. Epub 2026 Jun 3.
+
+An extract from whole Coffea arabica coffee cherry improves time trial 
+performance, but not muscle glycogen resynthesis, in trained cyclists.
+
+Pavis GF(1), Kingma RL(2), Nemzer BV(2)(3), Abshiru N(2), Wall BT(1), Stephens 
+FB(1).
+
+Author information:
+(1)Department of Public Health and Sport Sciences, Nutritional Physiology 
+Research Group, Public Health & Sports Sciences, University of Exeter, Exeter, 
+Devon, UK.
+(2)Research and Development, VDF FutureCeuticals Inc., Momence, IL, USA.
+(3)Department of Food Science and Human Nutrition, University of Illinois at 
+Urbana-Champaign, Urbana, IL, USA.
+
+BACKGROUND: This study aimed to test the hypothesis that a whole Coffea arabica 
+coffee cherry extract concentrated in caffeine and polyphenols would increase 
+exercise performance and muscle glycogen resynthesis.
+METHODS: Twelve trained cyclists (11 male, 1 female; V̇O2max: 
+55 ± 2 mL·kg-1·min-1) took part in a double blind, randomized, 
+placebo-controlled, cross-over trial. Participants consumed either a coffee 
+cherry extract supplement containing 200 mg caffeine and 15 mg polyphenols (CB) 
+or placebo (PLA), before exercising for 30 min on a cycle ergometer at 79 ± 1% 
+V̇O2max followed by a 15 min time trial (TT1). A second supplement was then 
+consumed with 1 g·kg bm-1 carbohydrate and a second time trial (TT2) was 
+performed the following morning. Blood samples were collected throughout, and 
+muscle biopsies were collected immediately after TT1 (0 h), and at 4 and 24 h.
+RESULTS: Plasma caffeine and chlorogenic acid concentrations increased during 
+exercise and subsequent recovery in CB compared to PLA (p < 0.001). Total work 
+performed during TT1 was 4.6% ± 1.5% greater with CB than PLA (3.14 ± 0.15 vs. 
+3.02 ± 0.17 kJ·kg-1; Hedge's g [95% confidence interval] = 0.8 [0.2, 1.4]; 
+p < 0.05). Perceived exertion was lower during steady-state exercise with CB 
+(p < 0.05); respiratory exchange ratio did not differ. From 0 to 4 h recovery, 
+muscle glycogen content increased similarly in PLA and CB by 64 ± 13 and 
+44 ± 10 mmol·kg dw-1, respectively, and by 53 ± 8 and 45 ± 10 mmol·kg dw-1 from 
+4 to 24 h (P < 0.001).
+CONCLUSIONS: We report that an extract from whole Coffea arabica cherry 
+containing a low dose of caffeine and polyphenols is ergogenic but was not shown 
+to enhance muscle glycogen resynthesis following post-exercise consumption of 
+1 g·kg bm-1 carbohydrate. Clinical trials registration: Registered with 
+clinicaltrials.gov on 10/01/2022 as NCT05404841 (URL: 
+https://clinicaltrials.gov/study/NCT05404841).
+
+DOI: 10.1080/15502783.2026.2682323
+PMCID: PMC13235231
+PMID: 42234539 [Indexed for MEDLINE]
+
+Conflict of interest statement: G.F.P., F.B.S., and B.T.W are employees of the 
+University of Exeter. R.L.K., B.V.N., and N.A. are employees of FutureCeuticals. 
+This work was funded by a grant from FutureCeuticals (held by B.T.W.). G.F.P, 
+B.T.W., and F.B.S. (University of Exeter) retained full independence in the 
+interpretation of the data and the final decision to submit the manuscript for 
+publication."
