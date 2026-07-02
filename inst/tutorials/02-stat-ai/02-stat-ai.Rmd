@@ -128,24 +128,20 @@ quiz(
 
 ### Aufgabe 2
 
-Wie lautet die Formel für eine multiple lineare Regression, wenn "trainingsumfang" und "geschlecht" die Prädiktoren sind und das "gewicht" untersucht werden soll? (Schreibe die Lösung ohne Leerzeichen und in Kleinbuchstaben zwischen die Anführungszeichen, ohne Fehlerterm)
-
-```{r mrformel, exercise=TRUE, exercise.cap = "Text", exercise.lines = 1}
-""
-```
-
-```{r mrformel-solution}
-"gewicht=beta0+beta1*trainingsumfang+beta2*geschlecht+e"
-```
-
-```{r mrformel-check}
-grade_this({
-  if (.result %in% c("gewicht=b0+b1*trainingsumfang+b2*geschlecht+e","gewicht=b0+b1*geschlecht+b2*trainingsumfang+e","gewicht=beta0+beta1*geschlecht+beta2*trainingsumfang+e")) {
-      pass(praise = TRUE)
-} else {
-  fail(message = "Leider falsch.")
-}
-})
+```{r two}
+quiz(
+  question("Wie lautet die allgemeine Formel für eine multiple lineare Regression?",
+    answer("y = beta0 + beta1 * x1 + beta2 * x2 + e", correct = TRUE),
+    answer("y = beta1 * x1 + beta2 * x2"),
+    answer("y = beta0 + beta1 * x1"),
+    answer("y = beta0 + beta1 * x1 + beta2 * x2"),
+    type = "checkbox",
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
 ```
 
 ```{r b1}
@@ -170,7 +166,7 @@ quiz(
 Ein Sportverband möchte untersuchen, welche Faktoren die 100m-Sprintzeit von Athleten beeinflussen. Dazu wurden Daten von 68 Athleten folgende Daten erhoben: Trainingsumfang (Stunden/Woche), Körpergewicht (kg) sowie die Zugehörigkeit zur Trainingsgruppe (Leistungskader vs. Breitensport). Der Datensatz wurde in der Variable `daten` gespeichert.
 (Du kannst dir den Datensatz anzeigen lassen, indem du ihn in der ersten Antwortmöglichkeit mit „Run Code" ausgibst.)
 
-Fitte ein Modell mit allen Prädiktorvariablen und speichere dieses als Variable `mod` ab. Gib die Variable anschließend aus.
+Fitte ein Modell mit allen Prädiktorvariablen und speichere dieses als Variable `mod` ab. Gib die Variable anschließend mit der richtigen Funktion aus dem package `broom` aus.
 
 ```{r mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
 
@@ -178,7 +174,7 @@ Fitte ein Modell mit allen Prädiktorvariablen und speichere dieses als Variable
 
 ```{r mod-solution}
 mod<-lm(zeit~training+gewicht+gruppe,data=daten)
-mod
+broom::glance(mod)
 ```
 
 ```{r mod-error-check}
@@ -258,7 +254,8 @@ quiz(
 ```
 
 ### Aufgabe 5 Modell beurteilen
-Lasse dir die Zusammfassung deines gefittete Modells ausgeben.
+
+Lasse dir die Zusammfassung deines gefittete Modells ausgeben, mit Hilfe der passenden Funktion aus dem `broom` package.
 ```{r zsmf, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupA"}
 
 ```
@@ -357,23 +354,6 @@ quiz(
 )
 ```
 
-Zwei Athleten sind beide im Breitensport, wiegen beide 70kg, trainieren aber unterscheidlich viel: Athlet A trainiert 5h/Woche, Athlet B trainiert 10h/Woche. Um wie viel Sekunden unterscheiden sich ihre vorhergesagten Sprintzeiten laut Modell?
-
-```{r ten}
-quiz(
-  question("Zwei Athleten sind beide im Breitensport, wiegen beide 70kg, trainieren aber unterschiedlich viel: Athlet A trainiert 5h/Woche, Athlet B trainiert 10h/Woche. Um wie viele Sekunden unterscheiden sich ihre vorhergesagten Sprintzeiten laut Modell?",
-    answer("Athlet B läuft 0,135s schneller als Athlet A"),
-    answer("Athlet B läuft 0,049s schneller als Athlet A"),
-    answer("Athlet B läuft 0,53s schneller als Athlet A", correct = TRUE),
-    answer("Athlet B läuft 0,1s schneller als Athlet A"),
-    answer("Athlet A läuft 1,36s schneller als Athlet B"),
-    allow_retry = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
-```
-
 ```{r tentwo}
 quiz(
   question("Interpretiere den Koeffizienten `gruppeLeistung`.",
@@ -405,7 +385,7 @@ quiz(
 
 ### Aufgabe 7
 
-Erstelle nun 2 weitere Modelle (je eins nur mit Gruppe, nur mit Training und nur mit Gewicht). Nenne diese: `mod_gruppe`, `mod_training` und `mod_gewicht`und lasse dir diese ausgeben. Nutze zur Ausgabe eine Funktion des `broom` packages.
+Erstelle nun 2 weitere Modelle (je eins nur mit Gruppe, nur mit Training und nur mit Gewicht). Nenne diese: `mod_gruppe`, `mod_training` und `mod_gewicht`und lasse dir diese ausgeben. Nutze hierzu die Funktion aus dem package `broom`. 
 
 ```{r mo, exercise=TRUE, exercise.lines = 6}
 
@@ -425,7 +405,7 @@ grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
 ```
 
 ```{r mo-check}
-task <- "Erstelle nun 2 weitere Modelle (je eins nur mit Gruppe, nur mit Training und nur mit Gewicht). Nenne diese: `mod_gruppe`, `mod_training` und `mod_gewicht`und lasse dir diese ausgeben. Nutze zur Ausgabe eine Funktion des `broom` packages."
+task <- "Erstelle nun 2 weitere Modelle (je eins nur mit Gruppe, nur mit Training und nur mit Gewicht). Nenne diese: `mod_gruppe`, `mod_training` und `mod_gewicht`und lasse dir diese ausgeben.Nutze hierzu die Funktion aus dem package `broom`. "
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
@@ -484,110 +464,20 @@ quiz(
 
 ## Voraussetzungen und Vorhersagen
 
-### Aufgabe 8 Voraussetzungen
+### Aufgabe 8 Voraussetzungen 
 
-```{r sevenone}
-quiz(
-  question("Welche der folgenden Aussagen beschreibt Homoskedastizität korrekt?",
-    answer("Die Residuen sind alle gleich null"),
-    answer("Die Prädiktoren korrelieren nicht miteinander"),
-    answer("Die Varianz der Residuen ist für alle Werte der Prädiktoren konstant", correct = TRUE),
-    answer("Der Erwartungswert der Residuen ist größer als null"),
-    allow_retry = TRUE,
-    random_answer_order = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
-```
+Überprüfe die Vorrausetzungen des Modells. Nutze hierfür die Funktion aus dem `performance` package.
 
-```{r seventwo}
-quiz(
-  question("Welches grafische Werkzeug eignet sich zur Prüfung der Normalverteilung der Residuen?",
-    answer("Balkendiagramm der Prädiktoren"),
-    answer("Streudiagramm von X gegen Y"),
-    answer("QQ-Plot der Residuen", correct = TRUE),
-    answer("Boxplot der abhängiggen Variable"),
-    allow_retry = TRUE,
-    random_answer_order = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
-```
-
-```{r seventhree}
-quiz(
-  question("Was deutet im Residuenplot auf eine Verletzung der Linearitätsannahme hin?",
-    answer("Eine zufällige, gleichmäßige Streuung um die Nulllinie"),
-    answer("Ein erkennbares Muster in den Residuen",correct = TRUE),
-    answer("Alle Residuen liegen exakt auf der Nulllinie"),
-    answer("Eine breite, gleichmäßige Streuung ohne Muster"),
-    allow_retry = TRUE,
-    random_answer_order = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
-```
-
-```{r sevenfour}
-quiz(
-  question("Ab welchem VIF-Wert spricht man von einer problematischen Multikollinearität?",
-    answer("VIF > 1"),
-    answer("VIF > 10",correct = TRUE),
-    answer("VIF > 3"),
-    answer("VIF < 1"),
-    allow_retry = TRUE,
-    random_answer_order = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
-```
-
-```{r sevenfive}
-quiz(
-  question("Was ist ein Problem bei einer hohen Multikollinearität?",
-    answer("Das Modell kann nicht berechnet werden"),
-    answer("Koeffizienten werden instabil", correct = TRUE),
-    answer("R² wird kleiner"),
-    answer("Residuen werden null"),
-    allow_retry = TRUE,
-    random_answer_order = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
-```
-
-```{r sevensix}
-quiz(
-  question("Mit welchem Befehl kann man die Voraussetzungen alle gleichzeitig grafisch in R überprüfen?",
-    answer("stats::vif(mod)"),
-    answer("performance::check_model(mod)",correct = TRUE),
-    answer("base::plot(mod)"),
-    answer("lm(mod)"),
-    allow_retry = TRUE,
-    random_answer_order = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
-```
-
-### Aufgabe 9 
-Überprüfe die Voraussetzungen grafisch. (Beachte, dass du in diesem Tutorial ausnahmsweise das Argument `panel = FALSE` sowie hinter der Funktion ` |> plot()` nutzen musst, damit die Grafiken einzeln in der Vorschau angezeigt werden.)
+(Beachte, dass du in diesem Tutorial ausnahmsweise das Argument `panel = FALSE` sowie hinter der Funktion ` |> plot()` nutzen musst, damit die Grafiken einzeln in der Vorschau angezeigt werden.)
 
 ```{r assum, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3,exercise.setup = "setupA"}
 
 ```
 
 
-
 ```{r eight}
 quiz(
-  question("Welche Voraussetzungen sind für den vorliegenden Datensatz erfüllt?",
+  question("Welche Voraussetzungen sind für das Modell erfüllt?",
     answer("PPC check zeigt keine Probleme",correct = TRUE),
     answer("Linearität",correct = TRUE),
     answer("keine Ausreißer",correct = TRUE),
@@ -601,7 +491,7 @@ quiz(
 )
 ```
 
-### Aufgabe 10 Vorhersage
+### Aufgabe 9 Vorhersage
 
 Erstelle eine Person "p1" die 73kg wiegt, 12h/Woche trainiert und in der Gruppe Leistungssport trainiert.
 Sage anschließend ihre Sprintzeit vorher. 

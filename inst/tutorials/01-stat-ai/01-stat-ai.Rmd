@@ -18,24 +18,23 @@ tutorial_options(
 )
 
 set.seed(12)
-n <- 100
-geschlecht <-  sample (c ("m","w"))
 
-groesse <- rnorm (n, mean = 179, sd = 18)
-gewicht <- rnorm (n, mean = 81, sd = 15)
-trainingsumfang <-  round (pmax(0, rnorm(n, mean = 25, sd =15)))
-vo2max <- 30+trainingsumfang * 0.6 + rnorm (n, 0,5)
-vo2max <- pmin(pmax(vo2max,25),75)
-
-daten <-  data.frame(
-  Geschlecht = geschlecht,
-  Groesse_cm = round(groesse,1),
-  Gewicht_kg = round(gewicht,1),
-  VO2max = round(vo2max,1),
-  trainingsumfang =trainingsumfang 
+daten <- data.frame(
+  Geschlecht = sample(c("m", "w"), 100, replace = TRUE),
+  Groesse_cm = round(rnorm(100, mean = 179, sd = 18), 1),
+  Gewicht_kg = round(rnorm(100, mean = 81, sd = 15), 1),
+  trainingsumfang = round(pmax(0, rnorm(100, mean = 25, sd = 15))),
+  VO2max = round(
+    pmin(
+      pmax(
+        30 + round(pmax(0, rnorm(100, mean = 25, sd = 15))) * 0.6 + rnorm(100, 0, 5),
+        25
+      ),
+      75
+    ),
+    1
+  )
 )
-
-r <- 0.866
 
 # AI setup
 library(ollamar)
@@ -79,25 +78,22 @@ quiz(
 
 ### Aufgabe 2
 
-Wie lautet die allgemeine Formel für die einfache lineare Regression? (Schreibe die Lösung ohne Leerzeichen zwischen die Anführungszeichen)
-
-```{r Formel, exercise=TRUE, exercise.cap = "Text", exercise.lines = 1}
-""
+```{r two}
+quiz(
+  question("Wie lautet die allgemeine Formel für die einfache lineare Regression?",
+    answer("y = b0 + b1 * x + e", correct = TRUE),
+   answer("y = b0 + b1 + x * e", message = "Hier ist die Struktur der Regression falsch."),
+   answer("y = b1 * x", message = "Der Achsenabschnitt fehlt."),
+   answer("y = b0 + e", message = "Der Einfluss von x fehlt."),
+   answer("y = b0 + b1 * x^2 + e", message = "Das wäre ein nicht-lineares Modell."),
+   allow_retry = TRUE,
+   random_answer_order = TRUE,
+   incorrect = "Leider falsch.",
+   correct = random_praise()
+  )
+)
 ```
 
-```{r Formel-solution}
-"y=b0+b1*x+e"
-```
-
-```{r Formel-check}
-grade_this({
-  if (.result %in% c("y=b0+b1*x+e", "Y=b0+b1*X+e", "y=b0+b1*X+e", "Y=b0+b1*x+e", "y=b1*x+b0+e", "y=beta0+beta1*x+e","Y=beta0+beta1*X+e","Y=beta0+beta1*x+e", "y=beta0+beta1*X+e")) {
-      pass(praise = TRUE)
-} else {
-  fail(message = "Leider falsch.")
-}
-})
-```
 
 ### Aufgabe 3
 
@@ -343,26 +339,26 @@ quiz(
 )
 ```
 
-## lineare Regression Interpretation
-
+## lineare Regression Modellfit
 ### Aufgabe 10 
-Der Korrelationskoeffizient für diesen Datensatz beträgt r = 0.866.
-Berechne den Determinationskoeffizienten R².
 
-```{r ten, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
+Fitte ein lineares Modell um die Vo2max anhand des Trainingsumfangs abzuschätzen und speichere dieses als Variable `mod` ab. Gebe die anschließend die allgemeine Modellzusammenfassung mit der richtigen Funktion aus dem `broom` package aus.
+
+```{r mod, exercise=TRUE, exercise.lines = 3}
 
 ```
 
-```{r ten-solution}
-R <- r**2
+```{r mod-solution}
+mod<-lm(VO2max~trainingsumfang,data=daten)
+broom::glance(mod)
 ```
 
-```{r ten-error-check}
+```{r mod-error-check}
 grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
 ```
 
-```{r ten-check}
-task <- "Der Korrelationskoeffizient für diesen Datensatz beträgt r = 0.866. Berechne den Determinationskoeffizienten R²."
+```{r mod-check}
+task <- "Fitte ein lineares Modell um die Vo2max anhand des Trainingsumfangs abzuschätzen und speichere dieses als Variable `mod` ab. Gebe die anschließend die allgemeine Modellzusammenfassung mit der richtigen Funktion aus dem `broom` package aus."
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
@@ -372,21 +368,34 @@ grade_this({
 })
 ```
 
-### Aufgabe 10.2
-```{r quiz_determinationskoeffizient}
-quiz(
-  question("Was sagt R² über unsere Daten aus?",
-    answer("Der Trainingsumfang steigt pro Woche um 0.64km "),
-    answer("64% der Personen haben einen überdurchschnittlichen VO2max-Wert "),
-    answer("Der Zusammenhang zwischen Trainingsumfang und Vo2max beträgt r=0.75"),
-    answer("Das Modell sagt für jede Person die Vo2max mit 75% Genauigkeit vorher"),
-    answer("75% der Unterschiede in den Vo2max-Werten zwischen den Personen werden durch den Trainingsumfang erklärt ", correct = TRUE),
-    allow_retry = TRUE,
-    random_answer_order = TRUE,
-    incorrect = "Leider falsch.",
-    correct = random_praise()
-  )
-)
+### Aufgabe 10.1
+Bestimme die Koeffizienten mit der entsprechenden Funktion aus dem `broom` package und weise ihnen je einer Variable zu (beta0, beta1). Nutze hierzu den '$' - Operator. Gebe anschließend beide Variablen einzeln aus.
+
+```{r tenone, exercise=TRUE, exercise.lines = 5,exercise.setup = "setupA"}
+
+```
+
+```{r tenone-solution}
+cfs <- broom::tidy(mod)
+beta0 <- cfs$estimate[1]
+beta1 <- cfs$estimate[2]
+beta0
+beta1
+```
+
+```{r tenone-error-check}
+grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
+```
+
+```{r tenone-check}
+task <- "Bestimme die Koeffizienten mit der entsprechenden Funktion aus dem `broom` package und weise ihnen je einer Variable zu (beta0, beta1). Nutze hierzu den '$' - Operator. Gebe anschließend beide Variablen einzeln aus."
+grade_this({
+  if (identical(.result, .solution)) {
+    pass(praise = TRUE)
+  } else {
+    fail(message = ai_feedback(.user_code, task, .solution_code))
+  }
+})
 ```
 
 ### Aufgabe 11
@@ -419,26 +428,23 @@ quiz(
 )
 ```
 
-## lineare Regression Modellfit
-### Aufgabe 12 
+### Aufgabe 12
+Bestimme den Determinationskoeffizienten R² mit der entsprechenden Funktion aus dem `broom` package.
 
-Fitte ein lineares Modell um die Vo2max anhand des Trainingsumfangs abzuschätzen und speichere dieses als Variable `mod` ab. Gebe die anschließend die allgemeine Modellzusammenfassung mit der richtigen Funktion aus dem `broom` package aus.
-
-```{r mod, exercise=TRUE, exercise.lines = 3}
+```{r twelve, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupA"}
 
 ```
 
-```{r mod-solution}
-mod<-lm(VO2max~trainingsumfang,data=daten)
+```{r twelve-solution}
 broom::glance(mod)
 ```
 
-```{r mod-error-check}
+```{r twelve-error-check}
 grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
 ```
 
-```{r mod-check}
-task <- "Fitte ein lineares Modell um die Vo2max anhand des Trainingsumfangs abzuschätzen und speichere dieses als Variable `mod` ab. Gebe die anschließend die allgemeine Modellzusammenfassung mit der richtigen Funktion aus dem `broom` package aus."
+```{r twelve-check}
+task <- "Bestimme den Determinationskoeffizienten R² mit der entsprechenden Funktion aus dem `broom` package."
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
@@ -447,36 +453,25 @@ grade_this({
   }
 })
 ```
+
 
 ### Aufgabe 12.2
-Bestimme die Koeffizienten mit der entsprechenden Funktion aus dem `broom` package und weise ihnen je einer Variable zu (beta0, beta1). Gebe anschließend beide Variablen einzeln aus.
-
-```{r twelvetwo, exercise=TRUE, exercise.lines = 5,exercise.setup = "setupA"}
-
+```{r quiz_determinationskoeffizient}
+quiz(
+  question("Was sagt R² über unsere Daten aus?",
+    answer("Der Trainingsumfang steigt pro Woche um 0.64km "),
+    answer("64% der Personen haben einen überdurchschnittlichen VO2max-Wert "),
+    answer("Der Zusammenhang zwischen Trainingsumfang und Vo2max beträgt r=0.75"),
+    answer("Das Modell sagt für jede Person die Vo2max mit 75% Genauigkeit vorher"),
+    answer("75% der Unterschiede in den Vo2max-Werten zwischen den Personen werden durch den Trainingsumfang erklärt ", correct = TRUE),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "Leider falsch.",
+    correct = random_praise()
+  )
+)
 ```
 
-```{r twelvetwo-solution}
-cfs <- broom::tidy(mod)
-beta0 <- cfs$estimate[1]
-beta1 <- cfs$estimate[2]
-beta0
-beta1
-```
-
-```{r twelvetwo-error-check}
-grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
-```
-
-```{r twelvetwo-check}
-task <- "Bestimme die Koeffizienten von mod mit der entsprechenden Funktion aus dem `broom` package und weise ihnen je einer Variable zu (beta0, beta1). Gebe anschließend beide Variablen einzeln aus."
-grade_this({
-  if (identical(.result, .solution)) {
-    pass(praise = TRUE)
-  } else {
-    fail(message = ai_feedback(.user_code, task, .solution_code))
-  }
-})
-```
 
 ### Aufgabe 13
 Sage den VO2max Wert für eine Person (p1), die einen Trainingsumfang von 40km/Woche aufweist, vorher.
@@ -548,7 +543,7 @@ quiz(
 ```
 
 ```{r checkmodel-solution}
-performance::check_model(mod, panel = FALSE) |> plot()
+performance::check_model(mod,panel=FALSE)|>plot()
 ```
 
 ```{r checkmodel-error-check}
