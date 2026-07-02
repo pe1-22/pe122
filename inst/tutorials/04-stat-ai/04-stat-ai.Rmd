@@ -53,23 +53,15 @@ ai_error_feedback <- function(response, error) {
 }
 ```
 
-```{r setupA}
-set.seed(123)
-index <- sample(1:80, size = 80)
-```
 
 ```{r setupB}
-set.seed(123)
-index <- sample(1:80, size = 80)
-train <- daten[index[1:64], ]
-test  <- daten[index[65:80], ]
+train <- daten[1:64, ]
+test  <- daten[65:80, ]
 ```
 
 ```{r setupC}
-set.seed(123)
-index <- sample(1:80, size = 80)
-train <- daten[index[1:64], ]
-test  <- daten[index[65:80], ]
+train <- daten[1:64, ]
+test  <- daten[65:80, ]
 
 mod_1 <- lm(kniebeugetiefe ~ pe, data = train)
 mod_2 <- lm(kniebeugetiefe ~ pe + schmerz + motivation, data = train)
@@ -78,10 +70,13 @@ mod_3 <- lm(kniebeugetiefe ~ pe + schmerz + motivation + alter + bmi,
 ```
 
 ```{r setupD}
-set.seed(123)
-index <- sample(1:80, size = 80)
-train <- daten[index[1:64], ]
-test  <- daten[index[65:80], ]
+train <- daten[1:64, ]
+test  <- daten[65:80, ]
+
+mod_1 <- lm(kniebeugetiefe ~ pe, data = train)
+mod_2 <- lm(kniebeugetiefe ~ pe + schmerz + motivation, data = train)
+mod_3 <- lm(kniebeugetiefe ~ pe + schmerz + motivation + alter + bmi,
+                 data = train)
 
 best_mod <- lm(kniebeugetiefe ~ pe + schmerz + motivation, data = train)
 
@@ -195,8 +190,8 @@ quiz(
   question("Was macht ein gutes Modell aus?",
     answer("ein hoher Bias und eine niedrige Varianz"),
     answer("ein niedriger Bias und eine hohe Varianz"),
-    answer("ein hoher Bias und eine hohe Varianz", correct = TRUE),
-    answer("ein niedriger Bias und eine niedrige Varianz"),
+    answer("ein hoher Bias und eine hohe Varianz"),
+    answer("ein niedriger Bias und eine niedrige Varianz", correct = TRUE),
     allow_retry = TRUE,
     random_answer_order = TRUE,
     incorrect = "Leider falsch.",
@@ -343,7 +338,7 @@ Deine Daten sind schon randomisiert, das hast die Reihenfolge der Zeilen ist zuf
 **1.2** Wähle die restlichen 20% der Zeilen aus. Speichere das Ergebnis als `test`.<br>
 **1.3** Kontrolliere ob train und test jeweils die richtige Anzahl an Zeilen hat.
 
-```{r tt, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupA"}
+```{r tt, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3}
 
 ```
 
@@ -351,8 +346,8 @@ Deine Daten sind schon randomisiert, das hast die Reihenfolge der Zeilen ist zuf
 grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
 ```
 ```{r tt-solution}
-train <- daten[index[1:64], ]
-test  <- daten[index[65:80], ]
+train <- daten[1:64, ]
+test  <- daten[65:80, ]
 
 nrow(train)  
 nrow(test)  
@@ -492,9 +487,9 @@ quiz(
 
 ### Schritt 3: Bestes Modell auf Trainset fitten 
 
-Fitte nun das Modell auf dem Trainset, welches am Besten passt und weise es der Variable `best_mod` zu und lasse es dir ausgeben.
+Fitte nun das Modell auf dem Trainset, welches am Besten passt und weise es der Variable `best_mod` zu und lasse dir die allgemeine Modellzusammenfassung mit der entsprechenden Funktion aus dem `broom` package ausgeben.
 
-```{r best_mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupB"}
+```{r best_mod, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3, exercise.setup = "setupC"}
 
 ```
 
@@ -504,11 +499,11 @@ grade_this(fail(message = ai_error_feedback(.user_code, .last_value)))
 
 ```{r best_mod-solution}
 best_mod <- lm(kniebeugetiefe ~ pe + schmerz + motivation, data = train)
-best_mod
+broom::glance(best_mod)
 ```
 
 ```{r best_mod-check}
-task <- "Fitte nun das Modell auf dem Trainset, welches am Besten passt und weise es der Variable `best_mod` zu und lasse es dir ausgeben. Dies ist das beste Modell: lm(kniebeugetiefe ~ pe + schmerz + motivation, data = train)"
+task <- "Fitte nun das Modell auf dem Trainset, welches am Besten passt und weise es der Variable `best_mod` zu und lasse dir die allgemeine Modellzusammenfassung mit der entsprechenden Funktion aus dem `broom` package ausgeben. Dies ist das beste Modell: lm(kniebeugetiefe ~ pe + schmerz + motivation, data = train)"
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
@@ -524,7 +519,7 @@ In diesem letzten Schritt wendest du das beste Modell (`best_mod`) auf das
 Testset an, das du in Schritt 1 beiseitegelegt hast.
 Der Vorteil dieses Testsets ist, dass das Modell die Daten noch nie gesehen hat. Es ist quasi eine neue Stichprobe und zeigt wie gut die Vorhersage des Modells funktioniert.  
 
-**4.1** Lasse dir die Vorhersagen von `best_mod` auf Grundlage des Testsets ausgeben und speichere das Ergebnis als `vorhersagen`.
+**4.1** Lasse dir die Vorhersagen von `best_mod` auf Grundlage des Testsets treffen und speichere das Ergebnis als `vorhersagen`. Gebe `vorhersagen` im Anschluss aus.
 
 ```{r pred, exercise=TRUE, exercise.cap = "Text", exercise.lines = 3,exercise.setup = "setupD"}
 
@@ -539,7 +534,7 @@ vorhersagen <- predict(best_mod, newdata = test)
 ```
 
 ```{r pred-check}
-task <- "**4.1** Lasse dir die Vorhersagen von `best_mod` auf Grundlage des Testsets ausgeben und speichere das Ergebnis als `vorhersagen`."
+task <- "**4.1** Lasse dir die Vorhersagen von `best_mod` auf Grundlage des Testsets treffen und speichere das Ergebnis als `vorhersagen`. Gebe `vorhersagen` im Anschluss aus."
 grade_this({
   if (identical(.result, .solution)) {
     pass(praise = TRUE)
@@ -578,12 +573,18 @@ grade_this({
 
 ### Interpretieren 
 ```{r interpret}
+quiz(
 question(
-    "rmse_train = 7.94, rmse_test = 7.10. Was bedeutet das?",
-  answer("Das Modell generalisiert gut. Es ist kein Overfitting erkennbar.", correct = TRUE),
-  answer("Das Modell ist overfittet, weil der Test-RMSE niedriger ist."),
-  answer("Das Modell ist unbrauchbar, weil der RMSE über 5 liegt."),
-  answer("Der Train-RMSE sollte immer niedriger sein als der Test-RMSE.")
+    "Der RMSE auf dem vollen Trainingsset beträgt 8.4, der CV-Training RMSE beträgt 8.8, und der Test RMSE beträgt 9.1. Was sagt das aus?",
+  answer("Das Modell generalisiert gut. Es ist kein Overfitting erkennbar, auch wenn der CV-RMSE etwas optimistisch war.",correct = TRUE),
+  answer("Das Modell ist klar overfittet, weil der Test-RMSE größer ist."),
+  answer("Irgendetwas ist falsch gelaufen mit der CV, weil der CV-RMSE größer als der Trainings- aber kleiner als der Test-RMSE ist."),
+  answer("Zufälligerweise ist der Training-RMSE niedriger als der CV-Training RSME und der Test-RMSE. Das ist ungewöhnlich, spielt jedoch erstmal keine Rolle."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE,
+  incorrect = "Leider falsch.",
+  correct = random_praise()
+)
 )
 ```
 
@@ -593,6 +594,6 @@ Herzlichen Glückwunsch, du hast die Lektion zum Thema Machine Learning erfolgre
 
 Falls du noch Zeit hast, kannst du hier weiter mit dem Datensatz experimentieren, weitere Grafiken erstellen oder neue Modelle fitten. Viel Spaß dabei!
 
-```{r sandbox, exercise=TRUE, exercise.lines = 10, exercise.setup = "setupA"}
+```{r sandbox, exercise=TRUE, exercise.lines = 10, exercise.setup = "setupD"}
 
 ```
